@@ -1,0 +1,491 @@
+"Privacy by default" = "الخصوصية بشكل افتراضي";
+
+"Proton address required" = "عنوان Proton مطلوب";
+
+"Update required" = "التحديث مطلوب";
+
+"Please enter your Proton Account password." = "رجاءً ادخل كلمة المرور الخاصة بحساب Proton Account";
+
+"OK" = "موافق";
+
+"Help" = "المساعدة";
+
+"Continue" = "استمرار";
+
+"Password" = "كلمة المرور";
+
+"The Proton servers are unreachable. It might be caused by wrong network configuration, Proton servers not working or Proton servers being blocked" = "لا يمكن الوصول إلى خوادم Proton. قد يكون السبب في ذلك هو التكوين الخاطئ للشبكة، أو أن خوادم Proton لا يعمل أو قد يكون محظورة";
+
+"Search country" = "البحث عن بلد";
+
+"Code sent to %@" = "الكود تم إرساله إلى %@";
+
+"Request new code?" = "اطلب رمزاً جديدًا?";
+
+"Resend" = "إعادة الإرسال";
+
+"Get a replacement code sent to %@." = "احصل على رمز بديل تم إرساله إلى %@.";
+
+"Request new code" = "اطلب رمزاً جديدًا";
+
+"Enter your Proton Account details." = "أدخل بيانات حسابك في Proton";
+
+"Email or username" = "البريد الإلكتروني أو إسم المستخدم";
+
+"Sign in" = "تسجل الدخول";
+
+"Sign in with password" = "تسجيل الدخول بكلمة المرور";
+
+"Sign in with SSO" = "تسجيل الدخول باستخدام SSO";
+
+"Sign in with a QR code" = "تسجيل الدخول باستخدام رمز QR";
+
+"Sign in to your organization" = "تسجيل الدخول إلى مؤسستك";
+
+"Create an account" = "إنشاء حساب";
+
+"How can we help?" = "كيف يمكننا المساعدة؟";
+
+"Forgot username" = "نسيت اسم المستخدم";
+
+"Forgot password" = "نسيت كلمة المرور";
+
+"Other sign-in issues" = "مشاكل اخرى في تسجيل الدخول";
+
+"Customer support" = "خدمة العملاء";
+
+"Still need help? Contact us directly." = "لا تزال بحاجة إلى مساعدة؟ تواصل معنا مباشرةً";
+
+"Please enter your Proton Account email or username." = "الرجاء إدخال بريدك الإلكتروني أو اسم المستخدم في حساب بروتون الخاص بك.";
+
+"Complete Setup" = "اكمل الإعداد";
+
+"Your account is missing keys, please sign in on web to automatically generate required keys. Once you have signed in on web, please return to the app and sign in." = "حسابك يفتقد المفاتيح، يرجى تسجيل الدخول على الموقع الإلكتروني لتوليد المفاتيح المطلوبة تلقائياً. بمجرد أن تقوم بتسجيل الدخول على الموقع، يرجى العودة إلى التطبيق وتسجيل الدخول.";
+
+"Account setup required" = "إعداد الحساب مطلوب";
+
+"Incorrect mailbox password" = "كلمة مرور صندوق البريد غير صحيحة.";
+
+"Your session has expired. Please log in again." = "انتهت جلستك. يرجى تسجيل الدخول مرة أخرى";
+
+"Proton address required" = "عنوان Proton مطلوب";
+
+"You need a Proton email address to use Proton Mail and Proton Calendar.\nYou’ll still be able to use %@ to sign in, and to recover your account." = "تحتاج إلى عنوان بريد إلكتروني في بروتون لاستخدام بروتون ميل وبروتون تقويم.\n\\";
+
+"Username" = "اسم المستخدم";
+
+"Please enter a username." = "الرجاء إدخال اسم المستخدم.";
+
+"Unlock your mailbox" = "فتح صندوق بريدك";
+
+"Mailbox password" = "كلمة مرور صندوق البريد";
+
+"Unlock" = "فتح";
+
+"Forgot password" = "نسيت كلمة المرور";
+
+"Two-factor authentication" = "المصادقة الثنائية";
+
+"Authenticate" = "المصادقة";
+
+"Two-factor code" = "رمز المصادقة الثنائية";
+
+"Recovery code" = "رمز الاسترداد";
+
+"Use recovery code" = "استخدام رمز الاسترداد";
+
+"Use two-factor code" = "استخدم رمز المصادقة الثنائية";
+
+"Enter the 6-digit code." = "أدخل رمز مكون من 6 أرقام";
+
+"Enter an 8-character recovery code." = "أدخل رمز الاسترداد المكون من 8 حروف";
+
+"Learn more" = "معرفة المزيد";
+
+"Change your password" = "تغيير كلمة مرورك";
+
+"Change password" = "تغيير كلمة المرور";
+
+"To use the Proton app as a member of an organization, you first need to change your password by signing into Proton through a browser." = "لاستخدام تطبيق Proton كعضو في المؤسسة، تحتاج أولاً إلى تغيير كلمة المرورك عن طريق تسجيل الدخول إلى Proton من خلال المتصفح";
+
+"Error occured" = "حدث خطأ";
+
+"Create your Proton Account" = "أنشئ حسابك في Proton";
+
+"One account for all Proton services." = "حساب واحد لجميع خدمات Proton";
+
+"Next" = "التالي";
+
+"Use your current email instead" = "استخدم بريدك الإلكتروني الحالي بدلا من ذلك";
+
+"Create a secure Proton Mail address instead" = "إنشاء عنوان بريد إلكتروني آمن في بروتون ميل بدلاً من ذلك";
+
+"Email" = "البريد الإلكتروني";
+
+"Create your password" = "انشئ كلمة مرورك";
+
+"Password must contain at least 8 characters" = "كلمة المرور يجب أن تحتوي على 8 أحرف على الأقل";
+
+"Repeat password" = "أعد كتابة كلمة المرور";
+
+"Domain" = "النطاق";
+
+"Set recovery method" = "انشئ طريقة للاسترداد";
+
+"Set recovery method (optional)" = "أنشئ طريقة للاسترداد (اختياري)";
+
+"We will send recovery instructions to this email or phone number if you get locked out of your account." = "سنرسل تعليمات الاسترداد إلى هذا البريد الإلكتروني أو رقم الهاتف إذا تم إغلاق حسابك";
+
+"Email" = "البريد الإلكتروني";
+
+"Phone" = "الهاتف";
+
+"Recovery email" = "البريد الاسترداد";
+
+"Recovery phone number" = "رقم الهاتف الخاص بالاسترداد";
+
+"By clicking Next, you agree with Proton's Terms and Conditions" = "بالنقر فوق \"التالي\"، فإنك توافق على الشروط والأحكام الخاصة بـ Proton";
+
+"By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "بالنقر على \"التالي\"، فإنك توافق على الشروط والأحكام وسياسة الخصوصية الخاصة بـ Proton";
+
+"Terms and Conditions" = "الشروط والأحكام";
+
+"Privacy Policy" = "سياسة الخصوصية";
+
+"Skip" = "تخطي";
+
+"Skip recovery method?" = "تخطي طريقة الاسترداد؟";
+
+"A recovery method will help you access your account in case you forget your password or get locked out of your account." = "ستساعدك طريقة الاسترداد في الوصول إلى حسابك في حال نسيت كلمة المرور أو تم قفل حسابك.";
+
+"Set recovery method" = "انشئ طريقة للاسترداد";
+
+"Your account is being created" = "يتم إنشاء حسابك الان";
+
+"This should take no more than a minute." = "يجب ألا يستغرق ذلك أكثر من دقيقة.";
+
+"Creating your account" = "جارٍ إنشاء حسابك ...";
+
+"Generating your address" = "جارٍ إنشاء عنوانك ...";
+
+"Securing your account" = "جارٍ تأمين حسابك ...";
+
+"Verifying your payment" = "جارٍ التحقق من عملية الدفع ...";
+
+"Account verification" = "التحقق من الحساب";
+
+"For your security, we must verify that the address you entered belongs to you. We sent a verification code to %@. Please enter the code below:" = "لزيادة الأمان، يجب أن نتحقق من العنوان البريد الإلكتروني الذي أدخلته. لقد أرسلنا رمز التحقق إلى %@. رجاءً ادخل الرمز هنا:";
+
+"Verification code" = "رمز التحقق";
+
+"Enter the 6-digit code." = "أدخل رمز مكون من 6 أرقام";
+
+"Did not receive a code?" = "هل لم تتلقى الرمز؟";
+
+"Terms and Conditions" = "الشروط والأحكام";
+
+"Privacy Policy" = "سياسة الخصوصية";
+
+"Invalid token request" = "طلب رمز غير صالح.";
+
+"Invalid token error" = "خطأ في الرمز غير صالح.";
+
+"Create user failed" = "فشل إنشاء المستخدم.";
+
+"Invalid hashed password" = "كلمة المرور خاطئة";
+
+"Password can not be empty.\nPlease try again." = "لا يمكن أن تكون كلمة المرور فارغة. الرجاء المحاولة مرة أخرى.";
+
+"Passwords do not match.\nPlease try again." = "كلمات المرور غير متطابقة.\n يرجى المحاولة مرة أخرى.";
+
+"Email address already used." = "عنوان البريد الإلكتروني موجود بالفعل.";
+
+"Please ask your admin to configure your sub-user." = "الرجاء طلب من مسؤولك تكوين المستخدم الفرعي الخاص بك.";
+
+"Would you like to receive a new verification code or use an alternate email address?" = "هل ترغب في الحصول على رمز تحقق جديد أو استخدام عنوان بريد إلكتروني بديل؟";
+
+"Change email address" = "تغيير البريد الإلكتروني";
+
+"Congratulations" = "تهانينا";
+
+"Your Proton Free account was successfully created." = "تم إنشاء حساب Proton المجاني بنجاح";
+
+"Proton Free" = "Proton المجانية";
+
+"Your payment was confirmed and your %@ account successfully created." = "تم تأكيد الدفع الخاص بك وتم إنشاء حسابك %@ بنجاح.";
+
+"Your Proton account was successfully created." = "تم إنشاء حساب Proton الخاص بك بنجاح.";
+
+"Enjoy the world of privacy." = "استمتع بعالم من الخصوصية التامة";
+
+"Cancel" = "إلغاء";
+
+"Sign in" = "تسجل الدخول";
+
+"Troubleshoot" = "مكتشف الأخطاء";
+
+"Please choose how you want to confirm your identity." = "الرجاء اختيار كيف تريد تأكيد هويتك.";
+
+"One-time code" = "رمز لمرة واحدة";
+
+"Security key" = "مفتاح الأمان";
+
+"Two-Factor Authentication" = "المصادقة الثنائية";
+
+"Present a security key linked to your Proton Account." = "اَدخِل مفتاح أمان حسابك على Proton.";
+
+"Learn more" = "معرفة المزيد";
+
+"Invalid state. Please quit the app and try again in a few minutes." = "الحالة غير صالحة. يرجى إنهاء التطبيق والمحاولة مرة أخرى بعد بضع دقائق.";
+
+"There was a problem reading your security key." = "هناك مشكلة في قراءة مفتاح الأمان الخاص بك.";
+
+"We received an authorization from a type we don't support yet." = "لقد تلقينا تفويضاً من نوع لا ندعمه حاليا.";
+
+"Fetching your security keys details" = "جارٍ جلب تفاصيل مفاتيحك للأمان";
+
+"You don't yet have any security keys enrolled in your account. Please visit the settings section on our website to add security keys." = "ليس لديك حتى الآن أي مفاتيح أمان مسجلة في حسابك. يُرجى زيارة قسم الإعدادات على موقعنا الإلكتروني لإضافة مفاتيح الأمان.";
+
+"An error occurred fetching your security keys. You can also check them on the Proton %@ website." = "حدث خطأ في جلب مفاتيح الأمان الخاصة بك. يمكنك أيضا التحقق منها على موقع proton %@.";
+
+"These are the security keys registered to your account" = "هذه مفاتيح الأمان المسجلة في حسابك";
+
+"You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys." = "ليس لديك حتى الآن أي مفاتيح أمان مسجلة في حسابك. الرجاء استخدام تطبيق الويب Proton %@ لإضافة مفاتيح الأمان.";
+
+"Security Keys" = "مفاتيح الأمان";
+
+"To manage, add, or remove security keys, please use the Proton %@ web application." = "لإدارة مفاتيح الأمان أو إضافتها أو إزالتها، يرجى استخدام تطبيق الويب Proton %@.";
+
+"Unexpected FIDO2 signature." = "توقيع FIDO2 غير متوقع.";
+
+"We could not initiate the Secure Password update connection. Please try again." = "لم نتمكن من بدء اتصال تحديث كلمة المرور الآمنة. من فضلك حاول مرة أخرى.";
+
+"Join %@" = "انضم إلى %@";
+
+"%@ added you to their Proton organization." = "أضافك %@ إلى مؤسسة Proton التابعة له.";
+
+"Continue" = "استمرار";
+
+"Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "عيّن كلمة مرور احتياطية للمتابعة. ستسمح لك كلمة المرور هذه بتسجيل الدخول واستعادة بياناتك إذا لم تتمكن من الوصول إلى حساب Proton، لذا احرص على حفظها في مكان آمن.";
+
+"Backup password" = "كلمة مرور احتياطية";
+
+"Repeat backup password" = "كرر كلمة المرور الاحتياطية";
+
+"Password cannot be empty" = "كلمة المرور لا يمكن أن تكون فارغة.";
+
+"Password must contain at least 8 characters" = "كلمة المرور يجب أن تحتوي على 8 أحرف على الأقل";
+
+"Password doesn't match" = "كلمة المرور لا تتطابق";
+
+"Sign-in requested on another device. Was it you?" = "طُلِب تسجيل الدخول على جهاز آخر. هل هذا أنت؟";
+
+"Enter the confirmation code we sent on your other device for %@." = "أدخل رمز التأكيد الذي أرسلناه إلى جهازك الآخر لـ %@.";
+
+"Confirmation code" = "رمز التأكيد";
+
+"If you didn't make this request, cancel it now." = "إذا لم تقم بهذا الإجراء، قم بإلغائه الآن.";
+
+"Yes, it was me" = "نعم، هذا أنا";
+
+"No, it wasn't me" = "لا، ليس أنا";
+
+"Share the confirmation code with your administrator" = "شارك رمز التأكيد مع المسؤول";
+
+"Approve the sign-in from another device" = "الموافقة على تسجيل الدخول من جهاز آخر";
+
+"To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@." = "للتأكد من أنك أنت من يحاول تسجيل الدخول، شارك رمز التأكيد مع مسؤولك %@ حتى يتمكن من الموافقة على طلب %@.";
+
+"To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "للتأكد من أنك أنت من يحاول تسجيل الدخول إلى حسابك، راجع رمز التأكيد ووافق على الطلب من جهاز آخر.";
+
+"Use backup password instead" = "استخدم كلمة مرور احتياطية بدلاً من ذلك";
+
+"Ask administrator for help" = "اطلب المساعدة من المسؤول";
+
+"Devices available:" = "الأجهزة المتاحة:";
+
+"Operation couldn't be completed. Please try again." = "تعذر إكمال العملية. يُرجى المحاولة مرة أخرى.";
+
+"Enter your backup password" = "أدخل كلمة مرورك الاحتياطية.";
+
+"To make sure it’s really you trying to sign-in, please enter your backup password." = "للتأكد من أنك أنت من يحاول تسجيل الدخول، يُرجى إدخال كلمة مرورك الاحتياطية.";
+
+"Access granted" = "تم منح الوصول";
+
+"Access denied" = "تم رفض الوصول";
+
+"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "لأمانك، تم تسجيل خروجك من جميع أجهزتك النشطة الأخرى. قبل الوصول إلى حسابك، ستحتاج إلى إدخال كلمة مرور احتياطية جديدة.";
+
+"Contact your administrator if the problem persists." = "اتصل بمسؤولك إذا استمرت المشكلة.";
+
+"Back to sign-in" = "العودة إلى تسجيل الدخول";
+
+"Ask your administrator for access?" = "هل تطلب الوصول من مسؤولك؟";
+
+"This will sign you out of your other devices and you will have to create a new backup password." = "سيؤدي هذا إلى تسجيل خروجك من أجهزتك الأخرى وسيتعين عليك إنشاء كلمة مرور احتياطية جديدة.";
+
+"Grant access to user?" = "هل تمنح الوصول للمستخدم؟";
+
+"%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user." = "يطلب %@ مساعدتك لتسجيل الدخول إلى حسابه في Proton باستخدام تسجيل الدخول الأحادي.\n\nأدخل رمز التأكيد الذي أرسلناه إلى هذا المستخدم.";
+
+"Grant access" = "منح الوصول";
+
+"Deny access" = "رفض الوصول";
+
+"Signing you in" = "جارٍ تسجيل دخولك";
+
+"to your organization" = "إلى مؤسستك";
+
+"Sign in with single sign-on" = "تسجيل الدخول باستخدام تسجيل الدخول الأحادي";
+
+"Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "تستخدم مؤسستك خدمة الدخول الموحد (SSO). تابع لتسجيل الدخول مع موفر خدمة الدخول الموحد التابع لجهة خارجية.";
+
+"Unknown" = "مجهول";
+
+"Set backup password" = "تعيين كلمة مرور احتياطية";
+
+"Email is invalid" = "البريد الإلكتروني غير صالح";
+
+"Please enter your Proton Account email." = "يُرجى إدخال البريد الإلكتروني لحسابك في Proton.";
+
+"Password not valid" = "كلمة المرور غير صالحة";
+
+"Passphrase not found" = "لم يتم العثور على عبارة المرور";
+
+"Open the Proton app on your phone" = "افتح تطبيق Proton على هاتفك";
+
+"Tap into Settings, then tap Sign in to another device" = "انقر على الإعدادات، ثم انقر على تسجيل الدخول إلى جهاز آخر";
+
+"Tap Scan QR code" = "انقر على مسح رمز QR";
+
+"Scan this code with your phone camera to sign in instantly." = "امسح هذا الرمز بكاميرا هاتفك لتسجيل الدخول على الفور.";
+
+"Sign in to another device" = "تسجيل الدخول إلى جهاز آخر";
+
+"Sign in with your QR code" = "تسجيل الدخول باستخدام رمز QR خاصتك";
+
+"Use this device to scan the QR code displayed on the device you want to sign in to. Both devices will stay active." = "استخدم هذا الجهاز لمسح رمز QR المعروض على الجهاز الذي تريد تسجيل الدخول إليه. سيبقى كلا الجهازين نشطين.";
+
+"To access the QR code, tap the **Sign in with QR code** button on the sign-in screen." = "للوصول إلى رمز QR، انقر على زر **تسجيل الدخول باستخدام رمز QR** على شاشة تسجيل الدخول.";
+
+"Watch out for messages that contain a QR code. Never scan a QR code from a website or a person you don't trust." = "احذر من الرسائل التي تحتوي على رمز QR. لا تمسح أبدًا رمز QR من موقع ويب أو شخص لا تثق به.";
+
+"Proton will never ask you to scan a QR code that does not come from the domain **proton.me**." = "لن يطلب منك Proton أبدًا مسح رمز QR لا يأتي من النطاق **proton.me**.";
+
+"Scan QR code" = "مسح رمز QR";
+
+"Authenticate to access the QR code scanner" = "يُرجى المصادقة للوصول إلى ماسح رمز QR";
+
+"Place QR code within the square" = "ضع رمز QR داخل المربع";
+
+"Verifying..." = "جارٍ التحقق...";
+
+"You’re signed in to %@ on the other device." = "تم تسجيل دخولك إلى %@ على الجهاز الآخر.";
+
+"You're signed in" = "تم تسجيل دخولك";
+
+"Got it" = "حسناً";
+
+"Code not recognized. Try again." = "الرمز غير معروف. حاول مرة أخرى.";
+
+"Tip: Never scan a QR code from a website or a person you don’t trust. Proton will never ask you to scan a QR code that doesn’t come from the domain account.proton.me." = "نصيحة: لا تمسح أبدًا رمز QR من مواقع ويب أو أشخاص لا تثق بهم. لن تطلب منك Proton أبدا مسح رمز QR من خارج نطاق account.proton.me.";
+
+"Camera Access Denied." = "تم رفض الوصول إلى الكاميرا.";
+
+"The permission to use the Camera is off. Please enable it from the Settings." = "إذن استخدام الكاميرا معطل. يُرجى تمكينه من الإعدادات.";
+
+"Go to Settings" = "اذهب إلى الإعدادات";
+
+"to Proton %@" = "إلى Proton %@";
+
+"Something went wrong" = "حدث خطأ ما";
+
+"We couldn't sign you in. Please scan a new QR code to try again." = "تعذر تسجيل دخولك. يُرجى مسح رمز QR جديد للمحاولة مرة أخرى.";
+
+"We couldn't sign you in. Please sign in with your password." = "تعذر تسجيل دخولك. يُرجى تسجيل الدخول باستخدام كلمة مرورك.";
+
+"New QR code" = "رمز QR جديد";
+
+"Allow access to camera" = "السماح بالوصول إلى الكاميرا";
+
+"To scan a QR code and sign in to another device, grant Proton %@ access to your camera." = "لمسح رمز QR وتسجيل الدخول إلى جهاز آخر، امنح Proton %@ حق الوصول إلى كاميرتك.";
+
+"You're always in control: You can change this anytime in your device settings." = "القرار قرارك دوما: يمكنك تغيير هذا في أي وقت من إعدادات جهازك.";
+
+"Settings" = "الإعدادات";
+
+"We couldn't load the QR code" = "تعذر تحميل رمز QR.";
+
+"Retry" = "أعد المحاولة";
+
+"Welcome to Proton VPN" = "مرحبًا بك في Proton VPN";
+
+"Browse privately, access blocked content, and enjoy digital freedom." = "تصفح بخصوصية، وتمتع بالوصول إلى المحتوى المحظور، وبالحرية الرقمية.";
+
+"Certified no-logs VPN" = "VPN معتمد بسياسة عدم الاحتفاظ بالسجلات";
+
+"Continue as guest" = "المتابعة كزائر";
+
+"By using this app you accept our" = "باستخدام هذا التطبيق، فإنك توافق على";
+
+"Terms and Conditions." = "الشروط والأحكام.";
+
+"Tap **Scan QR code**" = "انقر على **مسح رمز QR**";
+
+"Tap into **Settings**, then tap **Sign in to another device**" = "انقر على **الإعدادات**، ثم انقر على **تسجيل الدخول إلى جهاز آخر**";
+
+"Password must contain:" = "يجب أن تحتوي كلمة المرور على:";
+
+"Access shared" = "تمت مشاركة الوصول";
+
+"Back to settings" = "العودة إلى الإعدادات";
+
+"How to sign in using another device" = "كيفية تسجيل الدخول باستخدام جهاز آخر";
+
+"Get another device that’s signed in to your Proton Account" = "أحضر جهازًا آخر سجّلت فيه الدخول إلى حسابك على Proton";
+
+"Using that device, open any Proton app and select **Settings**" = "باستخدام ذلك الجهاز، افتح أي تطبيق من تطبيقات  Proton وانقر على **الإعدادات**";
+
+"Select **Sign in on another device → Scan QR code**" = "انقر على **تسجيل الدخول على جهاز آخر ← مسح رمز QR**";
+
+"Scan the code to sign in" = "امسح الرمز لتسجيل الدخول";
+
+"We couldn't sign you in" = "تعذّر تسجيل دخولك";
+
+"Try generating a new QR code." = "حاول إنشاء رمز QR جديد.";
+
+"Generate QR code" = "إنشاء رمز QR";
+
+"Please try another sign in method." = "يُرجى استخدام طريقة أخرى لتسجيل الدخول.";
+
+"Sign in on another device" = "تسجيل الدخول على جهاز آخر";
+
+"How to sign in with QR code" = "كيفية تسجيل الدخول باستخدام رمز QR";
+
+"Allow camera access" = "السماح بالوصول إلى الكاميرا";
+
+"To sign in with QR code, you'll need to let Proton %@ access your camera. You can do this in your device settings." = "لتسجيل الدخول باستخدام رمز QR، يلزم السماح لتطبيق Proton ‏%@ بالوصول إلى الكاميرا. يمكنك ذلك من إعدادات جهازك.";
+
+"Position QR code inside the square" = "ضع رمز QR داخل المربع";
+
+"Sign in with QR code" = "تسجيل الدخول باستخدام رمز QR";
+
+"Open any Proton app on the device you want to sign in to" = "افتح أي تطبيق من تطبيقات Proton على الجهاز المُراد تسجيل الدخول إليه.";
+
+"On the sign-in screen, select **Forgot password** or **Trouble signing in?** (on mobile apps, select **Help**)" = "في صفحة تسجيل الدخول، انقر على **هل نسيت كلمة المرور؟** أو **هل تواجه مشكلة في تسجيل الدخول؟** (في تطبيقات الهاتف المحمول، انقر على **المساعدة**)";
+
+"Select **Sign in with QR code**. A QR code will appear." = "انقر على **تسجيل الدخول باستخدام رمز QR**. سيظهر رمز QR.";
+
+"On this device, press **Scan QR code** and scan the code." = "على هذا الجهاز، اضغط على **مسح رمز QR** وامسح الرمز.";
+
+"Security tips" = "نصائح الحماية والأمان";
+
+"Be cautious of messages with QR codes. Only scan a code if you trust the source." = "توخَّ الحذر من الرسائل التي تحتوي على رموز QR. لا تمسح أي رمز إلا إذا كان المصدر موثوقًا.";
+
+"Proton will never contact you unexpectedly asking you to sign in with a QR code." = "لن يتواصل معك Proton أبدا وفجأة ليطلب منك تسجيل الدخول باستخدام رمز QR.";
+
+"Proton will never ask you to scan a QR code that’s not from **https://proton.me** or an official Proton app." = "لن يطلب منك Proton أبدا مسح رمز QR من خارج موقع **https://proton.me** أو تطبيق Proton الرسمي.";
+
+"Learn more" = "معرفة المزيد";
+
+"**Security tips**" = "**نصائح الحماية والأمان**";

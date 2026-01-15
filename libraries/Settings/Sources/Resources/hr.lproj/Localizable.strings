@@ -1,20 +1,20 @@
 "pmsettings-settings-title" = "Postavke";
 
-"pmsettings-settings-app-settings-section" = "App Settings";
+"pmsettings-settings-app-settings-section" = "Postavke aplikacije";
 
-"pmsettings-settings-system-settings-section" = "System Settings";
+"pmsettings-settings-system-settings-section" = "Postavke sustava";
 
 "pmsettings-settings-system-settings-language-title" = "Jezik";
 
-"pmsettings-settings-system-settings-language-description" = "You can choose preferred language in your system settings.";
+"pmsettings-settings-system-settings-language-description" = "U postavkama sustava možete odabrati željeni jezik.";
 
-"pmsettings-settings-system-settings-language-button" = "Set language in system settings.";
+"pmsettings-settings-system-settings-language-button" = "Postavite jezik u postavkama sustava.";
 
 "pmsettings-settings-system-settings-notifications-title" = "Obavijesti";
 
-"pmsettings-settings-system-settings-notifications-description" = "This calendar can keep you updated about events happening or invites. If you want to get push notifications you have to change your system settings.";
+"pmsettings-settings-system-settings-notifications-description" = "Ovaj kalendar Vas može držati u toku s trenutnim događajima ili pozivnicama. Ako želite primati push obavijesti, morate promijeniti postavke sustava.";
 
-"pmsettings-settings-system-settings-notifications-button" = "Manage permissions in system settings";
+"pmsettings-settings-system-settings-notifications-button" = "Upravljajte dopuštenjima u postavkama sustava";
 
 "pmsettings-settings-about-section" = "O nama";
 
@@ -26,7 +26,7 @@
 
 "pmsettings-settings-footer" = "Verzija aplikacije: %@";
 
-"Bug report" = "Bug report";
+"Bug report" = "Izvješće o grešci";
 
 "Send report" = "Pošaljite izvještaj";
 
@@ -34,6 +34,6 @@
 
 "What went wrong" = "Što je bilo pogrešno";
 
-"Please describe the problem in as much detail as you can. If there was an error message, let us know what it said. Minimum 10 characters." = "Please describe the problem in as much detail as you can. If there was an error message, let us know what it said. Minimum 10 characters.";
+"Please describe the problem in as much detail as you can. If there was an error message, let us know what it said. Minimum 10 characters." = "Čim detaljnije opišite problem. Ako se pojavila poruka o grešci, napišite nam što je pisalo u njoj. Najmanje 10 znakova.";
 
-"Your report was sent successfully" = "Your report was sent successfully";
+"Your report was sent successfully" = "Vaše izvješće je uspješno poslano";

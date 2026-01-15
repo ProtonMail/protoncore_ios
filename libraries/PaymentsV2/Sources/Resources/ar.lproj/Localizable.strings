@@ -1,0 +1,31 @@
+"APIs_malformed_url_request" = "حدث خطأ ما، ولم نتمكن من إتمام طلبك. إذا استمرت المشكلة، يُرجى الاتصال بفريق دعم العملاء.";
+
+"Plans_Manager_impossible_to_get_user_uuid" = "تعذّر الحصول على المعرف الفريد العالمي (UUID) للمستخدم  في هذه المعاملة المالية.";
+
+"Plans_Manager_impossible_to_match_plan" = "تعذّرت مطابقة خطة Proton مع خطة من Apple Store.";
+
+"Plans_Manager_impossible_to_restore_transactions" = "تعذّرت عملية استعادة المعاملات، يُرجى الاتصال بفريق دعم العملاء.";
+
+"Plans_Manager_Transaction_cancelled_by_user" = "ألغى المستخدم هذه المعاملة المالية.";
+
+"Plans_Manager_Transaction_unknown_error" = "حدث خطأ غير متوقع، إذا استمرت المشكلة، يُرجى الاتصال بدعم العملاء.";
+
+"Plans_Manager_peding_transaction_received" = "تم استلام معاملة مالية معلّقة غير متوقعة";
+
+"PlansComposer_unable_to_fetch_currentSub" = "تعذّر التحقق من الاشتراك الحالي.";
+
+"Remote_manager_error" = "حدث خطأ ما ولم نتمكن من تلبية طلبك. إذا استمرت المشكلة، يُرجى الاتصال بدعم العملاء.";
+
+"SK_Receipt_impossible_to_get_receipt" = "تعذّر الحصول على بيانات إيصال المعاملة المالية من Apple.";
+
+"Transaction_Handler_plan_not_found" = "تعذّر العثور على اسم الخطة المراد شراؤها. إذا استمرت المشكلة، يُرجى الاتصال بدعم العملاء.";
+
+"Transaction_Handler_repeated_purchase" = "لا يمكن تجديد الخطة عدة مرات. إذا كنت تعتقد أن هذا خطأ أو إذا استمرت المشكلة، فيرجى الاتصال بفريق دعم العملاء.";
+
+"Transaction_Handler_receipt_update_failed" = "حدث خطأ أثناء طلب إيصال المعاملة المالية من Apple. إذا استمرت المشكلة، فيرجى الاتصال بفريق دعم العملاء.";
+
+"PayUpFront_offer_description" = "تتيح للمشتركين الجدد دفع سعر تمهيدي لمرة واحدة لمدة محددة، ثم دفع سعر الاشتراك العادي.";
+
+"PayAsYouGo_offer_description" = "تتيح للمشتركين الجدد دفع سعر تمهيدي لدورات محددة من دورات الفوترة، ثم دفع سعر الاشتراك العادي.";
+
+"FreeTrial_offer_description" = "تتيح للمشتركين الجدد الاستفادة من الاشتراك لدورات محددة من دورات الفوترة. بمجرد انتهاءها، يدفع المستخدم السعر الكامل.";

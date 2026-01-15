@@ -2,15 +2,15 @@
 
 "Failed to get list of available products from App Store." = "Nije moguće dohvatiti popis dostupnih proizvoda iz App Storea.";
 
-"Purchase is not possible." = "Purchase is not possible.";
+"Purchase is not possible." = "Kupovina nije moguća.";
 
 "Apple informed us you've upgraded the service plan, but some technical data was missing. Please fill in the bug report and our customer support team will contact you." = "Apple nas je obavijestio da ste nadogradili plan usluga, ali nedostajali su neki tehnički podaci. Ispunite izvještaj o pogrešci i naš tim za korisničku podršku će vas kontaktirati.";
 
-"Apple informed us you've upgraded the service plan, but we detected you have logged out of the account since then." = "Apple informed us you've upgraded the service plan, but we detected you have signed out of the account since then.";
+"Apple informed us you've upgraded the service plan, but we detected you have logged out of the account since then." = "Apple nas je obavijestio da ste nadogradili svoju pretplatu za usluge, ali smo otkrili da ste se u međuvremenu odjavili sa svog računa.";
 
-"It wasn't possible to match your purchased App Store product to any products on our server. Please fill in the bug report and our customer support team will contact you." = "Nismo uspjeli pronaći AppStore proizvod koji ste kupili s proizvodima na našem poslužitelju. Ispunite izvještaj o pogreški i naš tim za korisničku podršku će vas kontaktirati.";
+"It wasn't possible to match your purchased App Store product to any products on our server. Please fill in the bug report and our customer support team will contact you." = "Nismo uspjeli pronaći AppStore proizvod koji ste kupili s proizvodima na našem poslužitelju. Ispunite izvještaj o pogrešci i naš tim za korisničku podršku će vas kontaktirati.";
 
-"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the purchase." = "Please sign in to the Proton Mail account you're upgrading the service plan for so we can complete the purchase.";
+"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the purchase." = "Prijavite se u račun za Proton Mail za koji želite nadograditi pretplatu da možemo dovršiti kupnju.";
 
 "Apple informed us they could not process the purchase." = "Apple nas je obavijestio da ne mogu obraditi kupnju.";
 
@@ -18,7 +18,7 @@
 
 "Please unlock the app to proceed with your service plan activation" = "Otključajte aplikaciju da biste nastavili s aktivacijom plana usluge";
 
-"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the service plan activation." = "Please sign in to the Proton Mail account you're upgrading the service plan for so we can complete the service plan activation.";
+"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the service plan activation." = "Prijavite se u račun za Proton Mail za koji želite nadograditi pretplatu da možemo dovršiti aktivaciju pretplate.";
 
 "Wrong payment token status. Please relaunch the app. If error persists, contact support." = "Pogrešan status tokena plaćanja. Ponovo pokrenite aplikaciju. Ako pogreška i dalje postoji, obratite se službi za podršku.";
 
@@ -28,9 +28,9 @@
 
 "No, for another Proton Mail account" = "Ne, za drugi Proton Mail račun";
 
-"We were unable to upgrade your account to the plan you selected, so we added your payment as credits to your account. For more information and to complete your upgrade, please contact Support." = "We were unable to upgrade your account to the plan you selected, so we added your payment as credits to your account. For more information and to complete your upgrade, please contact Support.";
+"We were unable to upgrade your account to the plan you selected, so we added your payment as credits to your account. For more information and to complete your upgrade, please contact Support." = "Nismo uspjeli nadograditi Vaš račun na odabranu pretplatu pa smo Vašu uplatu dodali kao kredite na Vaš račun. Za više informacija i dovršavanje nadogradnje, obratite se korisničkoj podršci.";
 
-"Contact Support" = "Contact Support";
+"Contact Support" = "Kontaktiraj podršku";
 
 "Dismiss" = "Odbaci";
 
@@ -42,6 +42,6 @@
 
 "OK" = "OK";
 
-"The Proton servers are unreachable. It might be caused by wrong network configuration, Proton servers not working or Proton servers being blocked" = "The Proton servers are unreachable. It might be caused by wrong network configuration, Proton servers not working or Proton servers being blocked";
+"The Proton servers are unreachable. It might be caused by wrong network configuration, Proton servers not working or Proton servers being blocked" = "Protonovi poslužitelji nisu dostupni. Uzrok tome je možda pogrešna konfiguracija mreže, neispravni ili blokirani Protonovi poslužitelji.";
 
-"The signed-in Apple account already purchased this item." = "The signed-in Apple account already purchased this item.";
+"The signed-in Apple account already purchased this item." = "Prijavljeni Apple račun već je kupio ovu stavku.";

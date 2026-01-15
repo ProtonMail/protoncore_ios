@@ -1,8 +1,8 @@
-"The Proton servers are unreachable. It might be caused by wrong network configuration, Proton servers not working or Proton servers being blocked" = "The Proton servers are unreachable. It might be caused by wrong network configuration, Proton servers not working or Proton servers being blocked";
+"The Proton servers are unreachable. It might be caused by wrong network configuration, Proton servers not working or Proton servers being blocked" = "Protonovi poslužitelji nisu dostupni. Uzrok tome je možda pogrešna konfiguracija mreže, neispravni ili blokirani Protonovi poslužitelji.";
 
 "An error has occured" = "Dogodila se greška";
 
-"Get a Proton Mail address linked to this account in your Proton web settings." = "Get a Proton Mail address linked to this account in your Proton web settings.";
+"Get a Proton Mail address linked to this account in your Proton web settings." = "Nabavite Proton Mail adresu povezanu s ovim računom u svojim Proton web postavkama.";
 
 "Proton address required" = "Potrebna Proton adresa";
 
@@ -10,8 +10,8 @@
 
 "Code isn't valid" = "Kod nije valjani";
 
-"Device secret not found" = "Device secret not found";
+"Device secret not found" = "Tajna uređaja nije pronađena";
 
-"Passphrase not found" = "Passphrase not found";
+"Passphrase not found" = "Frazna lozinka nije pronađena";
 
 "Password update failed" = "Neuspješna promjena lozinke";

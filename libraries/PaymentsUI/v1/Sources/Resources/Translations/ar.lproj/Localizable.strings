@@ -1,0 +1,135 @@
+"OK" = "موافق";
+
+"Cancel" = "إلغاء";
+
+"Warning" = "تحذير";
+
+"Select a plan" = "اختر خطة";
+
+"Current plan" = "الخطة الحالية";
+
+"Subscription" = "الاشتراك";
+
+"Upgrade your plan" = "رقِّ خطتك";
+
+"Only annual subscriptions without auto-renewal are available inside the mobile app." = "يُوفر هذا التطبيق الاشتراكات السنوية التي لا تتجدد تلقائيًا فقط.";
+
+"You cannot manage subscriptions inside the mobile application." = "لا يمكنك إدارة الاشتراكات داخل تطبيق الهاتف المحمول.";
+
+"Your plan will automatically renew on %@" = "سَتُجدد خطتك تلقائيا في %@";
+
+"Current plan will expire on %@" = "ستنتهي صلاحية الخطة الحالية في %@";
+
+"Contact an administrator to make changes to your Proton subscription." = "اتصل بأحد المسؤولين لإجراء تغييرات على اشتراكك في Proton.";
+
+"%1$@ of %2$@" = "%1$@ من %2$@";
+
+"%@ storage" = "مساحة تخزين %@";
+
+"%@ storage / user" = "%@ مساحة تخزين لكل مستخدم";
+
+"for %@" = "مقابل %@";
+
+"Custom email addresses" = "عناوين بريد إلكتروني مخصصة";
+
+"Priority customer support" = "الأولوية في الحصول على الدعم";
+
+"Adblocker (NetShield)" = "أداة حظر الإعلانات (NetShield)";
+
+"Streaming service support" = "فريق دعم خدمات البث";
+
+"High speed" = "سرعة عالية";
+
+"Highest speed" = "أعلى سرعة";
+
+"Multi-user support" = "دعم متعدد المستخدمين";
+
+"The basic for private and secure communications." = "الأساس للاتصالات الخاصة والآمنة.";
+
+"Full-featured mailbox with advanced protection." = "صندوق بريد كامل الميزات مع حماية متقدمة.";
+
+"Limited time offer" = "عرض لفترة محدودة";
+
+"Complete payment?" = "هل تريد إتمام الدفع؟";
+
+"A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "بدأت عملية شراء خطة حزمة Proton. اضغط على \"متابعة\" لإتمام الدفع وإنشاء حسابك";
+
+"Complete payment" = "إتمام الدفع";
+
+"The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "تعذّر إتمام عملية إعداد الحساب بسبب خطأ غير متوقع.\nيُرجى المحاولة مرة أخرى.";
+
+"The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "بدأت عملية الشراء داخل التطبيق. يُرجى اتباع إرشادات Apple لإتمام عملية الشراء أو إلغائها.";
+
+"In app payments are temporarily unavailable." = "الدفع داخل التطبيق غير متاح مؤقتا.";
+
+"One plan for all Proton services" = "خطة واحدة للاستفادة من جميع خدمات Proton";
+
+"The no-cost starter account designed to empower everyone with privacy by default." = "الحساب المبدئي المجاني الذي يُوفر الخصوصية للجميع.";
+
+"The privacy-first email and calendar solution for your everyday communication needs." = "تطبيق البريد الإلكتروني والتقويم الذي يضع الخصوصية فوق كل اعتبار لتلبية احتياجاتك اليومية في التواصل.";
+
+"Your privacy and security are our priority." = "خصوصيتك وأمانك أولويتنا.";
+
+"The storage-focused plan with 200 GB of cloud storage to keep your files private." = "خطة مخصّصة للتخزين توفر 200 غيغابايت من التخزين السحابي لحفظ ملفاتك في مأمن.";
+
+"The ultimate privacy pack with access to all premium Proton services." = "باقة الخصوصية التامة مع الاستفادة من جميع خدمات Proton المميزة.";
+
+"Only non-renewing annual subscriptions are available via this app" = "يُوفِّر عبر هذا التطبيق حصرا الاشتراكات السنوية التي لا تتجدد تلقائيا.";
+
+"Your subscription cannot be managed inside the mobile app." = "لا يمكن إدارة اشتراكك داخل تطبيق الهاتف المحمول.";
+
+"Unlimited folders, labels, and filters" = "مجلدات وتسميات ومُرشحات غير محدودة";
+
+"Up to %@ storage" = "مساحة تخزين تصل إلى %@";
+
+"Free VPN on a single device" = "VPN مجاني على جهاز واحد";
+
+"Highest VPN speed" = "أعلى سرعة VPN";
+
+"Built-in ad-blocker (NetShield)" = "أداة حظر إعلانات مدمجة (NetShield)";
+
+"Access to streaming services globally" = "الوصول إلى كافة خدمات البث العالمية";
+
+"Secure Core servers" = "خوادم Secure Core";
+
+"TOR over VPN" = "Tor من خلال VPN";
+
+"P2P/BitTorrent" = "P2P/BitTorrent";
+
+"Get %@" = "احصل على %@";
+
+"Get Proton for free" = "احصل على Proton مجانًا";
+
+"Extend subscription" = "تمديد الاشتراك";
+
+"%@ of %@" = "%@ من %@";
+
+"Connection issues" = "مشاكل الاتصال";
+
+"Check your internet connection" = "تأكد من اتصالك بالإنترنت";
+
+"Strict no-logs policy" = "سياسة صارمة بشأن عدم الاحتفاظ بالسجلات";
+
+"Plan successfully upgraded" = "تمت ترقية الخطة بنجاح";
+
+"Integrated 2FA authenticator" = "دمج أداة المصادقة الثنائية (2FA)";
+
+"Priority support" = "الأولوية في الدعم";
+
+"Unlimited devices" = "أجهزة غير محدودة";
+
+"Unlimited email aliases" = "لا محدودية في أسماء البريد الإلكتروني المستعار";
+
+"Unlimited logins and notes" = "لا محدودية في عمليات تسجيل دخول والملاحظات";
+
+"Custom fields" = "خانات مخصصة";
+
+"For next-level password management and identity protection." = "مستوى عالٍ من الكفاءة في إدارة كلمات المرور وحماية الهوية.";
+
+"Pay monthly" = "الدفع الشهري";
+
+"Pay annually" = "الدفع السنوي";
+
+"Pay every two years" = "الدفع كل سنتين";
+
+"Free" = "مجانا";

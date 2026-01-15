@@ -14,46 +14,46 @@
 
 "Error_view_button_title" = "Pokušaj ponovno";
 
-"Error_view_message" = "We couldn't load this page. Please refresh the page or check your internet connection.";
+"Error_view_message" = "Nismo mogli učitati ovu stranicu. Osvježite stranicu ili provjerite svoju internetsku vezu.";
 
-"Error_view_title" = "Something went wrong";
+"Error_view_title" = "Nešto je pošlo po zlu";
 
 "Loading_plans_message" = "Dohvaćanje Vaših pretplata...";
 
 "Monthly_cycle" = "1 mjesec";
 
-"No_available_plan_message" = "Your subscription can't be managed inside the mobile app.";
+"No_available_plan_message" = "Vašom pretplatom nije moguće upravljati unutar mobilne aplikacije.";
 
-"No_available_plan_title" = "No available plans found";
+"No_available_plan_title" = "Nisu pronađene dostupne pretplate";
 
-"No_filtered_plan_message" = "Please select a different billing cycle";
+"No_filtered_plan_message" = "Odaberite drugi obračunski ciklus";
 
 "No_filtered_plan_title" = "Nema pronađenih pretplata";
 
-"Plans_footer_disclaimer" = "You cannot manage subscriptions inside the mobile app";
+"Plans_footer_disclaimer" = "Ne možete upravljati pretplatama unutar mobilne aplikacije";
 
-"Purchase_button_title" = "Get %@";
+"Purchase_button_title" = "Ugrabi %@";
 
 "Select_plan_nav_title" = "Odaberite pretplatu";
 
 "Subscriptions_nav_title" = "Pretplate";
 
-"Transaction_cancelled_by_user" = "Transaction cancelled by the user";
+"Transaction_cancelled_by_user" = "Korisnik je otkazao transakciju";
 
-"Transaction_process_error" = "Something went wrong, please retry. If the issue persists please contact our support team.";
+"Transaction_process_error" = "Nešto je pošlo po zlu, pokušajte ponovno. Ako se problem nastavi, obratite se našem timu za podršku.";
 
-"Transaction_state_payment_account_update_complete" = "Account updated";
+"Transaction_state_payment_account_update_complete" = "Račun je ažuriran";
 
-"Transaction_state_payment_account_update_progress" = "Updating your account";
+"Transaction_state_payment_account_update_progress" = "Ažuriranje Vašeg računa";
 
-"Transaction_state_payment_confirmation_complete" = "Payment confirmed";
+"Transaction_state_payment_confirmation_complete" = "Uplata je potvrđena";
 
-"Transaction_state_payment_confirmation_progress" = "Confirming your payment";
+"Transaction_state_payment_confirmation_progress" = "Potvrđivanje Vaše uplate";
 
-"Transaction_state_view_subtitle" = "This should take no more than a minute.";
+"Transaction_state_view_subtitle" = "Ovo ne bi trebalo trajati više od minute.";
 
-"Transaction_state_view_title" = "Your payment is being verified...";
+"Transaction_state_view_title" = "Vaša uplata se potvrđuje...";
 
 "Yearly_cycle" = "12 mjeseci";
 
-"Transaction_pending" = "Purchase pending. It will resume once the required actions are fulfilled";
+"Transaction_pending" = "Kupnja je na čekanju. Nastavit će se nakon što se ispune potrebne radnje";

@@ -12,15 +12,15 @@
 
 "Upgrade your plan" = "Nadogradite svoju pretplatu";
 
-"Only annual subscriptions without auto-renewal are available inside the mobile app." = "Only annual subscriptions without auto-renewal are available inside the mobile app.";
+"Only annual subscriptions without auto-renewal are available inside the mobile app." = "U mobilnoj aplikaciji dostupne su samo godišnje pretplate bez automatske obnove.";
 
-"You cannot manage subscriptions inside the mobile application." = "You cannot manage subscriptions inside the mobile application.";
+"You cannot manage subscriptions inside the mobile application." = "Ne možete upravljati pretplatama unutar mobilne aplikacije.";
 
-"Your plan will automatically renew on %@" = "Your plan will automatically renew on %@";
+"Your plan will automatically renew on %@" = "Vaša će se pretplata automatski obnoviti %@";
 
-"Current plan will expire on %@" = "Current plan will expire on %@";
+"Current plan will expire on %@" = "Trenutna pretplata ističe %@";
 
-"Contact an administrator to make changes to your Proton subscription." = "Contact an administrator to make changes to your Proton subscription.";
+"Contact an administrator to make changes to your Proton subscription." = "Obratite se administratoru za izmjenu Vaše pretplate za Proton.";
 
 "%1$@ of %2$@" = "%1$@ od %2$@";
 
@@ -34,7 +34,7 @@
 
 "Priority customer support" = "Prioritetna korisnička podrška";
 
-"Adblocker (NetShield)" = "Adblocker (NetShield)";
+"Adblocker (NetShield)" = "Blokator oglasa (NetShield)";
 
 "Streaming service support" = "Podrška za streaming usluge";
 
@@ -44,87 +44,87 @@
 
 "Multi-user support" = "Podrška za više korisnika";
 
-"The basic for private and secure communications." = "The basic for private and secure communications.";
+"The basic for private and secure communications." = "Osnova za privatnu i sigurnu komunikaciju.";
 
-"Full-featured mailbox with advanced protection." = "Full-featured mailbox with advanced protection.";
+"Full-featured mailbox with advanced protection." = "Potpuno opremljeni poštanski sandučić s naprednom zaštitom.";
 
 "Limited time offer" = "Vremenski ograničena ponuda";
 
 "Complete payment?" = "Dovršiti plaćanje?";
 
-"A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account";
+"A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "Već je pokrenuta kupnja pretplate Proton Bundle. Pritisnite „Nastavi” za dovršavanje obrade plaćanja i stvaranje Vašeg računa";
 
-"Complete payment" = "Complete payment";
+"Complete payment" = "Dovrši plaćanje";
 
-"The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "The account setup process could not be finalized due to an unexpected error.\nPlease try again.";
+"The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "Proces postavljanja računa nije moguće dovršiti zbog neočekivane greške.\nPokušajte ponovno.";
 
-"The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase.";
+"The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "Proces kupovine unutar aplikacije već je započeo. Slijedite Appleove upute za dovršetak ili otkazivanje kupovine.";
 
-"In app payments are temporarily unavailable." = "In app payments are temporarily unavailable.";
+"In app payments are temporarily unavailable." = "Kupovine unutar aplikacije trenutno nisu dostupne.";
 
-"One plan for all Proton services" = "One plan for all Proton services";
+"One plan for all Proton services" = "Jedna pretplata za sve Proton usluge";
 
-"The no-cost starter account designed to empower everyone with privacy by default." = "The no-cost starter account designed to empower everyone with privacy by default.";
+"The no-cost starter account designed to empower everyone with privacy by default." = "Besplatni početni račun osmišljen kako bi svima omogućio privatnost po zadanim postavkama.";
 
-"The privacy-first email and calendar solution for your everyday communication needs." = "The privacy-first email and calendar solution for your everyday communication needs.";
+"The privacy-first email and calendar solution for your everyday communication needs." = "E-pošta i kalendar koji stavljaju privatnost na prvo mjesto za Vaše svakodnevne komunikacijske potrebe.";
 
-"Your privacy and security are our priority." = "Your privacy and security are our priority.";
+"Your privacy and security are our priority." = "Vaša privatnost i sigurnost su naš prioritet.";
 
-"The storage-focused plan with 200 GB of cloud storage to keep your files private." = "The storage-focused plan with 200 GB of cloud storage to keep your files private.";
+"The storage-focused plan with 200 GB of cloud storage to keep your files private." = "Pretplata fokusirana na pohranu s 200 GB pohrane u oblaku za privatno spremanje datoteka.";
 
-"The ultimate privacy pack with access to all premium Proton services." = "The ultimate privacy pack with access to all premium Proton services.";
+"The ultimate privacy pack with access to all premium Proton services." = "Ultimativni privatni paket s pristupom svim Protonovim premium uslugama.";
 
-"Only non-renewing annual subscriptions are available via this app" = "Only non-renewing annual subscriptions are available via this app";
+"Only non-renewing annual subscriptions are available via this app" = "Kroz ovu aplikaciju dostupne su samo godišnje pretplate bez automatske obnove";
 
-"Your subscription cannot be managed inside the mobile app." = "Your subscription cannot be managed inside the mobile app.";
+"Your subscription cannot be managed inside the mobile app." = "Vašom pretplatom nije moguće upravljati unutar mobilne aplikacije.";
 
-"Unlimited folders, labels, and filters" = "Unlimited folders, labels, and filters";
+"Unlimited folders, labels, and filters" = "Neograničene mape, oznake i filteri";
 
-"Up to %@ storage" = "Up to %@ storage";
+"Up to %@ storage" = "Do %@ pohrane";
 
-"Free VPN on a single device" = "Free VPN on a single device";
+"Free VPN on a single device" = "Besplatni VPN na jednom uređaju";
 
-"Highest VPN speed" = "Highest VPN speed";
+"Highest VPN speed" = "Najviša brzina VPN-a";
 
-"Built-in ad-blocker (NetShield)" = "Built-in ad-blocker (NetShield)";
+"Built-in ad-blocker (NetShield)" = "Ugrađeni blokator oglasa (NetShield)";
 
-"Access to streaming services globally" = "Access to streaming services globally";
+"Access to streaming services globally" = "Globalni pristup streaming uslugama";
 
-"Secure Core servers" = "Secure Core servers";
+"Secure Core servers" = "Secure Core poslužitelji";
 
-"TOR over VPN" = "Tor over VPN";
+"TOR over VPN" = "Tor preko VPN-a";
 
 "P2P/BitTorrent" = "P2P/BitTorrent";
 
-"Get %@" = "Get %@";
+"Get %@" = "Ugrabi %@";
 
-"Get Proton for free" = "Get Proton for free";
+"Get Proton for free" = "Ugrabi besplatni Proton";
 
-"Extend subscription" = "Extend subscription";
+"Extend subscription" = "Produži pretplatu";
 
-"%@ of %@" = "%@ of %@";
+"%@ of %@" = "%@ od %@";
 
-"Connection issues" = "Connection issues";
+"Connection issues" = "Problemi s vezom";
 
-"Check your internet connection" = "Check your internet connection";
+"Check your internet connection" = "Provjerite svoju mrežnu vezu";
 
-"Strict no-logs policy" = "Strict no-logs policy";
+"Strict no-logs policy" = "Stroga politika „bez zapisnika”";
 
-"Plan successfully upgraded" = "Plan successfully upgraded";
+"Plan successfully upgraded" = "Pretplata je uspješno nadograđena";
 
-"Integrated 2FA authenticator" = "Integrated 2FA authenticator";
+"Integrated 2FA authenticator" = "Ugrađeni 2FA autentifikator";
 
-"Priority support" = "Priority support";
+"Priority support" = "Prioritetna podrška";
 
-"Unlimited devices" = "Unlimited devices";
+"Unlimited devices" = "Neograničeni uređaji";
 
-"Unlimited email aliases" = "Unlimited email aliases";
+"Unlimited email aliases" = "Neograničen broj pseudonima e-pošte";
 
-"Unlimited logins and notes" = "Unlimited logins and notes";
+"Unlimited logins and notes" = "Neograničene prijave i bilješke";
 
-"Custom fields" = "Custom fields";
+"Custom fields" = "Prilagođena polja";
 
-"For next-level password management and identity protection." = "For next-level password management and identity protection.";
+"For next-level password management and identity protection." = "Za napredno upravljanje lozinkama i zaštitu identiteta.";
 
 "Pay monthly" = "Plaćaj mjesečno";
 
