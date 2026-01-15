@@ -24,15 +24,14 @@
 import Foundation
 import ProtonCoreDataModel
 
-final class ExternalLinks {
-
+public final class ExternalLinks {
     let clientApp: ClientApp
 
-    init(clientApp: ClientApp) {
+    public init(clientApp: ClientApp) {
         self.clientApp = clientApp
     }
 
-    var passwordReset: URL {
+    public var passwordReset: URL {
         switch clientApp {
         case .vpn:
             return URL(string: "https://account.protonvpn.com/reset-password?ref=ios")!
@@ -41,7 +40,7 @@ final class ExternalLinks {
         }
     }
 
-    var accountSetup: URL {
+    public var accountSetup: URL {
         switch clientApp {
         case .vpn:
             return URL(string: "https://account.protonvpn.com?ref=ios")!
@@ -50,7 +49,7 @@ final class ExternalLinks {
         }
     }
 
-    var termsAndConditions: URL {
+    public var termsAndConditions: URL {
         switch clientApp {
         case .wallet:
             return URL(string: "https://proton.me/legal/wallet/terms")!
@@ -59,11 +58,16 @@ final class ExternalLinks {
         }
     }
 
-    var privacyPolicy: URL {
-        return URL(string: "https://proton.me/wallet/privacy-policy")!
+    public var privacyPolicy: URL {
+        switch clientApp {
+        case .vpn:
+            return URL(string: "https://protonvpn.com/privacy-policy?ref=ios")!
+        default:
+            return URL(string: "https://proton.me/wallet/privacy-policy")!
+        }
     }
 
-    var support: URL {
+    public var support: URL {
         switch clientApp {
         case .vpn:
             return URL(string: "https://protonvpn.com/support?ref=ios")!
@@ -72,7 +76,7 @@ final class ExternalLinks {
         }
     }
 
-    var commonLoginProblems: URL {
+    public var commonLoginProblems: URL {
         switch clientApp {
         case .vpn:
             return URL(string: "https://protonvpn.com/support/login-problems?ref=ios")!
@@ -81,7 +85,7 @@ final class ExternalLinks {
         }
     }
 
-    var forgottenUsername: URL {
+    public var forgottenUsername: URL {
         switch clientApp {
         case .vpn:
             return URL(string: "https://account.protonvpn.com/forgot-username?ref=ios")!
@@ -90,11 +94,11 @@ final class ExternalLinks {
         }
     }
 
-    var learnMoreAboutExternalAccountsNotSupported: URL {
+    public var learnMoreAboutExternalAccountsNotSupported: URL {
         URL(string: "https://proton.me/support/external-accounts")!
     }
 
-    var certifiedNoLogsVPN: URL {
+    public var certifiedNoLogsVPN: URL {
         URL(string: "https://protonvpn.com/blog/no-logs-audit?ref=ios")!
     }
 }

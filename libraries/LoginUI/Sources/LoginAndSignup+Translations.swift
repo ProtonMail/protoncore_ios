@@ -236,8 +236,6 @@ public enum LUITranslation: TranslationsExposing {
     case login_vpn_guest_screen_description
     case login_vpn_guest_certified_no_logs
     case continue_as_guest
-    case login_vpn_guest_tc_description
-    case login_vpn_guest_tc_link
     case password_must_contain
     case access_shared
     case back_to_settings
@@ -675,10 +673,6 @@ public enum LUITranslation: TranslationsExposing {
             return localized(key: "Certified no-logs VPN", comment: "Certified no-logs button")
         case .continue_as_guest:
             return localized(key: "Continue as guest", comment: "Action button")
-        case .login_vpn_guest_tc_description:
-            return localized(key: "By using this app you accept our", comment: "Terms and conditions description")
-        case .login_vpn_guest_tc_link:
-            return localized(key: "Terms and Conditions.", comment: "Terms and conditions link")
         case .password_must_contain:
             return localized(key: "Password must contain:", comment: "Header for list of password requirements")
         case .access_shared:
@@ -704,5 +698,13 @@ public enum LUITranslation: TranslationsExposing {
         case .learn_more:
             return localized(key: "Learn more", comment: "Learn more")
         }
+    }
+
+    public static func lion_login_vpn_guest_tc_pp_description(tcLink: String, ppLink: String) -> String {
+        let value = localizing(
+            key: "By using this app you accept our [Terms and Conditions](%1$@) and acknowledge our [Privacy Policy](%2$@).",
+            comment: "Description and links to our Terms and Conditions and Privacy Policy."
+        )
+        return String(format: value, locale: Locale.current, tcLink, ppLink)
     }
 }

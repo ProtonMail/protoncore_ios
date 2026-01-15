@@ -84,16 +84,20 @@ public struct WelcomeVPNGuestView: View {
                 actionButtons
                     .frame(maxWidth: Constants.elementsWidthLimit)
 
-                Link(destination: externalLinks.termsAndConditions, label: {
-                    (Text(LUITranslation.login_vpn_guest_tc_description.l10n + " ") +
-                     Text(LUITranslation.login_vpn_guest_tc_link.l10n)
-                        .foregroundColor(ColorProvider.TextAccent)
+                Text(
+                    try! AttributedString(
+                        markdown: LUITranslation.lion_login_vpn_guest_tc_pp_description(
+                            tcLink: externalLinks.termsAndConditions.absoluteString,
+                            ppLink: externalLinks.privacyPolicy.absoluteString
+                        )
                     )
+                )
+                    .foregroundStyle(ColorProvider.TextWeak)
+                    .tint(ColorProvider.TextAccent) // link color
                     .multilineTextAlignment(.center)
                     .font(.caption)
-                    .foregroundColor(ColorProvider.TextWeak)
                     .frame(maxWidth: .infinity, alignment: .center)
-                })
+
                 Spacer()
             }
             .padding()
