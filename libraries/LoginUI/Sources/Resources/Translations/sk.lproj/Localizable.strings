@@ -426,9 +426,7 @@
 
 "Continue as guest" = "Pokračovať ako hosť";
 
-"By using this app you accept our" = "Používaním tejto aplikácie súhlasíte s našimi";
-
-"Terms and Conditions." = "Zmluvnými podmienkami používania.";
+"By using this app you accept our [Terms and Conditions](%1$@) and acknowledge our [Privacy Policy](%2$@)." = "Používaním tejto aplikácie prijímate naše [Zmluvné podmienky](%1$@) a beriete na vedomie naše [Zásady ochrany osobných údajov](%2$@).";
 
 "Tap **Scan QR code**" = "Ťuknutím **naskenujte QR kód**";
 

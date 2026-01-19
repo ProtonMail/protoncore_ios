@@ -426,9 +426,7 @@
 
 "Continue as guest" = "Jatka vieraana";
 
-"By using this app you accept our" = "Käyttämällä tätä sovellusta hyväksyt";
-
-"Terms and Conditions." = "Käyttöehdot.";
+"By using this app you accept our [Terms and Conditions](%1$@) and acknowledge our [Privacy Policy](%2$@)." = "Käyttämällä tätä sovellusta hyväksyt [käyttöehtomme](%1$@) ja [tietosuojakäytäntömme](%2$@).";
 
 "Tap **Scan QR code**" = "Napauta **Lue QR-koodi**";
 

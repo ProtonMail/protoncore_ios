@@ -18,7 +18,7 @@
 
 "Error_view_title" = "出错了";
 
-"Loading_plans_message" = "Fetching your plans...";
+"Loading_plans_message" = "正在获取您的套餐...";
 
 "Monthly_cycle" = "1 个月";
 
@@ -56,4 +56,4 @@
 
 "Yearly_cycle" = "12 个月";
 
-"Transaction_pending" = "Purchase pending. It will resume once the required actions are fulfilled";
+"Transaction_pending" = "购买待处理。在完成所需操作后将恢复";

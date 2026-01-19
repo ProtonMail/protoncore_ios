@@ -426,9 +426,7 @@
 
 "Continue as guest" = "Fortsett som gjest";
 
-"By using this app you accept our" = "Ved å bruke denne appen godtar du våre";
-
-"Terms and Conditions." = "Vilkår og betingelser.";
+"By using this app you accept our [Terms and Conditions](%1$@) and acknowledge our [Privacy Policy](%2$@)." = "By using this app you accept our [Terms and Conditions](%1$@) and acknowledge our [Privacy Policy](%2$@).";
 
 "Tap **Scan QR code**" = "Trykk på **Skann QR-kode**";
 

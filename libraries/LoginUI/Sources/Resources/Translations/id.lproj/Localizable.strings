@@ -426,9 +426,7 @@
 
 "Continue as guest" = "Lanjut sebagai tamu";
 
-"By using this app you accept our" = "Dengan menggunakan aplikasi ini, Anda menyetujui";
-
-"Terms and Conditions." = "Syarat dan Ketentuan.";
+"By using this app you accept our [Terms and Conditions](%1$@) and acknowledge our [Privacy Policy](%2$@)." = "By using this app you accept our [Terms and Conditions](%1$@) and acknowledge our [Privacy Policy](%2$@).";
 
 "Tap **Scan QR code**" = "Tap **Scan QR code**";
 
