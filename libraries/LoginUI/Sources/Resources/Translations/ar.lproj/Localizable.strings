@@ -426,9 +426,7 @@
 
 "Continue as guest" = "المتابعة كزائر";
 
-"By using this app you accept our" = "باستخدام هذا التطبيق، فإنك توافق على";
-
-"Terms and Conditions." = "الشروط والأحكام.";
+"By using this app you accept our [Terms and Conditions](%1$@) and acknowledge our [Privacy Policy](%2$@)." = "By using this app you accept our [Terms and Conditions](%1$@) and acknowledge our [Privacy Policy](%2$@).";
 
 "Tap **Scan QR code**" = "انقر على **مسح رمز QR**";
 

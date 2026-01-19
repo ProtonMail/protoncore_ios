@@ -426,9 +426,7 @@
 
 "Continue as guest" = "Continueu com a convidat";
 
-"By using this app you accept our" = "En utilitzar aquesta aplicació, accepteu els nostres";
-
-"Terms and Conditions." = "Termes i condicions.";
+"By using this app you accept our [Terms and Conditions](%1$@) and acknowledge our [Privacy Policy](%2$@)." = "En utilitzar aquesta aplicació, accepteu els nostres [Termes i condicions](%1$@) i confirmeu que coneixeu la nostra [Política de privacitat](%2$@).";
 
 "Tap **Scan QR code**" = "Toqueu**Escaneja el codi QR**";
 

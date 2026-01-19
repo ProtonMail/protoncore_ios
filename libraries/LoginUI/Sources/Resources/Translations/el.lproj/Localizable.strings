@@ -426,9 +426,7 @@
 
 "Continue as guest" = "Συνέχεια ως επισκέπτης";
 
-"By using this app you accept our" = "Χρησιμοποιώντας αυτήν την εφαρμογή αποδέχεστε τους";
-
-"Terms and Conditions." = "Όροι και Προϋποθέσεις.";
+"By using this app you accept our [Terms and Conditions](%1$@) and acknowledge our [Privacy Policy](%2$@)." = "Χρησιμοποιώντας αυτήν την εφαρμογή, αποδέχεστε τους [Όρους και Προϋποθέσεις](%1$@) και αναγνωρίζετε την [Πολιτική Απορρήτου](%2$@).";
 
 "Tap **Scan QR code**" = "Πατήστε **Σάρωση κωδικού QR**";
 

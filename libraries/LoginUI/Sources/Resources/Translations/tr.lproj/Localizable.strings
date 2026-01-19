@@ -426,9 +426,7 @@
 
 "Continue as guest" = "Konuk olarak ilerle";
 
-"By using this app you accept our" = "Bu uygulamayı kullanarak şunları kabul etmiş olursunuz:";
-
-"Terms and Conditions." = "Hüküm ve Koşullar.";
+"By using this app you accept our [Terms and Conditions](%1$@) and acknowledge our [Privacy Policy](%2$@)." = "Bu uygulamayı kullanarak [Hüküm ve Koşullar](%1$@) ile [Gizlilik İlkesi](%2$@) içeriklerimizi kabul etmiş olursunuz.";
 
 "Tap **Scan QR code**" = "Tap **Scan QR code**";
 

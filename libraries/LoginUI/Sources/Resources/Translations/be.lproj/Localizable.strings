@@ -426,9 +426,7 @@
 
 "Continue as guest" = "Працягнуць як госць";
 
-"By using this app you accept our" = "Выкарыстоўваючы гэту праграму вы прымаеце нашы";
-
-"Terms and Conditions." = "ўмовы выкарыстання.";
+"By using this app you accept our [Terms and Conditions](%1$@) and acknowledge our [Privacy Policy](%2$@)." = "By using this app you accept our [Terms and Conditions](%1$@) and acknowledge our [Privacy Policy](%2$@).";
 
 "Tap **Scan QR code**" = "Націсніце **Сканіраваць QR-код**";
 

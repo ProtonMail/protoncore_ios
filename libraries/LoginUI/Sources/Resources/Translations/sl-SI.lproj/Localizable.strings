@@ -426,9 +426,7 @@
 
 "Continue as guest" = "Nadaljujte kot gost";
 
-"By using this app you accept our" = "Z uporabo te aplikacije sprejemate naše";
-
-"Terms and Conditions." = "Terms and Conditions.";
+"By using this app you accept our [Terms and Conditions](%1$@) and acknowledge our [Privacy Policy](%2$@)." = "By using this app you accept our [Terms and Conditions](%1$@) and acknowledge our [Privacy Policy](%2$@).";
 
 "Tap **Scan QR code**" = "Tap **Scan QR code**";
 

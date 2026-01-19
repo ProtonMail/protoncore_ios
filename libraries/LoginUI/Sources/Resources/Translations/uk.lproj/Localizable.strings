@@ -426,9 +426,7 @@
 
 "Continue as guest" = "Продовжити як гість";
 
-"By using this app you accept our" = "Використовуючи цю програму, ви приймаєте наші";
-
-"Terms and Conditions." = "Умови та положення.";
+"By using this app you accept our [Terms and Conditions](%1$@) and acknowledge our [Privacy Policy](%2$@)." = "By using this app you accept our [Terms and Conditions](%1$@) and acknowledge our [Privacy Policy](%2$@).";
 
 "Tap **Scan QR code**" = "Tap **Scan QR code**";
 

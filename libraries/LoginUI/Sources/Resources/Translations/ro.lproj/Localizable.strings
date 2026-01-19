@@ -426,9 +426,7 @@
 
 "Continue as guest" = "Continuare ca vizitator";
 
-"By using this app you accept our" = "Folosind această aplicație acceptați";
-
-"Terms and Conditions." = "„Termenii și condițiile”.";
+"By using this app you accept our [Terms and Conditions](%1$@) and acknowledge our [Privacy Policy](%2$@)." = "Prin utilizarea acestei aplicații acceptați [Termenii și condițiile](%1$@) și sunteți de acord cu [Politica de confidențialitate](%2$@)'.";
 
 "Tap **Scan QR code**" = "Apăsați pe **Scanare cod QR**";
 
