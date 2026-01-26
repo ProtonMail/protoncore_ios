@@ -426,13 +426,13 @@
 
 "Continue as guest" = "Lanjut sebagai tamu";
 
-"By using this app you accept our [Terms and Conditions](%1$@) and acknowledge our [Privacy Policy](%2$@)." = "By using this app you accept our [Terms and Conditions](%1$@) and acknowledge our [Privacy Policy](%2$@).";
+"By using this app you accept our [Terms and Conditions](%1$@) and acknowledge our [Privacy Policy](%2$@)." = "Dengan menggunakan aplikasi ini, Anda menyetujui [Syarat dan Ketentuan](%1$@) dan mengakui [Kebijakan Privasi](%2$@).";
 
-"Tap **Scan QR code**" = "Tap **Scan QR code**";
+"Tap **Scan QR code**" = "Ketuk **Pindai kode QR**";
 
-"Tap into **Settings**, then tap **Sign in to another device**" = "Tap into **Settings**, then tap **Sign in to another device**";
+"Tap into **Settings**, then tap **Sign in to another device**" = "Ketuk **Pengaturan**, lalu ketuk **Masuk ke perangkat lain**";
 
-"Password must contain:" = "Password must contain:";
+"Password must contain:" = "Kata sandi harus memuat:";
 
 "Access shared" = "Akses dibagikan";
 
