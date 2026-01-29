@@ -39,10 +39,10 @@ public final class TransactionHandler: NSObject, TransactionHandlerProviding, @u
     private var transactionIdInProgress: UInt64 = 0
 
     public init(remoteManager: RemoteManagerProviding,
-                receiptManger: StoreKitReceiptManagerProviding = StoreKitReceiptManager(),
+                receiptManger: StoreKitReceiptManagerProviding? = nil,
                 appAccountToken: UUID? = nil) {
         self.remoteManager = remoteManager
-        self.receiptManager = receiptManger
+        self.receiptManager = receiptManger ?? StoreKitReceiptManager()
         self.appAccountToken = appAccountToken
     }
 
@@ -99,8 +99,6 @@ public final class TransactionHandler: NSObject, TransactionHandlerProviding, @u
     func generateValidationTokenFromStoreKitReceipt(_ transaction: ProtonTransactionProviding) async throws -> Token {
 
         debugPrint("Generating validation token..")
-        // Delay to give time for the receipt to update
-        try await Task.sleep(for: .seconds(0.3))
         let receipt = try await receiptManager.refreshReceipt()
 
         guard var bundleIdentifier = Bundle.main.bundleIdentifier else {
@@ -128,12 +126,19 @@ public final class TransactionHandler: NSObject, TransactionHandlerProviding, @u
 
         updateTransactionState(state: .generatingReceipt)
 
-        let newToken = Token(payment: PaymentReceipt(details: ReceiptDetails(bundleID: bundleIdentifier,
-                                                                             productID: transaction.productID,
-                                                                             receipt: receipt,
-                                                                             transactionID: transactionIdentifier),
-                                                     type: "apple-recurring"),
-                             paymentMethodID: nil)
+        let newToken = Token(
+            payment: PaymentReceipt(
+                details: ReceiptDetails(
+                    bundleID: bundleIdentifier,
+                    productID: transaction.productID,
+                    receipt: receipt,
+                    transactionID: transactionIdentifier
+                ),
+                type: "apple-recurring"
+            ),
+            paymentMethodID: nil
+        )
+
         debugPrint("Validation token generated ✅")
         TransactionsObserver.shared.logHelper?.logEventSync(["phase": "validation_token_creation",
                                                              "token": newToken.toDictionary()])
@@ -222,7 +227,7 @@ private extension TransactionHandler {
                                                                    "status": "success"],
                                                                   type: .close)
             ObservabilityEnv.report(.paymentSubscribeTotal(status: .successful, isDynamic: true))
-            updateTransactionState(state: .transactionCompleted)
+            updateTransactionState(state: .transactionCompleted(planName: planName, cycle: composedPlan.instance.cycle))
             return true
         } catch {
             TransactionsObserver.shared.removeTransactionInProgress(transactionIdInProgress)

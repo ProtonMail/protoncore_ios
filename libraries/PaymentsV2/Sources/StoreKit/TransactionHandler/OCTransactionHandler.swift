@@ -198,7 +198,7 @@ private extension OCTransactionHandler {
                                                                    "status": "success"],
                                                                   type: .close)
             ObservabilityEnv.report(.paymentSubscribeTotal(status: .successful, isDynamic: true))
-            updateTransactionState(state: .transactionCompleted)
+            updateTransactionState(state: .transactionCompleted(planName: planName, cycle: composedPlan.instance.cycle))
             return true
         } catch {
             TransactionsObserver.shared.removeTransactionInProgress(transactionIdInProgress)

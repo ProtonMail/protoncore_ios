@@ -82,13 +82,13 @@ final class OCTransactionHandlerTests: XCTestCase, @unchecked Sendable {
         let protonTransaction = TransactionStubber.convertStoreTestTransaction(transaction, price: composedPlan.product.price, currencyId: "USD", renewal: false)
 
         sut.transactionState.sink { state in
-            debugPrint(state.localizedDescription ?? "")
+            debugPrint(state)
 
             if state == .transactionProcessError {
                 XCTFail()
             }
 
-            debugPrint(state.localizedDescription ?? "")
+            debugPrint(state)
             switch state {
             case .transactionCompleted:
                 XCTAssert(true)
@@ -123,13 +123,13 @@ final class OCTransactionHandlerTests: XCTestCase, @unchecked Sendable {
         let protonTransaction = TransactionStubber.convertStoreTestTransaction(transaction, price: composedPlan.product.price, currencyId: "USD", renewal: true)
 
         sut.transactionState.sink { state in
-            debugPrint(state.localizedDescription ?? "")
+            debugPrint(state)
 
             if state == .transactionProcessError {
                 XCTFail()
             }
 
-            debugPrint(state.localizedDescription ?? "")
+            debugPrint(state)
             switch state {
             case .transactionCompleted:
                 XCTAssert(true)

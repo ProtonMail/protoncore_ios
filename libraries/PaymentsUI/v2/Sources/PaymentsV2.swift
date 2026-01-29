@@ -69,6 +69,7 @@ public final class PaymentsV2: Sendable {
                                    apiService: APIService) throws {
 
         guard TransactionsObserver.shared.isON else {
+            assertionFailure("TransactionsObserver should be active by this point.")
             throw PaymentsPresentationError.transactionsObserverNotActive
         }
 
