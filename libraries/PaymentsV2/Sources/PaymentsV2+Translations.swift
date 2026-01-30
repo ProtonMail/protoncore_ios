@@ -42,6 +42,7 @@ public enum PaymentsV2Localizer: String, TranslationsExposing {
     case PlansComposer_unable_to_fetch_currentSub
     case Remote_manager_error
     case SK_Receipt_impossible_to_get_receipt
+    case SK_Receipt_task_not_found
     case Transaction_Handler_plan_not_found
     case Transaction_Handler_repeated_purchase
     case Transaction_Handler_receipt_update_failed
@@ -71,6 +72,8 @@ public enum PaymentsV2Localizer: String, TranslationsExposing {
             return localized(key: self.rawValue, comment: "Remote data deconding error")
         case .SK_Receipt_impossible_to_get_receipt:
             return localized(key: self.rawValue, comment: "StoreKitManager get receipt fail")
+        case .SK_Receipt_task_not_found:
+            return localized(key: self.rawValue, comment: "StoreKitManager task not found")
         case .Transaction_Handler_plan_not_found:
             return localized(key: self.rawValue, comment: "TransactionHandler - impossible to find plan's name")
         case .Transaction_Handler_repeated_purchase:

@@ -81,37 +81,39 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
     @Published public private(set) var isON: Bool = false
     @Published public private(set) var transactionStatus: TransactionType = .unknown
 
-    private var updates: Task<Void, Never>?
+    private var updates: Task<Void, Error>?
     private var remoteManager: RemoteManagerProviding?
     private var planComposer: PlansComposerProviding!
     var transactionHandler: TransactionHandlerProviding!
     private var transactionsInProgress = Set<UInt64>()
-    private let queue = DispatchQueue(label: "paymentsV2.transactionObserver.syncQueue")
+    private let queue = DispatchQueue(label: "ch.proton.payments.transactions.observer")
     private var cancellables = Set<AnyCancellable>()
 
     private init() {}
 
-    private func newTransactionListenerTask() -> Task<Void, Never> {
+    private func newTransactionListenerTask() -> Task<Void, Error> {
         Task(priority: .background) {
-
             for await unfinished in Transaction.unfinished {
                 switch unfinished {
                 case .verified(let transaction):
                     guard !transactionsInProgress.contains(transaction.id) else {
-                        debugPrint("Transaction already in progress, no action required")
+                        PMLog.info("Transaction already in progress, no action required")
                         return
                     }
+
                     guard (await transaction.subscriptionStatus) != nil else {
-                        debugPrint("Transaction received is not a subscription")
+                        PMLog.info("Transaction received is not a subscription")
                         transactionStatus = .failed
                         return
                     }
+
                     guard transaction.purchaseDate == transaction.originalPurchaseDate else {
-                        debugPrint("Transaction received is a renewal, no need to process it.")
+                        PMLog.info("Transaction received is a renewal, no need to process it.")
                         transactionStatus = .successful
                         await transaction.finish()
                         return
                     }
+
                     PMLog.info("TransactionsObserver: Resolving unfinished transaction", sendToExternal: true)
                     await processTransaction(transaction, jwsRepresentation: unfinished.jwsRepresentation)
                 case .unverified(let transaction, let transactionError):
@@ -120,24 +122,29 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
                 }
             }
 
+            try Task.checkCancellation()
+
             for await update in Transaction.updates {
                 switch update {
                 case .verified(let transaction):
                     guard !transactionsInProgress.contains(transaction.id) else {
-                        debugPrint("Transaction already in progress, no action required")
+                        PMLog.info("Transaction already in progress, no action required")
                         return
                     }
+
                     guard (await transaction.subscriptionStatus) != nil else {
-                        debugPrint("Transaction received is not a subscription")
+                        PMLog.info("Transaction received is not a subscription")
                         transactionStatus = .failed
                         return
                     }
+
                     guard transaction.purchaseDate == transaction.originalPurchaseDate else {
-                        debugPrint("Transaction received is a renewal, no need to process it.")
+                        PMLog.info("Transaction received is a renewal, no need to process it.")
                         transactionStatus = .successful
                         await transaction.finish()
                         return
                     }
+
                     PMLog.info("TransactionsObserver: Resolving transaction", sendToExternal: true)
                     await processTransaction(transaction, jwsRepresentation: update.jwsRepresentation)
                 case .unverified(let transaction, let transactionError):
@@ -146,6 +153,8 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
                     return
                 }
             }
+
+            PMLog.info("Exited transaction update observer loops")
         }
     }
 
@@ -225,7 +234,7 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
                 return
             }
         } catch {
-            debugPrint(error)
+            PMLog.info("Unable to process transaction: \(error)")
 
             if let error = error as? APICodeError, error == APICodeError.invalidRequirements {
                 await transaction.finish()
@@ -239,35 +248,54 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
     // MARK: Public methods
 
     public func start() async throws {
-        if !isON {
-            try await initRequiredComponents()
-
-            guard let planComposer = planComposer, transactionHandler != nil else {
-                assertionFailure("TransactionsObserver: TransactionsObserverConfiguration required to start the observer")
-                let error = TransactionsObserverError.requiredSubComponentInitFailed
-                PMLog.error(error.failureReason ?? "Impossible to initilize sub-components required by PaymentsV2 - TransactionObserver", sendToExternal: true)
-                throw error
+        let isOn: Bool = await withCheckedContinuation { c in
+            queue.async {
+                let value = self.isON
+                self.isON = true
+                c.resume(returning: value)
             }
-
-            if !planComposer.hasData {
-                _ = try await planComposer.fetchAvailablePlans()
-            }
-            updates?.cancel()
-            updates = newTransactionListenerTask()
-            isON = true
-            debugPrint("TransactionsObserver started: \(isON) ✅")
-        } else {
-            debugPrint("TransactionsObserver already running, nothing to start")
         }
+
+        guard !isOn else {
+            PMLog.info("TransactionsObserver already running, nothing to start")
+            return
+        }
+
+        do {
+            try await initRequiredComponents()
+        } catch {
+            PMLog.info("Aborting TransactionsObserver start due to error: \(error)")
+            queue.async { self.isON = false }
+            throw error
+        }
+
+        guard let planComposer = planComposer, transactionHandler != nil else {
+            assertionFailure("TransactionsObserver: TransactionsObserverConfiguration required to start the observer")
+            let error = TransactionsObserverError.requiredSubComponentInitFailed
+            PMLog.error(error.failureReason ?? "Impossible to initilize sub-components required by PaymentsV2 - TransactionObserver", sendToExternal: true)
+            throw error
+        }
+
+        if !planComposer.hasData {
+            do {
+                _ = try await planComposer.fetchAvailablePlans()
+            } catch {
+                // Don't cause this to fail to initialize the transaction listener task, plans also get fetched later
+                PMLog.error("Couldn't fetch available plans: \(error)", sendToExternal: true)
+            }
+        }
+
+        updates?.cancel()
+        updates = newTransactionListenerTask()
+
+        PMLog.info("TransactionsObserver started ✅")
     }
 
     public func stop() {
-        if isON {
-            updates?.cancel()
-            isON = false
-            debugPrint("TransactionsObserver stopped 🛑")
-        } else {
-            debugPrint("TransactionsObserver not started, nothing to stop 👍🏻")
+        updates?.cancel()
+
+        queue.async {
+            self.isON = false
         }
     }
 

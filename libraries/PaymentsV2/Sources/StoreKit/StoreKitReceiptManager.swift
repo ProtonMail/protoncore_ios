@@ -25,17 +25,19 @@ import StoreKit
 
 public enum StoreKitReceiptManagerError: LocalizedError {
     case unableToExtractReceiptData
+    case taskMissing
 
     public var errorDescription: String? {
         switch self {
         case .unableToExtractReceiptData:
             return PaymentsV2Localizer.SK_Receipt_impossible_to_get_receipt.l10n
+        case .taskMissing:
+            return PaymentsV2Localizer.SK_Receipt_task_not_found.l10n
         }
     }
 }
 
 public protocol StoreKitReceiptManagerProviding {
-    func fetchPurchaseReceipt() throws -> String
     func recoverTransaction() async throws -> UnfinishedTransaction?
     @discardableResult
     func refreshReceipt() async throws -> String
@@ -46,20 +48,12 @@ public struct UnfinishedTransaction {
     let receipt: String
 }
 
-public final class StoreKitReceiptManager: NSObject, StoreKitReceiptManagerProviding {
+public final class StoreKitReceiptManager: StoreKitReceiptManagerProviding {
+    internal static let queue = DispatchQueue(label: "ch.proton.payments.receipt.refresh")
+    private var requests: Set<ReceiptRefreshRequest> = []
 
-    private var refresh: SKReceiptRefreshRequest?
-    private var tokenContinuation: CheckedContinuation<Void, Error>?
-
-    public func fetchPurchaseReceipt() throws -> String {
-        guard let url = Bundle.main.appStoreReceiptURL, let data = try? Data(contentsOf: url) else {
-            debugPrint("Unable to get receipt data")
-            let error = StoreKitReceiptManagerError.unableToExtractReceiptData
-            PMLog.error(error.errorDescription ?? "PaymentsV2 - StoreKit impssible to get receipt data", sendToExternal: true)
-            throw error
-        }
-
-        return data.base64EncodedString()
+    deinit {
+        requests.forEach { $0.cancel() }
     }
 
     public func recoverTransaction() async throws -> UnfinishedTransaction? {
@@ -74,22 +68,26 @@ public final class StoreKitReceiptManager: NSObject, StoreKitReceiptManagerProvi
     }
 
     public func refreshReceipt() async throws -> String {
-        try await withCheckedThrowingContinuation { continuation in
-            tokenContinuation = continuation
-            refresh = SKReceiptRefreshRequest()
-            refresh?.delegate = self
-            refresh?.start()
+        let request = ReceiptRefreshRequest()
+
+        Self.queue.sync {
+            _ = requests.insert(request)
         }
 
-        let receipt = try fetchPurchaseReceipt()
+        defer {
+            Self.queue.sync {
+                _ = requests.remove(request)
+            }
+        }
 
-        return receipt
+        request.start()
+
+        return try await request.result.base64EncodedString()
     }
 
     private func getTransactions() async -> Transaction? {
-        // We assume there will possibly be only 1 unfinished transaction
-        // for a Proton product for a given Apple Account.
-        // Support mulitple unfinshed transaction will require changes on the BE.
+        // We assume there will be at most one unfinished transaction for a Proton product for a given Apple Account.
+        // Support for multiple unfinished transactions will require changes on the BE.
         for await unfinished in Transaction.unfinished {
             switch unfinished {
             case .verified(let transaction):
@@ -103,26 +101,88 @@ public final class StoreKitReceiptManager: NSObject, StoreKitReceiptManagerProvi
         return nil
     }
 }
-extension StoreKitReceiptManager: SKRequestDelegate {
 
-    public func requestDidFinish(_ request: SKRequest) {
-        cancelActiveRequest(request)
-        TransactionsObserver.shared.logHelper?.logEventSync(["phase": "apple_receipt_refresh",
-                                                            "status": "success"])
-        PMLog.info("StoreKitManager: Apple receipt refresh successful", sendToExternal: true)
-        tokenContinuation?.resume()
+/// Wraps every receipt refresh request up into its own delegate so that subsequent requests don't stomp on each other.
+final class ReceiptRefreshRequest: SKReceiptRefreshRequest, SKRequestDelegate, Identifiable {
+    let id = UUID()
+
+    private var completionHandler: ((Result<(), Error>) -> Void)?
+    private var task: Task<(), Error>?
+    private var done: Bool = false
+
+    public var result: Data {
+        get async throws {
+            // Make sure that the request has finished before querying the value
+            guard try await task?.value != nil else {
+                PMLog.error("ReceiptRefreshRequest task is missing!", sendToExternal: true)
+                throw StoreKitReceiptManagerError.taskMissing
+            }
+
+            // Introduce a (sad) short delay to make sure `appStoreReceiptURL` gets updated
+            try await Task.sleep(for: .milliseconds(500))
+
+            guard let url = Bundle.main.appStoreReceiptURL else {
+                let error = StoreKitReceiptManagerError.unableToExtractReceiptData
+                PMLog.error(error.errorDescription ?? "PaymentsV2 - StoreKit impossible to get receipt data", sendToExternal: true)
+                throw error
+            }
+
+            let (data, _) = try await URLSession.shared.data(from: url)
+
+            return data
+        }
     }
 
-    public func request(_ request: SKRequest, didFailWithError error: Error) {
-        cancelActiveRequest(request)
-        TransactionsObserver.shared.logHelper?.logEventSync(["phase": "apple_receipt_refresh",
-                                                            "status": "failed"])
-        tokenContinuation?.resume(throwing: TransactionHandlerError.fetchReceiptDidFail(description: error.localizedDescription))
-        PMLog.error("StoreKitManager: Apple receipt refresh failed with error: \(error.localizedDescription)", sendToExternal: true)
+    func requestDidFinish(_ request: SKRequest) {
+        PMLog.info("Receipt refresh request finished successfully: \(id)")
+        StoreKitReceiptManager.queue.async { self.done = true }
+        completionHandler?(.success(()))
     }
 
-    private func cancelActiveRequest(_ request: SKRequest) {
-        request.cancel()
-        refresh = nil
+    func request(_ request: SKRequest, didFailWithError error: any Error) {
+        PMLog.info("Receipt refresh request encountered an error: \(id) (\(String(describing: error)))")
+        StoreKitReceiptManager.queue.async { self.done = true }
+        completionHandler?(.failure(error))
+    }
+
+    override init() {
+        super.init()
+        self.delegate = self
+    }
+
+    override func start() {
+        task = Task {
+            try await withTaskCancellationHandler {
+                try await withCheckedThrowingContinuation { continuation in
+                    completionHandler = { result in
+                        switch result {
+                        case .success:
+                            continuation.resume(returning: ())
+                        case .failure(let error):
+                            continuation.resume(throwing: error)
+                        }
+                    }
+                }
+            } onCancel: { [completionHandler, id] in
+                PMLog.info("Receipt refresh request was cancelled: \(id)")
+                completionHandler?(.failure(CancellationError()))
+            }
+        }
+
+        PMLog.info("Starting receipt refresh request: \(id)")
+        super.start()
+    }
+
+    override func cancel() {
+        PMLog.info("Cancelling receipt refresh request: \(id)")
+        super.cancel()
+
+        // Narrow race window - it's possible for a request to be cancelled just as it was fetching the value.
+        // Include this check to make sure that we don't accidentally invoke the continuation twice.
+        if StoreKitReceiptManager.queue.sync(execute: { self.done }) {
+            return
+        }
+
+        task?.cancel()
     }
 }

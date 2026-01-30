@@ -33,7 +33,7 @@ public protocol TransactionHandlerProviding: Sendable {
     func updateTransactionState(state: TransactionHandlerState)
 }
 
-public enum TransactionHandlerState: String, Sendable {
+public enum TransactionHandlerState: Sendable, Equatable, Hashable {
     case idle
 
     case iapStatusCheck
@@ -46,22 +46,16 @@ public enum TransactionHandlerState: String, Sendable {
     case creatingTransactionToken
     case waitingTokenResponse // Omnichannel only state
     case createNewSubscription
-    case transactionCompleted
+    case transactionCompleted(planName: String, cycle: Int)
     case transactionPending
-    // Error states:
+
+    // MARK: Error states
     case transactionCancelledByUser
     case mismatchTransactionIDs
     case transactionProcessError
     case transactionProcessErrorInvalidReq
     case unableToGetUserTransactionUUID
     case unknownError
-
-    public var localizedDescription: String? {
-        switch self {
-        default:
-            return self.rawValue
-        }
-    }
 }
 
 public enum TransactionHandlerError: LocalizedError {
