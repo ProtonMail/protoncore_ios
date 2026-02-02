@@ -40,11 +40,6 @@ final class ProtonPlansManagerTests: XCTestCase, @unchecked Sendable {
     func test_build_purchase_options_no_optionsProvided() async throws {
 
         let mockUUID = "E621E1F8-C36C-495A-93FC-0C247A3E6E5F"
-        let expectedJSONBody: [String: Any] = [
-            "Code": 1000,
-            "UUID": mockUUID,
-        ]
-
         let options = try await sut.buildPurchaseOptions(nil)
 
         uuiTokenPresent(options, token: mockUUID)
@@ -54,10 +49,6 @@ final class ProtonPlansManagerTests: XCTestCase, @unchecked Sendable {
     func test_build_purchase_options_optionsProvided() async throws {
 
         let mockUUID = "E621E1F8-C36C-495A-93FC-0C247A3E6E5F"
-        let expectedJSONBody: [String: Any] = [
-            "Code": 1000,
-            "UUID": mockUUID,
-        ]
 
         let providedOptions: Set<Product.PurchaseOption> = [.custom(key: "some key", value: "someValue"),
                                                             .custom(key: "some key 2", value: "someValue 2")]

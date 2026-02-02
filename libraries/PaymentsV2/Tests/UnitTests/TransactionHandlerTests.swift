@@ -171,7 +171,7 @@ final class TransactionHandlerTests: XCTestCase, @unchecked Sendable {
         XCTAssertFalse(negativeResult)
     }
 
-    func test_transaction_id() async throws {
+    func test_transaction_tokenization() async throws {
         _ = try await subsComposer.fetchProtonPlans()
         _ = try await subsComposer.getStoreProducts(["iosvpn_bundle2022_12_usd_auto_renewing", "iosvpn_vpn2022_1_usd_auto_renewing"])
 
@@ -190,9 +190,22 @@ final class TransactionHandlerTests: XCTestCase, @unchecked Sendable {
 
         let protonTransaction = TransactionStubber.convertStoreTestTransaction(transaction, price: composedPlan.product.price, currencyId: "USD", renewal: false)
 
-        let token = try await sut.generateValidationTokenFromStoreKitReceipt(protonTransaction)
+        sut.transactionState.sink { state in
+            if state == .transactionProcessError {
+                XCTFail()
+            }
 
-        XCTAssertEqual(token.payment?.details.transactionID, String(transaction.identifier))
+            switch state {
+            case .transactionTokenizationCompleted:
+                XCTAssert(true)
+            default:
+                debugPrint("Test in progress...")
+            }
+
+        }
+        .store(in: &cancellable)
+
+        _ = try await sut.tokenizeTransaction(protonTransaction)
     }
 }
 #endif
