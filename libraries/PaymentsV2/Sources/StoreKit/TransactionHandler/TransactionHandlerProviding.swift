@@ -44,6 +44,7 @@ public enum TransactionHandlerState: Sendable, Equatable, Hashable {
 
     case generatingReceipt
     case creatingTransactionToken
+    case transactionTokenizationCompleted
     case waitingTokenResponse // Omnichannel only state
     case createNewSubscription
     case transactionCompleted(planName: String, cycle: Int)

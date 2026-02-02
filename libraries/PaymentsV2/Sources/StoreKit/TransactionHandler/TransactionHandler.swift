@@ -37,6 +37,7 @@ public final class TransactionHandler: NSObject, TransactionHandlerProviding, @u
     private let receiptManager: StoreKitReceiptManagerProviding
     private var appAccountToken: UUID?
     private var transactionIdInProgress: UInt64 = 0
+    private let tokenizationMaxRetry = 2
 
     public init(remoteManager: RemoteManagerProviding,
                 receiptManger: StoreKitReceiptManagerProviding? = nil,
@@ -96,7 +97,7 @@ public final class TransactionHandler: NSObject, TransactionHandlerProviding, @u
         }
     }
 
-    func generateValidationTokenFromStoreKitReceipt(_ transaction: ProtonTransactionProviding) async throws -> Token {
+    func tokenizeTransaction(_ transaction: ProtonTransactionProviding) async throws -> NewToken {
 
         debugPrint("Generating validation token..")
         let receipt = try await receiptManager.refreshReceipt()
@@ -144,24 +145,16 @@ public final class TransactionHandler: NSObject, TransactionHandlerProviding, @u
                                                              "token": newToken.toDictionary()])
         PMLog.info("TransactionHandler: Validation token generated", sendToExternal: true)
 
-        return newToken
-    }
-}
-
-// MARK: Private methods
-private extension TransactionHandler {
-
-    private func createNewToken(_ transactionToken: Token) async throws -> NewToken {
-
         debugPrint("Creating payment token..")
         updateTransactionState(state: .creatingTransactionToken)
 
         do {
-            let newToken: NewToken = try await remoteManager.post(transactionToken)
+            let newToken: NewToken = try await remoteManager.post(newToken)
             ObservabilityEnv.report(.paymentCreatePaymentTokenTotal(status: .http2xx, isDynamic: true))
             await TransactionsObserver.shared.logHelper?.logEvent(["phase": "post_validation_token_request",
                                                                    "token": newToken.toDictionary()])
             PMLog.info("TransactionHandler: Post validation token successful", sendToExternal: true)
+            updateTransactionState(state: .transactionTokenizationCompleted)
             return newToken
         } catch {
             TransactionsObserver.shared.removeTransactionInProgress(transactionIdInProgress)
@@ -182,6 +175,10 @@ private extension TransactionHandler {
             throw error
         }
     }
+}
+
+// MARK: Private methods
+private extension TransactionHandler {
 
     private func createNewSubscription(token: NewToken, composedPlan: ComposedPlan, transaction: ProtonTransactionProviding) async throws -> Bool {
 
@@ -246,8 +243,34 @@ private extension TransactionHandler {
 
         debugPrint(FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.paymentsOmnichannelEnabled))
 
-        let transactionToken = try await generateValidationTokenFromStoreKitReceipt(transaction)
-        let newToken = try await createNewToken(transactionToken)
+        var newToken: NewToken!
+        var tokenizationSuccess = false
+        var tokenizationCounter = 0
+        repeat {
+            do {
+                print("tokenization in progress...")
+                newToken = try await tokenizeTransaction(transaction)
+                tokenizationSuccess = true
+                print("tokenization successful ✅")
+            } catch {
+                print("tokenization failed, retry: \(tokenizationCounter)")
+                tokenizationCounter += 1
+                if tokenizationCounter < tokenizationMaxRetry {
+                    PMLog.info("Tokenization failed with error: \(error.localizedDescription), retry number: \(tokenizationCounter)", sendToExternal: true)
+                    tokenizationSuccess = false
+                } else {
+                    TransactionsObserver.shared.removeTransactionInProgress(transactionIdInProgress)
+                    self.updateTransactionState(state: .transactionProcessError)
+                    PMLog.error("TransactionHandler: transaction tokenization failed", sendToExternal: true)
+                    await TransactionsObserver.shared.logHelper?.logEvent(["get_token_polling": ["time": Date.now.description,
+                                                                                                 "status": "failed",
+                                                                                                 "reason": (error as? LocalizedError)?.failureReason]],
+                                                                          type: .close)
+                    throw error
+                }
+            }
+        } while !tokenizationSuccess
+
         debugPrint("New token created ✅")
         _ = try await createNewSubscription(token: newToken, composedPlan: plan, transaction: transaction)
     }
