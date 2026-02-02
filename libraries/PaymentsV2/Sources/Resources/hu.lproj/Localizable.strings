@@ -18,6 +18,8 @@
 
 "SK_Receipt_impossible_to_get_receipt" = "Nem lehet megszerezni a tranzakciót visszaigazoló adatokat az Apple-től";
 
+"SK_Receipt_task_not_found" = "Unable to process transaction due to an unexpected error, please try again.";
+
 "Transaction_Handler_plan_not_found" = "Lehetetlen volt megtalálni a csomag nevét, amit megpróbál megvásárolni. Ha a probléma továbbra is fennáll, kérjük, forduljon az ügyfélszolgálathoz.";
 
 "Transaction_Handler_repeated_purchase" = "Nem lehet többször megújítani a kiválasztott csomagot. Ha úgy gondolja, hogy ez egy hiba, vagy ha a probléma továbbra is fennáll, kérjük, lépjen kapcsolatba ügyfélszolgálatunkkal.";

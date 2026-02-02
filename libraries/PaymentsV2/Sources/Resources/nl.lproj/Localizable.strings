@@ -18,6 +18,8 @@
 
 "SK_Receipt_impossible_to_get_receipt" = "Onmogelijk om transactiebewijs data te krijgen van Apple";
 
+"SK_Receipt_task_not_found" = "Kan transactie niet verwerken vanwege een onverwachte fout, probeer het opnieuw.";
+
 "Transaction_Handler_plan_not_found" = "Het was niet mogelijk om de naam te vinden van het abonnement dat u probeert aan te schaffen. Als het probleem aanhoudt, neem dan contact op met de klantenservice";
 
 "Transaction_Handler_repeated_purchase" = "Het is niet mogelijk om het geselecteerde abonnement meerdere keren te verlengen. Als u denkt dat dit een fout is of als het probleem aanhoudt, neemt u dan contact op met onze klantenondersteuning.";

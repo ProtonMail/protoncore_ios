@@ -18,6 +18,8 @@
 
 "SK_Receipt_impossible_to_get_receipt" = "No se pueden obtener los datos del acuse de recibo de la transacción de Apple.";
 
+"SK_Receipt_task_not_found" = "No se pudo procesar la transacción debido a un error inesperado. Vuelve a intentarlo.";
+
 "Transaction_Handler_plan_not_found" = "No se ha podido encontrar el nombre del plan que intentas comprar. Si el problema persiste, ponte en contacto con atención al cliente.";
 
 "Transaction_Handler_repeated_purchase" = "No es posible renovar el plan seleccionado varias veces. Si crees que esto es un error o si el problema persiste, por favor, contacta con nuestra atención al cliente.";

@@ -16,21 +16,21 @@
 
 "Password reset requested" = "Pengaturan ulang kata sandi diminta";
 
-"Insecure_View_line1" = "Anda kini dapat mengubah kata sandi untuk akun ";
+"Insecure_View_line1" = "Anda sekarang dapat mengubah kata sandi Anda untuk akun tersebut ";
 
 "You can change your password in %@." = "Anda dapat mengubah kata sandi Anda dalam %@.";
 
-"To make sure it's really you trying to reset your password, we wait 72 hours before approving requests." = "Untuk memastikan bahwa permintaan pengaturan ulang kata sandi ini benar-benar berasal dari Anda, kami menunggu 72 jam sebelum menyetujui permintaan yang ada.";
+"To make sure it's really you trying to reset your password, we wait 72 hours before approving requests." = "Untuk memastikan bahwa memang Anda yang mencoba mengatur ulang kata sandi ini, kami menunggu 72 jam sebelum menyetujui permintaan yang ada.";
 
 "Insecure_View_line2" = " secara bebas selama ";
 
-"Insecure_View_line3" = "Silakan tuju perangkat yang telah terhubung masuk (dalam sesi di mana permintaan ini diajukan) untuk mengubah kata sandi Anda.";
+"Insecure_View_line3" = "Ambil perangkat yang sudah masuk (dalam sesi di mana permintaan ini diajukan) untuk mengubah kata sandi Anda.";
 
 "Grace_View_Cancel_Button_CTA" = "Batalkan permintaan";
 
 "Grace_View_Undefined_Time_Left" = "beberapa jam";
 
-"Settings_Item_Value_Grace" = "Menunggu respons";
+"Settings_Item_Value_Grace" = "Tertunda";
 
 "Settings_Item_Value_Expired" = "Kedaluwarsa";
 
@@ -52,30 +52,30 @@
 
 "Cancelled by the user" = "Dibatalkan oleh pengguna";
 
-"Authenticated in another session" = "Terautentikasi di sesi lain";
+"Authenticated in another session" = "Diautentikasi di sesi lain";
 
 "none" = "tidak ada";
 
-"The account recovery process expired due to inaction" = "Proses pemulihan akun telah kedaluwarsa karena tidak adanya tindakan yang diambil";
+"The account recovery process expired due to inaction" = "Proses pemulihan akun kedaluwarsa karena tidak ada tindakan";
 
 "If you never made a password reset request, someone else could have access to your account. **Change your password now**" = "Apabila Anda tidak pernah meminta untuk mengatur ulang kata sandi, orang lain mungkin memiliki akses ke akun Anda. **Ubah kata sandi Anda sekarang juga**";
 
 "If you never made a password reset request, someone else could have access to your account. Change your password now" = "Apabila Anda tidak pernah meminta untuk mengatur ulang kata sandi, orang lain mungkin memiliki akses ke akun Anda. Ubah kata sandi Anda sekarang juga";
 
-"The account recovery process expired due to inaction" = "Proses pemulihan akun telah kedaluwarsa karena tidak adanya tindakan yang diambil";
+"The account recovery process expired due to inaction" = "Proses pemulihan akun kedaluwarsa karena tidak ada tindakan";
 
 "Recovery process not started" = "Proses pemulihan belum dimulai";
 
-"Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "Tidak ada proses pemulihan akun yang sedang berlangsung untuk saat ini. Silakan tuju sesi yang aktif pada aplikasi web untuk memulihkan kata sandi Anda.";
+"Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "Tidak ada proses pemulihan akun yang sedang berlangsung untuk saat ini. Buka sesi pada aplikasi web untuk memulihkan kata sandi Anda.";
 
-"You can now reset your password" = "Anda kini dapat mengatur ulang kata sandi Anda";
+"You can now reset your password" = "Anda sekarang dapat mengatur ulang kata sandi Anda";
 
 "Reset available until %@." = "Pengaturan ulang tersedia hingga %@.";
 
-"Change device to continue" = "Ubah perangkat untuk melanjutkan";
+"Change device to continue" = "Ganti perangkat untuk melanjutkan";
 
-"To reset your password, go back to your active session on **the originating device**." = "Untuk mengatur ulang kata sandi Anda, kembali ke sesi aktif Anda di **perangkat asli**.";
+"To reset your password, go back to your active session on **the originating device**." = "Untuk mengatur ulang kata sandi Anda, kembali ke sesi aktif Anda di **perangkat asal**.";
 
-"To reset your password, go back to your active session on the originating device." = "Untuk mengatur ulang kata sandi Anda, kembali ke sesi aktif Anda di perangkat yang memulai.";
+"To reset your password, go back to your active session on the originating device." = "Untuk mengatur ulang kata sandi Anda, kembali ke sesi aktif Anda di perangkat asal.";
 
 "You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now." = "Anda memiliki %@ untuk mengatur ulang kata sandi Anda.\nAnda harus melakukannya di perangkat dan peramban yang Anda gunakan untuk membuat permintaan pengaturan ulang kata sandi.\nApabila Anda tidak meminta untuk mengatur ulang kata sandi Anda, batalkan permintaan ini sekarang juga.";

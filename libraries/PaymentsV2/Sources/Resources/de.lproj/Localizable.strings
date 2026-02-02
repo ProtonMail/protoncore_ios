@@ -18,6 +18,8 @@
 
 "SK_Receipt_impossible_to_get_receipt" = "Es war unmöglich, Buchungsbelegdaten von Apple abzurufen";
 
+"SK_Receipt_task_not_found" = "Die Zahlung kann aufgrund eines unerwarteten Fehlers nicht verarbeitet werden. Bitte versuche es erneut.";
+
 "Transaction_Handler_plan_not_found" = "Es war nicht möglich, den Namen des Pakets zu finden, das du zu kaufen versuchst. Wenn das Problem weiterhin besteht, wenden dich bitte an den Kundendienst";
 
 "Transaction_Handler_repeated_purchase" = "Es ist nicht möglich, den ausgewählten Abonnement mehrfach zu verlängern. Wenn Sie glauben, dass es sich um einen Fehler handelt oder das Problem weiterhin besteht, wenden Sie sich bitte an unseren Kundensupport";

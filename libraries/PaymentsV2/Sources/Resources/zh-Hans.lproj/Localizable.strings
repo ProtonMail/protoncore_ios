@@ -18,6 +18,8 @@
 
 "SK_Receipt_impossible_to_get_receipt" = "无法从 Apple 获取交易收据";
 
+"SK_Receipt_task_not_found" = "由于出现意外错误，无法处理事务，请重试。";
+
 "Transaction_Handler_plan_not_found" = "无法找到您尝试购买的计划。如果问题仍然存在，请联系客户支持部门";
 
 "Transaction_Handler_repeated_purchase" = "无法多次续订所选套餐。如果您认为这是一个错误或问题仍然存在，请联系我们的客户支持部门。";

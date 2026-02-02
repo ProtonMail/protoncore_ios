@@ -12,27 +12,27 @@
 
 "Upgrade your plan" = "Tingkatkan paket Anda";
 
-"Only annual subscriptions without auto-renewal are available inside the mobile app." = "Hanya langganan tahunan tanpa pembaruan otomatis yang tersedia di dalam aplikasi seluler.";
+"Only annual subscriptions without auto-renewal are available inside the mobile app." = "Hanya langganan tahunan tanpa perpanjangan otomatis yang tersedia pada aplikasi seluler.";
 
 "You cannot manage subscriptions inside the mobile application." = "Anda tidak dapat mengelola langganan dari dalam aplikasi seluler.";
 
-"Your plan will automatically renew on %@" = "Paket Anda akan diperbarui secara otomatis pada %@";
+"Your plan will automatically renew on %@" = "Paket Anda akan diperpanjang secara otomatis pada %@";
 
-"Current plan will expire on %@" = "Paket Anda saat ini akan berakhir pada %@";
+"Current plan will expire on %@" = "Paket Anda saat ini akan kedaluwarsa pada %@";
 
 "Contact an administrator to make changes to your Proton subscription." = "Hubungi administrator untuk membuat perubahan pada langganan Proton Anda.";
 
 "%1$@ of %2$@" = "%1$@ dari %2$@";
 
-"%@ storage" = "Ruang penyimpanan %@";
+"%@ storage" = "Penyimpanan %@";
 
-"%@ storage / user" = "Ruang penyimpanan %@ / pengguna";
+"%@ storage / user" = "Penyimpanan %@/pengguna";
 
 "for %@" = "untuk %@";
 
 "Custom email addresses" = "Alamat email khusus";
 
-"Priority customer support" = "Layanan dukungan prioritas";
+"Priority customer support" = "Dukungan pelanggan prioritas";
 
 "Adblocker (NetShield)" = "Pemblokir iklan (NetShield)";
 
@@ -44,7 +44,7 @@
 
 "Multi-user support" = "Dukungan multi-pengguna";
 
-"The basic for private and secure communications." = "Paket dasar untuk komunikasi yang privat dan aman.";
+"The basic for private and secure communications." = "Paket dasar untuk komunikasi yang pribadi dan aman.";
 
 "Full-featured mailbox with advanced protection." = "Kotak surat berfitur lengkap dengan perlindungan tingkat lanjut.";
 
@@ -52,7 +52,7 @@
 
 "Complete payment?" = "Selesaikan pembayaran?";
 
-"A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "Pembelian untuk paket Proton Bundle telah dimulai. Tekan lanjutkan untuk menyelesaikan prosesi pembayaran dan membuat akun Anda";
+"A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "Pembelian untuk paket Bundel Proton telah dimulai. Tekan lanjutkan untuk menyelesaikan prosesi pembayaran dan membuat akun Anda";
 
 "Complete payment" = "Selesaikan pembayaran";
 
@@ -64,23 +64,23 @@
 
 "One plan for all Proton services" = "Satu paket untuk seluruh layanan Proton";
 
-"The no-cost starter account designed to empower everyone with privacy by default." = "Akun permulaan tanpa biaya yang dirancang untuk menghadirkan privasi sebagai hal yang baku bagi semua.";
+"The no-cost starter account designed to empower everyone with privacy by default." = "Akun pemula tanpa biaya yang dirancang untuk memberdayakan semua orang dengan privasi bawaan.";
 
 "The privacy-first email and calendar solution for your everyday communication needs." = "Solusi email dan kalender yang mengedepankan privasi untuk kebutuhan komunikasi Anda sehari-hari.";
 
 "Your privacy and security are our priority." = "Privasi dan keamanan Anda adalah prioritas kami.";
 
-"The storage-focused plan with 200 GB of cloud storage to keep your files private." = "Paket yang berfokus pada penyimpanan dengan ruang penyimpanan cloud sebesar 200 GB untuk menjaga berkas Anda tetap privat.";
+"The storage-focused plan with 200 GB of cloud storage to keep your files private." = "Paket yang berfokus pada penyimpanan dengan penyimpanan cloud 200 GB untuk menjaga file Anda tetap pribadi.";
 
 "The ultimate privacy pack with access to all premium Proton services." = "Paket privasi pamungkas dengan akses ke seluruh layanan premium Proton.";
 
-"Only non-renewing annual subscriptions are available via this app" = "Hanya langganan tahunan yang tidak terbarukan yang tersedia melalui aplikasi ini";
+"Only non-renewing annual subscriptions are available via this app" = "Hanya langganan tahunan yang tidak dapat diperpanjang yang tersedia melalui aplikasi ini";
 
-"Your subscription cannot be managed inside the mobile app." = "Langganan Anda tidak dapat dikelola dari dalam aplikasi seluler.";
+"Your subscription cannot be managed inside the mobile app." = "Langganan Anda tidak dapat dikelola dari aplikasi seluler.";
 
-"Unlimited folders, labels, and filters" = "Tanpa batasan jumlah folder, label, dan filter";
+"Unlimited folders, labels, and filters" = "Folder, label, dan filter tak terbatas";
 
-"Up to %@ storage" = "Ruang penyimpanan hingga %@";
+"Up to %@ storage" = "Penyimpanan hingga %@";
 
 "Free VPN on a single device" = "VPN gratis pada satu perangkat";
 
@@ -104,11 +104,11 @@
 
 "%@ of %@" = "%@ dari %@";
 
-"Connection issues" = "Masalah koneksi";
+"Connection issues" = "Isu koneksi";
 
 "Check your internet connection" = "Periksa koneksi internet Anda";
 
-"Strict no-logs policy" = "Kebijakan tanpa log yang sangat ketat";
+"Strict no-logs policy" = "Kebijakan tanpa log yang ketat";
 
 "Plan successfully upgraded" = "Paket berhasil ditingkatkan";
 
@@ -116,11 +116,11 @@
 
 "Priority support" = "Dukungan Prioritas";
 
-"Unlimited devices" = "Tanpa batasan jumlah perangkat";
+"Unlimited devices" = "Jumlah perangkat tak terbatas";
 
-"Unlimited email aliases" = "Tanpa batasan jumlah alias email";
+"Unlimited email aliases" = "Jumlah alias email tak terbatas";
 
-"Unlimited logins and notes" = "Tanpa batasan jumlah entri masuk dan catatan";
+"Unlimited logins and notes" = "Jumlah login dan catatan tak terbatas";
 
 "Custom fields" = "Kolom khusus";
 

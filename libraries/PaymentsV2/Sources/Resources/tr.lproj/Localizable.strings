@@ -18,6 +18,8 @@
 
 "SK_Receipt_impossible_to_get_receipt" = "İşlemin ödeme verileri Apple üzerinden alınamadı";
 
+"SK_Receipt_task_not_found" = "İşlem beklenmeyen bir sorun nedeniyle yapılamadı. Lütfen yeniden deneyin.";
+
 "Transaction_Handler_plan_not_found" = "Satın almaya çalıştığınız tarifenin adı bulunamadı. Sorun sürerse lütfen müşteri destek ekibimizle görüşün.";
 
 "Transaction_Handler_repeated_purchase" = "Seçilmiş tarife birden çok kez yenilenemez. Bir yanlışlık olduğunu düşünüyorsanız veya sorun sürüyorsa lütfen müşteri destek ekibimizle görüşün.";

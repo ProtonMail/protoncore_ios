@@ -18,6 +18,8 @@
 
 "SK_Receipt_impossible_to_get_receipt" = "Kan ikke hente transaksjonsdata fra Apple";
 
+"SK_Receipt_task_not_found" = "Kunne ikke behandle transaksjonen på grunn av en uventet feil, prøv igjen.";
+
 "Transaction_Handler_plan_not_found" = "Det var umulig å finne navnet på planen du prøver å kjøpe. Hvis problemet vedvarer, vennligst kontakt kundestøtte";
 
 "Transaction_Handler_repeated_purchase" = "Det er ikke mulig å fornye den valgte planen flere ganger. Hvis du tror dette er en feil eller hvis problemet vedvarer, vennligst kontakt vår kundestøtte";

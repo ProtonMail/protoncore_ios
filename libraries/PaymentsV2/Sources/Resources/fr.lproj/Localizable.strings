@@ -18,6 +18,8 @@
 
 "SK_Receipt_impossible_to_get_receipt" = "L'obtention des données de l'accusé de réception de la transaction d'Apple n'a pas abouti.";
 
+"SK_Receipt_task_not_found" = "Impossible de traiter la transaction en raison d'une erreur inattendue. Veuillez réessayer.";
+
 "Transaction_Handler_plan_not_found" = "Le nom de l’abonnement que vous essayez d’acheter est introuvable. Si le problème persiste, veuillez contacter le service client.";
 
 "Transaction_Handler_repeated_purchase" = "Il n'est pas possible de renouveler l'abonnement sélectionné plusieurs fois. Si vous pensez qu'il s'agit d'une erreur ou si le problème persiste, veuillez contacter notre service client.";

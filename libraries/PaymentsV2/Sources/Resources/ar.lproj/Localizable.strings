@@ -18,6 +18,8 @@
 
 "SK_Receipt_impossible_to_get_receipt" = "تعذّر الحصول على بيانات إيصال المعاملة المالية من Apple.";
 
+"SK_Receipt_task_not_found" = "Unable to process transaction due to an unexpected error, please try again.";
+
 "Transaction_Handler_plan_not_found" = "تعذّر العثور على اسم الخطة المراد شراؤها. إذا استمرت المشكلة، يُرجى الاتصال بدعم العملاء.";
 
 "Transaction_Handler_repeated_purchase" = "لا يمكن تجديد الخطة عدة مرات. إذا كنت تعتقد أن هذا خطأ أو إذا استمرت المشكلة، فيرجى الاتصال بفريق دعم العملاء.";

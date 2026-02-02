@@ -1,4 +1,4 @@
-"The Proton servers are unreachable. It might be caused by wrong network configuration, Proton servers not working or Proton servers being blocked" = "Server Proton tidak dapat dijangkau. Hal ini dapat disebabkan antara lain oleh pengaturan jaringan yang tidak tepat, server Proton yang sedang offline, atau pemblokiran terhadap server Proton";
+"The Proton servers are unreachable. It might be caused by wrong network configuration, Proton servers not working or Proton servers being blocked" = "Server Proton tidak dapat dijangkau. Hal ini dapat disebabkan antara lain oleh konfigurasi jaringan yang tidak tepat, server Proton yang tidak berfungsi, atau pemblokiran terhadap server Proton";
 
 "An error has occured" = "Terjadi kesalahan";
 
@@ -10,7 +10,7 @@
 
 "Code isn't valid" = "Kode tidak valid";
 
-"Device secret not found" = "Rahasia perangkat tidak ditemukan";
+"Device secret not found" = "Secret perangkat tidak ditemukan";
 
 "Passphrase not found" = "Frasa sandi tidak ditemukan";
 
