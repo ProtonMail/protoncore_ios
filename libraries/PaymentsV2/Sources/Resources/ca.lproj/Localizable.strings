@@ -18,6 +18,8 @@
 
 "SK_Receipt_impossible_to_get_receipt" = "Impossible obtenir les dades del rebut de transacció d'Apple";
 
+"SK_Receipt_task_not_found" = "No s'ha pogut processar la transacció a causa d'un error inesperat; torneu-ho a provar.";
+
 "Transaction_Handler_plan_not_found" = "Ha estat impossible trobar el nom del pla que intenteu comprar. Si el problema persisteix poseu-vos en contacte amb el servei d'atenció al client.";
 
 "Transaction_Handler_repeated_purchase" = "No es pot renovar el pla seleccionat múltiples vegades. Si creieu que això és un error o si el problema persisteix, poseu-vos en contacte amb el nostre servei d'atenció al client";

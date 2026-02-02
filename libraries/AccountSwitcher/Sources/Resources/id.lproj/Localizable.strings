@@ -2,9 +2,9 @@
 
 "Manage accounts" = "Kelola akun";
 
-"Signed in to Proton Mail" = "Terhubung masuk ke Proton Mail";
+"Signed in to Proton Mail" = "Masuk ke Proton Mail";
 
-"Signed out of Proton Mail" = "Tidak terhubung masuk ke Proton Mail";
+"Signed out of Proton Mail" = "Keluar dari Proton Mail";
 
 "Sign out" = "Keluar";
 
@@ -12,13 +12,13 @@
 
 "Remove account" = "Hapus akun";
 
-"You will be signed out and all the data associated with this account will be removed from this device." = "Anda akan dikeluarkan dan semua data yang berhubungan dengan akun ini akan dihapus dari perangkat ini.";
+"You will be signed out and all the data associated with this account will be removed from this device." = "Anda akan keluar dan semua data yang berhubungan dengan akun ini akan dihapus dari perangkat ini.";
 
 "Remove" = "Hapus";
 
 "Are you sure you want to sign out %@?" = "Apakah Anda yakin ingin keluar %@?";
 
-"Dismiss account switcher" = "Tutup pemindah akun";
+"Dismiss account switcher" = "Tutup pemilih akun";
 
 "Sign in to another account" = "Masuk ke akun lain";
 

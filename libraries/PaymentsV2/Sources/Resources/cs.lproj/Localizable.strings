@@ -18,6 +18,8 @@
 
 "SK_Receipt_impossible_to_get_receipt" = "Není možné získat potvrzení o přijení transakce od společnosti Apple";
 
+"SK_Receipt_task_not_found" = "Transakci nelze zpracovat z důvodu neočekávané chyby, zkuste to prosím znovu.";
+
 "Transaction_Handler_plan_not_found" = "Název tarifu, který se snažíte zakoupit, nebylo možné najít. Pokud problém přetrvává, kontaktujte prosím zákaznickou podporu";
 
 "Transaction_Handler_repeated_purchase" = "Vybraný tarif není možné obnovit vícekrát. Pokud se domníváte, že se jedná o chybu, nebo pokud problém přetrvává, obraťte se na naši zákaznickou podporu";

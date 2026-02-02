@@ -2,7 +2,7 @@
 
 "Proton address required" = "Alamat Proton dibutuhkan";
 
-"Update required" = "Pembaruan dibutuhkan";
+"Update required" = "Dibutuhkan pembaruan";
 
 "Please enter your Proton Account password." = "Silakan masukkan kata sandi Akun Proton Anda.";
 
@@ -14,7 +14,7 @@
 
 "Password" = "Kata sandi";
 
-"The Proton servers are unreachable. It might be caused by wrong network configuration, Proton servers not working or Proton servers being blocked" = "Server Proton tidak dapat dijangkau. Hal ini dapat disebabkan antara lain oleh pengaturan jaringan yang tidak tepat, server Proton yang sedang offline, atau pemblokiran terhadap server Proton";
+"The Proton servers are unreachable. It might be caused by wrong network configuration, Proton servers not working or Proton servers being blocked" = "Server Proton tidak dapat dijangkau. Hal ini dapat disebabkan antara lain oleh konfigurasi jaringan yang tidak tepat, server Proton yang tidak berfungsi, atau pemblokiran terhadap server Proton";
 
 "Search country" = "Cari negara";
 
@@ -52,7 +52,7 @@
 
 "Other sign-in issues" = "Masalah masuk lainnya";
 
-"Customer support" = "Layanan dukungan";
+"Customer support" = "Dukungan pelanggan";
 
 "Still need help? Contact us directly." = "Masih butuh bantuan? Hubungi kami secara langsung.";
 
@@ -134,7 +134,7 @@
 
 "Set recovery method (optional)" = "Atur metode pemulihan (opsional)";
 
-"We will send recovery instructions to this email or phone number if you get locked out of your account." = "Kami akan mengirimkan petunjuk pemulihan akun ke alamat email atau nomor telepon ini apabila Anda sampai terkunci dari akun Anda.";
+"We will send recovery instructions to this email or phone number if you get locked out of your account." = "Kami akan mengirimkan petunjuk pemulihan akun ke alamat email atau nomor telepon ini apabila Anda terkunci dari akun Anda.";
 
 "Email" = "Email";
 
@@ -156,13 +156,13 @@
 
 "Skip recovery method?" = "Lewati metode pemulihan?";
 
-"A recovery method will help you access your account in case you forget your password or get locked out of your account." = "Metode pemulihan akan membantu Anda untuk mengakses akun Anda seandainya Anda lupa kata sandi atau terkunci dari akun Anda.";
+"A recovery method will help you access your account in case you forget your password or get locked out of your account." = "Metode pemulihan akan membantu Anda mengakses akun Anda seandainya Anda lupa kata sandi atau terkunci dari akun Anda.";
 
 "Set recovery method" = "Atur metode pemulihan";
 
 "Your account is being created" = "Akun Anda sedang dibuat";
 
-"This should take no more than a minute." = "Proses ini pada umumnya tidak akan memakan waktu lebih dari satu menit.";
+"This should take no more than a minute." = "Proses ini umumnya memakan waktu kurang dari satu menit.";
 
 "Creating your account" = "Membuat akun Anda";
 
@@ -240,7 +240,7 @@
 
 "There was a problem reading your security key." = "Terdapat masalah dalam membaca kunci keamanan Anda.";
 
-"We received an authorization from a type we don't support yet." = "Kami menerima autorisasi dari jenis yang belum kami dukung.";
+"We received an authorization from a type we don't support yet." = "Kami menerima otorisasi dari tipe yang belum kami dukung.";
 
 "Fetching your security keys details" = "Mengambil rincian kunci keamanan Anda";
 
@@ -248,7 +248,7 @@
 
 "An error occurred fetching your security keys. You can also check them on the Proton %@ website." = "Terdapat kesalahan dalam mengambil kunci keamanan Anda. Anda juga dapat memeriksa kunci ini pada situs web Proton %@.";
 
-"These are the security keys registered to your account" = "Terdapat kunci keamanan yang terdaftar ke akun Anda";
+"These are the security keys registered to your account" = "Ini adalah kunci keamanan yang terdaftar ke akun Anda";
 
 "You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys." = "Anda belum memiliki kunci keamanan yang terpasang pada akun Anda. Silakan gunakan aplikasi web Proton %@ untuk menambahkan kunci keamanan.";
 
@@ -304,7 +304,7 @@
 
 "Devices available:" = "Perangkat yang tersedia:";
 
-"Operation couldn't be completed. Please try again." = "Operasi tidak dapat dirampungkan. Silakan coba lagi.";
+"Operation couldn't be completed. Please try again." = "Tindakan tidak dapat diselesaikan. Silakan coba lagi.";
 
 "Enter your backup password" = "Masukkan kata sandi cadangan Anda";
 
@@ -386,7 +386,7 @@
 
 "Got it" = "Mengerti";
 
-"Code not recognized. Try again." = "Kode tidak dikenal. Silakan coba lagi.";
+"Code not recognized. Try again." = "Kode tidak dikenal. Coba lagi.";
 
 "Tip: Never scan a QR code from a website or a person you don’t trust. Proton will never ask you to scan a QR code that doesn’t come from the domain account.proton.me." = "Tips: Jangan pindai kode QR dari situs web atau orang yang tidak Anda percayai. Proton tidak akan pernah meminta Anda untuk memindai kode QR yang tidak berasal dari domain proton.me.";
 
@@ -410,7 +410,7 @@
 
 "To scan a QR code and sign in to another device, grant Proton %@ access to your camera." = "Untuk memindai kode QR dan masuk ke perangkat lain, berikan %@ izin akses ke kamera Anda.";
 
-"You're always in control: You can change this anytime in your device settings." = "Anda selalu memegang kendali: Anda dapat mengubah hal ini kapan saja pada pengaturan perangkat Anda.";
+"You're always in control: You can change this anytime in your device settings." = "Kendali selalu ada di tangan Anda: Anda dapat mengubahnya kapan saja di pengaturan perangkat Anda.";
 
 "Settings" = "Pengaturan";
 
@@ -426,13 +426,13 @@
 
 "Continue as guest" = "Lanjut sebagai tamu";
 
-"By using this app you accept our [Terms and Conditions](%1$@) and acknowledge our [Privacy Policy](%2$@)." = "Dengan menggunakan aplikasi ini, Anda menyetujui [Syarat dan Ketentuan](%1$@) dan mengakui [Kebijakan Privasi](%2$@).";
+"By using this app you accept our [Terms and Conditions](%1$@) and acknowledge our [Privacy Policy](%2$@)." = "Dengan menggunakan aplikasi ini, Anda menyetujui [Syarat dan Ketentuan](%1$@) serta mengakui [Kebijakan Privasi](%2$@) kami.";
 
 "Tap **Scan QR code**" = "Ketuk **Pindai kode QR**";
 
 "Tap into **Settings**, then tap **Sign in to another device**" = "Ketuk **Pengaturan**, lalu ketuk **Masuk ke perangkat lain**";
 
-"Password must contain:" = "Kata sandi harus memuat:";
+"Password must contain:" = "Kata sandi harus berisi:";
 
 "Access shared" = "Akses dibagikan";
 
@@ -440,21 +440,21 @@
 
 "How to sign in using another device" = "Cara masuk menggunakan perangkat lain";
 
-"Get another device that’s signed in to your Proton Account" = "Ambil perangkat lain yang telah terhubung masuk ke Akun Proton Anda";
+"Get another device that’s signed in to your Proton Account" = "Ambil perangkat lain yang sudah masuk ke Akun Proton Anda";
 
-"Using that device, open any Proton app and select **Settings**" = "Menggunakan perangkat ini, buka aplikasi Proton mana pun dan pilih **Pengaturan**";
+"Using that device, open any Proton app and select **Settings**" = "Pada perangkat tersebut, buka aplikasi Proton mana pun dan pilih **Pengaturan**";
 
 "Select **Sign in on another device → Scan QR code**" = "Pilih **Masuk melalui perangkat lain → Pindai kode QR**";
 
-"Scan the code to sign in" = "Pindai kode yang tertera untuk masuk";
+"Scan the code to sign in" = "Pindai kode tersebut untuk masuk";
 
-"We couldn't sign you in" = "Kami tidak dapat memasukkan Anda";
+"We couldn't sign you in" = "Kami tidak dapat memasukkan Anda ke akun";
 
-"Try generating a new QR code." = "Cobalah untuk menghasilkan kode QR yang baru.";
+"Try generating a new QR code." = "Coba buat kode QR yang baru.";
 
-"Generate QR code" = "Hasilkan Kode QR";
+"Generate QR code" = "Buat Kode QR";
 
-"Please try another sign in method." = "Silakan coba metode masuk lainnya.";
+"Please try another sign in method." = "Silakan coba metode login lainnya.";
 
 "Sign in on another device" = "Masuk melalui perangkat lain";
 
@@ -462,7 +462,7 @@
 
 "Allow camera access" = "Izinkan akses kamera";
 
-"To sign in with QR code, you'll need to let Proton %@ access your camera. You can do this in your device settings." = "Untuk masuk dengan kode QR, Anda perlu mengizinkan Proton %@ untuk mengakses kamera Anda. Anda dapat memberikan izini ini pada pengaturan perangkat Anda.";
+"To sign in with QR code, you'll need to let Proton %@ access your camera. You can do this in your device settings." = "Untuk masuk dengan kode QR, Anda perlu mengizinkan Proton %@ mengakses kamera Anda. Anda dapat melakukannya di pengaturan perangkat Anda.";
 
 "Position QR code inside the square" = "Posisikan kode QR di dalam kotak";
 
@@ -474,11 +474,11 @@
 
 "Select **Sign in with QR code**. A QR code will appear." = "Pilih **Masuk dengan kode QR**. Kode QR akan muncul.";
 
-"On this device, press **Scan QR code** and scan the code." = "Pada perangkat ini, tekan **Pindai kode QR** dan pindai kode yang tertera.";
+"On this device, press **Scan QR code** and scan the code." = "Pada perangkat ini, tekan **Pindai kode QR** lalu pindai kodenya.";
 
 "Security tips" = "Tips keamanan";
 
-"Be cautious of messages with QR codes. Only scan a code if you trust the source." = "Berhati-hatilah dengan pesan yang mengandung kode QR. Pastikan untuk memindai kode ini hanya apabila Anda memercayai sumbernya.";
+"Be cautious of messages with QR codes. Only scan a code if you trust the source." = "Berhati-hatilah dengan pesan berisi kode QR. Pindai kode hanya jika Anda memercayai sumbernya.";
 
 "Proton will never contact you unexpectedly asking you to sign in with a QR code." = "Proton tidak akan pernah menghubungi Anda secara tiba-tiba untuk meminta Anda masuk dengan kode QR.";
 

@@ -18,6 +18,8 @@
 
 "SK_Receipt_impossible_to_get_receipt" = "Omöjligt att hämta transaktionskvittodata från Apple";
 
+"SK_Receipt_task_not_found" = "Unable to process transaction due to an unexpected error, please try again.";
+
 "Transaction_Handler_plan_not_found" = "Det var omöjligt att hitta namnet på paketet du försöker köpa. Om problemet kvarstår, kontakta kundsupport";
 
 "Transaction_Handler_repeated_purchase" = "Det är inte möjligt att förnya det valda paketet flera gånger. Om du tror att detta är ett fel eller om problemet kvarstår, kontakta vår kundsupport.";

@@ -18,6 +18,8 @@
 
 "SK_Receipt_impossible_to_get_receipt" = "Невозможно получить данные о получении транзакций от Apple";
 
+"SK_Receipt_task_not_found" = "Unable to process transaction due to an unexpected error, please try again.";
+
 "Transaction_Handler_plan_not_found" = "Не удалось найти название тарифа, который вы пытаетесь приобрести. Если проблема сохранится, обратитесь в службу поддержки клиентов";
 
 "Transaction_Handler_repeated_purchase" = "It's not possible to renew the selected plan multiple times. If you think this is an error or if the issue persists please contact our customer support";

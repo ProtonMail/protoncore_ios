@@ -18,6 +18,8 @@
 
 "SK_Receipt_impossible_to_get_receipt" = "Nie można uzyskać potwierdzenia transakcji od Apple";
 
+"SK_Receipt_task_not_found" = "Unable to process transaction due to an unexpected error, please try again.";
+
 "Transaction_Handler_plan_not_found" = "Nie można znaleźć nazwy planu do zakupu. Jeśli problem będzie się powtarzał, skontaktuj się ze wsparciem klienta.";
 
 "Transaction_Handler_repeated_purchase" = "Nie można wielokrotnie odnowić planu. Jeśli uważasz, że to nie jest błąd lub jeśli problem będzie się powtarzał, skontaktuj się z naszym wsparcia klienta";

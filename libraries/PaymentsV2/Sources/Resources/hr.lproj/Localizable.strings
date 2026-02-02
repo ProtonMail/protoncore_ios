@@ -18,6 +18,8 @@
 
 "SK_Receipt_impossible_to_get_receipt" = "Nije moguće dohvatiti podatke računa za transakciju od Applea";
 
+"SK_Receipt_task_not_found" = "Unable to process transaction due to an unexpected error, please try again.";
+
 "Transaction_Handler_plan_not_found" = "Bilo je nemoguće pronaći naziv pretplate koju pokušavate kupiti. Ako problem potraje, kontaktirajte korisničku podršku";
 
 "Transaction_Handler_repeated_purchase" = "Nije moguće višestruko obnoviti odabranu pretplatu. Ako mislite da je ovo greška ili ako se problem nastavi, obratite se našoj korisničkoj podršci";

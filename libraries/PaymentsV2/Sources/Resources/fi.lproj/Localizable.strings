@@ -18,6 +18,8 @@
 
 "SK_Receipt_impossible_to_get_receipt" = "Mahdotonta saada kauppatapahtuman kuittitietoja Applelta";
 
+"SK_Receipt_task_not_found" = "Tapahtumaa ei voitu käsitellä odottamattoman virheen vuoksi. Yritä uudelleen.";
+
 "Transaction_Handler_plan_not_found" = "Oli mahdotonta löytää nimeä tilaukselle, jota yrität ostaa. Jos ongelma jatkuu, ota yhteys asiakaspalveluun.";
 
 "Transaction_Handler_repeated_purchase" = "Valittua tilausta ei voi uusia useaan kertaan. Jos luulet tämän olevan virhe tai jos ongelma jatkuu, ota ystävällisesti yhteyttä asiakaspalveluumme.";

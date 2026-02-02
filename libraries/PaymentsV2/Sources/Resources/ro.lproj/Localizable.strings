@@ -18,6 +18,8 @@
 
 "SK_Receipt_impossible_to_get_receipt" = "Imposibil de obținut datele confirmării de primire a tranzacției de la Apple.";
 
+"SK_Receipt_task_not_found" = "Imposibil de procesat tranzacția din cauza unei erori neașteptate. Reîncercați.";
+
 "Transaction_Handler_plan_not_found" = "A fost imposibil de găsit numele planului pe care încercați să îl achiziționați. Dacă problema persistă, contactați asistența pentru clienți.";
 
 "Transaction_Handler_repeated_purchase" = "Nu este posibil să reînnoiți planul selectat de mai multe ori. Dacă credeți că aceasta este o eroare sau dacă problema persistă, vă rugăm să contactați asistența noastră pentru clienți.";

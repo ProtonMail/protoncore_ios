@@ -18,6 +18,8 @@
 
 "SK_Receipt_impossible_to_get_receipt" = "無法從 Apple 取得交易收據資料";
 
+"SK_Receipt_task_not_found" = "Unable to process transaction due to an unexpected error, please try again.";
+
 "Transaction_Handler_plan_not_found" = "無法找到您嘗試購買的方案名稱。如果問題仍然存在，請聯絡客戶支援";
 
 "Transaction_Handler_repeated_purchase" = "無法多次續訂所選方案。如果您認為這是錯誤或問題持續發生，請聯絡我們的客戶支援。";

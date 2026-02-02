@@ -1,31 +1,33 @@
-"APIs_malformed_url_request" = "Terdapat suatu kesalahan, dan kami tidak dapat memenuhi permintaan Anda. Apabila masalah ini terus berlanjut, silakan hubungi layanan dukungan.";
+"APIs_malformed_url_request" = "Terjadi kesalahan sehingga kami tidak dapat memenuhi permintaan Anda. Jika masalah berlanjut, silakan hubungi bagian dukungan pelanggan.";
 
-"Plans_Manager_impossible_to_get_user_uuid" = "UUID pengguna untuk transaksi ini tidak dapat diperoleh";
+"Plans_Manager_impossible_to_get_user_uuid" = "UUID pengguna untuk transaksi ini tidak dapat diambil";
 
-"Plans_Manager_impossible_to_match_plan" = "Tidak mungkin untuk mencocokkan Paket Proton dengan paket Apple Store";
+"Plans_Manager_impossible_to_match_plan" = "Mencocokkan Paket Proton dengan paket Apple Store tidak dapat dilakukan";
 
-"Plans_Manager_impossible_to_restore_transactions" = "Tidak mungkin untuk memulihkan transaksi, harap hubungi layanan dukungan";
+"Plans_Manager_impossible_to_restore_transactions" = "Pemulihan transaksi tidak dapat dilakukan. Silakan hubungi bagian dukungan pelanggan";
 
-"Plans_Manager_Transaction_cancelled_by_user" = "Transaksi telah dibatalkan oleh pengguna";
+"Plans_Manager_Transaction_cancelled_by_user" = "Transaksi ini telah dibatalkan oleh pengguna";
 
-"Plans_Manager_Transaction_unknown_error" = "Terjadi kesalahan yang tidak terduga, jika ini terus berlanjut, harap hubungi layanan dukungan pelanggan";
+"Plans_Manager_Transaction_unknown_error" = "Terjadi kesalahan yang tidak terduga. Jika hal ini terus berlanjut, silakan hubungi bagian dukungan pelanggan";
 
-"Plans_Manager_peding_transaction_received" = "Transaksi belum terjawab yang tak terduga diterima";
+"Plans_Manager_peding_transaction_received" = "Transaksi tertunda yang tak terduga telah diterima";
 
-"PlansComposer_unable_to_fetch_currentSub" = "Langganan saat ini tidak dapat diperoleh";
+"PlansComposer_unable_to_fetch_currentSub" = "Tidak dapat mengambil langganan saat ini";
 
-"Remote_manager_error" = "Telah terjadi kesalahan dan kami tidak dapat memenuhi permintaan Anda. Jika masalah ini terus berlanjut, hubungi layanan dukungan.";
+"Remote_manager_error" = "Terjadi kesalahan sehingga kami tidak dapat memenuhi permintaan Anda. Jika isu ini terus berlanjut, silakan hubungi bagian dukungan pelanggan.";
 
-"SK_Receipt_impossible_to_get_receipt" = "Tidak mungkin mendapatkan data resi transaksi dari Apple";
+"SK_Receipt_impossible_to_get_receipt" = "Data resi transaksi dari Apple tidak dapat diambil";
 
-"Transaction_Handler_plan_not_found" = "Tidak mungkin menemukan nama paket yang coba Anda beli. Jika masalah terus berlanjut, hubungi layanan dukungan.";
+"SK_Receipt_task_not_found" = "Unable to process transaction due to an unexpected error, please try again.";
 
-"Transaction_Handler_repeated_purchase" = "Paket yang dipilih tidak dapat diperbarui berulang kali. Apabila Anda merasa hal ini merupakan suatu kesalahan atau apabila masalah ini terus berlanjut, silakan hubungi layanan dukungan kami";
+"Transaction_Handler_plan_not_found" = "Nama paket yang coba Anda beli tidak dapat ditemukan. Jika isu ini terus berlanjut, silakan hubungi bagian dukungan pelanggan.";
 
-"Transaction_Handler_receipt_update_failed" = "Terjadi kesalahan pada saat meminta resi transaksi dari Apple. Apabila masalah ini terus berlanjut, silakan hubungi layanan dukungan";
+"Transaction_Handler_repeated_purchase" = "Paket yang dipilih tidak dapat diperpanjang berulang kali. Apabila Anda merasa hal ini merupakan suatu kesalahan atau apabila isu ini terus berlanjut, silakan hubungi bagian dukungan pelanggan kami";
 
-"PayUpFront_offer_description" = "Memungkinkan pelanggan baru untuk membayar harga perkenalan sekali pakai untuk durasi tertentu, yang ke depannya akan disambung dengan harga langganan reguler.";
+"Transaction_Handler_receipt_update_failed" = "Terjadi kesalahan saat meminta resi transaksi dari Apple. Apabila isu ini terus berlanjut, silakan hubungi bagian dukungan pelanggan";
+
+"PayUpFront_offer_description" = "Memungkinkan pelanggan baru untuk membayar harga perkenalan sekali pakai untuk durasi tertentu, yang ke depannya akan dilanjutkan dengan harga langganan reguler.";
 
 "PayAsYouGo_offer_description" = "Memungkinkan pelanggan baru untuk membayar harga perkenalan untuk sejumlah periode penagihan tertentu sebelum beralih ke harga langganan reguler.";
 
-"FreeTrial_offer_description" = "Memungkinkan pelanggan baru untuk mengakses langganan selama sejumlah siklus penagihan tertentu. Setelah masa promosi ini berakhir, pelanggan yang bersangkutan akan membayar harga penuh.";
+"FreeTrial_offer_description" = "Memungkinkan pelanggan baru untuk mengakses langganan sepanjang siklus tagihan tertentu. Setelah periode tersebut berakhir, pelanggan akan membayar harga penuh.";
