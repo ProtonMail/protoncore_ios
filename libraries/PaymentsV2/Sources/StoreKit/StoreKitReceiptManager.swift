@@ -52,6 +52,8 @@ public final class StoreKitReceiptManager: StoreKitReceiptManagerProviding {
     internal static let queue = DispatchQueue(label: "ch.proton.payments.receipt.refresh")
     private var requests: Set<ReceiptRefreshRequest> = []
 
+    public init() {}
+
     deinit {
         requests.forEach { $0.cancel() }
     }
