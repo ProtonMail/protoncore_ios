@@ -305,10 +305,9 @@ public final class LoginService {
             throw LoginError.invalidState
         }
 
-        /// Drive expects the passphrase as part of the passphrases dictionary.
         var passphrases = [String: String]()
-        if let primaryUserKey = user.keys.first(where: { $0.primary == 1 && $0.active == 1 }) {
-            passphrases[primaryUserKey.keyID] = credential.mailboxPassword
+        for key in user.keys.filter({ $0.active == 1 }) {
+            passphrases[key.keyID] = credential.mailboxPassword
         }
 
         return .finished(UserData(
