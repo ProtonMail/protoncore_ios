@@ -46,6 +46,7 @@ public protocol StoreKitReceiptManagerProviding {
 public struct UnfinishedTransaction {
     let transaction: Transaction
     let receipt: String
+    let jwsRepresentation: String
 }
 
 public final class StoreKitReceiptManager: StoreKitReceiptManagerProviding {
@@ -59,14 +60,16 @@ public final class StoreKitReceiptManager: StoreKitReceiptManagerProviding {
     }
 
     public func recoverTransaction() async throws -> UnfinishedTransaction? {
-        guard let transaction = await getTransactions() else {
+
+        let details = await getTransactionDetails()
+        guard let transaction = details.0 else {
             debugPrint("No unfinished transaction found")
             return nil
         }
 
         let receipt = try await refreshReceipt()
 
-        return UnfinishedTransaction(transaction: transaction, receipt: receipt)
+        return UnfinishedTransaction(transaction: transaction, receipt: receipt, jwsRepresentation: details.1)
     }
 
     public func refreshReceipt() async throws -> String {
@@ -87,20 +90,20 @@ public final class StoreKitReceiptManager: StoreKitReceiptManagerProviding {
         return try await request.result.base64EncodedString()
     }
 
-    private func getTransactions() async -> Transaction? {
+    private func getTransactionDetails() async -> (Transaction?, String) {
         // We assume there will be at most one unfinished transaction for a Proton product for a given Apple Account.
         // Support for multiple unfinished transactions will require changes on the BE.
         for await unfinished in Transaction.unfinished {
             switch unfinished {
             case .verified(let transaction):
-                return transaction
+                return (transaction, unfinished.jwsRepresentation)
             case .unverified(let transaction, let transactionError):
                 debugPrint("Unverified unfinished transaction:\n \(transaction)\n \(transactionError)")
-                return nil
+                return (nil, "")
             }
         }
 
-        return nil
+        return (nil, "")
     }
 }
 

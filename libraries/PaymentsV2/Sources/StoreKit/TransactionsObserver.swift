@@ -44,8 +44,6 @@ public protocol TransactionsObserverProviding: Sendable {
     func start() async throws
     func stop()
     func setConfiguration(_ configuration: TransactionsObserverConfiguration)
-    func addTransactionInProgress(_ transactionId: UInt64)
-    func removeTransactionInProgress(_ transactionId: UInt64)
     func generateTransactionLog() async -> URL?
     func deleteLogs() async
 }
@@ -96,11 +94,6 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
             for await unfinished in Transaction.unfinished {
                 switch unfinished {
                 case .verified(let transaction):
-                    guard !transactionsInProgress.contains(transaction.id) else {
-                        PMLog.info("Transaction already in progress, no action required")
-                        return
-                    }
-
                     guard (await transaction.subscriptionStatus) != nil else {
                         PMLog.info("Transaction received is not a subscription")
                         transactionStatus = .failed
@@ -115,7 +108,7 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
                     }
 
                     PMLog.info("TransactionsObserver: Resolving unfinished transaction", sendToExternal: true)
-                    await processTransaction(transaction, jwsRepresentation: unfinished.jwsRepresentation)
+                    _ = await processTransactionImmediately(transaction, jwsRepresentation: unfinished.jwsRepresentation)
                 case .unverified(let transaction, let transactionError):
                     debugPrint("Unverified unfinished transaction:\n \(transaction)\n \(transactionError)")
                     return
@@ -127,11 +120,6 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
             for await update in Transaction.updates {
                 switch update {
                 case .verified(let transaction):
-                    guard !transactionsInProgress.contains(transaction.id) else {
-                        PMLog.info("Transaction already in progress, no action required")
-                        return
-                    }
-
                     guard (await transaction.subscriptionStatus) != nil else {
                         PMLog.info("Transaction received is not a subscription")
                         transactionStatus = .failed
@@ -146,7 +134,7 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
                     }
 
                     PMLog.info("TransactionsObserver: Resolving transaction", sendToExternal: true)
-                    await processTransaction(transaction, jwsRepresentation: update.jwsRepresentation)
+                    _ = await processTransactionImmediately(transaction, jwsRepresentation: update.jwsRepresentation)
                 case .unverified(let transaction, let transactionError):
                     PMLog.info("Unverified update transaction:\n \(transaction)\n \(transactionError)", sendToExternal: true)
                     debugPrint("Unverified update transaction:\n \(transaction)\n \(transactionError)")
@@ -229,6 +217,10 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
 #endif
                 await transaction.finish()
                 transactionStatus = .successful
+
+                await TransactionsObserver.shared.logHelper?.logEvent(["phase": "create_sub",
+                                                                       "apple_transction_completed": true])
+                PMLog.info("ProtonPlansManager: Proton subscription creation successful ✅", sendToExternal: true)
             } else {
                 transactionStatus = .transactionUUIDNotFoundOrMismatching
                 return
@@ -245,7 +237,37 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
         }
     }
 
+    @discardableResult
+    func beginProcessingTransaction(id: UInt64) -> Bool {
+        queue.sync {
+            let (inserted, _) = transactionsInProgress.insert(id)
+            PMLog.info("transaction: \(id) added to process queue", sendToExternal: true)
+            return inserted
+        }
+    }
+
+    func endProcessingTransaction(id: UInt64) {
+        queue.sync {
+            transactionsInProgress.remove(id)
+            PMLog.info("transaction: \(id) removed from process queue", sendToExternal: true)
+        }
+    }
+
     // MARK: Public methods
+
+    @discardableResult
+    public func processTransactionImmediately(_ transaction: Transaction, jwsRepresentation: String) async -> Bool {
+        guard beginProcessingTransaction(id: transaction.id) else {
+            PMLog.info("Transaction already in progress, skipping immediate processing", sendToExternal: true)
+            return false
+        }
+        defer { endProcessingTransaction(id: transaction.id) }
+
+        PMLog.info("Processing transaction started at \(Date.now)", sendToExternal: true)
+        await processTransaction(transaction, jwsRepresentation: jwsRepresentation)
+        PMLog.info("Processing transaction completed at \(Date.now)", sendToExternal: true)
+        return true
+    }
 
     public func start() async throws {
         let isOn: Bool = await withCheckedContinuation { c in
@@ -288,7 +310,7 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
         updates?.cancel()
         updates = newTransactionListenerTask()
 
-        PMLog.info("TransactionsObserver started ✅")
+        PMLog.info("TransactionsObserver started ✅", sendToExternal: true)
     }
 
     public func stop() {
@@ -302,18 +324,6 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
     public func setConfiguration(_ configuration: TransactionsObserverConfiguration) {
         queue.sync {
             self.configuration = configuration
-        }
-    }
-
-    public func addTransactionInProgress(_ transactionId: UInt64) {
-        queue.sync {
-            _ = self.transactionsInProgress.insert(transactionId)
-        }
-    }
-
-    public func removeTransactionInProgress(_ transactionId: UInt64) {
-        queue.sync {
-            _ = self.transactionsInProgress.remove(transactionId)
         }
     }
 

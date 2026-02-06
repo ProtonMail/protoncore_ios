@@ -27,7 +27,6 @@ public protocol TransactionHandlerProviding: Sendable {
     func processTransaction(_ transaction: ProtonTransaction, plan: ComposedPlan) async throws -> ComposedPlan
     // !!!: Warning Only Omnichannel TransactionHandler implements this
     func processTransaction(_ transaction: ProtonTransaction, jwsRepresentation: String, plan: ComposedPlan) async throws -> ComposedPlan
-    func updateRemoteManager(remoteManager: RemoteManagerProviding)
     func verifyTransactionUUIDs(appAccountToken: UUID) async throws -> Bool
     func setAppAccountToken(_ appAccountToken: UUID?)
     func updateTransactionState(state: TransactionHandlerState)
