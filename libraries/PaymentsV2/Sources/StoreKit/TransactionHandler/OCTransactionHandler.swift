@@ -32,7 +32,6 @@ public final class OCTransactionHandler: NSObject, TransactionHandlerProviding, 
     public private(set) var transactionState = CurrentValueSubject<TransactionHandlerState, Never>(.idle)
     private let queue = DispatchQueue(label: "paymentsV2.transactionHandler.syncQueue")
     private var appAccountToken: UUID?
-    private var transactionIdInProgress: UInt64 = 0
 
     public init(remoteManager: RemoteManagerProviding,
                 appAccountToken: UUID? = nil) {
@@ -49,23 +48,11 @@ public final class OCTransactionHandler: NSObject, TransactionHandlerProviding, 
                                    jwsRepresentation: String,
                                    plan: ComposedPlan) async throws -> ComposedPlan {
         debugPrint("Transaction in progress...")
-        queue.sync {
-            transactionIdInProgress = transaction.id
-        }
-
-        // Adding the transactions to the set of the resolved ones
-        TransactionsObserver.shared.addTransactionInProgress(transactionIdInProgress)
 
         await TransactionsObserver.shared.logHelper?.logEvent(["phase": "start_resolving_transaction"])
         try await resolveTransaction(transaction, plan: plan, jwsRepresentation: jwsRepresentation)
 
         return plan
-    }
-
-    public func updateRemoteManager(remoteManager: RemoteManagerProviding) {
-        queue.sync {
-            self.remoteManager = remoteManager
-        }
     }
 
     public func verifyTransactionUUIDs(appAccountToken: UUID) async throws -> Bool {
@@ -120,7 +107,6 @@ private extension OCTransactionHandler {
             PMLog.info("OCTransactionHandler: Post validation token successful", sendToExternal: true)
             return newToken
         } catch {
-            TransactionsObserver.shared.removeTransactionInProgress(transactionIdInProgress)
             if let error = error as? APICodeError, error == APICodeError.invalidRequirements {
                 let responseError = ResponseError(httpCode: nil, responseCode: error.rawValue, userFacingMessage: "POST /tokens failed", underlyingError: nil)
                 ObservabilityEnv.report(.paymentCreatePaymentTokenTotal(error: responseError, isDynamic: true))
@@ -156,7 +142,6 @@ private extension OCTransactionHandler {
                     debugPrint("Pending validation results..")
                 }
             } catch {
-                TransactionsObserver.shared.removeTransactionInProgress(transactionIdInProgress)
                 self.updateTransactionState(state: .transactionProcessError)
                 PMLog.error("OCTransactionHandler: Polling token status failed", sendToExternal: true)
                 await TransactionsObserver.shared.logHelper?.logEvent(["get_token_polling": ["time": Date.now.description,
@@ -178,8 +163,6 @@ private extension OCTransactionHandler {
                                                                    "status": "failed",
                                                                    "reason": "Plan name not found"],
                                                                   type: .close)
-
-            TransactionsObserver.shared.removeTransactionInProgress(transactionIdInProgress)
             throw error
         }
         debugPrint("Creating new subscription..")
@@ -201,7 +184,6 @@ private extension OCTransactionHandler {
             updateTransactionState(state: .transactionCompleted(planName: planName, cycle: composedPlan.instance.cycle))
             return true
         } catch {
-            TransactionsObserver.shared.removeTransactionInProgress(transactionIdInProgress)
             ObservabilityEnv.report(.paymentSubscribeTotal(status: .failed, isDynamic: true))
             updateTransactionState(state: .transactionProcessError)
             PMLog.error("OCTransactionHandler: Create new subscription - New subscription creation failed", sendToExternal: true)

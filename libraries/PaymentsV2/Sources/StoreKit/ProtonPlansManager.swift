@@ -187,6 +187,11 @@ public final class ProtonPlansManager: NSObject, PublicProtonPlansManagerProvidi
             PMLog.error(error.errorDescription ?? "PaymentsV2 - impossible to get user uuid", sendToExternal: true)
             throw error
         }
+
+        // Cache the UUID in the TransactionHandler so verifyTransactionUUIDs doesn't need
+        // to fetch it again for this transaction.
+        TransactionsObserver.shared.transactionHandler.setAppAccountToken(userUUID)
+
         purchaseOptions.insert(.appAccountToken(userUUID))
         // Add any passed purchase options
         purchaseOptions.formUnion(options ?? [])
@@ -229,37 +234,12 @@ public final class ProtonPlansManager: NSObject, PublicProtonPlansManagerProvidi
                                                                    "time": Date.now.description,
                                                                    "success": true])
 
-            do {
-                TransactionsObserver.shared.addTransactionInProgress(transaction.id)
-                TransactionsObserver.shared.transactionHandler.setAppAccountToken(userTransactionUUID)
-                // Omnichannel FF check
-#if DEBUG
-                if FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.paymentsOmnichannelEnabled) {
-                    _ = try await TransactionsObserver.shared.transactionHandler.processTransaction(transaction.toProtonTransaction(),
-                                                                                                    jwsRepresentation: verificationResult.jwsRepresentation,
-                                                                                                    plan: matchingPlan)
-                } else {
-                    _ = try await TransactionsObserver.shared.transactionHandler.processTransaction(transaction.toProtonTransaction(),
-                                                                                                    plan: matchingPlan)
-                }
-#else
-                _ = try await TransactionsObserver.shared.transactionHandler.processTransaction(transaction.toProtonTransaction(),
-                                                                                                plan: matchingPlan)
-#endif
-                await transaction.finish()
-                debugPrint("Transaction completed ✅")
-                await TransactionsObserver.shared.logHelper?.logEvent(["phase": "create_sub",
-                                                                       "apple_transction_completed": true])
-                PMLog.info("ProtonPlansManager: Proton subscription creation successful ✅", sendToExternal: true)
-                return matchingPlan
-            } catch {
-                await TransactionsObserver.shared.logHelper?.logEvent(["phase": "create_sub",
-                                                                       "error:": error.localizedDescription])
-                PMLog.error("ProtonPlansManager: Create sub error: \(error.localizedDescription)", sendToExternal: true)
-                TransactionsObserver.shared.removeTransactionInProgress(transaction.id)
-                debugPrint(error)
-                throw error
-            }
+            // Try to process the transaction immediately to avoid delays.
+            // If it's already being processed (e.g., by TransactionsObserver), that's fine -
+            // the atomic guard will prevent duplicate processing.
+            await TransactionsObserver.shared.processTransactionImmediately(transaction,
+                                                                            jwsRepresentation: verificationResult.jwsRepresentation)
+            return matchingPlan
         case .pending:
             // pending transactions will be returned by the TransactionObserver once the necessary requirements are fulfilled.
             // In case shouldn't trigger an error, the user should be notified.
@@ -299,29 +279,17 @@ public final class ProtonPlansManager: NSObject, PublicProtonPlansManagerProvidi
         try await AppStore.sync()
         PMLog.debug("Transaction recovery flow started", sendToExternal: true)
 
-        guard let pendingTransaction = try await StoreKitReceiptManager().recoverTransaction() else {
-            debugPrint("No transaction returned")
+        if let pending = try await StoreKitReceiptManager().recoverTransaction() {
+            PMLog.debug("Pending transaction found: \(pending.transaction.id)", sendToExternal: true)
+
+            // Try to process the transaction immediately to avoid delays.
+            // If it's already being processed (e.g., by TransactionsObserver), that's fine -
+            // the atomic guard will prevent duplicate processing.
+            await TransactionsObserver.shared.processTransactionImmediately(pending.transaction,
+                                                                            jwsRepresentation: pending.jwsRepresentation)
+        } else {
             PMLog.error("Transaction recovery: no unfinished transactions found", sendToExternal: true)
             throw ProtonPlansManagerError.noUnfinshedTransactionsFound
-        }
-
-        guard let matchingPlan = await findMatchingPlan(productID: pendingTransaction.transaction.productID) else {
-            let error = ProtonPlansManagerError.unableToMatchProtonPlanToStoreProduct(productId: pendingTransaction.transaction.productID)
-            PMLog.error(error.failureReason ?? "PaymentsV2 - unable to match Proton and AppleStore plans", sendToExternal: true)
-            throw error
-        }
-
-        do {
-            TransactionsObserver.shared.addTransactionInProgress(pendingTransaction.transaction.id)
-            _ = try await TransactionsObserver.shared.transactionHandler.processTransaction(pendingTransaction.transaction.toProtonTransaction(), plan: matchingPlan)
-            TransactionsObserver.shared.removeTransactionInProgress(pendingTransaction.transaction.id)
-            await pendingTransaction.transaction.finish()
-            PMLog.debug("Transaction successfully recovered", sendToExternal: true)
-            debugPrint("RECOVERY FLOW SUCCESSFUL ✅")
-        } catch {
-            TransactionsObserver.shared.removeTransactionInProgress(pendingTransaction.transaction.id)
-            PMLog.error("Transaction recovery for transaction failed: \(error)", sendToExternal: true)
-            throw error
         }
     }
 
