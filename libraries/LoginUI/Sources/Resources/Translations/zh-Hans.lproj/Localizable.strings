@@ -472,7 +472,7 @@
 
 "On the sign-in screen, select **Forgot password** or **Trouble signing in?** (on mobile apps, select **Help**)" = "在登入屏幕上，选择 **忘记密码** 或 **登入遇到问题？** (在移动应用上，选择 **帮助**)";
 
-"Select **Sign in with QR code**. A QR code will appear." = ". 选择 **扫描二维码登录**，此时便会出现一个二维码。";
+"Select **Sign in with QR code**. A QR code will appear." = "选择 **扫描二维码登录**，此时便会出现一个二维码。";
 
 "On this device, press **Scan QR code** and scan the code." = "在此设备上，点按 **扫描二维码** 并扫描代码。";
 
