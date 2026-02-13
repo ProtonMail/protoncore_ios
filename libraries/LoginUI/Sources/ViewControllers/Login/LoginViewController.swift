@@ -22,14 +22,16 @@
 #if os(iOS)
 
 import UIKit
-@preconcurrency import WebKit
-import ProtonCoreLogin
-import ProtonCoreFoundations
-import ProtonCoreUIFoundations
+import AuthenticationServices
+
 import ProtonCoreFeatureFlags
+import ProtonCoreFoundations
+import ProtonCoreLog
+import ProtonCoreLogin
 import ProtonCoreObservability
 import ProtonCoreServices
 import ProtonCoreTelemetry
+import ProtonCoreUIFoundations
 
 // Notify delegate of next steps to present to the user
 protocol LoginStepsDelegate: AnyObject {
@@ -100,7 +102,7 @@ final class LoginViewController: UIViewController, AccessibleView, Focusable, Pr
 
     var focusNoMore: Bool = false
     private let navigationBarAdjuster = NavigationBarAdjustingScrollViewDelegate()
-    private var webView: SSOViewController?
+    private var authSession: ASWebAuthenticationSession?
     private var isSSOEnabled: Bool {
         FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.externalSSO, reloadValue: true)
     }
@@ -140,17 +142,6 @@ final class LoginViewController: UIViewController, AccessibleView, Focusable, Pr
     }
 
     // MARK: - Setup
-
-    private func showWebView(completion: @escaping (SSOViewController) -> Void) {
-        let ssoVC = SSOViewController()
-        ssoVC.webViewDelegate = self
-        let webViewNav = DarkModeAwareNavigationViewController(rootViewController: ssoVC)
-        webViewNav.overrideUserInterfaceStyle = self.overrideUserInterfaceStyle
-        webViewNav.navigationBar.backgroundColor = ColorProvider.BackgroundNorm
-        self.navigationController?.present(webViewNav, animated: true, completion: {
-            completion(ssoVC)
-        })
-    }
 
     private func setupUI() {
         brandImage.image = IconProvider.masterBrandGlyph
@@ -286,19 +277,20 @@ final class LoginViewController: UIViewController, AccessibleView, Focusable, Pr
                 self?.delegate?.createAddressNeeded(data: data, defaultUsername: defaultUsername)
                 self?.measureLoginSuccess()
             case .ssoChallenge(let ssoChallengeResponse):
-                self?.showWebView(completion: { [weak self] ssoViewControler in
-                    self?.webView = ssoViewControler
-                    Task { @MainActor [weak self] in
-                        let ssoRequestResult = await self?.viewModel.getSSORequest(challenge: ssoChallengeResponse)
-                        if let error = ssoRequestResult?.error {
-                            self?.webView?.dismiss(animated: true)
-                            self?.showBanner(message: error)
-                            return
-                        } else if let request = ssoRequestResult?.request {
-                            self?.webView?.loadRequest(request: request)
-                        }
+                Task { @MainActor [weak self] in
+                    guard let self else { return }
+                    let ssoURLResult = await self.viewModel.getSSOURL(challenge: ssoChallengeResponse)
+                    if let error = ssoURLResult.error {
+                        self.showBanner(message: error)
+                        return
                     }
-                })
+                    guard let ssoURL = ssoURLResult.url,
+                          let callbackScheme = self.viewModel.ssoCallbackScheme else {
+                        self.showBanner(message: LUITranslation.sso_configuration_error.l10n)
+                        return
+                    }
+                    self.startSSOAuthSession(url: ssoURL, callbackScheme: callbackScheme)
+                }
                 self?.measureLoginSuccess()
             case .switchToSSOLogin(let info):
                 self?.showBanner(message: info, style: .info)
@@ -495,41 +487,52 @@ extension LoginViewController: PMTextFieldDelegate {
     }
 }
 
-// MARK: - WKNavigationDelegate
-extension LoginViewController: WKNavigationDelegate {
-    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-        if let responseToken = viewModel.getSSOTokenFromURL(url: navigationAction.request.url) {
-            decisionHandler(.cancel)
-            self.webView?.dismiss(animated: true, completion: {
-                self.webView = nil
-            })
-            viewModel.processResponseTokenV2(idpEmail: loginTextField.value, responseToken: responseToken)
-        } else {
-            decisionHandler(.allow)
+// MARK: - ASWebAuthenticationSession SSO
+
+extension LoginViewController: ASWebAuthenticationPresentationContextProviding {
+    func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
+        view.window ?? ASPresentationAnchor()
+    }
+}
+
+extension LoginViewController {
+    fileprivate func startSSOAuthSession(url: URL, callbackScheme: String) {
+        authSession = ASWebAuthenticationSession(url: url, callbackURLScheme: callbackScheme) { [weak self] callbackURL, error in
+            self?.handleSSOAuthSessionCompletion(callbackURL: callbackURL, error: error)
         }
+        authSession?.presentationContextProvider = self
+        authSession?.prefersEphemeralWebBrowserSession = true
+        authSession?.start()
     }
 
-    func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse,
-                 decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
+    func handleSSOAuthSessionCompletion(callbackURL: URL?, error: Error?) {
+        defer { authSession = nil }
 
-        if let response = navigationResponse.response as? HTTPURLResponse {
-            handleNetworkResponse(response: response)
+        // Handle cancelation
+        if let error = error as? ASWebAuthenticationSessionError,
+           error.code == .canceledLogin {
+            ObservabilityEnv.report(.ssoIdentityProviderLoginResult(status: .canceled))
+            return
         }
 
-        decisionHandler(.allow)
-    }
-
-    private func handleNetworkResponse(response: HTTPURLResponse) {
-        let isProtonPage = viewModel.isProtonPage(url: response.url)
-        switch ObservabilityEvent.ssoWebPageLoadCountTotal(responseStatusCode: response.statusCode,
-                                                           isProtonPage: isProtonPage) {
-        case .left(let event)?:
-            ObservabilityEnv.report(event)
-        case .right(let event)?:
-            ObservabilityEnv.report(event)
-        case nil:
-            break
+        // Handle other errors
+        if let error {
+            ObservabilityEnv.report(.ssoIdentityProviderLoginResult(status: .failed))
+            PMLog.error(error.localizedDescription, sendToExternal: true)
+            showBanner(message: error.localizedDescription)
+            return
         }
+
+        // Handle missing callback URL or token
+        guard let callbackURL,
+              let responseToken = viewModel.getSSOTokenFromURL(url: callbackURL) else {
+            ObservabilityEnv.report(.ssoIdentityProviderLoginResult(status: .failed))
+            PMLog.error(LUITranslation.sso_response_token_error.l10n, sendToExternal: true)
+            showBanner(message: LUITranslation.sso_response_token_error.l10n)
+            return
+        }
+
+        viewModel.processResponseTokenV2(idpEmail: loginTextField.value, responseToken: responseToken)
     }
 }
 

@@ -60,8 +60,15 @@ public class LoginMock: Login {
         fatalError("not implemented because it's async")
     }
 
+    public func getSSOURL(challenge ssoChallengeResponse: SSOChallengeResponse) async -> (url: URL?, error: String?) {
+        fatalError("not implemented because it's async")
+    }
+
     @FuncStub(Login.isProtonPage, initialReturn: false) public var isProtonPageStub
     public func isProtonPage(url: URL?) -> Bool { isProtonPageStub(url) }
+
+    @PropertyStub(\LoginMock.ssoCallbackScheme, initialGet: nil) public var ssoCallbackSchemeStub
+    public var ssoCallbackScheme: String? { ssoCallbackSchemeStub() }
 
     @PropertyStub(\LoginMock.currentlyChosenSignUpDomain, initialGet: .empty) public var currentlyChosenSignUpDomainStub
     public var currentlyChosenSignUpDomain: String {

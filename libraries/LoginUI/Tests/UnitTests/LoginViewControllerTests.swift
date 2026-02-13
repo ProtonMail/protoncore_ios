@@ -22,7 +22,7 @@
 #if os(iOS)
 
 import XCTest
-import WebKit
+import AuthenticationServices
 @testable import ProtonCoreLoginUI
 import ProtonCoreChallenge
 #if canImport(ProtonCoreTestingToolkitUnitTestsCore)
@@ -49,144 +49,63 @@ final class LoginViewControllerTests: XCTestCase {
         sut.viewModel = LoginViewModel(api: APIServiceMock(), login: loginMock, challenge: PMChallenge(), clientApp: .vpn)
     }
 
-    func test_wkNavigationDelegate_tracks_http2xx_forAnyURL() {
+    // MARK: - ASWebAuthenticationSession SSO Tests
+
+    func test_ssoAuthSession_canceled_tracksObservabilityEvent() {
         // Given
-
-        let webView = WKWebView(frame: .zero)
-        let response = FakeNavigationResponse(httpResponseCode: .http2xx, url: URL(string: "https://very.third-party.page")!)
-        loginMock.isProtonPageStub.bodyIs { _, _ in false }
-        let expectedEvent: ObservabilityEvent = .ssoIDPPageLoadCountTotal(status: .http2xx)
-
         let loginVC = setupVCThroughStoryboard()
+        let error = NSError(domain: ASWebAuthenticationSessionError.errorDomain,
+                           code: ASWebAuthenticationSessionError.canceledLogin.rawValue,
+                           userInfo: nil)
+        let expectedEvent: ObservabilityEvent = .ssoIdentityProviderLoginResult(status: .canceled)
 
         // When
-        loginVC.webView(webView, decidePolicyFor: response, decisionHandler: response.decisionHandler)
-        XCTAssertTrue(self.observabilityServiceMock.reportStub.lastArguments!.value.isSameAs(event: expectedEvent))
-    }
-
-    func test_wkNavigationDelegate_tracks_http4xx_forAnyURL() {
-        // Given
-
-        let webView = WKWebView(frame: .zero)
-        let response = FakeNavigationResponse(httpResponseCode: .http4xx, url: URL(string: "https://very.third-party.page")!)
-        loginMock.isProtonPageStub.bodyIs { _, _ in false }
-        let expectedEvent: ObservabilityEvent = .ssoIDPPageLoadCountTotal(status: .http4xx)
-
-        let loginVC = setupVCThroughStoryboard()
-
-        // When
-        loginVC.webView(webView, decidePolicyFor: response, decisionHandler: response.decisionHandler)
-        XCTAssertTrue(self.observabilityServiceMock.reportStub.lastArguments!.value.isSameAs(event: expectedEvent))
-    }
-
-    func test_wkNavigationDelegate_tracks_http5xx_forAnyURL() {
-        // Given
-
-        let webView = WKWebView(frame: .zero)
-        let response = FakeNavigationResponse(httpResponseCode: .http5xx, url: URL(string: "https://very.third-party.page")!)
-        loginMock.isProtonPageStub.bodyIs { _, _ in false }
-        let expectedEvent: ObservabilityEvent = .ssoIDPPageLoadCountTotal(status: .http5xx)
-
-        let loginVC = setupVCThroughStoryboard()
-
-        // When
-        loginVC.webView(webView, decidePolicyFor: response, decisionHandler: response.decisionHandler)
-        XCTAssertTrue(self.observabilityServiceMock.reportStub.lastArguments!.value.isSameAs(event: expectedEvent))
-    }
-
-    func test_wkNavigationDelegate_tracks_http2xx_forProtonURL() {
-        // Given
-
-        let webView = WKWebView(frame: .zero)
-        let response = FakeNavigationResponse(httpResponseCode: .http2xx, url: URL(string: "https://very.proton.page")!)
-        loginMock.isProtonPageStub.bodyIs { _, _ in true }
-        let expectedEvent: ObservabilityEvent = .ssoProtonPageLoadCountTotal(status: .http2xx)
-
-        let loginVC = setupVCThroughStoryboard()
-
-        // When
-        loginVC.webView(webView, decidePolicyFor: response, decisionHandler: response.decisionHandler)
-        XCTAssertTrue(self.observabilityServiceMock.reportStub.lastArguments!.value.isSameAs(event: expectedEvent))
-    }
-
-    func test_wkNavigationDelegate_tracks_http4xx_forProtonURL() {
-        // Given
-
-        let webView = WKWebView(frame: .zero)
-        let response = FakeNavigationResponse(httpResponseCode: .http4xx, url: URL(string: "https://very.proton.page")!)
-        loginMock.isProtonPageStub.bodyIs { _, _ in true }
-        let expectedEvent: ObservabilityEvent = .ssoProtonPageLoadCountTotal(status: .http4xx)
-
-        let loginVC = setupVCThroughStoryboard()
-
-        // When
-        loginVC.webView(webView, decidePolicyFor: response, decisionHandler: response.decisionHandler)
-        XCTAssertTrue(self.observabilityServiceMock.reportStub.lastArguments!.value.isSameAs(event: expectedEvent))
-    }
-
-    func test_wkNavigationDelegate_tracks_http5xx_forProtonURL() {
-        // Given
-
-        let webView = WKWebView(frame: .zero)
-        let response = FakeNavigationResponse(httpResponseCode: .http5xx, url: URL(string: "https://very.proton.page")!)
-        loginMock.isProtonPageStub.bodyIs { _, _ in true }
-        let expectedEvent: ObservabilityEvent = .ssoProtonPageLoadCountTotal(status: .http5xx)
-
-        let loginVC = setupVCThroughStoryboard()
-
-        // When
-        loginVC.webView(webView, decidePolicyFor: response, decisionHandler: response.decisionHandler)
-        XCTAssertTrue(self.observabilityServiceMock.reportStub.lastArguments!.value.isSameAs(event: expectedEvent))
-    }
-
-    func test_wkNavigationDelegate_allowsAnyURL() {
-        // Given
-        let webView = WKWebView(frame: .zero)
-        let url = URL(string: "http://anyUrl.com")!
-        let action = FakeNavigationAction(url: url)
-        action.setExpectation(expectation: .allow)
-
-        let loginVC = setupVCThroughStoryboard()
-
-        // When
-        loginVC.webView(webView, decidePolicyFor: action, decisionHandler: action.decisionHandler)
-    }
-
-    func test_wkNavigationDelegate_withToken_callsValidateAndAuthenticateSSOStub() {
-        let expectation = XCTestExpectation(description: "Handler is called")
-        loginMock.validateAndAuthenticateSSOStub.bodyIs { _, _, _ in
-            expectation.fulfill()
-            return .finished(.dummy)
-        }
-        // Given
-        let token = "92834urjhfog34"
-        let uid = "98h2biw4uaekjf"
-        let webView = WKWebView(frame: .zero)
-        let url = URL(string: "http://account.proton.me/sso/login#token=\(token)&uid=\(uid)")!
-        let action = FakeNavigationAction(url: url)
-        action.setExpectation(expectation: .cancel)
-        let loginVC = setupVCThroughStoryboard()
-
-        // When
-        loginVC.webView(webView, decidePolicyFor: action, decisionHandler: action.decisionHandler)
+        loginVC.handleSSOAuthSessionCompletion(callbackURL: nil, error: error)
 
         // Then
-        wait(for: [expectation], timeout: 1)
+        XCTAssertTrue(observabilityServiceMock.reportStub.lastArguments!.value.isSameAs(event: expectedEvent))
     }
 
-    func test_wkNavigationDelegate_withoutToken_doesNotCallProcessResponseToken() {
+    func test_ssoAuthSession_error_tracksFailureObservabilityEvent() {
         // Given
-        let webView = WKWebView(frame: .zero)
-        let url = URL(string: "http://anyUrl.com")!
-        let action = FakeNavigationAction(url: url)
-        action.setExpectation(expectation: .allow)
+        let loginVC = setupVCThroughStoryboard()
+        let error = NSError(domain: "TestError", code: 123, userInfo: [NSLocalizedDescriptionKey: "Test error"])
+        let expectedEvent: ObservabilityEvent = .ssoIdentityProviderLoginResult(status: .failed)
 
         // When
-        sut.webView(webView, decidePolicyFor: action, decisionHandler: action.decisionHandler)
+        loginVC.handleSSOAuthSessionCompletion(callbackURL: nil, error: error)
 
         // Then
-        XCTAssertTrue(loginMock.processResponseTokenStub.wasNotCalled)
+        XCTAssertTrue(observabilityServiceMock.reportStub.lastArguments!.value.isSameAs(event: expectedEvent))
     }
+
+    func test_ssoAuthSession_noCallbackURL_tracksFailureObservabilityEvent() {
+        // Given
+        let loginVC = setupVCThroughStoryboard()
+        let expectedEvent: ObservabilityEvent = .ssoIdentityProviderLoginResult(status: .failed)
+
+        // When
+        loginVC.handleSSOAuthSessionCompletion(callbackURL: nil, error: nil)
+
+        // Then
+        XCTAssertTrue(observabilityServiceMock.reportStub.lastArguments!.value.isSameAs(event: expectedEvent))
+    }
+
+    func test_ssoAuthSession_invalidToken_tracksFailureObservabilityEvent() {
+        // Given
+        let loginVC = setupVCThroughStoryboard()
+        // URL without token and uid in fragment - will fail parsing and return nil
+        let callbackURL = URL(string: "proton://account.proton.me/sso/login")!
+        let expectedEvent: ObservabilityEvent = .ssoIdentityProviderLoginResult(status: .failed)
+
+        // When
+        loginVC.handleSSOAuthSessionCompletion(callbackURL: callbackURL, error: nil)
+
+        // Then
+        XCTAssertTrue(observabilityServiceMock.reportStub.lastArguments!.value.isSameAs(event: expectedEvent))
+    }
+
+    // MARK: - Helper Methods
 
     private func setupVCThroughStoryboard() -> LoginViewController {
         let loginVC = UIStoryboard.instantiate(storyboardName: "PMLogin", controllerType: LoginViewController.self, inAppTheme: { .default })
@@ -195,58 +114,4 @@ final class LoginViewControllerTests: XCTestCase {
         return loginVC
     }
 }
-
-final class FakeNavigationResponse: WKNavigationResponse {
-    let fakeResponse: HTTPURLResponse
-
-    enum HTTPResponseCode {
-        case http2xx
-        case http4xx
-        case http5xx
-    }
-
-    override var response: URLResponse {
-        fakeResponse
-    }
-
-    init(httpResponseCode: HTTPResponseCode, url: URL) {
-        switch httpResponseCode {
-        case .http2xx:
-            fakeResponse = .init(url: url, statusCode: 200, httpVersion: nil, headerFields: nil)!
-        case .http4xx:
-            fakeResponse = .init(url: url, statusCode: 400, httpVersion: nil, headerFields: nil)!
-        case .http5xx:
-            fakeResponse = .init(url: url, statusCode: 500, httpVersion: nil, headerFields: nil)!
-        }
-    }
-
-    func decisionHandler(_ policy: WKNavigationResponsePolicy) {}
-}
-
-final class FakeNavigationAction: WKNavigationAction {
-    let urlRequest: URLRequest
-
-    var receivedPolicy: WKNavigationActionPolicy?
-    var expectation: WKNavigationActionPolicy?
-
-    override var request: URLRequest { urlRequest }
-
-    func setExpectation(expectation: WKNavigationActionPolicy) {
-        self.expectation = expectation
-    }
-
-    init(urlRequest: URLRequest) {
-        self.urlRequest = urlRequest
-        super.init()
-    }
-
-    convenience init(url: URL) {
-        self.init(urlRequest: URLRequest(url: url))
-    }
-
-    func decisionHandler(_ policy: WKNavigationActionPolicy) {
-        XCTAssertEqual(expectation, policy)
-    }
-}
-
 #endif

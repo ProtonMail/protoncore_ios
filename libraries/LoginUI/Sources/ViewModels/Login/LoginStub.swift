@@ -66,6 +66,12 @@ struct LoginStub: Login {
         (nil, nil)
     }
 
+    func getSSOURL(challenge ssoChallengeResponse: ProtonCoreAuthentication.SSOChallengeResponse) async -> (url: URL?, error: String?) {
+        return (nil, nil)
+    }
+
+    var ssoCallbackScheme: String?
+
     func isProtonPage(url: URL?) -> Bool {
         false
     }

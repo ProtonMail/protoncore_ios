@@ -249,6 +249,8 @@ public enum LUITranslation: TranslationsExposing {
     case scan_qr_code_third_step
     case scan_qr_code_fourth_step
     case learn_more
+    case sso_configuration_error
+    case sso_response_token_error
 
     public var l10n: String {
         switch self {
@@ -697,6 +699,10 @@ public enum LUITranslation: TranslationsExposing {
             return localized(key: "On this device, press **Scan QR code** and scan the code.", comment: "On this device, press **Scan QR code** and scan the code.")
         case .learn_more:
             return localized(key: "Learn more", comment: "Learn more")
+        case .sso_configuration_error:
+            return localized(key: "SSO configuration error", comment: "SSO configuration error")
+        case .sso_response_token_error:
+            return localized(key: "Failed to obtain SSO response token", comment: "Failed to obtain SSO response token")
         }
     }
 

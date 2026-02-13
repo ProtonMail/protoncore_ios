@@ -208,11 +208,13 @@ public final class LoginAndSignup {
                 minimumAccountTypes: AccountTypes,
                 isCloseButtonAvailable: Bool = true,
                 paymentsAvailability: PaymentsAvailability,
-                signupAvailability: SignupAvailability = .notAvailable) {
+                signupAvailability: SignupAvailability = .notAvailable,
+                ssoCallbackScheme: String? = nil) {
         container = Container(appName: appName,
                               clientApp: clientApp,
                               apiService: apiService,
-                              initialMinimumAccountTypeForLogin: minimumAccountTypes.login)
+                              initialMinimumAccountTypeForLogin: minimumAccountTypes.login,
+                              ssoCallbackScheme: ssoCallbackScheme)
         self.isCloseButtonAvailable = isCloseButtonAvailable
         self.paymentsAvailability = paymentsAvailability
         self.signupAvailability = signupAvailability
@@ -225,7 +227,8 @@ public final class LoginAndSignup {
                             minimumAccountType: AccountType,
                             isCloseButtonAvailable: Bool = true,
                             paymentsAvailability: PaymentsAvailability,
-                            signupAvailability: SignupAvailability = .notAvailable) {
+                            signupAvailability: SignupAvailability = .notAvailable,
+                            ssoCallbackScheme: String? = nil) {
         self.init(
             appName: appName,
             clientApp: clientApp,
@@ -233,7 +236,8 @@ public final class LoginAndSignup {
             minimumAccountTypes: .init(login: minimumAccountType, signup: minimumAccountType),
             isCloseButtonAvailable: isCloseButtonAvailable,
             paymentsAvailability: paymentsAvailability,
-            signupAvailability: signupAvailability
+            signupAvailability: signupAvailability,
+            ssoCallbackScheme: ssoCallbackScheme
         )
     }
 
