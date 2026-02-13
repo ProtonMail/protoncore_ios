@@ -346,7 +346,10 @@ public protocol Login {
     func processResponseToken(idpEmail: String, responseToken: SSOResponseToken, completion: @escaping (Result<LoginStatus, LoginError>) -> Void)
 
     func getSSORequest(challenge ssoChallengeResponse: SSOChallengeResponse) async -> (request: URLRequest?, error: String?)
+    func getSSOURL(challenge ssoChallengeResponse: SSOChallengeResponse) async -> (url: URL?, error: String?)
     func isProtonPage(url: URL?) -> Bool
+
+    var ssoCallbackScheme: String? { get }
 
     var currentlyChosenSignUpDomain: String { get set }
     var allSignUpDomains: [String] { get }

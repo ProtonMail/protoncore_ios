@@ -344,6 +344,90 @@ class LoginServiceTests: XCTestCase {
         XCTAssertEqual(sut.ssoCallbackScheme, testScheme)
     }
 
+    func test_getSSORequest_withCallbackScheme_includesFinalRedirectBaseUrl() async {
+        // Given
+        featureFlagsRepositoryMock = FeatureFlagsRepositoryMock()
+        api = APIServiceMock()
+        api.authDelegateStub.fixture = AuthDelegateMock()
+        let dohInterface = DohInterfaceMock()
+        dohInterface.getCurrentlyUsedHostUrlStub.bodyIs { _ in "http://proton.black/api" }
+        dohInterface.getAccountHostStub.bodyIs { _ in "http://account.proton.black" }
+        api.sessionUIDStub.fixture = "sessionUID"
+        api.dohInterfaceStub.fixture = dohInterface
+        api.fetchAuthCredentialsStub.bodyIs { _, completion in
+            completion(.found(credentials: .init(Credential(UID: "", accessToken: "accessToken", refreshToken: "", userName: "", userID: "", scopes: .empty))))
+        }
+
+        sut = LoginService(api: api,
+                           clientApp: .vpn,
+                           minimumAccountType: .external,
+                           featureFlagsRepository: featureFlagsRepositoryMock,
+                           ssoCallbackScheme: "protonvpn")
+
+        // When
+        let ssoResult = await sut.getSSORequest(challenge: .init(ssoChallengeToken: "ssoChallengeToken"))
+
+        // Then
+        XCTAssertNil(ssoResult.error)
+        XCTAssertEqual(ssoResult.request?.url, URL(string: "http://proton.black/api/auth/sso/ssoChallengeToken?FinalRedirectBaseUrl=protonvpn://account.proton.black"))
+        XCTAssertEqual(ssoResult.request?.headers.dictionary, ["x-pm-uid": "sessionUID", "Authorization": "accessToken"])
+    }
+
+    func test_getSSOURL_withCallbackScheme_includesAuthParamsAsQueryItems() async {
+        // Given
+        featureFlagsRepositoryMock = FeatureFlagsRepositoryMock()
+        api = APIServiceMock()
+        api.authDelegateStub.fixture = AuthDelegateMock()
+        let dohInterface = DohInterfaceMock()
+        dohInterface.getCurrentlyUsedHostUrlStub.bodyIs { _ in "http://proton.black/api" }
+        dohInterface.getAccountHostStub.bodyIs { _ in "http://account.proton.black" }
+        api.sessionUIDStub.fixture = "sessionUID"
+        api.dohInterfaceStub.fixture = dohInterface
+        api.fetchAuthCredentialsStub.bodyIs { _, completion in
+            completion(.found(credentials: .init(Credential(UID: "", accessToken: "accessToken", refreshToken: "", userName: "", userID: "", scopes: .empty))))
+        }
+
+        sut = LoginService(api: api,
+                           clientApp: .vpn,
+                           minimumAccountType: .external,
+                           featureFlagsRepository: featureFlagsRepositoryMock,
+                           ssoCallbackScheme: "protonvpn")
+
+        // When
+        let ssoResult = await sut.getSSOURL(challenge: .init(ssoChallengeToken: "ssoChallengeToken"))
+
+        // Then
+        XCTAssertNil(ssoResult.error)
+        let url = ssoResult.url!
+        let components = URLComponents(url: url, resolvingAgainstBaseURL: false)!
+        XCTAssertTrue(url.absoluteString.hasPrefix("http://proton.black/api/auth/sso/ssoChallengeToken"))
+        XCTAssertEqual(components.queryItems?.first(where: { $0.name == "FinalRedirectBaseUrl" })?.value, "protonvpn://account.proton.black")
+        XCTAssertEqual(components.queryItems?.first(where: { $0.name == "x-pm-uid" })?.value, "sessionUID")
+        XCTAssertEqual(components.queryItems?.first(where: { $0.name == "Authorization" })?.value, "accessToken")
+    }
+
+    func test_getSSOURL_withoutCredentials_returnsError() async {
+        // Given
+        featureFlagsRepositoryMock = FeatureFlagsRepositoryMock()
+        api = APIServiceMock()
+        api.authDelegateStub.fixture = AuthDelegateMock()
+        api.fetchAuthCredentialsStub.bodyIs { _, completion in
+            completion(.notFound)
+        }
+        sut = LoginService(api: api,
+                           clientApp: .vpn,
+                           minimumAccountType: .external,
+                           featureFlagsRepository: featureFlagsRepositoryMock,
+                           ssoCallbackScheme: "protonvpn")
+
+        // When
+        let ssoResult = await sut.getSSOURL(challenge: .init(ssoChallengeToken: "ssoChallengeToken"))
+
+        // Then
+        XCTAssertNil(ssoResult.url)
+        XCTAssertNotNil(ssoResult.error)
+    }
+
     func testLoginWithSSO_isSuccessful() {
         let authDelegate = AuthHelper()
         let apiService = APIServiceMock()

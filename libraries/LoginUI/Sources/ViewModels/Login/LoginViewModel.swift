@@ -169,8 +169,16 @@ final class LoginViewModel {
         return nil
     }
 
+    var ssoCallbackScheme: String? {
+        login.ssoCallbackScheme
+    }
+
     func getSSORequest(challenge ssoChallengeResponse: SSOChallengeResponse) async -> (request: URLRequest?, error: String?) {
         await login.getSSORequest(challenge: ssoChallengeResponse)
+    }
+
+    func getSSOURL(challenge ssoChallengeResponse: SSOChallengeResponse) async -> (url: URL?, error: String?) {
+        await login.getSSOURL(challenge: ssoChallengeResponse)
     }
 
     @available(*, deprecated, renamed: "processResponseTokenV2", message: "Remove as part of GSSO")

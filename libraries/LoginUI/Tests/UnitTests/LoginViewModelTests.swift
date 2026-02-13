@@ -135,6 +135,19 @@ final class LoginViewModelTests: XCTestCase {
         XCTAssertNil(tokenFromHost)
     }
 
+    func test_getSSOTokenFromURL_getsTokenFromCustomSchemeCallbackURL() {
+        // Given — callback URL from ASWebAuthenticationSession with custom scheme
+        let token = "92834urjhfog34"
+        let uid = "98h2biw4uaekjf"
+        let url = URL(string: "protonmail://account.proton.me/sso/login#token=\(token)&uid=\(uid)")
+
+        // When
+        let tokenFromHost = sut.getSSOTokenFromURL(url: url)
+
+        // Then
+        XCTAssertEqual(tokenFromHost, .init(token: token, uid: uid))
+    }
+
     // MARK: - GetSSORequest
     private var token: String { "0r8wj34iufe" }
     private var challenge: SSOChallengeResponse { .init(ssoChallengeToken: token) }

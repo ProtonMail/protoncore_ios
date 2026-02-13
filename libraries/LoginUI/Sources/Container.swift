@@ -59,7 +59,8 @@ final class Container {
     init(appName: String,
          clientApp: ClientApp,
          apiService: APIService,
-         initialMinimumAccountTypeForLogin: AccountType) {
+         initialMinimumAccountTypeForLogin: AccountType,
+         ssoCallbackScheme: String? = nil) {
 
         self.appName = appName
         self.clientApp = clientApp
@@ -71,7 +72,7 @@ final class Container {
             PMLog.debug("\(result)")
             #endif
         }
-        self.login = LoginService(api: apiService, clientApp: clientApp, minimumAccountType: initialMinimumAccountTypeForLogin)
+        self.login = LoginService(api: apiService, clientApp: clientApp, minimumAccountType: initialMinimumAccountTypeForLogin, ssoCallbackScheme: ssoCallbackScheme)
         self.signupService = SignupService(api: apiService, clientApp: clientApp)
 
         if let challenge = apiService.challengeParametersProvider.challenge {
