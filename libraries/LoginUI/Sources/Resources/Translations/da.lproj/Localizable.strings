@@ -487,3 +487,7 @@
 "Learn more" = "Få mere at vide";
 
 "**Security tips**" = "**Sikkerhedstips**";
+
+"SSO configuration error" = "SSO konfigurationsfejl";
+
+"Failed to obtain SSO response token" = "Kunne ikke hente SSO-responstoken";

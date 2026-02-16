@@ -487,3 +487,7 @@
 "Learn more" = "Dozvedieť sa viac";
 
 "**Security tips**" = "**Bezpečnostné tipy**";
+
+"SSO configuration error" = "Chyba konfigurácie SSO";
+
+"Failed to obtain SSO response token" = "Nepodarilo sa získať token odpovede SSO";

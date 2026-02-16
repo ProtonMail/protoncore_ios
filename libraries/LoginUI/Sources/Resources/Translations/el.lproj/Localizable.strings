@@ -487,3 +487,7 @@
 "Learn more" = "Μάθετε περισσότερα";
 
 "**Security tips**" = "**Συμβουλές ασφάλειας**";
+
+"SSO configuration error" = "Σφάλμα διαμόρφωσης SSO";
+
+"Failed to obtain SSO response token" = "Αποτυχία λήψης διακριτικού απόκρισης SSO";

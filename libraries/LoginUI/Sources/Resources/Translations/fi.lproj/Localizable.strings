@@ -487,3 +487,7 @@
 "Learn more" = "Lue lisää";
 
 "**Security tips**" = "**Turvallisuusvinkkejä**";
+
+"SSO configuration error" = "SSO-määritysvirhe";
+
+"Failed to obtain SSO response token" = "SSO-vastaustunnuksen hankkiminen epäonnistui";
