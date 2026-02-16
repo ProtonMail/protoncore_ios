@@ -487,3 +487,7 @@
 "Learn more" = "瞭解詳情";
 
 "**Security tips**" = "**安全性提示**";
+
+"SSO configuration error" = "SSO configuration error";
+
+"Failed to obtain SSO response token" = "Failed to obtain SSO response token";

@@ -438,7 +438,7 @@
 
 "Back to settings" = "返回设置";
 
-"How to sign in using another device" = "如何使用其他设备登入";
+"How to sign in using another device" = "如何使用其他设备登录";
 
 "Get another device that’s signed in to your Proton Account" = "获取另一台已登录 Proton 账户的设备";
 
@@ -470,7 +470,7 @@
 
 "Open any Proton app on the device you want to sign in to" = "在要登录的设备上打开任何 Proton 应用程序";
 
-"On the sign-in screen, select **Forgot password** or **Trouble signing in?** (on mobile apps, select **Help**)" = "在登入屏幕上，选择 **忘记密码** 或 **登入遇到问题？** (在移动应用上，选择 **帮助**)";
+"On the sign-in screen, select **Forgot password** or **Trouble signing in?** (on mobile apps, select **Help**)" = "在登录屏幕上，选择 **忘记密码** 或 **登录遇到问题？** (在移动应用中，选择 **帮助**)";
 
 "Select **Sign in with QR code**. A QR code will appear." = "选择 **扫描二维码登录**，此时便会出现一个二维码。";
 
@@ -480,10 +480,14 @@
 
 "Be cautious of messages with QR codes. Only scan a code if you trust the source." = "请谨慎对待带有二维码的信息，只有在您信任来源的情况下才扫描二维码。";
 
-"Proton will never contact you unexpectedly asking you to sign in with a QR code." = "Proton 绝不会突然联系您，并要求您使用二维码登入。";
+"Proton will never contact you unexpectedly asking you to sign in with a QR code." = "Proton 绝不会突然联系您，并要求您使用二维码登录！";
 
 "Proton will never ask you to scan a QR code that’s not from **https://proton.me** or an official Proton app." = "Proton 绝不会要求您扫描来自非 **https://proton.me** 或 Proton 官方应用的二维码。";
 
 "Learn more" = "了解详情";
 
 "**Security tips**" = "**安全提示**";
+
+"SSO configuration error" = "SSO 配置错误";
+
+"Failed to obtain SSO response token" = "获取 SSO 响应令牌失败";

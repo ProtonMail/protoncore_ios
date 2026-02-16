@@ -487,3 +487,7 @@
 "Learn more" = "Ayrıntılı bilgi alın";
 
 "**Security tips**" = "**Güvenlik ipuçları**";
+
+"SSO configuration error" = "Tek oturum açma yapılandırma sorunu";
+
+"Failed to obtain SSO response token" = "Tek oturum açma yanıt kodu alınamadı";

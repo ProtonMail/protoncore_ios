@@ -487,3 +487,7 @@
 "Learn more" = "Mehr erfahren";
 
 "**Security tips**" = "**Sicherheitshinweise**";
+
+"SSO configuration error" = "SSO-Konfigurationsfehler";
+
+"Failed to obtain SSO response token" = "SSO-Antwort-Token konnte nicht abgerufen werden";

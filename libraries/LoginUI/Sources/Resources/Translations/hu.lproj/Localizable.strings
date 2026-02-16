@@ -487,3 +487,7 @@
 "Learn more" = "További információk";
 
 "**Security tips**" = "**Biztonsági tippek**";
+
+"SSO configuration error" = "SSO configuration error";
+
+"Failed to obtain SSO response token" = "Failed to obtain SSO response token";

@@ -487,3 +487,7 @@
 "Learn more" = "더 알아보기";
 
 "**Security tips**" = "**보안 팁**";
+
+"SSO configuration error" = "SSO configuration error";
+
+"Failed to obtain SSO response token" = "Failed to obtain SSO response token";

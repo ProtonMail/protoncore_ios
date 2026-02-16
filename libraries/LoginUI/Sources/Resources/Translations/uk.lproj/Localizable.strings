@@ -487,3 +487,7 @@
 "Learn more" = "Докладніше";
 
 "**Security tips**" = "**Поради з безпеки**";
+
+"SSO configuration error" = "SSO configuration error";
+
+"Failed to obtain SSO response token" = "Failed to obtain SSO response token";

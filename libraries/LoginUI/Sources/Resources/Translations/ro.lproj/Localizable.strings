@@ -487,3 +487,7 @@
 "Learn more" = "Detalii";
 
 "**Security tips**" = "**Sfaturi de securitate**";
+
+"SSO configuration error" = "Eroare de configurare autentificare unică (SSO).";
+
+"Failed to obtain SSO response token" = "Nu s-a putut obține codul de răspuns al autentificării unice (SSO).";
