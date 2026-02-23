@@ -1,0 +1,17 @@
+"The Proton servers are unreachable. It might be caused by wrong network configuration, Proton servers not working or Proton servers being blocked" = "Hindi maabot ang mga Proton server. Maaaring sanhi ito ng maling configuration ng network, hindi gumaganang mga Proton server o naka-block na mga Proton server.";
+
+"An error has occured" = "Nagkaroon ng error";
+
+"Get a Proton Mail address linked to this account in your Proton web settings." = "Kumuha ng Proton Mail address na naka-link sa account na ito sa mga setting ng Proton web.";
+
+"Proton address required" = "Kailangan ng Proton address";
+
+"Code doesn't match" = "Hindi tugma ang code.";
+
+"Code isn't valid" = "Hindi valid ang code";
+
+"Device secret not found" = "Hindi nahanap ang device secret";
+
+"Passphrase not found" = "Hindi nahanap ang passphrase";
+
+"Password update failed" = "Nabigong i-update ang password";

@@ -1,0 +1,135 @@
+"OK" = "OK";
+
+"Cancel" = "Cancel";
+
+"Warning" = "Babala";
+
+"Select a plan" = "Pumili ng plan";
+
+"Current plan" = "Kasalukuyang plan";
+
+"Subscription" = "Subscription";
+
+"Upgrade your plan" = "I-upgrade ang plan mo";
+
+"Only annual subscriptions without auto-renewal are available inside the mobile app." = "Mga taunang subscription na awtomatikong nare-renew lang ang available sa loob ng mobile app.";
+
+"You cannot manage subscriptions inside the mobile application." = "Hindi mo mapamamahalaan ang mga subscription sa loob ng mobile application.";
+
+"Your plan will automatically renew on %@" = "Awtomatikong magre-renew ang plan mo sa %@.";
+
+"Current plan will expire on %@" = "Mag-e-expire ang kasalukuyang plan sa %@.";
+
+"Contact an administrator to make changes to your Proton subscription." = "Makipag-ugnayan sa administrator para baguhin ang subscription mo sa Proton.";
+
+"%1$@ of %2$@" = "%1$@ ng %2$@";
+
+"%@ storage" = "%@ storage";
+
+"%@ storage / user" = "%@ storage / user";
+
+"for %@" = "para sa %@";
+
+"Custom email addresses" = "Mga custom na email address";
+
+"Priority customer support" = "Priyoridad na suporta sa customer";
+
+"Adblocker (NetShield)" = "Adblocker (NetShield)";
+
+"Streaming service support" = "Suporta sa streaming service";
+
+"High speed" = "Napakabilis";
+
+"Highest speed" = "Pinakamabilis";
+
+"Multi-user support" = "Suporta para sa multi-user";
+
+"The basic for private and secure communications." = "Basic para sa pribado at secure na komunikasyon";
+
+"Full-featured mailbox with advanced protection." = "Full-featured na mailbox na may advanced na proteksyon";
+
+"Limited time offer" = "Limitadong alok";
+
+"Complete payment?" = "Kumpletuhin ang pagbabayad?";
+
+"A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "Nasimulan na ang pagbili para sa Proton Bundle plan. Pindutin ang magpatuloy para kumpletuhin ang pagpoproseso ng bayad at gawin ang account mo.";
+
+"Complete payment" = "Kumpletuhin ang pagbabayad";
+
+"The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "Hindi matapos ang proseso ng pag-set up ng account dahil sa hindi inaasahang error.\nPakisubukang muli.";
+
+"The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "Nagsimula na ang proseso ng pagbili ng IAP. Mangyaring sundin ang mga tagubilin ng Apple para kumpletuhin o kanselahin ang pagbili.";
+
+"In app payments are temporarily unavailable." = "Pansamantalang hindi available ang mga pagbabayad sa app.";
+
+"One plan for all Proton services" = "Isang plan para sa lahat ng serbisyo ng Proton";
+
+"The no-cost starter account designed to empower everyone with privacy by default." = "Ang walang bayad na starter account na idinisenyo para bigyang-kapangyarihan ang lahat, na may default na privacy";
+
+"The privacy-first email and calendar solution for your everyday communication needs." = "Ang privacy-first na solusyon sa email at kalendaryo para sa iyong pang-araw-araw na pangangailangan sa komunikasyon";
+
+"Your privacy and security are our priority." = "Priyoridad namin ang privacy at seguridad mo.";
+
+"The storage-focused plan with 200 GB of cloud storage to keep your files private." = "Ang plan na nakatuon sa storage na may 200 GB cloud storage para panatilihing pribado ang mga file mo";
+
+"The ultimate privacy pack with access to all premium Proton services." = "Ang ultimate privacy pack na may access sa lahat ng premium na serbisyo ng Proton";
+
+"Only non-renewing annual subscriptions are available via this app" = "Mga subscription na hindi nare-renew lang ang available gamit ang app na ito.";
+
+"Your subscription cannot be managed inside the mobile app." = "Hindi mapamamahalaan ang subscription mo sa loob ng mobile app.";
+
+"Unlimited folders, labels, and filters" = "Unlimited na folder, label at filter";
+
+"Up to %@ storage" = "Hanggang %@ na storage";
+
+"Free VPN on a single device" = "Libreng VPN sa isang device";
+
+"Highest VPN speed" = "Pinakamabilis na VPN";
+
+"Built-in ad-blocker (NetShield)" = "Built-in na ad-blocker (NetShield)";
+
+"Access to streaming services globally" = "Access sa mga streaming service sa buong mundo";
+
+"Secure Core servers" = "Mga server na Secure Core";
+
+"TOR over VPN" = "Tor over VPN";
+
+"P2P/BitTorrent" = "P2P/BitTorrent";
+
+"Get %@" = "Kunin ang %@";
+
+"Get Proton for free" = "Kunin ang Proton nang libre";
+
+"Extend subscription" = "Pahabain ang subscription";
+
+"%@ of %@" = "%@ ng %@";
+
+"Connection issues" = "Mga isyu sa koneksyon";
+
+"Check your internet connection" = "Suriin ang iyong koneksyon sa internet";
+
+"Strict no-logs policy" = "Mahigpit na patakaran ng walang pagtatala";
+
+"Plan successfully upgraded" = "Matagumpay na na-upgrade ang plan";
+
+"Integrated 2FA authenticator" = "Integrated na 2FA authenticator";
+
+"Priority support" = "Priyoridad na suporta";
+
+"Unlimited devices" = "Unlimited na device";
+
+"Unlimited email aliases" = "Unlimited na alias ng email";
+
+"Unlimited logins and notes" = "Unlimited na pag-log in at tala";
+
+"Custom fields" = "Mga custom na field";
+
+"For next-level password management and identity protection." = "Para sa next-level na pamamahala ng password at proteksyon ng pagkakakilanlan";
+
+"Pay monthly" = "Magbayad nang buwanan";
+
+"Pay annually" = "Magbayad nang taunan";
+
+"Pay every two years" = "Magbayad tuwing 2 taon";
+
+"Free" = "Libre";

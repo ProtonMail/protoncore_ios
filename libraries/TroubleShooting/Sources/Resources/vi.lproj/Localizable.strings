@@ -1,0 +1,49 @@
+"support form" = "biểu mẫu hỗ trợ";
+
+"email" = "email";
+
+"Twitter" = "Twitter";
+
+"Troubleshooting" = "Xử lý sự cố";
+
+"Allow alternative routing" = "Cho phép định tuyến thay thế";
+
+"No internet connection" = "Không có kết nối mạng";
+
+"Internet Service Provider (ISP) problem" = "Gặp vấn đề với Nhà cung cấp dịch vụ Internet (ISP)";
+
+"Government block" = "Bị chặn theo yêu cầu từ chính phủ";
+
+"Antivirus interference" = "Xung đột với công cụ diệt vi-rút";
+
+"Proxy/Firewall interference" = "Xung đột với Proxy/Tường lửa";
+
+"Proton is down" = "Proton đang dừng hoạt động";
+
+"Still can't find a solution" = "Vẫn chưa giải quyết được";
+
+"In case Proton sites are blocked, this setting allows the app to try alternative network routing to reach Proton, which can be useful for bypassing firewalls or network issues. We recommend keeping this setting on for greater reliability. %1$@" = "Trong trường hợp các trang Proton bị chặn, cài đặt này cho phép ứng dụng thử định tuyến mạng thay thế để tiếp cận Proton, điều này có thể giúp vượt qua tường lửa hoặc các sự cố mạng. Chúng tôi khuyến cáo nên giữ thiết lập này để có độ tin cậy cao hơn. %1$@";
+
+"Learn more" = "Tìm hiểu thêm";
+
+"Please make sure that your internet connection is working." = "Vui lòng đảm bảo rằng kết nối Internet của bạn đang hoạt động.";
+
+"Try connecting to Proton from a different network (or use %1$@ or %2$@)." = "Thử kết nối đến Proton từ một mạng khác (hoặc sử dụng %1$@ hay %2$@).";
+
+"Your country may be blocking access to Proton. Try using %1$@ (or any other VPN) or %2$@ to access Proton." = "Quốc gia của bạn có thể đang chặn truy cập vào Proton. Hãy thử sử dụng %1$@ (hoặc bất kỳ VPN nào khác) or %2$@ để truy cập Proton.";
+
+"Temporarily disable or remove your antivirus software." = "Tạm thời vô hiệu hóa hoặc xóa phần mềm chống vi-rút.";
+
+"Disable any proxies or firewalls, or contact your network administrator." = "Vô hiệu hóa mọi proxy hoặc tường lửa, hoặc liên hệ với quản trị mạng của bạn.";
+
+"Check Proton Status for our system status." = "Kiểm tra Trạng thái Proton để biết trạng thái hệ thống của chúng tôi.";
+
+"Proton Status" = "Trạng thái Proton";
+
+"Contact us directly through our support form, email (support@protonmail.zendesk.com), or Twitter." = "Liên hệ trực tiếp với chúng tôi qua biểu mẫu hỗ trợ, email (support@protonmail.zendesk.com) hoặc Twitter.";
+
+"Subject..." = "Chủ đề...";
+
+"Please share your problem." = "Hãy chia sẻ vấn đề của bạn.";
+
+"Back" = "Trở lại";

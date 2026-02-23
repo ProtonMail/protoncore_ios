@@ -1,0 +1,15 @@
+"Delete account" = "Burahin ang account";
+
+"This will permanently delete your account and all of its data. You will not be able to reactivate this account." = "Permanente nitong ide-delete ang account mo at lahat ng data nito. Hindi mo na muling maa-activate ang account na ito.";
+
+"Account deleted.\nLogging out..." = "Na-delete na ang account.\nNagsa-sign out...";
+
+"Close" = "Isara";
+
+"OK" = "OK";
+
+"A networking error has occured" = "Nagkaroon ng networking error";
+
+"The Proton servers are unreachable. It might be caused by wrong network configuration, Proton servers not working or Proton servers being blocked" = "Hindi maabot ang mga Proton server. Maaaring sanhi ito ng maling configuration ng network, hindi gumaganang mga Proton server o naka-block na mga Proton server.";
+
+"Troubleshoot" = "Mag-troubleshoot";

@@ -1,0 +1,49 @@
+"support form" = "แบบฟอร์มฝ่ายสนับสนุน";
+
+"email" = "อีเมล";
+
+"Twitter" = "Twitter";
+
+"Troubleshooting" = "การแก้ไขปัญหา";
+
+"Allow alternative routing" = "อนุญาตให้ใช้เราติ้งสำรอง";
+
+"No internet connection" = "ไม่มีการเชื่อมต่ออินเทอร์เน็ต";
+
+"Internet Service Provider (ISP) problem" = "พบปัญหาจากผู้ให้บริการอินเทอร์เน็ต";
+
+"Government block" = "รัฐบาลปิดกั้น";
+
+"Antivirus interference" = "การรบกวนโปรแกรมป้องกันไวรัส";
+
+"Proxy/Firewall interference" = "การรบกวนจากพร็อกซี/ไฟร์วอลล์";
+
+"Proton is down" = "Proton ขัดข้อง";
+
+"Still can't find a solution" = "ยังไม่พบวิธีแก้ปัญหา";
+
+"In case Proton sites are blocked, this setting allows the app to try alternative network routing to reach Proton, which can be useful for bypassing firewalls or network issues. We recommend keeping this setting on for greater reliability. %1$@" = "ในกรณีที่เว็บไซต์ Proton ถูกบล็อก การตั้งค่านี้จะอนุญาตให้แอปพยายามใช้การกำหนดเส้นทางเครือข่ายทางเลือกเพื่อเข้าถึง Proton ซึ่งอาจเป็นประโยชน์สำหรับการเลี่ยงไฟร์วอลล์หรือปัญหาเครือข่าย ขอแนะนำให้เปิดการตั้งค่านี้ไว้เพื่อความเสถียรที่ดียิ่งขึ้น %1$@";
+
+"Learn more" = "เรียนรู้เพิ่มเติม";
+
+"Please make sure that your internet connection is working." = "โปรดตรวจสอบให้แน่ใจว่าการเชื่อมต่ออินเทอร์เน็ตทำงานอยู่";
+
+"Try connecting to Proton from a different network (or use %1$@ or %2$@)." = "ลองเชื่อมต่อกับ Proton จากเครือข่ายอื่น (หรือใช้ %1$@ หรือ %2$@)";
+
+"Your country may be blocking access to Proton. Try using %1$@ (or any other VPN) or %2$@ to access Proton." = "ประเทศอาจกำลังบล็อกการเข้าถึง Proton ลองใช้ %1$@ (หรือ VPN อื่น) หรือ %2$@ เพื่อเข้าถึง Proton";
+
+"Temporarily disable or remove your antivirus software." = "ปิดใช้งานหรือลบซอฟต์แวร์ป้องกันไวรัสออกชั่วคราว";
+
+"Disable any proxies or firewalls, or contact your network administrator." = "ปิดการใช้ตัวกลางพร็อกซี่ หรือ ตัวกรองข้อมูลสื่อสารไฟร์วอล ไม่เช่นนั้น ให้ติดต่อผู้ดูแลเครือข่ายระบบ";
+
+"Check Proton Status for our system status." = "ตรวจสอบสถานะของ Proton เพื่อสถานะของระบบเรา";
+
+"Proton Status" = "สถานะ Proton";
+
+"Contact us directly through our support form, email (support@protonmail.zendesk.com), or Twitter." = "ติดต่อเราโดยตรงผ่านการกรอกข้อมูลผ่าน support form หรือส่งข้อความผ่านอีเมล (support@protonmail.zendesk.com) หรือผ่าน Twitter";
+
+"Subject..." = "เรื่อง...";
+
+"Please share your problem." = "โปรดแชร์ปัญหา";
+
+"Back" = "กลับ";

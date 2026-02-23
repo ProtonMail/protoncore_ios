@@ -1,0 +1,47 @@
+"Contact customer support" = "ติดต่อฝ่ายสนับสนุนลูกค้า";
+
+"Failed to get list of available products from App Store." = "ไม่สามารถดึงรายการผลิตภัณฑ์ที่มีอยู่จาก App Store ได้";
+
+"Purchase is not possible." = "ไม่สามารถทำรายการซื้อได้";
+
+"Apple informed us you've upgraded the service plan, but some technical data was missing. Please fill in the bug report and our customer support team will contact you." = "Apple แจ้งว่ามีการอัปเกรดแผนบริการแล้ว แต่ข้อมูลทางเทคนิคบางอย่างหายไป โปรดกรอกรายงานบั๊กและทีมฝ่ายสนับสนุนลูกค้าจะติดต่อกลับ";
+
+"Apple informed us you've upgraded the service plan, but we detected you have logged out of the account since then." = "Apple แจ้งว่ามีการอัปเกรดแผนบริการแล้ว แต่ระบบตรวจพบว่ามีการออกจากระบบบัญชีตั้งแต่นั้นมา";
+
+"It wasn't possible to match your purchased App Store product to any products on our server. Please fill in the bug report and our customer support team will contact you." = "ไม่สามารถจับคู่ผลิตภัณฑ์ App Store ที่ซื้อกับผลิตภัณฑ์ใดๆ บนเซิร์ฟเวอร์ได้ โปรดกรอกรายงานบั๊กและทีมฝ่ายสนับสนุนลูกค้าจะติดต่อกลับ";
+
+"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the purchase." = "โปรดเข้าสู่ระบบบัญชี Proton Mail ที่กำลังอัปเกรดแผนบริการ เพื่อให้สามารถดำเนินการซื้อให้เสร็จสมบูรณ์ได้";
+
+"Apple informed us they could not process the purchase." = "Apple แจ้งว่าไม่สามารถดำเนินการซื้อได้";
+
+"We have successfully activated your subscription. Please relaunch the app to start using your new service plan." = "เปิดใช้งานการสมัครสมาชิกสำเร็จแล้ว โปรดเปิดแอปใหม่อีกครั้งเพื่อเริ่มใช้แผนบริการใหม่";
+
+"Please unlock the app to proceed with your service plan activation" = "โปรดปลดล็อกแอปเพื่อดำเนินการเปิดใช้งานแผนบริการต่อ";
+
+"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the service plan activation." = "โปรดเข้าสู่ระบบบัญชี Proton Mail ที่กำลังอัปเกรดแผนบริการ เพื่อให้สามารถดำเนินการเปิดใช้งานแผนบริการให้เสร็จสมบูรณ์ได้";
+
+"Wrong payment token status. Please relaunch the app. If error persists, contact support." = "สถานะโทเค็นการชำระเงินไม่ถูกต้อง โปรดเปิดแอปใหม่อีกครั้ง หากยังพบข้อผิดพลาด โปรดติดต่อฝ่ายสนับสนุน";
+
+"Do you want to activate the purchase for %@ address?" = "ต้องการเปิดใช้งานการซื้อสำหรับที่อยู่ %@ หรือไม่?";
+
+"Yes, activate it for " = "ใช่ เปิดใช้งานสำหรับ ";
+
+"No, for another Proton Mail account" = "ไม่ใช่ สำหรับบัญชี Proton Mail อื่น";
+
+"We were unable to upgrade your account to the plan you selected, so we added your payment as credits to your account. For more information and to complete your upgrade, please contact Support." = "ไม่สามารถอัปเกรดบัญชีเป็นแผนที่เลือกได้ จึงได้เพิ่มยอดชำระเงินเป็นเครดิตในบัญชี สำหรับข้อมูลเพิ่มเติมและเพื่อดำเนินการอัปเกรดให้เสร็จสมบูรณ์ โปรดติดต่อฝ่ายสนับสนุน";
+
+"Contact Support" = "ติดต่อฝ่ายสนับสนุน";
+
+"Dismiss" = "ปิดไป";
+
+"Payment failed" = "การชำระเงินล้มเหลว";
+
+"You have successfully registered but your payment was not processed. To resend your payment information, click Retry. You will only be charged once. If the problem persists, please contact customer support." = "ลงทะเบียนสำเร็จแล้วแต่การชำระเงินไม่ได้รับการดำเนินการ หากต้องการส่งข้อมูลการชำระเงินอีกครั้ง ให้คลิก \"ลองอีกครั้ง\" จะมีการเรียกเก็บเงินเพียงครั้งเดียว หากปัญหายังคงอยู่ โปรดติดต่อฝ่ายสนับสนุนลูกค้า";
+
+"Retry" = "ลองอีกครั้ง";
+
+"OK" = "ตกลง";
+
+"The Proton servers are unreachable. It might be caused by wrong network configuration, Proton servers not working or Proton servers being blocked" = "ไม่สามารถติดต่อเซิร์ฟเวอร์ Proton ได้ อาจเกิดจากการกำหนดค่าเครือข่ายผิดพลาด เซิร์ฟเวอร์ Proton ไม่ทำงาน หรือเซิร์ฟเวอร์ Proton ถูกบล็อก";
+
+"The signed-in Apple account already purchased this item." = "บัญชี Apple ที่เข้าสู่ระบบอยู่ได้ซื้อรายการนี้ไปแล้ว";

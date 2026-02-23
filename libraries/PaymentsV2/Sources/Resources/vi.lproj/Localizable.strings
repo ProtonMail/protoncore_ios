@@ -1,0 +1,33 @@
+"APIs_malformed_url_request" = "Đã xảy ra sự cố và chúng tôi không thể thực hiện yêu cầu. Nếu sự cố vẫn tiếp diễn, vui lòng liên hệ với bộ phận hỗ trợ khách hàng.";
+
+"Plans_Manager_impossible_to_get_user_uuid" = "Không thể lấy UUID của người dùng cho giao dịch";
+
+"Plans_Manager_impossible_to_match_plan" = "Không thể khớp Gói Proton với gói Apple Store";
+
+"Plans_Manager_impossible_to_restore_transactions" = "Không thể khôi phục giao dịch, vui lòng liên hệ với bộ phận hỗ trợ khách hàng";
+
+"Plans_Manager_Transaction_cancelled_by_user" = "Người dùng đã hủy giao dịch";
+
+"Plans_Manager_Transaction_unknown_error" = "Đã xảy ra lỗi ngoài ý muốn, nếu sự cố vẫn tiếp diễn, vui lòng liên hệ với bộ phận hỗ trợ khách hàng";
+
+"Plans_Manager_peding_transaction_received" = "Nhận được giao dịch đang chờ xử lý ngoài ý muốn";
+
+"PlansComposer_unable_to_fetch_currentSub" = "Không thể tìm nạp gói đăng ký hiện tại";
+
+"Remote_manager_error" = "Đã xảy ra sự cố và chúng tôi không thể thực hiện yêu cầu. Nếu sự cố vẫn tiếp diễn, vui lòng liên hệ với bộ phận hỗ trợ khách hàng.";
+
+"SK_Receipt_impossible_to_get_receipt" = "Không thể lấy dữ liệu biên nhận giao dịch từ Apple";
+
+"SK_Receipt_task_not_found" = "Unable to process transaction due to an unexpected error, please try again.";
+
+"Transaction_Handler_plan_not_found" = "Không thể tìm thấy tên gói bạn đang mua. Nếu sự cố vẫn tiếp diễn, vui lòng liên hệ với bộ phận hỗ trợ khách hàng";
+
+"Transaction_Handler_repeated_purchase" = "Không thể gia hạn nhiều lần gói đã chọn. Nếu bạn cho rằng đây là lỗi hoặc nếu sự cố vẫn tiếp diễn, vui lòng liên hệ với bộ phận hỗ trợ khách hàng";
+
+"Transaction_Handler_receipt_update_failed" = "Đã xảy ra lỗi khi yêu cầu biên nhận giao dịch từ Apple. Nếu sự cố vẫn tiếp diễn, vui lòng liên hệ với bộ phận hỗ trợ khách hàng";
+
+"PayUpFront_offer_description" = "Cho phép người đăng ký mới thanh toán với giá giới thiệu một lần trong một khoảng thời gian cụ thể, sau đó họ sẽ phải thanh toán gói đăng ký với giá thông thường.";
+
+"PayAsYouGo_offer_description" = "Cho phép người đăng ký mới thanh toán với giá giới thiệu cho một số kỳ thanh toán cụ thể trước khi chuyển sang giá gói đăng ký thông thường.";
+
+"FreeTrial_offer_description" = "Cho phép người đăng ký mới truy cập gói đăng ký trong một số chu kỳ thanh toán nhất định. Khi hết hạn, người dùng thanh toán với giá đầy đủ.";

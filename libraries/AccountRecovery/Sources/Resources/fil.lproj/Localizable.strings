@@ -1,0 +1,81 @@
+"Settings_Item" = "Pag-reset ng password";
+
+"Insecure_View_Title" = "Pag-reset ng password";
+
+"Cancelled_View_Title" = "Pag-reset ng password";
+
+"Grace_View_Title" = "Pag-reset ng password";
+
+"We received a password reset request for **%@**." = "Nakatanggap kami ng request para sa pag-reset ng password para sa **%@**.";
+
+"We received a password reset request for %@." = "Nakatanggap kami ng request para sa pag-reset ng password para sa %@.";
+
+"If you didn't ask to reset your password, **cancel this request now**." = "Kung hindi mo ni-request na i-reset ang password mo, **kanselahin ang request na ito ngayon**.";
+
+"If you didn't ask to reset your password, cancel this request now." = "Kung hindi mo ni-request na i-reset ang password mo, kanselahin ang request na ito ngayon.";
+
+"Password reset requested" = "Ni-request na i-reset ang password";
+
+"Insecure_View_line1" = "Maaari mo nang palitan ang password mo para sa account. ";
+
+"You can change your password in %@." = "Maaari mong palitan ang password mo sa %@.";
+
+"To make sure it's really you trying to reset your password, we wait 72 hours before approving requests." = "Para matiyak na ikaw talaga ang sumusubok na i-reset ang password mo, naghihintay kami ng 72 oras bago aprubahan ang mga request.";
+
+"Insecure_View_line2" = " nang malaya sa panahon ng ";
+
+"Insecure_View_line3" = "Mangyaring pumunta sa naka-sign in na device (sa session kung saan sinimulan ang request) para palitan ang password mo.";
+
+"Grace_View_Cancel_Button_CTA" = "Kanselahin ang request";
+
+"Grace_View_Undefined_Time_Left" = "ilang oras";
+
+"Settings_Item_Value_Grace" = "Nakabinbin";
+
+"Settings_Item_Value_Expired" = "Nag-expire na";
+
+"Settings_Item_Value_Cancelled" = "Kinansela";
+
+"Settings_Item_Value_Insecure" = "Available";
+
+"Insecure_View_Cancel_Button_CTA" = "Kanselahin ang pag-reset";
+
+"If you didn't ask to reset your password, **cancel this request now**." = "Kung hindi mo ni-request na i-reset ang password mo, **kanselahin ang request na ito ngayon**.";
+
+"If you didn't ask to reset your password, cancel this request now." = "Kung hindi mo ni-request na i-reset ang password mo, kanselahin ang request na ito ngayon.";
+
+"We received a password reset request for **%@**." = "Nakatanggap kami ng request para sa pag-reset ng password para sa **%@**.";
+
+"We received a password reset request for %@." = "Nakatanggap kami ng request para sa pag-reset ng password para sa %@.";
+
+"Password reset cancelled" = "Kinansela ang pag-reset ng password";
+
+"Cancelled by the user" = "Kinansela ng user";
+
+"Authenticated in another session" = "Na-authenticate sa ibang session";
+
+"none" = "wala";
+
+"The account recovery process expired due to inaction" = "Nag-expire ang proseso ng pag-recover ng account dahil sa kawalan ng aksyon.";
+
+"If you never made a password reset request, someone else could have access to your account. **Change your password now**" = "Kung hindi ka kailanman gumawa ng request ng pag-reset ng password, maaaring may ibang taong may access sa account mo. **Palitan ang password mo ngayon.**";
+
+"If you never made a password reset request, someone else could have access to your account. Change your password now" = "Kung hindi ka kailanman gumawa ng request ng pag-reset ng password, maaaring may ibang taong may access sa account mo. Palitan ang password mo ngayon.";
+
+"The account recovery process expired due to inaction" = "Nag-expire ang proseso ng pag-recover ng account dahil sa kawalan ng aksyon.";
+
+"Recovery process not started" = "Hindi nasimulan ang proseso ng pag-recover.";
+
+"Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "Kasalukuyang walang isinasagawang pag-recover ng account. Mangyaring pumunta sa isang session sa web application para i-recover ang password mo.";
+
+"You can now reset your password" = "Maaari mo nang i-reset ang password mo.";
+
+"Reset available until %@." = "Available ang pag-reset hanggang %@.";
+
+"Change device to continue" = "Magpalit ng device upang magpatuloy.";
+
+"To reset your password, go back to your active session on **the originating device**." = "Para i-reset ang password mo, bumalik sa aktibong session mo sa **pinagmulang device**.";
+
+"To reset your password, go back to your active session on the originating device." = "Para i-reset ang password mo, bumalik sa aktibong session mo sa pinagmulang device.";
+
+"You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now." = "Mayroon kang %@ para i-reset ang password mo.\nKailangan mo itong gawin sa device at browser kung saan mo ginawa ang request ng pag-reset ng password.\nKung hindi mo ni-request na i-reset ang password mo, kanselahin ang request ngayon.";

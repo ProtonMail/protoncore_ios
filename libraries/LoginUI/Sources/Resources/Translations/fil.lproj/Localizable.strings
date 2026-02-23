@@ -1,0 +1,493 @@
+"Privacy by default" = "Privacy by default";
+
+"Proton address required" = "Kailangan ng Proton address";
+
+"Update required" = "Kailangang mag-update";
+
+"Please enter your Proton Account password." = "Pakilagay ang password ng Proton Account mo.";
+
+"OK" = "OK";
+
+"Help" = "Tulong";
+
+"Continue" = "Magpatuloy";
+
+"Password" = "Password";
+
+"The Proton servers are unreachable. It might be caused by wrong network configuration, Proton servers not working or Proton servers being blocked" = "Hindi maabot ang mga Proton server. Maaaring sanhi ito ng maling configuration ng network, hindi gumaganang mga Proton server o naka-block na mga Proton server.";
+
+"Search country" = "Hanapin ang bansa";
+
+"Code sent to %@" = "Ipinadala ang code sa %@";
+
+"Request new code?" = "Mag-request ng bagong code?";
+
+"Resend" = "Ipadala muli";
+
+"Get a replacement code sent to %@." = "Magpadala ng kapalit na code sa %@.";
+
+"Request new code" = "Mag-request ng bagong code";
+
+"Enter your Proton Account details." = "Ilagay ang mga detalye ng Proton Account mo.";
+
+"Email or username" = "Email o username";
+
+"Sign in" = "Sign in";
+
+"Sign in with password" = "Mag-sign in gamit ang password";
+
+"Sign in with SSO" = "Mag-sign in gamit ang SSO";
+
+"Sign in with a QR code" = "Mag-sign in gamit ang QR code";
+
+"Sign in to your organization" = "Mag-sign in sa organisasyon mo";
+
+"Create an account" = "Gumawa ng account";
+
+"How can we help?" = "Paano kami makakatulong?";
+
+"Forgot username" = "Nakalimutan ang username";
+
+"Forgot password" = "Nakalimutan ang password";
+
+"Other sign-in issues" = "Iba pang isyu sa pag-sign in";
+
+"Customer support" = "Suporta sa customer";
+
+"Still need help? Contact us directly." = "Kailangan pa rin ng tulong? Direktang makipag-ugnayan sa amin.";
+
+"Please enter your Proton Account email or username." = "Pakilagay ang email o username ng Proton Account mo.";
+
+"Complete Setup" = "Kumpletuhin ang Pag-set up";
+
+"Your account is missing keys, please sign in on web to automatically generate required keys. Once you have signed in on web, please return to the app and sign in." = "Kulang ng mga key ang account mo. Mangyaring mag-sign in sa web para awtomatikong mag-generate ng mga kinakailangang key. Kapag nakapag-sign in ka na sa web, mangyaring bumalik sa app at mag-sign in.";
+
+"Account setup required" = "Kailangan mag-set up ng account";
+
+"Incorrect mailbox password" = "Maling password ng mailbox";
+
+"Your session has expired. Please log in again." = "Nag-expire na ang session mo. Mangyaring mag-log in muli.";
+
+"Proton address required" = "Kailangan ng Proton address";
+
+"You need a Proton email address to use Proton Mail and Proton Calendar.\nYou’ll still be able to use %@ to sign in, and to recover your account." = "Kailangan mo ng Proton email address para magamit ang Proton Mail at Proton Calendar.\nMagagamit mo pa rin ang %@ upang mag-sign in at para ma-recover ang account mo.";
+
+"Username" = "Username";
+
+"Please enter a username." = "Mangyaring maglagay ng username.";
+
+"Unlock your mailbox" = "I-unlock ang mailbox";
+
+"Mailbox password" = "Password ng mailbox";
+
+"Unlock" = "I-unlock";
+
+"Forgot password" = "Nakalimutan ang password";
+
+"Two-factor authentication" = "Two-factor authentication";
+
+"Authenticate" = "Mag-authenticate";
+
+"Two-factor code" = "Two-factor code";
+
+"Recovery code" = "Recovery code";
+
+"Use recovery code" = "Gamitin ang recovery code";
+
+"Use two-factor code" = "Gumamit ng two-factor code";
+
+"Enter the 6-digit code." = "Ilagay ang 6-digit code.";
+
+"Enter an 8-character recovery code." = "Ilagay ang 8-character recovery code.";
+
+"Learn more" = "Matuto pa";
+
+"Change your password" = "Palitan ang password mo";
+
+"Change password" = "Palitan ang password";
+
+"To use the Proton app as a member of an organization, you first need to change your password by signing into Proton through a browser." = "Para magamit ang Proton app bilang miyembro ng isang organisasyon, kailangan mo munang palitan ang password mo sa pamamagitan ng pag-sign in sa Proton gamit ang isang browser.";
+
+"Error occured" = "Nagkaroon ng error";
+
+"Create your Proton Account" = "Gumawa ng Proton Account";
+
+"One account for all Proton services." = "Isang account para sa lahat ng serbisyo ng Proton.";
+
+"Next" = "Susunod";
+
+"Use your current email instead" = "Gamitin ang kasalukuyang email";
+
+"Create a secure Proton Mail address instead" = "Gumawa ng secure na Proton Mail address";
+
+"Email" = "Email";
+
+"Create your password" = "Gumawa ng password";
+
+"Password must contain at least 8 characters" = "Dapat maglaman ang password ng hindi bababa sa 8 character.";
+
+"Repeat password" = "Ulitin ang password";
+
+"Domain" = "Domain";
+
+"Set recovery method" = "Magtakda ng paraan ng pag-recover";
+
+"Set recovery method (optional)" = "Magtakda ng paraan ng pag-recover (opsyonal)";
+
+"We will send recovery instructions to this email or phone number if you get locked out of your account." = "Magpapadala kami ng mga tagubilin sa pag-recover sa email o phone number na ito kung hindi mo ma-access ang account mo.";
+
+"Email" = "Email";
+
+"Phone" = "Telepono";
+
+"Recovery email" = "Recovery email";
+
+"Recovery phone number" = "Recovery phone number";
+
+"By clicking Next, you agree with Proton's Terms and Conditions" = "Sa pag-click sa Susunod, sumasang-ayon ka sa mga Tuntunin at Kondisyon ng Proton.";
+
+"By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "Sa pag-click sa Susunod, sumasang-ayon ka sa Mga Tuntunin at Kondisyon at Patakaran sa Privacy ng Proton.";
+
+"Terms and Conditions" = "Mga Tuntunin at Kondisyon";
+
+"Privacy Policy" = "Patakaran sa Privacy";
+
+"Skip" = "Laktawan";
+
+"Skip recovery method?" = "Laktawan ang paraan ng pag-recover?";
+
+"A recovery method will help you access your account in case you forget your password or get locked out of your account." = "Makakatulong ang paraan ng pag-recover na ma-access mo ang account mo kung sakaling makalimutan mo ang password mo o hindi mo ma-access ang account mo.";
+
+"Set recovery method" = "Magtakda ng paraan ng pag-recover";
+
+"Your account is being created" = "Ginagawa na ang account mo.";
+
+"This should take no more than a minute." = "Hindi ito tatagal nang higit sa isang minuto.";
+
+"Creating your account" = "Ginagawa na ang account mo";
+
+"Generating your address" = "Gini-generate ang address mo";
+
+"Securing your account" = "Sine-secure ang account mo";
+
+"Verifying your payment" = "Bini-verify ang bayad";
+
+"Account verification" = "Pag-verify ng account";
+
+"For your security, we must verify that the address you entered belongs to you. We sent a verification code to %@. Please enter the code below:" = "Para sa seguridad mo, kailangan naming i-verify na sa iyo talaga ang inilagay mong address. Nagpadala kami ng verification code sa %@. Pakilagay ang code sa ibaba:";
+
+"Verification code" = "Verification code";
+
+"Enter the 6-digit code." = "Ilagay ang 6-digit code.";
+
+"Did not receive a code?" = "Hindi nakatanggap ng code?";
+
+"Terms and Conditions" = "Mga Tuntunin at Kondisyon";
+
+"Privacy Policy" = "Patakaran sa Privacy";
+
+"Invalid token request" = "Hindi valid na token request";
+
+"Invalid token error" = "Error sa hindi valid na token";
+
+"Create user failed" = "Nabigo ang paggawa ng user";
+
+"Invalid hashed password" = "Hindi valid na naka-hash na password";
+
+"Password can not be empty.\nPlease try again." = "Hindi maaaring walang laman ang password.\nPakisubukang muli.";
+
+"Passwords do not match.\nPlease try again." = "Hindi magkatugma ang mga password.\nPakisubukang muli.";
+
+"Email address already used." = "Nagamit na ang email address.";
+
+"Please ask your admin to configure your sub-user." = "Mangyaring pakiusapan ang admin mo na i-configure ang sub-user mo.";
+
+"Would you like to receive a new verification code or use an alternate email address?" = "Gusto mo bang makatanggap ng bagong verification code o gumamit ng alternatibong email address?";
+
+"Change email address" = "Palitan ang email address";
+
+"Congratulations" = "Congratulations";
+
+"Your Proton Free account was successfully created." = "Matagumpay na nagawa ang Proton Free account mo.";
+
+"Proton Free" = "Proton Free";
+
+"Your payment was confirmed and your %@ account successfully created." = "Nakumpirma ang pagbabayad mo at matagumpay na nagawa ang %@ account mo.";
+
+"Your Proton account was successfully created." = "Matagumpay na nagawa ang Proton account mo.";
+
+"Enjoy the world of privacy." = "I-enjoy ang mundo ng privacy.";
+
+"Cancel" = "Cancel";
+
+"Sign in" = "Sign in";
+
+"Troubleshoot" = "Mag-troubleshoot";
+
+"Please choose how you want to confirm your identity." = "Mangyaring piliin kung paano mo gustong kumpirmahin ang pagkakakilanlan mo.";
+
+"One-time code" = "One-time code";
+
+"Security key" = "Security key";
+
+"Two-Factor Authentication" = "Two-Factor Authentication";
+
+"Present a security key linked to your Proton Account." = "Magpakita ng security key na naka-link sa Proton Account mo.";
+
+"Learn more" = "Matuto pa";
+
+"Invalid state. Please quit the app and try again in a few minutes." = "Hindi valid na estado. Paki-quit ang app at subukang muli pagkalipas ng ilang minuto.";
+
+"There was a problem reading your security key." = "Nagkaproblema sa pagbasa ng security key mo.";
+
+"We received an authorization from a type we don't support yet." = "Nakatanggap kami ng awtorisasyon mula sa isang uri na hindi pa namin suportado.";
+
+"Fetching your security keys details" = "Kinukuha ang mga detalye ng security key mo";
+
+"You don't yet have any security keys enrolled in your account. Please visit the settings section on our website to add security keys." = "Wala ka pang anumang security key na naka-enroll sa account mo. Mangyaring bisitahin ang seksyon ng mga setting sa website namin para magdagdag ng mga security key.";
+
+"An error occurred fetching your security keys. You can also check them on the Proton %@ website." = "Nagkaroon ng error sa pagkuha ng mga security key mo. Maaari mo ring tingnan ang mga ito sa Proton %@ website.";
+
+"These are the security keys registered to your account" = "Ito ang mga security key na nakarehistro sa account mo.";
+
+"You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys." = "Wala ka pang anumang security key na naka-enroll sa account mo. Mangyaring gamitin ang Proton %@ web application para magdagdag ng mga security key.";
+
+"Security Keys" = "Mga Security Key";
+
+"To manage, add, or remove security keys, please use the Proton %@ web application." = "Para pamahalaan, magdagdag o mag-alis ng mga security key, mangyaring gamitin ang Proton %@ web application.";
+
+"Unexpected FIDO2 signature." = "Hindi inaasahang FIDO2 signature";
+
+"We could not initiate the Secure Password update connection. Please try again." = "Hindi namin masimulan ang koneksyon sa pag-update ng Secure Password. Pakisubukang muli.";
+
+"Join %@" = "Sumali sa %@";
+
+"%@ added you to their Proton organization." = "Idinagdag ka ni %@ sa kanilang organisasyon sa Proton.";
+
+"Continue" = "Magpatuloy";
+
+"Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "Magtakda ng backup password para magpatuloy. Papayagan ka ng password na ito na mag-sign in at ma-recover ang data mo kung hindi mo ma-access ang Proton Account mo, kaya siguraduhing itago ito sa ligtas na lugar.";
+
+"Backup password" = "Backup password";
+
+"Repeat backup password" = "Ulitin ang backup password";
+
+"Password cannot be empty" = "Hindi maaaring walang laman ang password.";
+
+"Password must contain at least 8 characters" = "Dapat maglaman ang password ng hindi bababa sa 8 character.";
+
+"Password doesn't match" = "Hindi tugma ang password.";
+
+"Sign-in requested on another device. Was it you?" = "Nire-request ang pag-sign in sa ibang device. Ikaw ba iyon?";
+
+"Enter the confirmation code we sent on your other device for %@." = "Ilagay ang confirmation code na ipinadala namin sa ibang device mo para sa %@.";
+
+"Confirmation code" = "Confirmation code";
+
+"If you didn't make this request, cancel it now." = "Kung hindi ikaw ang gumawa ng request na ito, kanselahin ito ngayon.";
+
+"Yes, it was me" = "Oo, ako iyon.";
+
+"No, it wasn't me" = "Hindi, hindi ako iyon.";
+
+"Share the confirmation code with your administrator" = "I-share ang confirmation code sa administrator mo";
+
+"Approve the sign-in from another device" = "Aprubahan ang pag-sign in mula sa ibang device";
+
+"To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@." = "Para matiyak na ikaw talaga ang sumusubok na mag-sign in, i-share ang confirmation code sa administrator mo %@ para maaprubahan nila ang request para sa %@.";
+
+"To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "Para matiyak na ikaw talaga ang sumusubok na mag-sign in sa account mo, suriin ang confirmation code at aprubahan ang request mula sa ibang device.";
+
+"Use backup password instead" = "Gamitin ang backup password";
+
+"Ask administrator for help" = "Humingi ng tulong sa administrator";
+
+"Devices available:" = "Mga available na device:";
+
+"Operation couldn't be completed. Please try again." = "Hindi makumpleto ang operasyon. Pakisubukang muli.";
+
+"Enter your backup password" = "Ilagay ang backup password mo";
+
+"To make sure it’s really you trying to sign-in, please enter your backup password." = "Para matiyak na ikaw talaga ang sumusubok na mag-sign in, pakilagay ang backup password mo.";
+
+"Access granted" = "Ipinagkaloob ang access";
+
+"Access denied" = "Tinanggihan ang access";
+
+"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "Para sa seguridad mo, na-sign out ka sa lahat ng iba pang aktibong device mo. Bago ma-access ang account mo, kailangan mong maglagay ng bagong backup password.";
+
+"Contact your administrator if the problem persists." = "Makipag-ugnayan sa administrator mo kung magpatuloy ang problema.";
+
+"Back to sign-in" = "Bumalik sa pag-sign in";
+
+"Ask your administrator for access?" = "Humingi ng access sa administrator mo?";
+
+"This will sign you out of your other devices and you will have to create a new backup password." = "Isa-sign out ka nito sa iba pang mga device mo at kailangan mong gumawa ng bagong backup password.";
+
+"Grant access to user?" = "Bigyan ng access ang user?";
+
+"%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user." = "Humihingi ng tulong si %@ para mag-sign in sa kanilang Proton Account gamit ang single sign-on.\n\nIlagay ang confirmation code na ipinadala namin sa user na ito.";
+
+"Grant access" = "Bigyan ng access";
+
+"Deny access" = "Tanggihan ang access";
+
+"Signing you in" = "Sina-sign in ka";
+
+"to your organization" = "sa organisasyon mo";
+
+"Sign in with single sign-on" = "Mag-sign in gamit ang single sign-on";
+
+"Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "Gumagamit ng SSO ang organisasyon mo. Magpatuloy sa pag-sign in gamit ang third-party SSO provider mo.";
+
+"Unknown" = "Hindi alam";
+
+"Set backup password" = "Magtakda ng backup password";
+
+"Email is invalid" = "Hindi valid ang email.";
+
+"Please enter your Proton Account email." = "Pakilagay ang email ng Proton Account mo.";
+
+"Password not valid" = "Hindi valid ang password";
+
+"Passphrase not found" = "Hindi nahanap ang passphrase";
+
+"Open the Proton app on your phone" = "Buksan ang Proton app sa telepono mo";
+
+"Tap into Settings, then tap Sign in to another device" = "I-tap ang Mga Setting, at pagkatapos ay i-tap ang Mag-sign in sa ibang device.";
+
+"Tap Scan QR code" = "I-tap ang I-scan ang QR code.";
+
+"Scan this code with your phone camera to sign in instantly." = "I-scan ang code na ito gamit ang camera ng telepono mo para mag-sign in agad.";
+
+"Sign in to another device" = "Mag-sign in sa ibang device";
+
+"Sign in with your QR code" = "Mag-sign in gamit ang QR code";
+
+"Use this device to scan the QR code displayed on the device you want to sign in to. Both devices will stay active." = "Gamitin ang device na ito para i-scan ang QR code na ipinapakita sa device kung saan gusto mong mag-sign in. Mananatiling aktibo ang parehong device.";
+
+"To access the QR code, tap the **Sign in with QR code** button on the sign-in screen." = "Para ma-access ang QR code, i-tap ang button na **Mag-sign in gamit ang QR code** sa sign-in screen.";
+
+"Watch out for messages that contain a QR code. Never scan a QR code from a website or a person you don't trust." = "Mag-ingat sa mga mensaheng naglalaman ng QR code. Huwag kailanman mag-scan ng QR code mula sa isang website o taong hindi mo pinagkakatiwalaan.";
+
+"Proton will never ask you to scan a QR code that does not come from the domain **proton.me**." = "Hinding-hindi ka papakiusapan ng Proton na mag-scan ng QR code na hindi galing sa domain na **proton.me**.";
+
+"Scan QR code" = "I-scan ang QR code";
+
+"Authenticate to access the QR code scanner" = "Mag-authenticate para ma-access ang QR code scanner";
+
+"Place QR code within the square" = "Ilagay ang QR code sa loob ng parisukat";
+
+"Verifying..." = "Bini-verify...";
+
+"You’re signed in to %@ on the other device." = "Naka-sign in ka sa %@ sa kabilang device.";
+
+"You're signed in" = "Naka-sign in ka na.";
+
+"Got it" = "Naintindihan";
+
+"Code not recognized. Try again." = "Hindi nakilala ang code. Subukang muli.";
+
+"Tip: Never scan a QR code from a website or a person you don’t trust. Proton will never ask you to scan a QR code that doesn’t come from the domain account.proton.me." = "Tip: Huwag kailanman mag-scan ng QR code mula sa isang website o taong hindi mo pinagkakatiwalaan. Hinding-hindi ka papakiusapan ng Proton na mag-scan ng QR code na hindi galing sa domain na account.proton.me.";
+
+"Camera Access Denied." = "Tinanggihan ang Access sa Camera.";
+
+"The permission to use the Camera is off. Please enable it from the Settings." = "Naka-off ang pahintulot na gamitin ang Camera. Paki-enable ito mula sa Mga Setting.";
+
+"Go to Settings" = "Pumunta sa Mga Setting";
+
+"to Proton %@" = "sa Proton %@";
+
+"Something went wrong" = "May nangyaring mali.";
+
+"We couldn't sign you in. Please scan a new QR code to try again." = "Hindi ka namin mai-sign in. Paki-scan ang bagong QR code para subukang muli.";
+
+"We couldn't sign you in. Please sign in with your password." = "Hindi ka namin mai-sign in. Mangyaring mag-sign in gamit ang password mo.";
+
+"New QR code" = "Bagong QR code";
+
+"Allow access to camera" = "Pahintulutan ang access sa camera";
+
+"To scan a QR code and sign in to another device, grant Proton %@ access to your camera." = "Para makapag-scan ng QR code at makapag-sign in sa ibang device, bigyan ang Proton %@ ng access sa camera mo.";
+
+"You're always in control: You can change this anytime in your device settings." = "Lagi kang may kontrol: Maaari itong baguhin anumang oras sa mga setting ng device mo.";
+
+"Settings" = "Mga Setting";
+
+"We couldn't load the QR code" = "Hindi namin ma-load ang QR code.";
+
+"Retry" = "Subukang muli";
+
+"Welcome to Proton VPN" = "Welcome sa Proton VPN";
+
+"Browse privately, access blocked content, and enjoy digital freedom." = "Mag-browse nang pribado, i-access ang naka-block na content at i-enjoy ang digital na kalayaan.";
+
+"Certified no-logs VPN" = "Certified no-logs VPN";
+
+"Continue as guest" = "Magpatuloy bilang guest";
+
+"By using this app you accept our [Terms and Conditions](%1$@) and acknowledge our [Privacy Policy](%2$@)." = "Sa paggamit ng app na ito, tinatanggap mo ang [Mga Tuntunin at Kondisyon](%1$@) at kinikilala ang [Patakaran sa Privacy](%2$@).";
+
+"Tap **Scan QR code**" = "I-tap ang **I-scan ang QR code**.";
+
+"Tap into **Settings**, then tap **Sign in to another device**" = "I-tap ang **Mga Setting**, at pagkatapos ay i-tap ang **Mag-sign in sa ibang device**.";
+
+"Password must contain:" = "Dapat naglalaman ang password ng:";
+
+"Access shared" = "Shared na access";
+
+"Back to settings" = "Bumalik sa mga setting";
+
+"How to sign in using another device" = "Paano mag-sign in gamit ang ibang device";
+
+"Get another device that’s signed in to your Proton Account" = "Kumuha ng ibang device na naka-sign in sa Proton Account mo.";
+
+"Using that device, open any Proton app and select **Settings**" = "Gamit ang device na iyon, buksan ang anumang Proton app at piliin ang **Mga Setting**.";
+
+"Select **Sign in on another device → Scan QR code**" = "Piliin ang **Mag-sign in sa ibang device → I-scan ang QR code**.";
+
+"Scan the code to sign in" = "I-scan ang code para mag-sign in.";
+
+"We couldn't sign you in" = "Hindi ka namin mai-sign in.";
+
+"Try generating a new QR code." = "Subukang mag-generate ng bagong QR code.";
+
+"Generate QR code" = "Mag-generate ng QR code";
+
+"Please try another sign in method." = "Mangyaring subukan ang ibang paraan ng pag-sign in.";
+
+"Sign in on another device" = "Mag-sign in sa ibang device";
+
+"How to sign in with QR code" = "Paano mag-sign in gamit ang QR code";
+
+"Allow camera access" = "Pahintulutan ang access sa camera";
+
+"To sign in with QR code, you'll need to let Proton %@ access your camera. You can do this in your device settings." = "Para mag-sign in gamit ang QR code, kailangang hayaan mo ang Proton %@ na i-access ang camera mo. Magagawa mo ito sa mga setting ng device mo.";
+
+"Position QR code inside the square" = "Iposisyon ang QR code sa loob ng parisukat.";
+
+"Sign in with QR code" = "Mag-sign in gamit ang QR code";
+
+"Open any Proton app on the device you want to sign in to" = "Buksan ang anumang Proton app sa device kung saan gusto mong mag-sign in.";
+
+"On the sign-in screen, select **Forgot password** or **Trouble signing in?** (on mobile apps, select **Help**)" = "Sa sign-in screen, piliin ang **Nakalimutan ang password** o **Nagkakaproblema sa pag-sign in?** (sa mga mobile app, piliin ang **Tulong**).";
+
+"Select **Sign in with QR code**. A QR code will appear." = "Piliin ang **Mag-sign in gamit ang QR code**. May lalabas na QR code.";
+
+"On this device, press **Scan QR code** and scan the code." = "Sa device na ito, pindutin ang **I-scan ang QR code** at i-scan ang code.";
+
+"Security tips" = "Mga tip sa seguridad";
+
+"Be cautious of messages with QR codes. Only scan a code if you trust the source." = "Mag-ingat sa mga mensaheng may mga QR code. I-scan lang ang code kung pinagkakatiwalaan mo ang pinagmulan.";
+
+"Proton will never contact you unexpectedly asking you to sign in with a QR code." = "Hinding-hindi makikipag-ugnayan ang Proton nang biglaan para pakiusapan kang mag-sign in gamit ang QR code.";
+
+"Proton will never ask you to scan a QR code that’s not from **https://proton.me** or an official Proton app." = "Hinding-hindi ka papakiusapan ng Proton na mag-scan ng QR code na hindi galing sa **https://proton.me** o sa isang opisyal na Proton app.";
+
+"Learn more" = "Matuto pa";
+
+"**Security tips**" = "**Mga tip sa seguridad**";
+
+"SSO configuration error" = "SSO configuration error";
+
+"Failed to obtain SSO response token" = "Failed to obtain SSO response token";

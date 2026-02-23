@@ -1,0 +1,59 @@
+"All_cycle" = "รอบการชำระเงินทั้งหมด";
+
+"Available_plans_section_title" = "อัปเกรดแผน";
+
+"Available_subscriptions_view_subtitle" = "แผนเพื่อความเป็นส่วนตัว";
+
+"Available_subscriptions_view_title" = "เลือกแผน";
+
+"Current_free_plan_name" = "ฟรี";
+
+"Current_plan_exipiration" = "การสมัครสมาชิกหมดอายุวันที่";
+
+"Current_plan_renewal" = "การสมัครสมาชิกต่ออายุอัตโนมัติวันที่";
+
+"Error_view_button_title" = "ลองอีกครั้ง";
+
+"Error_view_message" = "ไม่สามารถโหลดหน้านี้ได้ โปรดรีเฟรชหน้าเว็บหรือตรวจสอบการเชื่อมต่ออินเทอร์เน็ต";
+
+"Error_view_title" = "เกิดข้อผิดพลาดบางประการ";
+
+"Loading_plans_message" = "กำลังดึงข้อมูลแผน...";
+
+"Monthly_cycle" = "1 เดือน";
+
+"No_available_plan_message" = "ไม่สามารถจัดการการสมัครสมาชิกภายในแอปมือถือได้";
+
+"No_available_plan_title" = "ไม่พบแผนที่ใช้ได้";
+
+"No_filtered_plan_message" = "โปรดเลือกรอบการชำระเงินอื่น";
+
+"No_filtered_plan_title" = "ไม่พบแผน";
+
+"Plans_footer_disclaimer" = "ไม่สามารถจัดการการสมัครสมาชิกภายในแอปมือถือได้";
+
+"Purchase_button_title" = "รับ %@";
+
+"Select_plan_nav_title" = "เลือกแผน";
+
+"Subscriptions_nav_title" = "การสมัครสมาชิก";
+
+"Transaction_cancelled_by_user" = "ธุรกรรมถูกยกเลิกโดยผู้ใช้";
+
+"Transaction_process_error" = "เกิดข้อผิดพลาดบางประการ โปรดลองอีกครั้ง หากยังพบปัญหา โปรดติดต่อทีมฝ่ายสนับสนุน";
+
+"Transaction_state_payment_account_update_complete" = "อัปเดตบัญชีแล้ว";
+
+"Transaction_state_payment_account_update_progress" = "กำลังอัปเดตบัญชี";
+
+"Transaction_state_payment_confirmation_complete" = "ยืนยันการชำระเงินแล้ว";
+
+"Transaction_state_payment_confirmation_progress" = "กำลังยืนยันการชำระเงิน";
+
+"Transaction_state_view_subtitle" = "ขั้นตอนนี้จะใช้เวลาไม่เกินหนึ่งนาที";
+
+"Transaction_state_view_title" = "กำลังตรวจสอบการชำระเงิน...";
+
+"Yearly_cycle" = "12 เดือน";
+
+"Transaction_pending" = "การสั่งซื้อรอดำเนินการ จะดำเนินการต่อเมื่อทำตามขั้นตอนที่จำเป็นครบถ้วน";

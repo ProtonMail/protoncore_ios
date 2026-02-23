@@ -1,0 +1,135 @@
+"OK" = "OK";
+
+"Cancel" = "Hủy";
+
+"Warning" = "Cảnh báo";
+
+"Select a plan" = "Chọn gói";
+
+"Current plan" = "Gói hiện tại";
+
+"Subscription" = "Gói đăng ký";
+
+"Upgrade your plan" = "Nâng cấp gói của bạn";
+
+"Only annual subscriptions without auto-renewal are available inside the mobile app." = "Trên ứng dụng di động chỉ có các gói đăng ký hàng năm không tự động gia hạn.";
+
+"You cannot manage subscriptions inside the mobile application." = "Không thể quản lý gói đăng ký trên ứng dụng di động.";
+
+"Your plan will automatically renew on %@" = "Gói của bạn sẽ tự động gia hạn vào %@";
+
+"Current plan will expire on %@" = "Gói hiện tại sẽ hết hạn vào %@";
+
+"Contact an administrator to make changes to your Proton subscription." = "Liên hệ với quản trị viên để thay đổi gói đăng ký Proton.";
+
+"%1$@ of %2$@" = "%1$@ trên %2$@";
+
+"%@ storage" = "%@ dung lượng lưu trữ";
+
+"%@ storage / user" = "%@ dung lượng lưu trữ/người dùng";
+
+"for %@" = "cho %@";
+
+"Custom email addresses" = "Địa chỉ email tùy chỉnh";
+
+"Priority customer support" = "Hỗ trợ khách hàng ưu tiên";
+
+"Adblocker (NetShield)" = "Trình chặn quảng cáo (NetShield)";
+
+"Streaming service support" = "Hỗ trợ dịch vụ phát trực tuyến";
+
+"High speed" = "Tốc độ cao";
+
+"Highest speed" = "Tốc độ cao nhất";
+
+"Multi-user support" = "Hỗ trợ nhiều người dùng";
+
+"The basic for private and secure communications." = "Nền tảng cho các cuộc đối thoại riêng tư và bảo mật.";
+
+"Full-featured mailbox with advanced protection." = "Hộp thư đầy đủ tính năng với khả năng bảo vệ tiên tiến.";
+
+"Limited time offer" = "Ưu đãi có hạn";
+
+"Complete payment?" = "Hoàn tất thanh toán?";
+
+"A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "Đã khởi tạo giao dịch mua gói Proton Bundle. Nhấn tiếp tục để hoàn tất xử lý thanh toán và tạo tài khoản";
+
+"Complete payment" = "Hoàn tất thanh toán";
+
+"The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "Không thể hoàn tất quy trình thiết lập tài khoản do lỗi ngoài ý muốn.\nVui lòng thử lại.";
+
+"The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "Quy trình giao dịch mua hàng trong ứng dụng (IAP) đã bắt đầu. Vui lòng làm theo hướng dẫn của Apple để hoàn tất hoặc hủy giao dịch.";
+
+"In app payments are temporarily unavailable." = "Thanh toán trong ứng dụng tạm thời không khả dụng.";
+
+"One plan for all Proton services" = "Một gói cho tất cả các dịch vụ của Proton";
+
+"The no-cost starter account designed to empower everyone with privacy by default." = "Tài khoản khởi đầu miễn phí được thiết kế để mặc định trao quyền riêng tư cho mọi người.";
+
+"The privacy-first email and calendar solution for your everyday communication needs." = "Giải pháp lịch và email ưu tiên quyền riêng tư cho nhu cầu trao đổi hàng ngày.";
+
+"Your privacy and security are our priority." = "Quyền riêng tư và bảo mật của bạn là ưu tiên của chúng tôi.";
+
+"The storage-focused plan with 200 GB of cloud storage to keep your files private." = "Gói tập trung vào lưu trữ với 200 GB dung lượng lưu trữ đám mây để giữ các tệp riêng tư.";
+
+"The ultimate privacy pack with access to all premium Proton services." = "Gói quyền riêng tư tối thượng với quyền truy cập vào tất cả các dịch vụ Proton cao cấp.";
+
+"Only non-renewing annual subscriptions are available via this app" = "Ứng dụng này chỉ có các gói đăng ký không tự động gia hạn hàng năm";
+
+"Your subscription cannot be managed inside the mobile app." = "Không thể quản lý gói đăng ký trên ứng dụng di động.";
+
+"Unlimited folders, labels, and filters" = "Không giới hạn thư mục, nhãn và bộ lọc";
+
+"Up to %@ storage" = "Lên tới %@ dung lượng lưu trữ";
+
+"Free VPN on a single device" = "VPN miễn phí trên một thiết bị";
+
+"Highest VPN speed" = "Tốc độ VPN cao nhất";
+
+"Built-in ad-blocker (NetShield)" = "Trình chặn quảng cáo tích hợp sẵn (NetShield)";
+
+"Access to streaming services globally" = "Truy cập vào các dịch vụ phát trực tuyến trên toàn cầu";
+
+"Secure Core servers" = "Các máy chủ Secure Core";
+
+"TOR over VPN" = "Kết nối Tor sau VPN";
+
+"P2P/BitTorrent" = "P2P/BitTorrent";
+
+"Get %@" = "Nhận %@";
+
+"Get Proton for free" = "Sử dụng Proton miễn phí";
+
+"Extend subscription" = "Gia hạn gói đăng ký";
+
+"%@ of %@" = "%@ trên %@";
+
+"Connection issues" = "Sự cố kết nối";
+
+"Check your internet connection" = "Kiểm tra kết nối Internet";
+
+"Strict no-logs policy" = "Chính sách không ghi nhật ký nghiêm ngặt";
+
+"Plan successfully upgraded" = "Đã nâng cấp gói thành công";
+
+"Integrated 2FA authenticator" = "Trình xác thực 2FA tích hợp";
+
+"Priority support" = "Hỗ trợ ưu tiên";
+
+"Unlimited devices" = "Không giới hạn thiết bị";
+
+"Unlimited email aliases" = "Không giới hạn biệt danh email";
+
+"Unlimited logins and notes" = "Không giới hạn đăng nhập và ghi chú";
+
+"Custom fields" = "Trường tùy chỉnh";
+
+"For next-level password management and identity protection." = "Cho khả năng quản lý mật khẩu nâng cao và bảo vệ danh tính.";
+
+"Pay monthly" = "Thanh toán hàng tháng";
+
+"Pay annually" = "Thanh toán hàng năm";
+
+"Pay every two years" = "Thanh toán mỗi hai năm";
+
+"Free" = "Miễn phí";

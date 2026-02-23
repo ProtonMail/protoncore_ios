@@ -1,0 +1,33 @@
+"APIs_malformed_url_request" = "เกิดข้อผิดพลาดบางประการ ทำให้ไม่สามารถดำเนินการตามคำขอได้ หากปัญหายังคงอยู่ โปรดติดต่อฝ่ายสนับสนุนลูกค้า";
+
+"Plans_Manager_impossible_to_get_user_uuid" = "ไม่สามารถรับ UUID ของผู้ใช้สำหรับการทำธุรกรรมได้";
+
+"Plans_Manager_impossible_to_match_plan" = "ไม่สามารถจับคู่แผน Proton กับแผน Apple Store ได้";
+
+"Plans_Manager_impossible_to_restore_transactions" = "ไม่สามารถกู้คืนธุรกรรมได้ โปรดติดต่อฝ่ายสนับสนุนลูกค้า";
+
+"Plans_Manager_Transaction_cancelled_by_user" = "ธุรกรรมถูกยกเลิกโดยผู้ใช้";
+
+"Plans_Manager_Transaction_unknown_error" = "เกิดข้อผิดพลาดที่ไม่คาดคิด หากปัญหายังคงอยู่ โปรดติดต่อฝ่ายสนับสนุนลูกค้า";
+
+"Plans_Manager_peding_transaction_received" = "ได้รับธุรกรรมที่รอดำเนินการโดยไม่คาดคิด";
+
+"PlansComposer_unable_to_fetch_currentSub" = "ไม่สามารถดึงข้อมูลการสมัครสมาชิกปัจจุบันได้";
+
+"Remote_manager_error" = "เกิดข้อผิดพลาดบางประการ ทำให้ไม่สามารถดำเนินการตามคำขอได้ หากปัญหายังคงอยู่ โปรดติดต่อฝ่ายสนับสนุนลูกค้า";
+
+"SK_Receipt_impossible_to_get_receipt" = "ไม่สามารถรับข้อมูลใบเสร็จธุรกรรมจาก Apple ได้";
+
+"SK_Receipt_task_not_found" = "Unable to process transaction due to an unexpected error, please try again.";
+
+"Transaction_Handler_plan_not_found" = "ไม่พบชื่อแผนที่กำลังพยายามซื้อ หากปัญหายังคงอยู่ โปรดติดต่อฝ่ายสนับสนุนลูกค้า";
+
+"Transaction_Handler_repeated_purchase" = "ไม่สามารถต่ออายุแผนที่เลือกหลายครั้งได้ หากคิดว่าเป็นข้อผิดพลาดหรือหากปัญหายังคงอยู่ โปรดติดต่อฝ่ายสนับสนุนลูกค้า";
+
+"Transaction_Handler_receipt_update_failed" = "เกิดข้อผิดพลาดขณะขอใบเสร็จธุรกรรมจาก Apple หากปัญหายังคงอยู่ โปรดติดต่อฝ่ายสนับสนุนลูกค้า";
+
+"PayUpFront_offer_description" = "อนุญาตให้ผู้สมัครสมาชิกใหม่ชำระราคาช่วงแนะนำแบบจ่ายครั้งเดียวสำหรับระยะเวลาที่กำหนด หลังจากนั้นจะต้องชำระราคาการสมัครสมาชิกปกติ";
+
+"PayAsYouGo_offer_description" = "อนุญาตให้ผู้สมัครสมาชิกใหม่ชำระราคาช่วงแนะนำสำหรับรอบการชำระเงินตามจำนวนที่กำหนด ก่อนเปลี่ยนไปเป็นราคาการสมัครสมาชิกปกติ";
+
+"FreeTrial_offer_description" = "อนุญาตให้ผู้สมัครสมาชิกใหม่เข้าถึงการสมัครสมาชิกตามจำนวนรอบการชำระเงินที่กำหนด เมื่อหมดอายุ ผู้ใช้จะต้องชำระราคาเต็ม";

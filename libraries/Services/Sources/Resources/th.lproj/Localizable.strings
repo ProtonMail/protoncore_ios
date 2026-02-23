@@ -1,0 +1,5 @@
+"Proton address required" = "ต้องระบุที่อยู่ Proton";
+
+"Update required" = "ต้องการการอัปเดต";
+
+"The Proton servers are unreachable. It might be caused by wrong network configuration, Proton servers not working or Proton servers being blocked" = "ไม่สามารถติดต่อเซิร์ฟเวอร์ Proton ได้ อาจเกิดจากการกำหนดค่าเครือข่ายผิดพลาด เซิร์ฟเวอร์ Proton ไม่ทำงาน หรือเซิร์ฟเวอร์ Proton ถูกบล็อก";

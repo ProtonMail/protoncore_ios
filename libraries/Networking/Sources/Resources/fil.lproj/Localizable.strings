@@ -1,0 +1,3 @@
+"Network connection error" = "Error sa koneksyon ng network";
+
+"The TLS certificate validation failed when trying to connect to the Proton API. Your current Internet connection may be monitored. To keep your data secure, we are preventing the app from accessing the Proton API.\nTo log in or access your account, switch to a new network and try to connect again." = "Nabigo ang pagpapatunay ng TLS certificate habang sinusubukang kumonekta sa Proton API. Maaaring sinusubaybayan ang iyong kasalukuyang koneksyon sa internet. Para mapanatiling secure ang data mo, pinipigilan namin ang app na ma-access ang Proton API.\nPara mag-sign in o ma-access ang account mo, lumipat sa bagong network at subukang kumonekta muli.";

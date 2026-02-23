@@ -1,0 +1,27 @@
+"switch to" = "สลับไปยัง:";
+
+"Manage accounts" = "จัดการบัญชี";
+
+"Signed in to Proton Mail" = "เข้าสู่ระบบ Proton Mail";
+
+"Signed out of Proton Mail" = "ออกจากระบบ Proton Mail";
+
+"Sign out" = "ออกจากระบบ";
+
+"Remove account from this device" = "ลบบัญชีออกจากอุปกรณ์นี้";
+
+"Remove account" = "ลบบัญชี";
+
+"You will be signed out and all the data associated with this account will be removed from this device." = "จะออกจากระบบและข้อมูลทั้งหมดที่เกี่ยวข้องกับบัญชีนี้จะถูกลบออกจากอุปกรณ์นี้";
+
+"Remove" = "ลบออก";
+
+"Are you sure you want to sign out %@?" = "แน่ใจหรือไม่ว่าต้องการลงชื่อออก %@?";
+
+"Dismiss account switcher" = "ปิดตัวสลับบัญชี";
+
+"Sign in to another account" = "เข้าสู่ระบบบัญชีอื่น";
+
+"Cancel" = "ยกเลิก";
+
+"Sign in" = "เข้าสู่ระบบ";
