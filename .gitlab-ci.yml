@@ -2,24 +2,34 @@ include:
   # Ephemera environment deployment - single component with conditional inputs via variables
   # For scheduled pipelines, EPHEMERA_KEY is set in workflow rules
   # For MR/default branch, EPHEMERA_KEY is empty/null (component handles optional key input)
-  - component: gitlab.protontech.ch/proton/devops/cicd-components/kubernetes/ephemera-deploy/standard@1.11.0
+  - component: gitlab.protontech.ch/proton/devops/cicd-components/kubernetes/ephemera-deploy/standard@2.0.1
     inputs:
       environment-claim-template: ephemera.yml
       deploy: "auto"
       deploy-stage: "deploy"
+      deploy-needs:
+        - test:ios:unit
+      cleanup: "auto"
       cleanup-stage: "cleanup"
+      cleanup-needs:
+        - report:ios:integration:coverage
       expiration: "2h"
       suffix: "core"
     rules:
       - if: $CI_PIPELINE_SOURCE == "merge_request_event"
       - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
-  - component: gitlab.protontech.ch/proton/devops/cicd-components/kubernetes/ephemera-deploy/standard@1.11.0
+  - component: gitlab.protontech.ch/proton/devops/cicd-components/kubernetes/ephemera-deploy/standard@2.0.1
     inputs:
       environment-claim-template: ephemera.yml
       deploy: "auto"
       deploy-stage: "deploy"
+      deploy-needs:
+        - test:ios:unit
+      cleanup: "auto"
       cleanup-stage: "cleanup"
+      cleanup-needs:
+        - report:ios:integration:coverage
       expiration: "2h"
       suffix: "core"
       key: env-$CI_PIPELINE_SCHEDULE_DESCRIPTION
@@ -266,6 +276,7 @@ test:ios:integration:
   needs:
     - job: ephemera:deploy:core
       artifacts: true
+      optional: true
   allow_failure: false
   interruptible: true
   before_script:
