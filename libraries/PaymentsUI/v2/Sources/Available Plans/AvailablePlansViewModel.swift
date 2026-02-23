@@ -166,7 +166,6 @@ public class AvailablePlansViewModel: ObservableObject {
         let currentPlanResponse = try await protonPlansManager.getCurrentPlan()
         return PlanViewModel(remoteManager: remoteManager,
                              currentPlan: currentPlanResponse)
-
     }
 
     private func fetchAvailablePlans() async throws -> [PlanViewModel] {
@@ -193,13 +192,14 @@ public class AvailablePlansViewModel: ObservableObject {
     public func fetchData(from: String) async {
         debugPrint("fetchData from: " + from)
         do {
+            if !hideCurrentPlan {
+                async let currentSubscription = fetchCurrentPlan()
+                currentPlan = try await currentSubscription
 
-            async let currentSubscription = fetchCurrentPlan()
-            currentPlan = try await currentSubscription
-
-            if let plan = currentPlan, plan.isFreePlan == false {
-                viewState = .dataLoaded
-                return
+                if let plan = currentPlan, plan.isFreePlan == false {
+                    viewState = .dataLoaded
+                    return
+                }
             }
 
             if try await protonPlansManager.checkIAPStatus().isAvailable {
