@@ -1,0 +1,493 @@
+"Privacy by default" = "ความเป็นส่วนตัวโดยค่าเริ่มต้น";
+
+"Proton address required" = "ต้องระบุที่อยู่ Proton";
+
+"Update required" = "ต้องการการอัปเดต";
+
+"Please enter your Proton Account password." = "โปรดป้อนรหัสผ่าน Proton Account";
+
+"OK" = "ตกลง";
+
+"Help" = "ช่วยเหลือ";
+
+"Continue" = "ดำเนินการต่อไป";
+
+"Password" = "รหัสผ่าน";
+
+"The Proton servers are unreachable. It might be caused by wrong network configuration, Proton servers not working or Proton servers being blocked" = "ไม่สามารถติดต่อเซิร์ฟเวอร์ Proton ได้ อาจเกิดจากการกำหนดค่าเครือข่ายผิดพลาด เซิร์ฟเวอร์ Proton ไม่ทำงาน หรือเซิร์ฟเวอร์ Proton ถูกบล็อก";
+
+"Search country" = "ค้นหาประเทศ";
+
+"Code sent to %@" = "ส่งรหัสไปที่ %@ แล้ว";
+
+"Request new code?" = "ขอรหัสใหม่หรือไม่?";
+
+"Resend" = "ส่งอีกครั้ง";
+
+"Get a replacement code sent to %@." = "รับรหัสใหม่ส่งไปที่ %@";
+
+"Request new code" = "ขอรหัสใหม่";
+
+"Enter your Proton Account details." = "ป้อนรายละเอียด Proton Account";
+
+"Email or username" = "อีเมลหรือชื่อผู้ใช้";
+
+"Sign in" = "เข้าสู่ระบบ";
+
+"Sign in with password" = "เข้าสู่ระบบด้วยรหัสผ่าน";
+
+"Sign in with SSO" = "เข้าสู่ระบบด้วย SSO";
+
+"Sign in with a QR code" = "เข้าสู่ระบบด้วยคิวอาร์โค้ด";
+
+"Sign in to your organization" = "เข้าสู่ระบบองค์กร";
+
+"Create an account" = "สร้างบัญชีใหม่";
+
+"How can we help?" = "มีอะไรให้ช่วยหรือไม่?";
+
+"Forgot username" = "ลืมชื่อผู้ใช้";
+
+"Forgot password" = "ลืมรหัสผ่าน";
+
+"Other sign-in issues" = "ปัญหาการเข้าสู่ระบบอื่นๆ";
+
+"Customer support" = "ฝ่ายสนับสนุนลูกค้า";
+
+"Still need help? Contact us directly." = "ยังต้องการความช่วยเหลือหรือไม่? ติดต่อเราโดยตรง";
+
+"Please enter your Proton Account email or username." = "โปรดป้อนอีเมลหรือชื่อผู้ใช้ Proton Account";
+
+"Complete Setup" = "เสร็จสิ้นการตั้งค่า";
+
+"Your account is missing keys, please sign in on web to automatically generate required keys. Once you have signed in on web, please return to the app and sign in." = "บัญชีของคุณไม่มีคีย์ โปรดเข้าสู่ระบบบนเว็บเพื่อสร้างคีย์ที่จำเป็นโดยอัตโนมัติ เมื่อเข้าสู่ระบบบนเว็บแล้ว โปรดกลับมาที่แอปและเข้าสู่ระบบ";
+
+"Account setup required" = "ต้องตั้งค่าบัญชี";
+
+"Incorrect mailbox password" = "รหัสผ่านของกล่องจดหมายไม่ถูกต้อง";
+
+"Your session has expired. Please log in again." = "เซสชันหมดอายุแล้ว โปรดเข้าสู่ระบบอีกครั้ง";
+
+"Proton address required" = "ต้องระบุที่อยู่ Proton";
+
+"You need a Proton email address to use Proton Mail and Proton Calendar.\nYou’ll still be able to use %@ to sign in, and to recover your account." = "ต้องใช้ที่อยู่อีเมล Proton เพื่อใช้งาน Proton Mail และ Proton Calendar";
+
+"Username" = "ชื่อผู้ใช้";
+
+"Please enter a username." = "โปรดป้อนชื่อผู้ใช้";
+
+"Unlock your mailbox" = "ปลดล็อกกล่องจดหมายของคุณ";
+
+"Mailbox password" = "รหัสผ่านของกล่องจดหมาย";
+
+"Unlock" = "ปลดล็อก";
+
+"Forgot password" = "ลืมรหัสผ่าน";
+
+"Two-factor authentication" = "การยืนยันตัวตนสองขั้นตอน";
+
+"Authenticate" = "ยืนยันตัวตน";
+
+"Two-factor code" = "รหัสยืนยันตัวตนสองขั้นตอน";
+
+"Recovery code" = "กู้คืนโค้ด";
+
+"Use recovery code" = "ใช้การกู้คืนโค้ด";
+
+"Use two-factor code" = "ใช้รหัสยืนยันตัวตนสองขั้นตอน";
+
+"Enter the 6-digit code." = "กรอกรหัส 6 หลัก.";
+
+"Enter an 8-character recovery code." = "ป้อนรหัสกู้คืน 8 ตัวอักษร";
+
+"Learn more" = "เรียนรู้เพิ่มเติม";
+
+"Change your password" = "เปลี่ยนรหัสผ่าน";
+
+"Change password" = "เปลี่ยนรหัสผ่าน";
+
+"To use the Proton app as a member of an organization, you first need to change your password by signing into Proton through a browser." = "หากต้องการใช้แอป Proton ในฐานะสมาชิกองค์กร ต้องเปลี่ยนรหัสผ่านก่อนโดยการเข้าสู่ระบบ Proton ผ่านเบราว์เซอร์";
+
+"Error occured" = "เกิดข้อผิดพลาด";
+
+"Create your Proton Account" = "สร้างบัญชี Proton ของคุณ";
+
+"One account for all Proton services." = "หนึ่งบัญชีสำหรับทุกๆ บริการของ Proton.";
+
+"Next" = "ถัดไป";
+
+"Use your current email instead" = "ใช้อีเมลปัจจุบันแทน";
+
+"Create a secure Proton Mail address instead" = "สร้างที่อยู่ Proton Mail ที่ปลอดภัยแทน";
+
+"Email" = "อีเมล";
+
+"Create your password" = "สร้างรหัสผ่าน";
+
+"Password must contain at least 8 characters" = "รหัสผ่านต้องมีความยาวอย่างน้อย 8 ตัวอักษร";
+
+"Repeat password" = "ใส่รหัสผ่านอีกครั้ง";
+
+"Domain" = "โดเมน";
+
+"Set recovery method" = "ตั้งค่าวิธีการกู้คืน";
+
+"Set recovery method (optional)" = "ตั้งค่าวิธีการกู้คืน (ไม่บังคับ)";
+
+"We will send recovery instructions to this email or phone number if you get locked out of your account." = "เราจะส่งคำแนะนำในการกู้คืนไปยังอีเมลหรือหมายเลขโทรศัพท์นี้หากถูกล็อกออกจากบัญชี";
+
+"Email" = "อีเมล";
+
+"Phone" = "โทรศัพท์";
+
+"Recovery email" = "อีเมลการกู้คืน";
+
+"Recovery phone number" = "หมายเลขโทรศัพท์สำหรับการกู้คืน";
+
+"By clicking Next, you agree with Proton's Terms and Conditions" = "เมื่อคลิกถัดไป ถือว่ายอมรับข้อกำหนดและเงื่อนไขของ Proton";
+
+"By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "เมื่อคลิกถัดไป ถือว่ายอมรับข้อกำหนดและเงื่อนไขและนโยบายความเป็นส่วนตัวของ Proton";
+
+"Terms and Conditions" = "ข้อกำหนดและเงื่อนไข";
+
+"Privacy Policy" = "นโยบายความเป็นส่วนตัว";
+
+"Skip" = "ข้าม";
+
+"Skip recovery method?" = "ข้ามวิธีการกู้คืนหรือไม่?";
+
+"A recovery method will help you access your account in case you forget your password or get locked out of your account." = "วิธีการกู้คืนจะช่วยให้เข้าถึงบัญชีได้ในกรณีที่ลืมรหัสผ่านหรือถูกล็อกออกจากบัญชี";
+
+"Set recovery method" = "ตั้งค่าวิธีการกู้คืน";
+
+"Your account is being created" = "กำลังสร้างบัญชี";
+
+"This should take no more than a minute." = "ใช้เวลาไม่เกินหนึ่งนาที";
+
+"Creating your account" = "กำลังสร้างบัญชี";
+
+"Generating your address" = "กำลังสร้างที่อยู่";
+
+"Securing your account" = "กำลังรักษาความปลอดภัยบัญชี";
+
+"Verifying your payment" = "กำลังยืนยันการชำระเงิน";
+
+"Account verification" = "การยืนยันบัญชี";
+
+"For your security, we must verify that the address you entered belongs to you. We sent a verification code to %@. Please enter the code below:" = "เพื่อความปลอดภัย เราต้องยืนยันว่าที่อยู่ที่ป้อนเป็นของคุณ เราได้ส่งรหัสยืนยันไปยัง %@ แล้ว โปรดป้อนรหัสด้านล่าง:";
+
+"Verification code" = "รหัสยืนยัน";
+
+"Enter the 6-digit code." = "กรอกรหัส 6 หลัก.";
+
+"Did not receive a code?" = "ไม่ได้รับรหัสใช่หรือไม่?";
+
+"Terms and Conditions" = "ข้อกำหนดและเงื่อนไข";
+
+"Privacy Policy" = "นโยบายความเป็นส่วนตัว";
+
+"Invalid token request" = "คำขอโทเค็นไม่ถูกต้อง";
+
+"Invalid token error" = "ข้อผิดพลาดโทเค็นไม่ถูกต้อง";
+
+"Create user failed" = "สร้างผู้ใช้ล้มเหลว";
+
+"Invalid hashed password" = "รหัสผ่านที่แฮชแล้วไม่ถูกต้อง";
+
+"Password can not be empty.\nPlease try again." = "รหัสผ่านต้องไม่ว่างเปล่า\nโปรดลองอีกครั้ง";
+
+"Passwords do not match.\nPlease try again." = "รหัสผ่านไม่ตรงกัน\nโปรดลองอีกครั้ง";
+
+"Email address already used." = "อีเมลนี้ถูกใช้ไปแล้ว.";
+
+"Please ask your admin to configure your sub-user." = "โปรดขอให้ผู้ดูแลระบบกำหนดค่าผู้ใช้ย่อย";
+
+"Would you like to receive a new verification code or use an alternate email address?" = "ต้องการรับรหัสยืนยันใหม่หรือใช้ที่อยู่อีเมลสำรองหรือไม่?";
+
+"Change email address" = "เปลี่ยนที่อยู่อีเมล";
+
+"Congratulations" = "ยินดีด้วย";
+
+"Your Proton Free account was successfully created." = "สร้างบัญชี Proton Free สำเร็จแล้ว";
+
+"Proton Free" = "Proton Free";
+
+"Your payment was confirmed and your %@ account successfully created." = "ยืนยันการชำระเงินแล้วและสร้างบัญชี %@ สำเร็จแล้ว";
+
+"Your Proton account was successfully created." = "สร้างบัญชี Proton สำเร็จแล้ว";
+
+"Enjoy the world of privacy." = "เพลิดเพลินกับโลกแห่งความเป็นส่วนตัว";
+
+"Cancel" = "ยกเลิก";
+
+"Sign in" = "เข้าสู่ระบบ";
+
+"Troubleshoot" = "แก้ไขปัญหา";
+
+"Please choose how you want to confirm your identity." = "โปรดเลือกวิธีที่ต้องการยืนยันตัวตน";
+
+"One-time code" = "รหัสแบบใช้ครั้งเดียว";
+
+"Security key" = "คีย์ความปลอดภัย";
+
+"Two-Factor Authentication" = "การยืนยันตัวตนสองขั้นตอน";
+
+"Present a security key linked to your Proton Account." = "แสดงคีย์ความปลอดภัยที่ผูกกับ Proton Account";
+
+"Learn more" = "เรียนรู้เพิ่มเติม";
+
+"Invalid state. Please quit the app and try again in a few minutes." = "สถานะไม่ถูกต้อง โปรดออกจากแอปแล้วลองอีกครั้งในอีกสักครู่";
+
+"There was a problem reading your security key." = "เกิดปัญหาในการอ่านคีย์ความปลอดภัย";
+
+"We received an authorization from a type we don't support yet." = "เราได้รับอนุญาตจากประเภทที่เรายังไม่รองรับ";
+
+"Fetching your security keys details" = "กำลังดึงรายละเอียดคีย์ความปลอดภัย";
+
+"You don't yet have any security keys enrolled in your account. Please visit the settings section on our website to add security keys." = "ยังไม่มีคีย์ความปลอดภัยลงทะเบียนในบัญชี โปรดไปที่ส่วนการตั้งค่าบนเว็บไซต์ของเราเพื่อเพิ่มคีย์ความปลอดภัย";
+
+"An error occurred fetching your security keys. You can also check them on the Proton %@ website." = "เกิดข้อผิดพลาดในการดึงคีย์ความปลอดภัย สามารถตรวจสอบได้บนเว็บไซต์ Proton %@";
+
+"These are the security keys registered to your account" = "นี่คือคีย์ความปลอดภัยที่ลงทะเบียนไว้กับบัญชี";
+
+"You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys." = "ยังไม่มีคีย์ความปลอดภัยลงทะเบียนในบัญชี โปรดใช้เว็บแอปพลิเคชั่น Proton %@ เพื่อเพิ่มคีย์ความปลอดภัย";
+
+"Security Keys" = "คีย์ความปลอดภัย";
+
+"To manage, add, or remove security keys, please use the Proton %@ web application." = "หากต้องการจัดการ เพิ่ม หรือลบคีย์ความปลอดภัย โปรดใช้เว็บแอปพลิเคชั่น Proton %@";
+
+"Unexpected FIDO2 signature." = "ลายเซ็น FIDO2 ที่ไม่คาดคิด";
+
+"We could not initiate the Secure Password update connection. Please try again." = "ไม่สามารถเริ่มต้นการเชื่อมต่ออัปเดตรหัสผ่านที่ปลอดภัยได้ โปรดลองอีกครั้ง";
+
+"Join %@" = "เข้าร่วม %@";
+
+"%@ added you to their Proton organization." = "%@ เพิ่มคุณเข้าสู่องค์กร Proton แล้ว";
+
+"Continue" = "ดำเนินการต่อไป";
+
+"Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "ตั้งรหัสผ่านสำรองเพื่อดำเนินการต่อ รหัสผ่านนี้จะช่วยให้เข้าสู่ระบบและกู้คืนข้อมูลได้หากถูกล็อกออกจาก Proton Account ดังนั้นโปรดเก็บรักษาไว้ในที่ปลอดภัย";
+
+"Backup password" = "รหัสผ่านสำรอง";
+
+"Repeat backup password" = "ใส่รหัสผ่านสำรองอีกครั้ง";
+
+"Password cannot be empty" = "รหัสผ่านต้องไม่ว่างเปล่า";
+
+"Password must contain at least 8 characters" = "รหัสผ่านต้องมีความยาวอย่างน้อย 8 ตัวอักษร";
+
+"Password doesn't match" = "รหัสผ่านไม่ตรงกัน";
+
+"Sign-in requested on another device. Was it you?" = "มีการร้องขอการเข้าสู่ระบบบนอุปกรณ์อื่น ใช่คุณหรือไม่?";
+
+"Enter the confirmation code we sent on your other device for %@." = "ป้อนรหัสยืนยันที่เราส่งไปยังอุปกรณ์อีกเครื่องสำหรับ %@";
+
+"Confirmation code" = "รหัสยืนยัน";
+
+"If you didn't make this request, cancel it now." = "หากไม่ได้ทำรายการนี้ ให้ยกเลิกทันที";
+
+"Yes, it was me" = "ใช่ ฉันเอง";
+
+"No, it wasn't me" = "ไม่ ไม่ใช่ฉัน";
+
+"Share the confirmation code with your administrator" = "แชร์รหัสยืนยันกับผู้ดูแลระบบ";
+
+"Approve the sign-in from another device" = "อนุมัติการเข้าสู่ระบบจากอุปกรณ์อื่น";
+
+"To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@." = "เพื่อให้แน่ใจว่าเป็นคุณที่พยายามเข้าสู่ระบบจริงๆ ให้แชร์รหัสยืนยันกับผู้ดูแลระบบ %@ เพื่อให้พวกเขาสามารถอนุมัติคำขอสำหรับ %@";
+
+"To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "เพื่อให้แน่ใจว่าเป็นคุณที่พยายามเข้าสู่ระบบบัญชีจริงๆ ให้ตรวจสอบรหัสยืนยันและอนุมัติคำขอจากอุปกรณ์อื่น";
+
+"Use backup password instead" = "ใช้รหัสผ่านสำรองแทน";
+
+"Ask administrator for help" = "ขอความช่วยเหลือจากผู้ดูแลระบบ";
+
+"Devices available:" = "อุปกรณ์ที่ใช้ได้:";
+
+"Operation couldn't be completed. Please try again." = "ไม่สามารถดำเนินการให้เสร็จสิ้นได้ โปรดลองอีกครั้ง";
+
+"Enter your backup password" = "ป้อนรหัสผ่านสำรอง";
+
+"To make sure it’s really you trying to sign-in, please enter your backup password." = "เพื่อให้แน่ใจว่าเป็นคุณที่พยายามเข้าสู่ระบบจริงๆ โปรดป้อนรหัสผ่านสำรอง";
+
+"Access granted" = "อนุญาตการเข้าถึงแล้ว";
+
+"Access denied" = "การเข้าถึงถูกปฏิเสธ";
+
+"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "เพื่อความปลอดภัย คุณถูกออกจากระบบจากอุปกรณ์อื่นที่ใช้งานอยู่ทั้งหมด ก่อนเข้าถึงบัญชี จำเป็นต้องป้อนรหัสผ่านสำรองใหม่";
+
+"Contact your administrator if the problem persists." = "ติดต่อผู้ดูแลระบบหากยังพบปัญหา";
+
+"Back to sign-in" = "กลับไปที่การเข้าสู่ระบบ";
+
+"Ask your administrator for access?" = "ขอสิทธิ์การเข้าถึงจากผู้ดูแลระบบหรือไม่?";
+
+"This will sign you out of your other devices and you will have to create a new backup password." = "การดำเนินการนี้จะออกจากระบบจากอุปกรณ์อื่นและคุณจะต้องสร้างรหัสผ่านสำรองใหม่";
+
+"Grant access to user?" = "อนุญาตการเข้าถึงให้ผู้ใช้หรือไม่?";
+
+"%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user." = "%@ กำลังขอความช่วยเหลือในการเข้าสู่ระบบ Proton Account ด้วยการลงชื่อเข้าใช้เพียงครั้งเดียว (SSO)\n\nป้อนรหัสยืนยันที่เราส่งให้ผู้ใช้นี้";
+
+"Grant access" = "อนุญาตการเข้าถึง";
+
+"Deny access" = "ปฏิเสธการเข้าถึง";
+
+"Signing you in" = "กำลังเข้าสู่ระบบ";
+
+"to your organization" = "ไปยังองค์กร";
+
+"Sign in with single sign-on" = "เข้าสู่ระบบด้วย SSO";
+
+"Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "องค์กรของคุณใช้ SSO ดำเนินการต่อเพื่อเข้าสู่ระบบกับผู้ให้บริการ SSO บุคคลที่สาม";
+
+"Unknown" = "ระบุไม่ได้";
+
+"Set backup password" = "ตั้งรหัสผ่านสำรอง";
+
+"Email is invalid" = "อีเมลไม่ถูกต้อง";
+
+"Please enter your Proton Account email." = "โปรดป้อนอีเมล Proton Account";
+
+"Password not valid" = "รหัสผ่านไม่ถูกต้อง";
+
+"Passphrase not found" = "ไม่พบข้อความรหัสผ่าน";
+
+"Open the Proton app on your phone" = "เปิดแอป Proton บนโทรศัพท์";
+
+"Tap into Settings, then tap Sign in to another device" = "แตะที่การตั้งค่า จากนั้นแตะเข้าสู่ระบบอุปกรณ์อื่น";
+
+"Tap Scan QR code" = "แตะสแกนคิวอาร์โค้ด";
+
+"Scan this code with your phone camera to sign in instantly." = "สแกนรหัสนี้ด้วยกล้องโทรศัพท์เพื่อเข้าสู่ระบบทันที";
+
+"Sign in to another device" = "เข้าสู่ระบบอุปกรณ์อื่น";
+
+"Sign in with your QR code" = "เข้าสู่ระบบด้วยคิวอาร์โค้ด";
+
+"Use this device to scan the QR code displayed on the device you want to sign in to. Both devices will stay active." = "ใช้อุปกรณ์นี้เพื่อสแกนคิวอาร์โค้ดที่แสดงบนอุปกรณ์ที่ต้องการเข้าสู่ระบบ อุปกรณ์ทั้งสองจะยังคงใช้งานได้";
+
+"To access the QR code, tap the **Sign in with QR code** button on the sign-in screen." = "หากต้องการเข้าถึงคิวอาร์โค้ด ให้แตะปุ่ม **เข้าสู่ระบบด้วยคิวอาร์โค้ด** บนหน้าจอเข้าสู่ระบบ";
+
+"Watch out for messages that contain a QR code. Never scan a QR code from a website or a person you don't trust." = "ระวังข้อความที่มีคิวอาร์โค้ด ห้ามสแกนคิวอาร์โค้ดจากเว็บไซต์หรือบุคคลที่ไม่ไว้วางใจ";
+
+"Proton will never ask you to scan a QR code that does not come from the domain **proton.me**." = "Proton จะไม่ขอให้สแกนคิวอาร์โค้ดที่ไม่ได้มาจากโดเมน **proton.me**";
+
+"Scan QR code" = "สแกนคิวอาร์โค้ด";
+
+"Authenticate to access the QR code scanner" = "ยืนยันตัวตนเพื่อเข้าถึงเครื่องสแกนคิวอาร์โค้ด";
+
+"Place QR code within the square" = "วางคิวอาร์โค้ดในกรอบสี่เหลี่ยม";
+
+"Verifying..." = "กำลังยืนยัน...";
+
+"You’re signed in to %@ on the other device." = "คุณเข้าสู่ระบบ %@ บนอุปกรณ์อื่นแล้ว";
+
+"You're signed in" = "คุณเข้าสู่ระบบแล้ว";
+
+"Got it" = "เข้าใจแล้ว";
+
+"Code not recognized. Try again." = "ไม่รู้จักรหัส โปรดลองอีกครั้ง";
+
+"Tip: Never scan a QR code from a website or a person you don’t trust. Proton will never ask you to scan a QR code that doesn’t come from the domain account.proton.me." = "เคล็ดลับ: ห้ามสแกนคิวอาร์โค้ดจากเว็บไซต์หรือบุคคลที่ไม่ไว้วางใจ Proton จะไม่ขอให้สแกนคิวอาร์โค้ดที่ไม่ได้มาจากโดเมน account.proton.me";
+
+"Camera Access Denied." = "การเข้าถึงกล้องถูกปฏิเสธ";
+
+"The permission to use the Camera is off. Please enable it from the Settings." = "สิทธิ์การใช้กล้องปิดอยู่ โปรดเปิดใช้งานจากการตั้งค่า";
+
+"Go to Settings" = "ไปที่การตั้งค่า";
+
+"to Proton %@" = "ไปยัง Proton %@";
+
+"Something went wrong" = "เกิดข้อผิดพลาดบางประการ";
+
+"We couldn't sign you in. Please scan a new QR code to try again." = "ไม่สามารถเข้าสู่ระบบได้ โปรดสแกนคิวอาร์โค้ดใหม่เพื่อลองอีกครั้ง";
+
+"We couldn't sign you in. Please sign in with your password." = "ไม่สามารถเข้าสู่ระบบได้ โปรดเข้าสู่ระบบด้วยรหัสผ่าน";
+
+"New QR code" = "คิวอาร์โค้ดใหม่";
+
+"Allow access to camera" = "อนุญาตการเข้าถึงกล้อง";
+
+"To scan a QR code and sign in to another device, grant Proton %@ access to your camera." = "เพื่อสแกนคิวอาร์โค้ดและเข้าสู่ระบบอุปกรณ์อื่น โปรดอนุญาตให้ Proton %@ เข้าถึงกล้อง";
+
+"You're always in control: You can change this anytime in your device settings." = "คุณเป็นผู้ควบคุมเสมอ: สามารถเปลี่ยนแปลงได้ตลอดเวลาในการตั้งค่าอุปกรณ์";
+
+"Settings" = "การตั้งค่า";
+
+"We couldn't load the QR code" = "ไม่สามารถโหลดคิวอาร์โค้ดได้";
+
+"Retry" = "ลองอีกครั้ง";
+
+"Welcome to Proton VPN" = "ยินดีต้อนรับสู่ Proton VPN";
+
+"Browse privately, access blocked content, and enjoy digital freedom." = "ท่องเว็บแบบส่วนตัว เข้าถึงเนื้อหาที่ถูกบล็อก และเพลิดเพลินกับอิสรภาพทางดิจิทัล";
+
+"Certified no-logs VPN" = "VPN แบบไม่เก็บข้อมูลการใช้งานที่ผ่านการรับรอง";
+
+"Continue as guest" = "ดำเนินการต่อในฐานะผู้เยี่ยมชม";
+
+"By using this app you accept our [Terms and Conditions](%1$@) and acknowledge our [Privacy Policy](%2$@)." = "การใช้แอปนี้ถือว่ายอมรับ [ข้อกำหนดและเงื่อนไข](%1$@) ของเราและรับทราบ [นโยบายความเป็นส่วนตัว](%2$@) ของเรา";
+
+"Tap **Scan QR code**" = "แตะ **สแกนคิวอาร์โค้ด**";
+
+"Tap into **Settings**, then tap **Sign in to another device**" = "แตะที่ **การตั้งค่า** จากนั้นแตะ **เข้าสู่ระบบอุปกรณ์อื่น**";
+
+"Password must contain:" = "รหัสผ่านต้องประกอบด้วย:";
+
+"Access shared" = "แชร์การเข้าถึงแล้ว";
+
+"Back to settings" = "กลับไปที่การตั้งค่า";
+
+"How to sign in using another device" = "วิธีเข้าสู่ระบบโดยใช้อุปกรณ์อื่น";
+
+"Get another device that’s signed in to your Proton Account" = "ใช้อุปกรณ์อีกเครื่องที่ลงชื่อเข้าใช้ Proton Account ไว้";
+
+"Using that device, open any Proton app and select **Settings**" = "ใช้อุปกรณ์นั้นเปิดแอป Proton ใดก็ได้แล้วเลือก **การตั้งค่า**";
+
+"Select **Sign in on another device → Scan QR code**" = "เลือก **เข้าสู่ระบบบนอุปกรณ์อื่น → สแกนคิวอาร์โค้ด**";
+
+"Scan the code to sign in" = "สแกนรหัสเพื่อเข้าสู่ระบบ";
+
+"We couldn't sign you in" = "ไม่สามารถเข้าสู่ระบบได้";
+
+"Try generating a new QR code." = "ลองสร้างคิวอาร์โค้ดใหม่";
+
+"Generate QR code" = "สร้างคิวอาร์โค้ด";
+
+"Please try another sign in method." = "โปรดลองวิธีเข้าสู่ระบบอื่น";
+
+"Sign in on another device" = "เข้าสู่ระบบบนอุปกรณ์อื่น";
+
+"How to sign in with QR code" = "วิธีเข้าสู่ระบบด้วยคิวอาร์โค้ด";
+
+"Allow camera access" = "อนุญาตการเข้าถึงกล้อง";
+
+"To sign in with QR code, you'll need to let Proton %@ access your camera. You can do this in your device settings." = "เพื่อเข้าสู่ระบบด้วยคิวอาร์โค้ด คุณต้องอนุญาตให้ Proton %@ เข้าถึงกล้อง สามารถทำได้ในการตั้งค่าอุปกรณ์";
+
+"Position QR code inside the square" = "จัดตำแหน่งคิวอาร์โค้ดให้อยู่ในกรอบสี่เหลี่ยม";
+
+"Sign in with QR code" = "เข้าสู่ระบบด้วยคิวอาร์โค้ด";
+
+"Open any Proton app on the device you want to sign in to" = "เปิดแอป Proton ใดก็ได้บนอุปกรณ์ที่ต้องการเข้าสู่ระบบ";
+
+"On the sign-in screen, select **Forgot password** or **Trouble signing in?** (on mobile apps, select **Help**)" = "บนหน้าจอเข้าสู่ระบบ เลือก **ลืมรหัสผ่าน** หรือ **มีปัญหาในการเข้าสู่ระบบหรือไม่?** (บนแอปมือถือ เลือก **ความช่วยเหลือ**)";
+
+"Select **Sign in with QR code**. A QR code will appear." = "เลือก **เข้าสู่ระบบด้วยคิวอาร์โค้ด** คิวอาร์โค้ดจะปรากฏขึ้น";
+
+"On this device, press **Scan QR code** and scan the code." = "บนอุปกรณ์นี้ กด **สแกนคิวอาร์โค้ด** แล้วสแกนรหัส";
+
+"Security tips" = "เคล็ดลับความปลอดภัย";
+
+"Be cautious of messages with QR codes. Only scan a code if you trust the source." = "ระวังข้อความที่มีคิวอาร์โค้ด สแกนรหัสเฉพาะเมื่อเชื่อถือแหล่งที่มาเท่านั้น";
+
+"Proton will never contact you unexpectedly asking you to sign in with a QR code." = "Proton จะไม่ติดต่อคุณโดยไม่คาดคิดเพื่อขอให้เข้าสู่ระบบด้วยคิวอาร์โค้ด";
+
+"Proton will never ask you to scan a QR code that’s not from **https://proton.me** or an official Proton app." = "Proton จะไม่ขอให้สแกนคิวอาร์โค้ดที่ไม่ได้มาจาก **https://proton.me** หรือแอป Proton อย่างเป็นทางการ";
+
+"Learn more" = "เรียนรู้เพิ่มเติม";
+
+"**Security tips**" = "**เคล็ดลับความปลอดภัย**";
+
+"SSO configuration error" = "SSO configuration error";
+
+"Failed to obtain SSO response token" = "Failed to obtain SSO response token";

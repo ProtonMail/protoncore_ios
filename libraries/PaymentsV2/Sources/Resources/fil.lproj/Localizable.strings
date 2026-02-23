@@ -1,0 +1,33 @@
+"APIs_malformed_url_request" = "Nagkaroon ng problema at hindi namin maisagawa ang request mo. Kung magpatuloy ang isyu, mangyaring makipag-ugnayan sa suporta sa customer.";
+
+"Plans_Manager_impossible_to_get_user_uuid" = "Hindi makuha ang UUID ng user para sa transaksyon.";
+
+"Plans_Manager_impossible_to_match_plan" = "Hindi maitugma ang Proton Plan sa isang plan ng Apple Store.";
+
+"Plans_Manager_impossible_to_restore_transactions" = "Hindi ma-restore ang mga transaksyon. Mangyaring makipag-ugnayan sa suporta sa customer.";
+
+"Plans_Manager_Transaction_cancelled_by_user" = "Kinansela ng user ang transaksyon.";
+
+"Plans_Manager_Transaction_unknown_error" = "Nagkaroon ng hindi inaasahang error. Kung magpatuloy ito, mangyaring makipag-ugnayan sa suporta sa customer.";
+
+"Plans_Manager_peding_transaction_received" = "Nakatanggap ng hindi inaasahang nakabinbing transaksyon";
+
+"PlansComposer_unable_to_fetch_currentSub" = "Hindi makuha ang kasalukuyang subscription.";
+
+"Remote_manager_error" = "Nagkaroon ng problema at hindi namin maisagawa ang request mo. Kung magpatuloy ang isyu, mangyaring makipag-ugnayan sa suporta sa customer.";
+
+"SK_Receipt_impossible_to_get_receipt" = "Hindi makuha ang data ng resibo ng transaksyon mula sa Apple.";
+
+"SK_Receipt_task_not_found" = "Unable to process transaction due to an unexpected error, please try again.";
+
+"Transaction_Handler_plan_not_found" = "Hindi mahanap ang pangalan ng plan na sinusubukan mong bilhin. Kung magpatuloy ang isyu, mangyaring makipag-ugnayan sa suporta sa customer.";
+
+"Transaction_Handler_repeated_purchase" = "Hindi posibleng i-renew ang napiling plan nang maraming beses. Kung sa tingin mo ay error ito o kung magpatuloy ang isyu, mangyaring makipag-ugnayan sa suporta sa customer.";
+
+"Transaction_Handler_receipt_update_failed" = "Nagkaroon ng error habang nire-request ang resibo ng transaksyon mula sa Apple. Kung magpatuloy ang isyu, mangyaring makipag-ugnayan sa suporta sa customer.";
+
+"PayUpFront_offer_description" = "Pinapayagan ang mga bagong subscriber na magbayad nang isang beses na panimulang presyo para sa isang partikular na tagal ng panahon, at pagkatapos ay babayaran na nila ang regular na presyo ng subscription.";
+
+"PayAsYouGo_offer_description" = "Pinapayagan ang mga bagong subscriber na magbayad ng panimulang presyo para sa isang partikular na bilang ng mga yugto ng pagsingil bago lumipat sa regular na presyo ng subscription.";
+
+"FreeTrial_offer_description" = "Pinapayagan ang mga bagong subscriber na magkaroon ng access sa subscription sa loob ng isang tiyak na bilang ng mga siklo ng pagsingil. Kapag nag-expire na ito, babayaran ng user ang buong presyo.";

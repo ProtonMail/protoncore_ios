@@ -1,0 +1,39 @@
+"pmsettings-settings-title" = "Cài đặt";
+
+"pmsettings-settings-app-settings-section" = "Cài đặt ứng dụng";
+
+"pmsettings-settings-system-settings-section" = "Cài đặt hệ thống";
+
+"pmsettings-settings-system-settings-language-title" = "Ngôn ngữ";
+
+"pmsettings-settings-system-settings-language-description" = "Bạn có thể chọn ngôn ngữ ưu tiên trong cài đặt hệ thống.";
+
+"pmsettings-settings-system-settings-language-button" = "Thiết lập ngôn ngữ trong cài đặt hệ thống.";
+
+"pmsettings-settings-system-settings-notifications-title" = "Thông báo";
+
+"pmsettings-settings-system-settings-notifications-description" = "Lịch này có thể cập nhật cho bạn về các sự kiện đang diễn ra hoặc lời mời. Nếu muốn nhận thông báo đẩy, bạn cần thay đổi cài đặt hệ thống của mình.";
+
+"pmsettings-settings-system-settings-notifications-button" = "Quản lý các quyền trong cài đặt hệ thống";
+
+"pmsettings-settings-about-section" = "Giới thiệu";
+
+"pmsettings-settings-about-acknowledgements" = "Lời cảm ơn";
+
+"pmsettings-settings-about-privacy" = "Chính sách quyền riêng tư";
+
+"pmsettings-settings-about-terms" = "Điều khoản dịch vụ";
+
+"pmsettings-settings-footer" = "Phiên bản ứng dụng: %@";
+
+"Bug report" = "Báo cáo lỗi";
+
+"Send report" = "Gửi báo cáo";
+
+"Title" = "Tiêu đề";
+
+"What went wrong" = "Đã xảy ra sự cố gì";
+
+"Please describe the problem in as much detail as you can. If there was an error message, let us know what it said. Minimum 10 characters." = "Vui lòng mô tả vấn đề chi tiết nhất có thể. Nếu bạn thấy thư báo lỗi, hãy cho chúng tôi biết nội dung thư đó. Tối thiểu 10 ký tự.";
+
+"Your report was sent successfully" = "Đã gửi thành công báo cáo của bạn";

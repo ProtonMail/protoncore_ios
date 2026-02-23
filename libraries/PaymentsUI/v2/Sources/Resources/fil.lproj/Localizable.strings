@@ -1,0 +1,59 @@
+"All_cycle" = "Lahat ng siklo ng pagsingil";
+
+"Available_plans_section_title" = "I-upgrade ang plan mo";
+
+"Available_subscriptions_view_subtitle" = "Mga plan namin para sa privacy mo";
+
+"Available_subscriptions_view_title" = "Pumili ng plan";
+
+"Current_free_plan_name" = "Libre";
+
+"Current_plan_exipiration" = "Mag-e-expire ang subscription sa";
+
+"Current_plan_renewal" = "Awtomatikong magre-renew ang subscription sa";
+
+"Error_view_button_title" = "Subukang muli";
+
+"Error_view_message" = "Hindi namin ma-load ang pahinang ito. Paki-refresh ang pahina o suriin ang iyong koneksyon sa internet.";
+
+"Error_view_title" = "Nagkaroon ng problema";
+
+"Loading_plans_message" = "Kinukuha ang mga plan mo...";
+
+"Monthly_cycle" = "1 buwan";
+
+"No_available_plan_message" = "Hindi mapamamahalaan ang subscription mo sa loob ng mobile app.";
+
+"No_available_plan_title" = "Walang nakitang available na plan";
+
+"No_filtered_plan_message" = "Mangyaring pumili ng ibang siklo ng pagsingil.";
+
+"No_filtered_plan_title" = "Walang nakitang plan";
+
+"Plans_footer_disclaimer" = "Hindi mo mapamamahalaan ang mga subscription sa loob ng mobile app.";
+
+"Purchase_button_title" = "Kunin ang %@";
+
+"Select_plan_nav_title" = "Pumili ng plan";
+
+"Subscriptions_nav_title" = "Mga subscription";
+
+"Transaction_cancelled_by_user" = "Kinansela ng user ang transaksyon.";
+
+"Transaction_process_error" = "Nagkaroon ng problema. Pakisubukang muli. Kung magpatuloy ang isyu, mangyaring makipag-ugnayan sa aming team ng suporta.";
+
+"Transaction_state_payment_account_update_complete" = "Na-update ang account";
+
+"Transaction_state_payment_account_update_progress" = "Ina-update ang account mo";
+
+"Transaction_state_payment_confirmation_complete" = "Nakumpirma ang pagbabayad";
+
+"Transaction_state_payment_confirmation_progress" = "Kinukumpirma ang pagbabayad";
+
+"Transaction_state_view_subtitle" = "Hindi ito tatagal nang higit sa isang minuto.";
+
+"Transaction_state_view_title" = "Bini-verify ang bayad mo...";
+
+"Yearly_cycle" = "12 buwan";
+
+"Transaction_pending" = "Nakabinbin ang pagbili. Magpapatuloy ito kapag natugunan na ang mga kinakailangang aksyon.";

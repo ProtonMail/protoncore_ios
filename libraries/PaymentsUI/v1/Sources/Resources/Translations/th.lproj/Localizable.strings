@@ -1,0 +1,135 @@
+"OK" = "ตกลง";
+
+"Cancel" = "ยกเลิก";
+
+"Warning" = "คำเตือน";
+
+"Select a plan" = "เลือกแผน";
+
+"Current plan" = "แผนปัจจุบัน";
+
+"Subscription" = "การสมัครสมาชิก";
+
+"Upgrade your plan" = "อัปเกรดแผน";
+
+"Only annual subscriptions without auto-renewal are available inside the mobile app." = "เฉพาะการสมัครสมาชิกรายปีแบบไม่มีการต่ออายุอัตโนมัติเท่านั้นที่มีให้บริการภายในแอปมือถือ";
+
+"You cannot manage subscriptions inside the mobile application." = "ไม่สามารถจัดการการสมัครสมาชิกภายในแอปพลิเคชั่นมือถือได้";
+
+"Your plan will automatically renew on %@" = "แผนจะต่ออายุอัตโนมัติเมื่อ %@";
+
+"Current plan will expire on %@" = "แผนปัจจุบันจะหมดอายุเมื่อ %@";
+
+"Contact an administrator to make changes to your Proton subscription." = "ติดต่อผู้ดูแลระบบเพื่อเปลี่ยนแปลงการสมัครสมาชิก Proton";
+
+"%1$@ of %2$@" = "%1$@ จาก %2$@";
+
+"%@ storage" = "พื้นที่จัดเก็บ %@";
+
+"%@ storage / user" = "พื้นที่จัดเก็บ %@ / ผู้ใช้";
+
+"for %@" = "สำหรับ %@";
+
+"Custom email addresses" = "ที่อยู่อีเมลที่กำหนดเอง";
+
+"Priority customer support" = "ฝ่ายสนับสนุนลูกค้าพิเศษ";
+
+"Adblocker (NetShield)" = "ตัวบล็อกโฆษณา (NetShield)";
+
+"Streaming service support" = "รองรับบริการการสตรีม";
+
+"High speed" = "ความเร็วสูง";
+
+"Highest speed" = "ความเร็วสูงสุด";
+
+"Multi-user support" = "รับรองผู้ใช้หลายคน";
+
+"The basic for private and secure communications." = "พื้นฐานสำหรับการสื่อสารที่ปลอดภัยและเป็นส่วนตัว";
+
+"Full-featured mailbox with advanced protection." = "กล่องจดหมายที่มีคุณสมบัติครบถ้วนพร้อมการปกป้องขั้นสูง";
+
+"Limited time offer" = "ข้อเสนอมีเวลาจำกัด";
+
+"Complete payment?" = "ชำระเงินให้เสร็จสิ้นหรือไม่?";
+
+"A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "ได้เริ่มการซื้อแผนชุดรวม Proton แล้ว กดดำเนินการต่อเพื่อชำระเงินให้เสร็จสิ้นและสร้างบัญชี";
+
+"Complete payment" = "ชำระเงินให้เสร็จสิ้น";
+
+"The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "ไม่สามารถเสร็จสิ้นกระบวนการตั้งค่าบัญชีได้เนื่องจากข้อผิดพลาดที่ไม่คาดคิด\nโปรดลองอีกครั้ง";
+
+"The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "กระบวนการซื้อ IAP เริ่มต้นแล้ว โปรดปฏิบัติตามคำแนะนำของ Apple เพื่อชำระเงินให้เสร็จสิ้นหรือยกเลิกการซื้อ";
+
+"In app payments are temporarily unavailable." = "การชำระเงินในแอปไม่สามารถใช้งานได้ชั่วคราว";
+
+"One plan for all Proton services" = "แผนเดียวสำหรับบริการ Proton ทั้งหมด";
+
+"The no-cost starter account designed to empower everyone with privacy by default." = "บัญชีเริ่มต้นที่ไม่มีค่าใช้จ่าย ออกแบบมาเพื่อมอบความเป็นส่วนตัวโดยค่าเริ่มต้นให้กับทุกคน";
+
+"The privacy-first email and calendar solution for your everyday communication needs." = "โซลูชันอีเมลและปฏิทินที่เน้นความเป็นส่วนตัวเป็นอันดับแรกสำหรับความต้องการในการสื่อสารในทุกวัน";
+
+"Your privacy and security are our priority." = "ความเป็นส่วนตัวและความปลอดภัยคือสิ่งที่ให้ความสำคัญสูงสุด";
+
+"The storage-focused plan with 200 GB of cloud storage to keep your files private." = "แผนที่เน้นพื้นที่จัดเก็บพร้อมพื้นที่จัดเก็บคลาวด์ 200 GB เพื่อเก็บรักษาไฟล์ให้เป็นส่วนตัว";
+
+"The ultimate privacy pack with access to all premium Proton services." = "ชุดความเป็นส่วนตัวสูงสุดพร้อมการเข้าถึงบริการ Proton พรีเมียมทั้งหมด";
+
+"Only non-renewing annual subscriptions are available via this app" = "เฉพาะการสมัครสมาชิกรายปีแบบไม่ต่ออายุเท่านั้นที่มีให้บริการผ่านแอปนี้";
+
+"Your subscription cannot be managed inside the mobile app." = "ไม่สามารถจัดการการสมัครสมาชิกภายในแอปมือถือได้";
+
+"Unlimited folders, labels, and filters" = "โฟลเดอร์ ป้ายกำกับ และตัวกรองไม่จำกัด";
+
+"Up to %@ storage" = "พื้นที่จัดเก็บสูงสุด %@";
+
+"Free VPN on a single device" = "VPN ฟรีบนอุปกรณ์เดียว";
+
+"Highest VPN speed" = "ความเร็ว VPN สูงสุด";
+
+"Built-in ad-blocker (NetShield)" = "ตัวบล็อกโฆษณาในตัว (NetShield)";
+
+"Access to streaming services globally" = "เข้าถึงบริการการสตรีมได้ทั่วโลก";
+
+"Secure Core servers" = "เซิร์ฟเวอร์ Secure Core";
+
+"TOR over VPN" = "Tor ผ่าน VPN";
+
+"P2P/BitTorrent" = "P2P/BitTorrent";
+
+"Get %@" = "รับ %@";
+
+"Get Proton for free" = "รับ Proton ฟรี";
+
+"Extend subscription" = "ขยายเวลาการสมัครสมาชิก";
+
+"%@ of %@" = "%@ จาก %@";
+
+"Connection issues" = "ปัญหาการเชื่อมต่อ";
+
+"Check your internet connection" = "ตรวจสอบการเชื่อมต่ออินเทอร์เน็ต";
+
+"Strict no-logs policy" = "นโยบายไม่บันทึกข้อมูลการใช้งานที่เข้มงวด";
+
+"Plan successfully upgraded" = "อัปเกรดแผนเรียบร้อยแล้ว";
+
+"Integrated 2FA authenticator" = "ตัวยืนยันตัวตน 2FA ในตัว";
+
+"Priority support" = "การสนับสนุนพิเศษ";
+
+"Unlimited devices" = "อุปกรณ์ไม่จำกัด";
+
+"Unlimited email aliases" = "นามแฝงอีเมลไม่จำกัด";
+
+"Unlimited logins and notes" = "การเข้าสู่ระบบและบันทึกย่อไม่จำกัด";
+
+"Custom fields" = "ฟิลด์ที่กำหนดเอง";
+
+"For next-level password management and identity protection." = "สำหรับการจัดการรหัสผ่านและการปกป้องข้อมูลระบุตัวตนอีกระดับ";
+
+"Pay monthly" = "จ่ายรายเดือน";
+
+"Pay annually" = "จ่ายรายปี";
+
+"Pay every two years" = "จ่ายทุกสองปี";
+
+"Free" = "ฟรี";

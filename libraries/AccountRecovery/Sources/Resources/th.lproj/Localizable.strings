@@ -1,0 +1,81 @@
+"Settings_Item" = "รีเซ็ตรหัสผ่าน";
+
+"Insecure_View_Title" = "รีเซ็ตรหัสผ่าน";
+
+"Cancelled_View_Title" = "รีเซ็ตรหัสผ่าน";
+
+"Grace_View_Title" = "รีเซ็ตรหัสผ่าน";
+
+"We received a password reset request for **%@**." = "ได้รับคำขอรีเซ็ตรหัสผ่านสำหรับ **%@**";
+
+"We received a password reset request for %@." = "ได้รับคำขอรีเซ็ตรหัสผ่านสำหรับ %@";
+
+"If you didn't ask to reset your password, **cancel this request now**." = "หากไม่ได้ขอรีเซ็ตรหัสผ่าน **ให้ยกเลิกคำขอนี้ทันที**";
+
+"If you didn't ask to reset your password, cancel this request now." = "หากไม่ได้ขอรีเซ็ตรหัสผ่าน ให้ยกเลิกคำขอนี้ทันที";
+
+"Password reset requested" = "ส่งคำขอรีเซ็ตรหัสผ่านแล้ว";
+
+"Insecure_View_line1" = "สามารถเปลี่ยนรหัสผ่านของบัญชี ";
+
+"You can change your password in %@." = "สามารถเปลี่ยนรหัสผ่านได้ใน %@";
+
+"To make sure it's really you trying to reset your password, we wait 72 hours before approving requests." = "เพื่อให้แน่ใจว่าเป็นเจ้าของบัญชีที่ต้องการรีเซ็ตรหัสผ่าน จะต้องรอ 72 ชั่วโมงก่อนคำขอได้รับการอนุมัติ";
+
+"Insecure_View_line2" = " ได้อย่างอิสระระหว่าง ";
+
+"Insecure_View_line3" = "โปรดไปที่อุปกรณ์ที่ลงชื่อเข้าใช้ (ในเซสชันที่เริ่มส่งคำขอ) เพื่อเปลี่ยนรหัสผ่าน";
+
+"Grace_View_Cancel_Button_CTA" = "ยกเลิกคำร้องขอ";
+
+"Grace_View_Undefined_Time_Left" = "ไม่กี่ชั่วโมง";
+
+"Settings_Item_Value_Grace" = "รอดำเนินการ";
+
+"Settings_Item_Value_Expired" = "หมดอายุแล้ว";
+
+"Settings_Item_Value_Cancelled" = "ยกเลิกแล้ว";
+
+"Settings_Item_Value_Insecure" = "พร้อมใช้งาน";
+
+"Insecure_View_Cancel_Button_CTA" = "ยกเลิกการรีเซ็ต";
+
+"If you didn't ask to reset your password, **cancel this request now**." = "หากไม่ได้ขอรีเซ็ตรหัสผ่าน **ให้ยกเลิกคำขอนี้ทันที**";
+
+"If you didn't ask to reset your password, cancel this request now." = "หากไม่ได้ขอรีเซ็ตรหัสผ่าน ให้ยกเลิกคำขอนี้ทันที";
+
+"We received a password reset request for **%@**." = "ได้รับคำขอรีเซ็ตรหัสผ่านสำหรับ **%@**";
+
+"We received a password reset request for %@." = "ได้รับคำขอรีเซ็ตรหัสผ่านสำหรับ %@";
+
+"Password reset cancelled" = "ยกเลิกการรีเซ็ตรหัสผ่านแล้ว";
+
+"Cancelled by the user" = "ยกเลิกโดยผู้ใช้";
+
+"Authenticated in another session" = "ยืนยันตัวตนในเซสชันอื่นแล้ว";
+
+"none" = "ไม่มี";
+
+"The account recovery process expired due to inaction" = "กระบวนการกู้คืนบัญชีหมดอายุแล้วเนื่องจากไม่มีการดำเนินการ";
+
+"If you never made a password reset request, someone else could have access to your account. **Change your password now**" = "หากไม่ได้ขอรีเซ็ตรหัสผ่าน ผู้อื่นอาจเข้าถึงบัญชีได้ **เปลี่ยนรหัสผ่านทันที**";
+
+"If you never made a password reset request, someone else could have access to your account. Change your password now" = "หากไม่ได้ขอรีเซ็ตรหัสผ่าน ผู้อื่นอาจเข้าถึงบัญชีได้ เปลี่ยนรหัสผ่านทันที";
+
+"The account recovery process expired due to inaction" = "กระบวนการกู้คืนบัญชีหมดอายุแล้วเนื่องจากไม่มีการดำเนินการ";
+
+"Recovery process not started" = "ยังไม่เริ่มกระบวนการกู้คืน";
+
+"Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "ขณะนี้ไม่มีการกู้คืนบัญชีที่กำลังดำเนินการอยู่ โปรดไปที่เซสชันบนเว็บแอปพลิเคชั่นเพื่อกู้คืนรหัสผ่าน";
+
+"You can now reset your password" = "สามารถรีเซ็ตรหัสผ่านได้แล้ว";
+
+"Reset available until %@." = "รีเซ็ตได้ถึง %@";
+
+"Change device to continue" = "เปลี่ยนอุปกรณ์เพื่อดำเนินการต่อ";
+
+"To reset your password, go back to your active session on **the originating device**." = "เพื่อรีเซ็ตรหัสผ่าน ให้กลับไปที่เซสชันที่ใช้งานอยู่บน **อุปกรณ์ต้นทาง**";
+
+"To reset your password, go back to your active session on the originating device." = "เพื่อรีเซ็ตรหัสผ่าน ให้กลับไปที่เซสชันที่ใช้งานอยู่บน อุปกรณ์ต้นทาง";
+
+"You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now." = "มีเวลา %@ ในการรีเซ็ตรหัสผ่าน\nต้องดำเนินการบนอุปกรณ์และเบราว์เซอร์ที่ใช้ส่งคำขอรีเซ็ตรหัสผ่าน\nหากไม่ได้ขอรีเซ็ตรหัสผ่าน ให้ยกเลิกคำขอนี้ทันที";

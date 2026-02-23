@@ -1,0 +1,47 @@
+"Contact customer support" = "Makipag-ugnayan sa suporta sa customer";
+
+"Failed to get list of available products from App Store." = "Nabigong makuha ang listahan ng available na mga produkto mula sa App Store";
+
+"Purchase is not possible." = "Hindi posible ang pagbili.";
+
+"Apple informed us you've upgraded the service plan, but some technical data was missing. Please fill in the bug report and our customer support team will contact you." = "Ipinaalam sa amin ng Apple na nag-upgrade ka ng plan ng serbisyo, ngunit nawawala ang ilang teknikal na data. Pakipunan ang ulat ng bug at makikipag-ugnayan sa iyo ang team ng suporta sa customer.";
+
+"Apple informed us you've upgraded the service plan, but we detected you have logged out of the account since then." = "Ipinaalam sa amin ng Apple na nag-upgrade ka ng plan ng serbisyo, ngunit natukoy namin na nag-sign out ka sa account mula noon.";
+
+"It wasn't possible to match your purchased App Store product to any products on our server. Please fill in the bug report and our customer support team will contact you." = "Hindi naitugma ang biniling produkto sa App Store sa anumang produkto sa server namin. Pakipunan ang ulat ng bug at makikipag-ugnayan sa iyo ang team ng suporta sa customer.";
+
+"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the purchase." = "Mangyaring mag-sign in sa Proton Mail account kung saan ia-upgrade mo ang plan ng serbisyo para makumpleto ang pagbili.";
+
+"Apple informed us they could not process the purchase." = "Ipinaalam sa amin ng Apple na hindi nila maproseso ang pagbili.";
+
+"We have successfully activated your subscription. Please relaunch the app to start using your new service plan." = "Matagumpay naming na-activate ang subscription mo. Paki-relaunch ang app para simulang gamitin ang iyong bagong plan ng serbisyo.";
+
+"Please unlock the app to proceed with your service plan activation" = "Paki-unlock ang app para magpatuloy sa pag-activate ng iyong plan ng serbisyo.";
+
+"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the service plan activation." = "Mangyaring mag-sign in sa Proton Mail account kung saan ia-upgrade mo ang plan ng serbisyo para makumpleto namin ang pag-activate sa plan ng serbisyo.";
+
+"Wrong payment token status. Please relaunch the app. If error persists, contact support." = "Maling status ng token sa pagbabayad. Paki-relaunch ang app. Kung magpatuloy ang error, makipag-ugnayan sa suporta.";
+
+"Do you want to activate the purchase for %@ address?" = "Gusto mo bang i-activate ang pagbili para sa %@ na address?";
+
+"Yes, activate it for " = "Oo, i-activate ito para sa ";
+
+"No, for another Proton Mail account" = "Hindi, para sa ibang Proton Mail account";
+
+"We were unable to upgrade your account to the plan you selected, so we added your payment as credits to your account. For more information and to complete your upgrade, please contact Support." = "Hindi namin na-upgrade ang account mo sa napiling plan, kaya idinagdag namin ang bayad bilang mga credit sa account mo. Para sa karagdagang impormasyon at para makumpleto ang pag-upgrade mo, mangyaring makipag-ugnayan sa Suporta.";
+
+"Contact Support" = "Makipag-ugnayan sa Suporta";
+
+"Dismiss" = "I-dismiss";
+
+"Payment failed" = "Nabigo ang pagbabayad";
+
+"You have successfully registered but your payment was not processed. To resend your payment information, click Retry. You will only be charged once. If the problem persists, please contact customer support." = "Matagumpay kang nakapagrehistro ngunit hindi naproseso ang bayad mo. Para ipadalang muli ang iyong impormasyon sa pagbabayad, i-click ang Retry. Sisingilin ka nang isang beses lang. Kung magpatuloy ang problema, mangyaring makipag-ugnayan sa suporta sa customer.";
+
+"Retry" = "Subukang muli";
+
+"OK" = "OK";
+
+"The Proton servers are unreachable. It might be caused by wrong network configuration, Proton servers not working or Proton servers being blocked" = "Hindi maabot ang mga Proton server. Maaaring sanhi ito ng maling configuration ng network, hindi gumaganang mga Proton server o naka-block na mga Proton server.";
+
+"The signed-in Apple account already purchased this item." = "Binili na ng naka-sign in na Apple account ang item na ito.";

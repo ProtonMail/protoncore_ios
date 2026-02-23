@@ -1,0 +1,39 @@
+"pmsettings-settings-title" = "การตั้งค่า";
+
+"pmsettings-settings-app-settings-section" = "การตั้งค่าแอป";
+
+"pmsettings-settings-system-settings-section" = "การตั้งค่าระบบ";
+
+"pmsettings-settings-system-settings-language-title" = "ภาษา";
+
+"pmsettings-settings-system-settings-language-description" = "สามารถเลือกภาษาที่ต้องการได้ในการตั้งค่าระบบ";
+
+"pmsettings-settings-system-settings-language-button" = "ตั้งค่าภาษาในการตั้งค่าระบบ";
+
+"pmsettings-settings-system-settings-notifications-title" = "การแจ้งเตือน";
+
+"pmsettings-settings-system-settings-notifications-description" = "ปฏิทินนี้สามารถแจ้งข้อมูลอัปเดตเกี่ยวกับกิจกรรมหรือคำเชิญ หากต้องการรับการแจ้งเตือนแบบพุช จำเป็นต้องเปลี่ยนการตั้งค่าระบบ";
+
+"pmsettings-settings-system-settings-notifications-button" = "จัดการสิทธิ์ในการตั้งค่าระบบ";
+
+"pmsettings-settings-about-section" = "เกี่ยวกับ";
+
+"pmsettings-settings-about-acknowledgements" = "กิตติกรรมประกาศ";
+
+"pmsettings-settings-about-privacy" = "นโยบายความเป็นส่วนตัว";
+
+"pmsettings-settings-about-terms" = "ข้อตกลงการใช้บริการ";
+
+"pmsettings-settings-footer" = "เวอร์ชันแอป: %@";
+
+"Bug report" = "รายงานบั๊ก";
+
+"Send report" = "ส่งรายงาน";
+
+"Title" = "ชื่อหัวข้อ";
+
+"What went wrong" = "เกิดข้อผิดพลาดอะไรขึ้น";
+
+"Please describe the problem in as much detail as you can. If there was an error message, let us know what it said. Minimum 10 characters." = "โปรดอธิบายปัญหาให้ละเอียดที่สุด หากมีข้อความแจ้งข้อผิดพลาด โปรดระบุข้อความนั้น ขั้นต่ำ 10 ตัวอักษร";
+
+"Your report was sent successfully" = "ส่งรายงานสำเร็จแล้ว";

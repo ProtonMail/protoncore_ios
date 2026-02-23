@@ -1,0 +1,81 @@
+"Settings_Item" = "Đặt lại mật khẩu";
+
+"Insecure_View_Title" = "Đặt lại mật khẩu";
+
+"Cancelled_View_Title" = "Đặt lại mật khẩu";
+
+"Grace_View_Title" = "Đặt lại mật khẩu";
+
+"We received a password reset request for **%@**." = "Chúng tôi đã nhận được yêu cầu đặt lại mật khẩu cho **%@**";
+
+"We received a password reset request for %@." = "Chúng tôi đã nhận được yêu cầu đặt lại mật khẩu cho %@";
+
+"If you didn't ask to reset your password, **cancel this request now**." = "Nếu bạn không yêu cầu đặt lại mật khẩu, hãy **hủy yêu cầu này ngay**.";
+
+"If you didn't ask to reset your password, cancel this request now." = "Nếu bạn không yêu cầu đặt lại mật khẩu, hãy hủy yêu cầu này ngay.";
+
+"Password reset requested" = "Đã yêu cầu đặt lại mật khẩu";
+
+"Insecure_View_line1" = "Bây giờ bạn có thể thay đổi mật khẩu của tài khoản ";
+
+"You can change your password in %@." = "Có thể thay đổi mật khẩu trong %@.";
+
+"To make sure it's really you trying to reset your password, we wait 72 hours before approving requests." = "Để đảm bảo bạn chính là người đang đặt lại mật khẩu, chúng tôi sẽ chờ 72 giờ trước khi phê duyệt yêu cầu.";
+
+"Insecure_View_line2" = " thoải mái trong ";
+
+"Insecure_View_line3" = "Vui lòng vào thiết bị đã đăng nhập (trong phiên làm việc mà yêu cầu này được tạo) để thay đổi mật khẩu của mình.";
+
+"Grace_View_Cancel_Button_CTA" = "Hủy yêu cầu";
+
+"Grace_View_Undefined_Time_Left" = "một vài giờ";
+
+"Settings_Item_Value_Grace" = "Đang chờ xử lý";
+
+"Settings_Item_Value_Expired" = "Đã hết hạn";
+
+"Settings_Item_Value_Cancelled" = "Đã hủy";
+
+"Settings_Item_Value_Insecure" = "Khả dụng";
+
+"Insecure_View_Cancel_Button_CTA" = "Hủy đặt lại";
+
+"If you didn't ask to reset your password, **cancel this request now**." = "Nếu bạn không yêu cầu đặt lại mật khẩu, hãy **hủy yêu cầu này ngay**.";
+
+"If you didn't ask to reset your password, cancel this request now." = "Nếu bạn không yêu cầu đặt lại mật khẩu, hãy hủy yêu cầu này ngay.";
+
+"We received a password reset request for **%@**." = "Chúng tôi đã nhận được yêu cầu đặt lại mật khẩu cho **%@**..";
+
+"We received a password reset request for %@." = "Chúng tôi đã nhận được yêu cầu đặt lại mật khẩu cho %@.";
+
+"Password reset cancelled" = "Đã hủy yêu cầu đặt lại mật khẩu";
+
+"Cancelled by the user" = "Đã bị người dùng hủy";
+
+"Authenticated in another session" = "Đã xác thực trong phiên khác";
+
+"none" = "không có";
+
+"The account recovery process expired due to inaction" = "Quá trình khôi phục tài khoản đã hết hạn do không thao tác";
+
+"If you never made a password reset request, someone else could have access to your account. **Change your password now**" = "Nếu bạn chưa từng yêu cầu đặt lại mật khẩu, có thể đã có người khác truy cập vào tài khoản của bạn. **Hãy đổi mật khẩu ngay**";
+
+"If you never made a password reset request, someone else could have access to your account. Change your password now" = "Nếu bạn chưa từng yêu cầu đặt lại mật khẩu, có thể đã có người khác truy cập vào tài khoản của bạn. Hãy đổi mật khẩu ngay";
+
+"The account recovery process expired due to inaction" = "Quá trình khôi phục tài khoản đã hết hạn do không thao tác";
+
+"Recovery process not started" = "Quá trình khôi phục chưa bắt đầu";
+
+"Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "Hiện không có quá trình khôi phục tài khoản nào đang diễn ra. Vui lòng truy cập phiên trên ứng dụng web để khôi phục mật khẩu.";
+
+"You can now reset your password" = "Bây giờ bạn có thể đặt lại mật khẩu";
+
+"Reset available until %@." = "Đặt lại khả dụng cho đến %@.";
+
+"Change device to continue" = "Đổi thiết bị để tiếp tục";
+
+"To reset your password, go back to your active session on **the originating device**." = "Để đặt lại mật khẩu, hãy quay lại phiên đang hoạt động trên **thiết bị ban đầu**.";
+
+"To reset your password, go back to your active session on the originating device." = "Để đặt lại mật khẩu, hãy quay lại phiên đang hoạt động trên thiết bị ban đầu.";
+
+"You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now." = "Bạn có %@ để đặt lại mật khẩu.\nCần thực hiện thao tác này trên thiết bị và trình duyệt đã tạo yêu cầu đặt lại mật khẩu.\nNếu bạn không yêu cầu đặt lại mật khẩu, hãy hủy yêu cầu ngay.";

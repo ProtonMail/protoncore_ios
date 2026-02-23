@@ -1,0 +1,39 @@
+"pmsettings-settings-title" = "Mga Setting";
+
+"pmsettings-settings-app-settings-section" = "Mga Setting ng App";
+
+"pmsettings-settings-system-settings-section" = "Mga Setting ng System";
+
+"pmsettings-settings-system-settings-language-title" = "Wika";
+
+"pmsettings-settings-system-settings-language-description" = "Maaari kang pumili ng gusto mong wika sa mga setting ng system.";
+
+"pmsettings-settings-system-settings-language-button" = "Itakda ang wika sa mga setting ng system";
+
+"pmsettings-settings-system-settings-notifications-title" = "Mga Abiso";
+
+"pmsettings-settings-system-settings-notifications-description" = "Pananatilihin kang updated ng kalendaryong ito tungkol sa mga kaganapan o imbitasyon. Kung gusto mong makatanggap ng mga abiso, kailangan mong baguhin ang mga setting ng system.";
+
+"pmsettings-settings-system-settings-notifications-button" = "Pamahalaan ang mga pahintulot sa mga setting ng system";
+
+"pmsettings-settings-about-section" = "Tungkol dito";
+
+"pmsettings-settings-about-acknowledgements" = "Mga Pagkilala";
+
+"pmsettings-settings-about-privacy" = "Patakaran sa privacy";
+
+"pmsettings-settings-about-terms" = "Mga tuntunin ng serbisyo";
+
+"pmsettings-settings-footer" = "Bersyon ng App: %@";
+
+"Bug report" = "Ulat ng bug";
+
+"Send report" = "Ipadala ang ulat";
+
+"Title" = "Pamagat";
+
+"What went wrong" = "Ano ang naging problema";
+
+"Please describe the problem in as much detail as you can. If there was an error message, let us know what it said. Minimum 10 characters." = "Pakilarawan ang problema nang detalyado hangga't maaari. Kung may mensahe ng error, ipaalam sa amin ang nakasaad. Hindi bababa sa 10 character.";
+
+"Your report was sent successfully" = "Matagumpay na naipadala ang ulat mo.";

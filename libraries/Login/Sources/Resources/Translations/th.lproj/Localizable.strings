@@ -1,0 +1,17 @@
+"The Proton servers are unreachable. It might be caused by wrong network configuration, Proton servers not working or Proton servers being blocked" = "ไม่สามารถติดต่อเซิร์ฟเวอร์ Proton ได้ อาจเกิดจากการกำหนดค่าเครือข่ายผิดพลาด เซิร์ฟเวอร์ Proton ไม่ทำงาน หรือเซิร์ฟเวอร์ Proton ถูกบล็อก";
+
+"An error has occured" = "เกิดข้อผิดพลาด";
+
+"Get a Proton Mail address linked to this account in your Proton web settings." = "รับที่อยู่ Proton Mail ที่เชื่อมโยงกับบัญชีนี้ในการตั้งค่าเว็บ Proton";
+
+"Proton address required" = "ต้องระบุที่อยู่ Proton";
+
+"Code doesn't match" = "รหัสไม่ตรงกัน";
+
+"Code isn't valid" = "รหัสไม่ถูกต้อง";
+
+"Device secret not found" = "ไม่พบรหัสลับของอุปกรณ์";
+
+"Passphrase not found" = "ไม่พบข้อความรหัสผ่าน";
+
+"Password update failed" = "การอัปเดตรหัสผ่านล้มเหลว";

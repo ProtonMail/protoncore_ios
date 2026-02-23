@@ -1,0 +1,17 @@
+"The Proton servers are unreachable. It might be caused by wrong network configuration, Proton servers not working or Proton servers being blocked" = "Không thể kết nối đến máy chủ Proton. Có thể do lỗi cấu hình mạng, máy chủ Proton không hoạt động hoặc bị chặn";
+
+"An error has occured" = "Đã xảy ra lỗi";
+
+"Get a Proton Mail address linked to this account in your Proton web settings." = "Nhận một địa chỉ Proton Mail được liên kết với tài khoản này trong cài đặt web Proton của bạn.";
+
+"Proton address required" = "Cần địa chỉ Proton";
+
+"Code doesn't match" = "Mã không khớp";
+
+"Code isn't valid" = "Mã không hợp lệ";
+
+"Device secret not found" = "Không tìm thấy thiết bị bí mật";
+
+"Passphrase not found" = "Không tìm thấy cụm mật khẩu";
+
+"Password update failed" = "Cập nhật mật khẩu thất bại";

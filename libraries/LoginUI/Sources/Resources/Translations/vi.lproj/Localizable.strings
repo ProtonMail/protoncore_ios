@@ -1,0 +1,493 @@
+"Privacy by default" = "Privacy by default";
+
+"Proton address required" = "Cần địa chỉ Proton";
+
+"Update required" = "Cần cập nhật";
+
+"Please enter your Proton Account password." = "Vui lòng nhập mật khẩu Tài khoản Proton của bạn.";
+
+"OK" = "OK";
+
+"Help" = "Trợ giúp";
+
+"Continue" = "Tiếp tục";
+
+"Password" = "Mật khẩu";
+
+"The Proton servers are unreachable. It might be caused by wrong network configuration, Proton servers not working or Proton servers being blocked" = "Không thể kết nối đến máy chủ Proton. Có thể do lỗi cấu hình mạng, máy chủ Proton không hoạt động hoặc bị chặn";
+
+"Search country" = "Tìm quốc gia";
+
+"Code sent to %@" = "Mã đã được gửi tới %@";
+
+"Request new code?" = "Yêu cầu mã mới?";
+
+"Resend" = "Gửi lại";
+
+"Get a replacement code sent to %@." = "Lấy mã xác thực được gửi đến %@.";
+
+"Request new code" = "Yêu cầu mã mới";
+
+"Enter your Proton Account details." = "Nhập chi tiết tài khoản Proton của bạn.";
+
+"Email or username" = "Email hoặc tên người dùng";
+
+"Sign in" = "Đăng nhập";
+
+"Sign in with password" = "Đăng nhập bằng mật khẩu";
+
+"Sign in with SSO" = "Đăng nhập bằng SSO";
+
+"Sign in with a QR code" = "Đăng nhập với mã QR";
+
+"Sign in to your organization" = "Đăng nhập vào tổ chức của bạn";
+
+"Create an account" = "Tạo một tài khoản";
+
+"How can we help?" = "Chúng tôi có thể giúp gì cho bạn?";
+
+"Forgot username" = "Quên tên người dùng";
+
+"Forgot password" = "Quên mật khẩu";
+
+"Other sign-in issues" = "Các sự cố đăng nhập khác";
+
+"Customer support" = "Hỗ trợ khách hàng";
+
+"Still need help? Contact us directly." = "Vẫn cần sự giúp đỡ? Hãy liên hệ trực tiếp tới chúng tôi.";
+
+"Please enter your Proton Account email or username." = "Vui lòng nhập địa chỉ email hoặc tên người dùng tài khoản Proton của bạn.";
+
+"Complete Setup" = "Hoàn tất thiết lập";
+
+"Your account is missing keys, please sign in on web to automatically generate required keys. Once you have signed in on web, please return to the app and sign in." = "Tài khoản của bạn hiện không có khóa mã hóa, vui lòng đăng nhập vào web để tự động tạo khóa. Sau khi đăng nhập vào web, bạn có thể trở lại ứng dụng này và đăng nhập.";
+
+"Account setup required" = "Yêu cầu thiết lập tài khoản";
+
+"Incorrect mailbox password" = "Mật khẩu hộp thư không đúng";
+
+"Your session has expired. Please log in again." = "Phiên đăng nhập của bạn đã hết hạn. Xin vui lòng đăng nhập lại.";
+
+"Proton address required" = "Cần địa chỉ Proton";
+
+"You need a Proton email address to use Proton Mail and Proton Calendar.\nYou’ll still be able to use %@ to sign in, and to recover your account." = "Bạn cần một địa chỉ email Proton để sử dụng Proton Mail và Proton Calendar.\nBạn vẫn có thể sử dụng %@ để đăng nhập, và khôi phục tài khoản của mình.";
+
+"Username" = "Tên người dùng";
+
+"Please enter a username." = "Vui lòng nhập tên người dùng.";
+
+"Unlock your mailbox" = "Mở khóa hộp thư của bạn";
+
+"Mailbox password" = "Mật khẩu hộp thư";
+
+"Unlock" = "Mở khóa";
+
+"Forgot password" = "Quên mật khẩu";
+
+"Two-factor authentication" = "Xác thực hai yếu tố";
+
+"Authenticate" = "Xác thực";
+
+"Two-factor code" = "Mã xác thực hai yếu tố";
+
+"Recovery code" = "Mã khôi phục";
+
+"Use recovery code" = "Dùng mã khôi phục";
+
+"Use two-factor code" = "Dùng mã xác thực hai yếu tố";
+
+"Enter the 6-digit code." = "Nhập mã gồm 6 chữ số";
+
+"Enter an 8-character recovery code." = "Nhập một mã khôi phục 8 ký tự.";
+
+"Learn more" = "Tìm hiểu thêm";
+
+"Change your password" = "Đổi mật khẩu";
+
+"Change password" = "Đổi mật khẩu";
+
+"To use the Proton app as a member of an organization, you first need to change your password by signing into Proton through a browser." = "Để sử dụng Proton như một thành viên của tổ chức, bạn phải đổi mật khẩu trước bằng cách đăng nhập vào Proton trên một trình duyệt.";
+
+"Error occured" = "Đã có lỗi xảy ra";
+
+"Create your Proton Account" = "Tạo Tài khoản Proton của bạn";
+
+"One account for all Proton services." = "Một tài khoản cho tất cả dịch vụ của Proton.";
+
+"Next" = "Tiếp tục";
+
+"Use your current email instead" = "Sử dụng địa chỉ email hiện có";
+
+"Create a secure Proton Mail address instead" = "Tại một địa chỉ Proton Mail bảo mật";
+
+"Email" = "Email";
+
+"Create your password" = "Tạo mật khẩu";
+
+"Password must contain at least 8 characters" = "Mật khẩu phải chứa ít nhất 8 ký tự";
+
+"Repeat password" = "Nhập lại mật khẩu";
+
+"Domain" = "Tên miền";
+
+"Set recovery method" = "Thiết lập phương thức khôi phục";
+
+"Set recovery method (optional)" = "Thiết lập phương thức khôi phục (không bắt buộc)";
+
+"We will send recovery instructions to this email or phone number if you get locked out of your account." = "Chúng tôi sẽ gửi hướng dẫn khôi phục tài khoản vào email này nếu như bạn không thể đăng nhập.";
+
+"Email" = "Email";
+
+"Phone" = "Điện thoại";
+
+"Recovery email" = "Email khôi phục";
+
+"Recovery phone number" = "Số điện thoại khôi phục";
+
+"By clicking Next, you agree with Proton's Terms and Conditions" = "Bằng việc tiếp tục, bạn đồng ý với các Điều khoản và Điều kiện của Proton";
+
+"By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "Bằng việc nhấn Tiếp tục, bạn chấp nhận Điều khoản và Chính sách bảo mật của Proton";
+
+"Terms and Conditions" = "Điều khoản và Điều kiện";
+
+"Privacy Policy" = "Chính sách bảo mật";
+
+"Skip" = "Bỏ qua";
+
+"Skip recovery method?" = "Bỏ qua thiết đặt khôi phục?";
+
+"A recovery method will help you access your account in case you forget your password or get locked out of your account." = "Phương thức khôi phục sẽ giúp bạn truy cập vào tài khoản trong trường hợp bạn quên mật khẩu hoặc không thể đăng nhập.";
+
+"Set recovery method" = "Thiết lập phương thức khôi phục";
+
+"Your account is being created" = "Tài khoản của bạn đang được tạo";
+
+"This should take no more than a minute." = "Quá trình này thường mất khoảng một phút.";
+
+"Creating your account" = "Đang tạo tài khoản của bạn";
+
+"Generating your address" = "Đang tạo địa chỉ của bạn";
+
+"Securing your account" = "Đang bảo vệ tài khoản của bạn";
+
+"Verifying your payment" = "Đang xác nhận thanh toán";
+
+"Account verification" = "Xác minh tài khoản";
+
+"For your security, we must verify that the address you entered belongs to you. We sent a verification code to %@. Please enter the code below:" = "Vì lí do an toàn, chúng tôi cần phải xác thực là địa chỉ bạn đưa cho chúng tôi thật sự thuộc về bạn. Chúng tôi đã gửi một mã xác thực đến %@. Vui lòng nhập nó dưới đây:";
+
+"Verification code" = "Mã xác thực";
+
+"Enter the 6-digit code." = "Nhập mã gồm 6 chữ số";
+
+"Did not receive a code?" = "Chưa nhận được mã?";
+
+"Terms and Conditions" = "Điều khoản và Điều kiện";
+
+"Privacy Policy" = "Chính sách bảo mật";
+
+"Invalid token request" = "Yêu cầu không hợp lệ";
+
+"Invalid token error" = "Yêu cầu không hợp lệ";
+
+"Create user failed" = "Không thể tạo người dùng";
+
+"Invalid hashed password" = "Mật khẩu không hợp lệ";
+
+"Password can not be empty.\nPlease try again." = "Mật khẩu không thể bỏ trống.\nVui lòng thử lại.";
+
+"Passwords do not match.\nPlease try again." = "Mật khẩu không trùng khớp.\nVui lòng thử lại";
+
+"Email address already used." = "Địa chỉ email đã được sử dụng.";
+
+"Please ask your admin to configure your sub-user." = "Vui lòng yêu cầu quản trị viên của bạn thiết lập người dùng phụ của bạn.";
+
+"Would you like to receive a new verification code or use an alternate email address?" = "Bạn có muốn nhận một mã xác thực mới hoặc sử dụng một địa chỉ email khác?";
+
+"Change email address" = "Thay đổi địa chỉ email";
+
+"Congratulations" = "Chúc mừng";
+
+"Your Proton Free account was successfully created." = "Tài khoản Proton miễn phí của bạn đã được tạo";
+
+"Proton Free" = "Proton miễn phí";
+
+"Your payment was confirmed and your %@ account successfully created." = "Thanh toán của bạn đã được xác nhận và tài khoản %@ của bạn đã được tạo thành công.";
+
+"Your Proton account was successfully created." = "Tài khoản Proton của bạn đã được tạo thành công";
+
+"Enjoy the world of privacy." = "Hãy tận hưởng thế giới riêng tư của bạn.";
+
+"Cancel" = "Hủy";
+
+"Sign in" = "Đăng nhập";
+
+"Troubleshoot" = "Khắc phục sự cố";
+
+"Please choose how you want to confirm your identity." = "Vui lòng chọn cách bạn muốn xác minh danh tính.";
+
+"One-time code" = "Mã dùng một lần";
+
+"Security key" = "Khóa bảo mật";
+
+"Two-Factor Authentication" = "Xác thực hai bước";
+
+"Present a security key linked to your Proton Account." = "Cung cấp một khóa bảo mật liên kết với Tài khoản Proton của bạn.";
+
+"Learn more" = "Tìm hiểu thêm";
+
+"Invalid state. Please quit the app and try again in a few minutes." = "Trạng thái không hợp lệ. Vui lòng thoát ứng dụng và thử lại sau vài phút.";
+
+"There was a problem reading your security key." = "Đã xảy ra lỗi khi đọc khoá bảo mật của bạn.";
+
+"We received an authorization from a type we don't support yet." = "Chúng tôi đã nhận được xác thực từ loại hiện chưa hỗ trợ.";
+
+"Fetching your security keys details" = "Đang tìm nạp chi tiết khoá bảo mật của bạn";
+
+"You don't yet have any security keys enrolled in your account. Please visit the settings section on our website to add security keys." = "Bạn chưa có khoá bảo mật nào được đăng ký với tài khoản của bạn. Vui lòng tham khảo mục cài đặt trên trang web của chúng tôi để thêm khoá bảo mật.";
+
+"An error occurred fetching your security keys. You can also check them on the Proton %@ website." = "Đã có lỗi xảy ra khi đang truy xuất khoá bảo mật của bạn. Bạn có thể kiểm tra trên trang web của Proton %@.";
+
+"These are the security keys registered to your account" = "Đây là những khoá bảo mật đã đăng ký với tài khoản của bạn";
+
+"You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys." = "Bạn chưa có khoá bảo mật nào được đăng ký với tài khoản của bạn. Vui lòng sử dụng ứng dụng web %@ Proton để thêm khóa bảo mật.";
+
+"Security Keys" = "Khóa bảo mật";
+
+"To manage, add, or remove security keys, please use the Proton %@ web application." = "Để quản lý, thêm hoặc xoá khoá bảo mật, vui lòng sử dụng ứng dụng web của Proton %@.";
+
+"Unexpected FIDO2 signature." = "Chữ kí FIDO2 không được dự báo trước.";
+
+"We could not initiate the Secure Password update connection. Please try again." = "Chúng tôi không thể bắt đầu cập nhật kết nối của mật khẩu bảo vệ. Vui lòng thử lại.";
+
+"Join %@" = "Tham gia %@";
+
+"%@ added you to their Proton organization." = "%@ đã thêm bạn vào tổ chức của họ trên Proton.";
+
+"Continue" = "Tiếp tục";
+
+"Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "Đặt mật khẩu sao lưu để tiếp tục. Mật khẩu sẽ cho phép bạn đăng nhập và khôi phục dữ liệu của bạn nếu bạn bị khoá tài khoản Proton của mình, vì vậy hãy chắc chắn rằng cất nó ở một nơi nào đó an toàn.";
+
+"Backup password" = "Mật khẩu sao lưu";
+
+"Repeat backup password" = "Nhập lại mật khẩu sao lưu";
+
+"Password cannot be empty" = "Mật khẩu không được để trống";
+
+"Password must contain at least 8 characters" = "Mật khẩu phải chứa ít nhất 8 ký tự";
+
+"Password doesn't match" = "Mật khẩu không khớp";
+
+"Sign-in requested on another device. Was it you?" = "Đã yêu cầu đăng nhập trên thiết bị khác. Có phải bạn không?";
+
+"Enter the confirmation code we sent on your other device for %@." = "Nhập mã xác thức chúng tôi đã gửi trên thiết bị khác cho %@.";
+
+"Confirmation code" = "Mã xác nhận";
+
+"If you didn't make this request, cancel it now." = "Nếu bạn không thực hiện yêu cầu này, hãy huỷ ngay bây giờ.";
+
+"Yes, it was me" = "Đúng, đó là tôi";
+
+"No, it wasn't me" = "Không, đó không phải là tôi";
+
+"Share the confirmation code with your administrator" = "Chia sẻ mã xác nhận với quản trị viên của bạn";
+
+"Approve the sign-in from another device" = "Chấp thuận đăng nhập từ thiết bị khác";
+
+"To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@." = "Để chắc chắn rằng bạn đang là người đăng nhập, hãy chia sẻ mã xác nhận với quản trị viên của bạn %@ để họ có thể chấp thuận yêu cầu %@.";
+
+"To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "Để chắc chắn rằng bạn đang đăng nhập vào tài khoản của mình, hãy xem lại mã xác nhận và chấp thuận yêu cầu từ một thiết bị khác.";
+
+"Use backup password instead" = "Dùng mật khẩu dự phòng thay thế";
+
+"Ask administrator for help" = "Hỏi quản trị viên giúp đỡ";
+
+"Devices available:" = "Các thiết bị hiện có:";
+
+"Operation couldn't be completed. Please try again." = "Không thể hoàn thành tác vụ. Vui lòng thử lại.";
+
+"Enter your backup password" = "Nhập mật khẩu dự phòng của bạn";
+
+"To make sure it’s really you trying to sign-in, please enter your backup password." = "Để chắc chắn bạn đang là người đăng nhập, hãy nhập mật khẩu dự phòng của bạn.";
+
+"Access granted" = "Truy cập chấp thuận";
+
+"Access denied" = "Truy cập từ chối";
+
+"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "Để bảo vệ an toàn, bạn đã được đăng xuất khỏi các thiết bị hoạt động khác. Trước khi truy cập vào tài khoản của bạn, bạn sẽ cần điền mật khẩu dự phòng mới.";
+
+"Contact your administrator if the problem persists." = "Liên lạc với quản trị viên của bạn nếu vấn đề vẫn tiếp tục xảy ra.";
+
+"Back to sign-in" = "Quay lại đăng nhập";
+
+"Ask your administrator for access?" = "Hãy thử hỏi quản trị viên quyền truy cập?";
+
+"This will sign you out of your other devices and you will have to create a new backup password." = "Bạn sẽ đăng xuất khỏi các thiết bị khác và bạn sẽ phải tạo mật khẩu dự phòng mới.";
+
+"Grant access to user?" = "Cấp quyền truy cập cho người dùng?";
+
+"%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user." = "soso%@ đang yêu cầu bạn giúp họ đăng nhập vào tài khoản Proton bằng cách đăng nhập một lần (Sso).\n\nĐiền mã xác nhận chúng tôi đã gửi cho người dùng này.";
+
+"Grant access" = "Cấp quyền";
+
+"Deny access" = "Từ chối";
+
+"Signing you in" = "Đang đăng nhập";
+
+"to your organization" = "tới tổ chức của bạn";
+
+"Sign in with single sign-on" = "Đăng nhập bằng SSO";
+
+"Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "Tổ chức của bạn sử dụng SSO. Tiếp tục đăng nhập với nhà cung cấp SSO bên thứ ba của bạn.";
+
+"Unknown" = "Không biết";
+
+"Set backup password" = "Đặt mật khẩu sao lưu";
+
+"Email is invalid" = "Email không hợp lệ";
+
+"Please enter your Proton Account email." = "Vui lòng nhập e-mail tài khoản Proton của bạn.";
+
+"Password not valid" = "Mật khẩu không hợp lệ";
+
+"Passphrase not found" = "Không tìm thấy cụm mật khẩu";
+
+"Open the Proton app on your phone" = "Mở ứng dụng Proton trên điện thoại của bạn";
+
+"Tap into Settings, then tap Sign in to another device" = "Nhấn vào Cài đặt, sau đó nhấn vào Đăng nhập vào một thiết bị khác";
+
+"Tap Scan QR code" = "Nhấn quét mã QR";
+
+"Scan this code with your phone camera to sign in instantly." = "Quét mã này bằng camera trên điện thoại của bạn để đăng nhập ngay lập tức.";
+
+"Sign in to another device" = "Đăng nhập vào một thiết bị khác";
+
+"Sign in with your QR code" = "Đăng nhập bằng mã QR code của bạn";
+
+"Use this device to scan the QR code displayed on the device you want to sign in to. Both devices will stay active." = "Sử dụng thiết bị này để quét mã QR hiển thị trên thiết bị bạn muốn đăng nhập. Cả hai thiết bị sẽ vẫn hoạt động.";
+
+"To access the QR code, tap the **Sign in with QR code** button on the sign-in screen." = "Để truy cập QR code, hãy nhấn vào nút **Đăng nhập với mã QR** trên màn hình đăng nhập.";
+
+"Watch out for messages that contain a QR code. Never scan a QR code from a website or a person you don't trust." = "Hãy cẩn trọng với các tin nhắn có chứa mã QR. Không bao giờ quét mã QR từ một trang web hoặc một người mà bạn không tin tưởng.";
+
+"Proton will never ask you to scan a QR code that does not come from the domain **proton.me**." = "Proton sẽ không bao giờ yêu cầu bạn quét mã QR mà không đến từ tên miền **Proton.me**.";
+
+"Scan QR code" = "Quét mã QR";
+
+"Authenticate to access the QR code scanner" = "Xác thực để truy cập trình quét mã QR";
+
+"Place QR code within the square" = "Đặt mã QR vào trong hình vuông";
+
+"Verifying..." = "Đang xác minh...";
+
+"You’re signed in to %@ on the other device." = "Bạn đã đăng nhập vào %@ trên một thiết bị khác.";
+
+"You're signed in" = "Bạn đã đăng nhập";
+
+"Got it" = "Đã hiểu";
+
+"Code not recognized. Try again." = "Không nhận diện được mã. Hãy thử lại.";
+
+"Tip: Never scan a QR code from a website or a person you don’t trust. Proton will never ask you to scan a QR code that doesn’t come from the domain account.proton.me." = "Mẹo: Không bao giờ quét mã QR từ một trang web hay từ một người mà bạn không tin tưởng. Proton sẽ không bao giờ yêu cầu bạn quét mã QR nằm ngoài tên miền account.proton.me.";
+
+"Camera Access Denied." = "Quyền truy cập vào máy ảnh bị từ chối.";
+
+"The permission to use the Camera is off. Please enable it from the Settings." = "Quyền sử dụng camera đã tắt. Hãy kích hoạt nó trong Cài đặt.";
+
+"Go to Settings" = "Vào Cài đặt";
+
+"to Proton %@" = "đến Proton%@";
+
+"Something went wrong" = "Có lỗi sảy ra";
+
+"We couldn't sign you in. Please scan a new QR code to try again." = "Chúng tôi không thể đăng nhập cho bạn. Vui lòng quét mã QR mới để thử lại.";
+
+"We couldn't sign you in. Please sign in with your password." = "Không thể đăng nhập. Vui lòng đăng nhập bằng mật khẩu.";
+
+"New QR code" = "Mã QR mới";
+
+"Allow access to camera" = "Cho phép truy cập vào máy ảnh";
+
+"To scan a QR code and sign in to another device, grant Proton %@ access to your camera." = "Để quét mã QR và đăng nhập vào một thiết thiết bị khác, hãy cấp quyền truy cập máy ảnh của bạn cho Proton%@";
+
+"You're always in control: You can change this anytime in your device settings." = "Bạn luôn nắm quyền kiểm soát: Bạn có thể thay đổi điều này bất kỳ lúc nào trong phần cài đặt thiết bị.";
+
+"Settings" = "Cài đặt";
+
+"We couldn't load the QR code" = "Chúng tôi không thể tải mã QR";
+
+"Retry" = "Thử lại";
+
+"Welcome to Proton VPN" = "Chào mừng đến với Proton VPN";
+
+"Browse privately, access blocked content, and enjoy digital freedom." = "Duyệt web một cách riêng tư, truy cập các nội dung bị chặn và tận hưởng sự tự do trên nền tảng kỹ thuật số.";
+
+"Certified no-logs VPN" = "VPN không ghi nhật ký được chứng nhận";
+
+"Continue as guest" = "Tiếp tục dưới tư cách khách";
+
+"By using this app you accept our [Terms and Conditions](%1$@) and acknowledge our [Privacy Policy](%2$@)." = "Bằng việc sử dụng ứng dụng này, bạn đồng ý với [Điều khoản và Điều kiện](%1$@) và xác nhận [Chính sách quyền riêng tư](%2$@) của chúng tôi.";
+
+"Tap **Scan QR code**" = "Chạm vào **Quét mã QR**";
+
+"Tap into **Settings**, then tap **Sign in to another device**" = "Chạm vào **Cài đặt**, sau đó chạm vào **Đăng nhập vào thiết bị khác**";
+
+"Password must contain:" = "Mật khẩu phải chứa:";
+
+"Access shared" = "Đã chia sẻ quyền truy cập";
+
+"Back to settings" = "Quay lại cài đặt";
+
+"How to sign in using another device" = "Cách đăng nhập bằng thiết bị khác";
+
+"Get another device that’s signed in to your Proton Account" = "Sử dụng một thiết bị khác đã đăng nhập vào Tài khoản Proton";
+
+"Using that device, open any Proton app and select **Settings**" = "Trên thiết bị đó, mở ứng dụng Proton bất kỳ và chọn **Cài đặt**";
+
+"Select **Sign in on another device → Scan QR code**" = "Chọn **Đăng nhập trên thiết bị khác → Quét mã QR**";
+
+"Scan the code to sign in" = "Quét mã để đăng nhập";
+
+"We couldn't sign you in" = "Không thể đăng nhập";
+
+"Try generating a new QR code." = "Thử tạo mã QR mới.";
+
+"Generate QR code" = "Tạo mã QR";
+
+"Please try another sign in method." = "Vui lòng thử phương thức đăng nhập khác.";
+
+"Sign in on another device" = "Đăng nhập trên thiết bị khác";
+
+"How to sign in with QR code" = "Cách đăng nhập bằng mã QR";
+
+"Allow camera access" = "Cho phép truy cập máy ảnh";
+
+"To sign in with QR code, you'll need to let Proton %@ access your camera. You can do this in your device settings." = "Để đăng nhập bằng mã QR, cần cho phép Proton %@ truy cập máy ảnh. Bạn có thể thực hiện việc này trong cài đặt thiết bị.";
+
+"Position QR code inside the square" = "Đặt mã QR vào trong hình vuông";
+
+"Sign in with QR code" = "Đăng nhập bằng mã QR";
+
+"Open any Proton app on the device you want to sign in to" = "Mở ứng dụng Proton bất kỳ trên thiết bị muốn đăng nhập";
+
+"On the sign-in screen, select **Forgot password** or **Trouble signing in?** (on mobile apps, select **Help**)" = "Trên màn hình đăng nhập, chọn **Quên mật khẩu** hoặc **Gặp sự cố khi đăng nhập?** (trên ứng dụng di động, chọn **Trợ giúp**)";
+
+"Select **Sign in with QR code**. A QR code will appear." = "Chọn **Đăng nhập bằng mã QR**. Mã QR sẽ xuất hiện.";
+
+"On this device, press **Scan QR code** and scan the code." = "Trên thiết bị này, nhấn **Quét mã QR** và quét mã.";
+
+"Security tips" = "Mẹo bảo mật";
+
+"Be cautious of messages with QR codes. Only scan a code if you trust the source." = "Cẩn trọng với các thư có mã QR. Chỉ quét mã nếu tin tưởng nguồn gửi.";
+
+"Proton will never contact you unexpectedly asking you to sign in with a QR code." = "Proton sẽ không bao giờ liên hệ đột xuất để yêu cầu bạn đăng nhập bằng mã QR.";
+
+"Proton will never ask you to scan a QR code that’s not from **https://proton.me** or an official Proton app." = "Proton sẽ không bao giờ yêu cầu bạn quét mã QR nằm ngoài **https://proton.me** hoặc ứng dụng chính thức của Proton.";
+
+"Learn more" = "Tìm hiểu thêm";
+
+"**Security tips**" = "**Mẹo bảo mật**";
+
+"SSO configuration error" = "SSO configuration error";
+
+"Failed to obtain SSO response token" = "Failed to obtain SSO response token";

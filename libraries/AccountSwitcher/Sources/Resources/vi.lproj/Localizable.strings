@@ -1,0 +1,27 @@
+"switch to" = "chuyển sang";
+
+"Manage accounts" = "Quản lý tài khoản";
+
+"Signed in to Proton Mail" = "Đã đăng nhập vào Proton Mail";
+
+"Signed out of Proton Mail" = "Đã đăng xuất khỏi Proton Mail";
+
+"Sign out" = "Đăng xuất";
+
+"Remove account from this device" = "Xóa tài khoản khỏi thiết bị này";
+
+"Remove account" = "Xóa tài khoản";
+
+"You will be signed out and all the data associated with this account will be removed from this device." = "Bạn sẽ đăng xuất và mọi dữ liệu liên quan đến tài khoản sẽ được xóa khỏi thiết bị này.";
+
+"Remove" = "Xóa";
+
+"Are you sure you want to sign out %@?" = "Bạn có chắc muốn đăng xuất khỏi %@?";
+
+"Dismiss account switcher" = "Bỏ qua giao diện chuyển đổi tài khoản";
+
+"Sign in to another account" = "Đăng nhập vào một tài khoản khác";
+
+"Cancel" = "Hủy";
+
+"Sign in" = "Đăng nhập";

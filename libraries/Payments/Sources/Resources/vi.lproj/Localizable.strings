@@ -1,0 +1,47 @@
+"Contact customer support" = "Liên hệ hỗ trợ khách hàng";
+
+"Failed to get list of available products from App Store." = "Không thể lấy danh sách các sản phẩm có sẵn từ App Store.";
+
+"Purchase is not possible." = "Không thể giao dịch.";
+
+"Apple informed us you've upgraded the service plan, but some technical data was missing. Please fill in the bug report and our customer support team will contact you." = "Apple đã cho chúng tôi biết rằng bạn đã nâng cấp gói dịch vụ nhưng một vài thông tin kĩ thuật vẫn còn thiếu. Vui lòng điền báo cáo lỗi và đội ngũ hỗ trợ khách hàng của chúng tôi sẽ liên hệ với bạn.";
+
+"Apple informed us you've upgraded the service plan, but we detected you have logged out of the account since then." = "Apple đã cho chúng tôi biết rằng bạn đã nâng cấp gói dịch vụ, nhưng chúng tôi nhận thấy bạn đã đăng xuất khỏi tài khoản kể từ đó.";
+
+"It wasn't possible to match your purchased App Store product to any products on our server. Please fill in the bug report and our customer support team will contact you." = "Sản phẩm bạn đã mua từ App Store không khớp với bất kì sản phẩm nào trên máy chủ của chúng tôi. Vui lòng điền báo cáo lỗi và đội ngũ hỗ trợ khách hàng của chúng tôi sẽ liên hệ với bạn.";
+
+"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the purchase." = "Vui lòng đăng nhập vào tài khoản Proton Mail mà bạn đang nâng cấp gói dịch vụ để chúng tôi hoàn thành giao dịch.";
+
+"Apple informed us they could not process the purchase." = "Apple đã cho chúng tôi biết rằng họ không thể xử lý giao dịch.";
+
+"We have successfully activated your subscription. Please relaunch the app to start using your new service plan." = "Chúng tôi đã kích hoạt thành công gói đăng ký của bạn. Vui lòng khởi động lại ứng dụng để bắt đầu sử dụng gói dịch vụ mới.";
+
+"Please unlock the app to proceed with your service plan activation" = "Vui lòng mở khóa ứng dụng để có thể tiếp tục kích hoạt gói dịch vụ";
+
+"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the service plan activation." = "Vui lòng đăng nhập vào tài khoản Proton Mail mà bạn đang nâng cấp gói dịch vụ để chúng tôi hoàn thành kích hoạt gói dịch vụ.";
+
+"Wrong payment token status. Please relaunch the app. If error persists, contact support." = "Sai trạng thái mã thông báo thanh toán. Vui lòng khởi động lại ứng dụng. Nếu lỗi vẫn tiếp diễn, hãy liên hệ với bộ phận hỗ trợ.";
+
+"Do you want to activate the purchase for %@ address?" = "Bạn muốn thực hiện giao dịch cho địa chỉ %@?";
+
+"Yes, activate it for " = "Có, hãy thực hiện cho ";
+
+"No, for another Proton Mail account" = "Không, cho một tài khoản Proton Mail khác";
+
+"We were unable to upgrade your account to the plan you selected, so we added your payment as credits to your account. For more information and to complete your upgrade, please contact Support." = "Chúng tôi không thể nâng cấp tài khoản của bạn lên gói bạn đã chọn, vì vậy chúng tôi đã thêm khoản thanh toán của bạn vào tài khoản dưới dạng tín dụng. Để biết thêm thông tin và hoàn tất việc nâng cấp, vui lòng liên hệ với bộ phận Hỗ trợ.";
+
+"Contact Support" = "Liên hệ hỗ trợ";
+
+"Dismiss" = "Bỏ qua";
+
+"Payment failed" = "Thanh toán thất bại";
+
+"You have successfully registered but your payment was not processed. To resend your payment information, click Retry. You will only be charged once. If the problem persists, please contact customer support." = "Bạn đã đăng ký thành công nhưng khoản thanh toán của bạn chưa được xử lý. Để gửi lại thông tin thanh toán của bạn, hãy nhấp vào Thử lại. Bạn sẽ chỉ bị tính phí một lần. Nếu sự cố vẫn tiếp diễn, vui lòng liên hệ với hỗ trợ khách hàng.";
+
+"Retry" = "Thử lại";
+
+"OK" = "OK";
+
+"The Proton servers are unreachable. It might be caused by wrong network configuration, Proton servers not working or Proton servers being blocked" = "Không thể kết nối đến máy chủ Proton. Có thể do lỗi cấu hình mạng, máy chủ Proton không hoạt động hoặc bị chặn";
+
+"The signed-in Apple account already purchased this item." = "Tài khoản Apple mà bạn đã đăng nhập vào đã mua mục này trước đó.";
