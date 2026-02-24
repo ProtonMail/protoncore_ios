@@ -21,7 +21,7 @@ import SwiftUI
 import ProtonCoreUIFoundations
 
 public struct WelcomeVPNGuestView: View {
-    @Environment(\.horizontalSizeClass) var orientation
+    @Environment(\.horizontalSizeClass) private var orientation
     @StateObject var viewModel: ViewModel
     var externalLinks = ExternalLinks(clientApp: .vpn)
 
