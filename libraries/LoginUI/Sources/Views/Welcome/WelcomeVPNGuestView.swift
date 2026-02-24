@@ -21,7 +21,7 @@ import SwiftUI
 import ProtonCoreUIFoundations
 
 public struct WelcomeVPNGuestView: View {
-
+    @Environment(\.horizontalSizeClass) private var orientation
     @StateObject var viewModel: ViewModel
     var externalLinks = ExternalLinks(clientApp: .vpn)
 
@@ -41,6 +41,9 @@ public struct WelcomeVPNGuestView: View {
                     IconProvider.vpnWelcomeImageV2Bg
                         .resizable()
                         .aspectRatio(contentMode: .fit)
+                        .if(orientation == .regular, transform: { view in
+                            view.aspectRatio(contentMode: .fill)
+                        })
                         .frame(maxWidth: .infinity)
                         .ignoresSafeArea(.all)
                     IconProvider.vpnWelcomeImageV2
