@@ -1,0 +1,422 @@
+include:
+  # Ephemera environment deployment - single component with conditional inputs via variables
+  # For scheduled pipelines, EPHEMERA_KEY is set in workflow rules
+  # For MR/default branch, EPHEMERA_KEY is empty/null (component handles optional key input)
+  - component: gitlab.protontech.ch/proton/devops/cicd-components/kubernetes/ephemera-deploy/standard@2.0.1
+    inputs:
+      environment-claim-template: ephemera.yml
+      deploy: "auto"
+      deploy-stage: "deploy"
+      deploy-needs:
+        - test:ios:unit
+      cleanup: "auto"
+      cleanup-stage: "cleanup"
+      cleanup-needs:
+        - report:ios:integration:coverage
+      expiration: "2h"
+      suffix: "core"
+    rules:
+      - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
+  - component: gitlab.protontech.ch/proton/devops/cicd-components/kubernetes/ephemera-deploy/standard@2.0.1
+    inputs:
+      environment-claim-template: ephemera.yml
+      deploy: "auto"
+      deploy-stage: "deploy"
+      deploy-needs:
+        - test:ios:unit
+      cleanup: "auto"
+      cleanup-stage: "cleanup"
+      cleanup-needs:
+        - report:ios:integration:coverage
+      expiration: "2h"
+      suffix: "core"
+      key: env-$CI_PIPELINE_SCHEDULE_DESCRIPTION
+    rules:
+      - if: $CI_PIPELINE_SOURCE == "schedule"
+
+  - component: gitlab.protontech.ch/tpe/ai-components/ai-mr-summarizer@master
+    inputs:
+      gitlab-token: $GITLAB_AI_TOKEN
+      stage: summarise
+      runner-tag: shared-small
+
+.add_private_ssh_key: &add_private_ssh_key
+  - echo "$CI_SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+
+.clone_pmconstants: &clone_pmconstants
+  - rm -rf ../pmconstants
+  - git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@${PROTON_GIT_URL}/apple/shared/pmconstants ../pmconstants
+
+.setup_permissions: &setup_permissions
+  - echo -e "machine gitlab.protontech.ch\n  login gitlab-ci-token\n  password $CI_JOB_TOKEN\n\n" > ~/.netrc
+  - chmod 0600 ~/.netrc
+
+.tear_down_simulator: &tear_down_simulator
+  - DEVICE_NAME=$CI_PIPELINE_ID-$CI_JOB_NAME
+  - xcrun simctl delete $DEVICE_NAME
+
+.rules_mr: &rules_mr
+  - if: '$CI_PIPELINE_SOURCE == "web"'
+    when: never
+  - if: "$CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS"
+    when: never
+  - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    when: always
+
+github:mirror:
+  stage: github
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "web"'
+      when: never
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+      when: never
+    - if: '$CI_COMMIT_TITLE =~ /^Merge branch .release\/.+ into .+$/'
+      when: never
+    - if: '$CI_COMMIT_BRANCH == "develop"'
+      when: always
+    - if: "$CI_COMMIT_BRANCH"
+      when: never
+  allow_failure: false
+  interruptible: false
+  variables:
+    GIT_CLONE_PATH: $CI_BUILDS_DIR/$CI_PIPELINE_ID/github-mirror
+  needs: []
+  script:
+    - zsh scripts/mirror_to_github.sh develop
+  tags:
+    - account-lane-3
+
+#
+# --- Linting ---
+#
+
+linting:code-quality:
+  stage: linting
+  script:
+    - env
+    - tools/portable_swiftlint/swiftlint --config .swiftlint.yml --reporter junit > swiftlint.xml
+
+  rules: &rules_mr_and_develop
+    - if: $CI_PIPELINE_SOURCE == "push"
+    - if: $TEST == "manual"
+      when: manual
+
+    # We do not want to run jobs if the schedule doesn't deploy
+    - if: $CI_PIPELINE_SOURCE == "schedule" && $ATLAS_DEPLOY_ENV != "true"
+      when: never
+
+    - when: on_success
+
+  needs: []
+  allow_failure: false
+  interruptible: true
+  artifacts:
+    name: "ios-lint-$CI_COMMIT_SHA"
+    paths:
+      - swiftlint.xml
+    reports:
+      junit:
+        - swiftlint.xml
+    expire_in: 90 days
+  tags:
+    - macstadium-m1-protoncore
+
+linting:commits:
+  stage: linting
+  before_script:
+    - *setup_permissions
+  script:
+    - |
+      # Lint commits on branches only (not tags)
+      if [ -z "$CI_COMMIT_TAG" ] && [ "$CI_MERGE_REQUEST_EVENT_TYPE" != "merge_train" ]; then
+          mint run git-lhc lint --verbose --train core --merge-base # Lint commit history
+      fi
+
+  rules: *rules_mr_and_develop
+
+  needs: []
+  allow_failure: false
+  interruptible: true
+  tags:
+    - macstadium-m1-protoncore
+
+#
+# --- Unit testing ---
+#
+
+test:ios:unit:
+  stage: offline_tests
+  retry: 2
+  rules: *rules_mr_and_develop
+  needs: []
+  allow_failure: false
+  interruptible: true
+  before_script:
+    - *add_private_ssh_key
+    - *clone_pmconstants
+  script:
+    - fastlane run_unit_tests
+  after_script:
+    - fastlane cleanup_unit_tests
+    - ssh-add -D
+  artifacts:
+    name: "ios-unit-tests-$CI_COMMIT_SHA"
+    when: always
+    paths:
+      - fastlane/test_output/*.xcresult/**
+    expire_in: 14 days
+    reports:
+      junit:
+        - fastlane/test_output/report.junit
+  variables:
+    GIT_CLONE_PATH: $CI_BUILDS_DIR/$CI_PIPELINE_ID/account-lane-1
+  tags:
+    - account-lane-1
+
+test:macos:unit:
+  stage: offline_tests
+  retry: 2
+  rules: *rules_mr_and_develop
+  needs: []
+  allow_failure: false
+  interruptible: true
+  before_script:
+    - *add_private_ssh_key
+    - *clone_pmconstants
+  script:
+    - fastlane run_unit_tests_macos
+  after_script:
+    - fastlane cleanup_unit_tests_macos
+  artifacts:
+    paths:
+      - fastlane/test_output/*xcresult/**
+  variables:
+    GIT_CLONE_PATH: $CI_BUILDS_DIR/$CI_PIPELINE_ID/account-lane-2
+  tags:
+    - account-lane-2
+
+test:ios:localization:
+  stage: offline_tests
+  retry: 1
+  rules: *rules_mr_and_develop
+  needs: []
+  allow_failure: false
+  interruptible: true
+  before_script:
+    - *add_private_ssh_key
+  script:
+    - fastlane run_localization_tests
+  after_script:
+    - fastlane cleanup_localization_tests
+  variables:
+    GIT_CLONE_PATH: $CI_BUILDS_DIR/$CI_PIPELINE_ID/account-lane-3
+  tags:
+    - account-lane-3
+
+test:ios:integration:
+  stage: online_tests
+  retry: 1
+  rules: *rules_mr_and_develop
+  needs:
+    - job: ephemera:deploy:core
+      artifacts: true
+      optional: true
+  allow_failure: false
+  interruptible: true
+  before_script:
+    - *add_private_ssh_key
+    - *clone_pmconstants
+  script:
+    - fastlane run_integration_tests xcargs:DYNAMIC_DOMAIN="${DYNAMIC_DOMAIN}"
+  after_script:
+    - fastlane cleanup_integration_tests
+    - ssh-add -D
+  artifacts:
+    name: "ios-integration-tests-$CI_COMMIT_SHA"
+    when: always
+    paths:
+      - fastlane/test_output/*.xcresult/**
+    expire_in: 14 days
+    reports:
+      junit:
+        - fastlane/test_output/report.junit
+  variables:
+    GIT_CLONE_PATH: $CI_BUILDS_DIR/$CI_PIPELINE_ID/account-lane-4
+  tags:
+    - account-lane-4
+
+#
+# --- Coverage reports ---
+#
+
+report:ios:integration:coverage:
+  stage: report
+  retry: 1
+  coverage: '/Average Coverage.* (\d+\.\d+%)/'
+  interruptible: true
+  rules: *rules_mr_and_develop
+  allow_failure: true
+  needs:
+    - job: test:ios:integration
+      artifacts: true
+  before_script:
+    - *add_private_ssh_key
+    - bash scripts/generate_obfuscated_constants.sh
+    - ls -l fastlane/test_output
+  script:
+    - fastlane ios_integration_test_reports
+    # generate alt coverage json from xcresult
+    - xcrun xccov view --report --json fastlane/test_output/IntegrationTests.xcresult > fastlane/test_output/IntegrationTests.json
+    # Print and process the result for Gitlab coverage capture
+    - jq '"Line Coverage \(.lineCoverage * 100 |tostring | .[0:5])%"' fastlane/test_output/IntegrationTests.json
+    # generate cobertura xml from coverage json
+    - xcc generate fastlane/test_output/IntegrationTests.json fastlane/test_output cobertura-xml --verbose
+    # Split big cobertura file
+    - |
+      python3 -m venv .venv
+      source .venv/bin/activate
+      pip install lxml
+      python3 scripts/split-by-package.py fastlane/test_output/cobertura.xml fastlane/test_output/
+  artifacts:
+    reports:
+      coverage_report:
+        coverage_format: cobertura
+        path: fastlane/test_output/cobertura-*.xml
+  variables:
+    GIT_CLONE_PATH: $CI_BUILDS_DIR/$CI_PIPELINE_ID/account-lane-4
+  tags:
+    - account-lane-4
+
+report:macos:code:coverage:
+  stage: report
+  retry: 1
+  coverage: '/Average Coverage.* (\d+\.\d+%)/'
+  interruptible: true
+  rules: *rules_mr_and_develop
+  allow_failure: true
+  needs:
+    - job: test:macos:unit
+      artifacts: true
+  before_script:
+    - *add_private_ssh_key
+    - bash scripts/generate_obfuscated_constants.sh
+    - ls -l fastlane/test_output
+  script:
+    - fastlane macos_unit_test_reports
+    # generate alt coverage json from xcresult
+    - xcrun xccov view --report --json fastlane/test_output/UnitTests.xcresult > fastlane/test_output/UnitTests.json
+    # Print and process the result for Gitlab coverage capture
+    - jq '"Line Coverage \(.lineCoverage * 100 |tostring | .[0:5])%"' fastlane/test_output/UnitTests.json
+    # generate cobertura xml from coverage json
+    - xcc generate fastlane/test_output/UnitTests.json fastlane/test_output cobertura-xml --verbose
+    # Split big cobertura file
+    - |
+      python3 -m venv .venv
+      source .venv/bin/activate
+      pip install lxml
+      python3 scripts/split-by-package.py fastlane/test_output/cobertura.xml fastlane/test_output/
+  artifacts:
+    reports:
+      coverage_report:
+        coverage_format: cobertura
+        path: fastlane/test_output/cobertura-*.xml
+  variables:
+    GIT_CLONE_PATH: $CI_BUILDS_DIR/$CI_PIPELINE_ID/account-lane-2
+  tags:
+    - account-lane-2
+
+report:ios:unit:coverage:
+  stage: report
+  retry: 1
+  coverage: '/Average Coverage.* (\d+\.\d+%)/'
+  interruptible: true
+  rules: *rules_mr_and_develop
+  allow_failure: true
+  needs:
+    - job: test:ios:unit
+      artifacts: true
+  before_script:
+    - *add_private_ssh_key
+    - bash scripts/generate_obfuscated_constants.sh
+    - ls -l fastlane/test_output
+  script:
+    - fastlane ios_unit_test_reports
+    # generate alt coverage json from xcresult
+    - xcrun xccov view --report --json fastlane/test_output/UnitTests.xcresult > fastlane/test_output/UnitTests.json
+    # Print and process the result for Gitlab coverage capture
+    - jq '"Line Coverage \(.lineCoverage * 100 |tostring | .[0:5])%"' fastlane/test_output/UnitTests.json
+    # generate cobertura xml from coverage json
+    - xcc generate fastlane/test_output/UnitTests.json fastlane/test_output cobertura-xml --verbose
+    # Split big cobertura file
+    - |
+      python3 -m venv .venv
+      source .venv/bin/activate
+      pip install lxml
+      python3 scripts/split-by-package.py fastlane/test_output/cobertura.xml fastlane/test_output/
+  artifacts:
+    reports:
+      coverage_report:
+        coverage_format: cobertura
+        path: fastlane/test_output/cobertura-*.xml
+  variables:
+    GIT_CLONE_PATH: $CI_BUILDS_DIR/$CI_PIPELINE_ID/account-lane-1
+  tags:
+    - account-lane-1
+
+trigger:payments-app:tests:
+  stage: trigger
+  needs: []
+  when: manual
+  inherit:
+    variables: false
+  trigger:
+    project: Payments/PaymentsApp
+    branch: develop
+    strategy: depend
+  variables:
+    GIT_STRATEGY: "clone"
+    COMMIT_HASH: $CI_COMMIT_SHA
+
+trigger:pass:tests:
+  stage: trigger
+  needs: []
+  when: manual
+  inherit:
+    variables: false
+  trigger:
+    project: apple/pass/ios-mac-app
+    branch: develop
+    strategy: depend
+  variables:
+    GIT_STRATEGY: "clone"
+    COMMIT_HASH: $CI_COMMIT_SHA
+
+trigger:calendar:tests:
+  stage: trigger
+  needs: []
+  when: manual
+  inherit:
+    variables: false
+  trigger:
+    project: protoncalendar/protoncalendar-ios
+    branch: develop
+    strategy: depend
+  variables:
+    GIT_STRATEGY: "clone"
+    COMMIT_HASH: $CI_COMMIT_SHA
+
+trigger:drive:tests:
+  stage: trigger
+  needs: []
+  when: manual
+  inherit:
+    variables: false
+  trigger:
+    project: apple/drive/ios-mac-app
+    branch: develop
+    strategy: depend
+  variables:
+    GIT_STRATEGY: "clone"
+    COMMIT_HASH: $CI_COMMIT_SHA
