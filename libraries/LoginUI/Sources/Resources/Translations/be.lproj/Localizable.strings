@@ -488,6 +488,6 @@
 
 "**Security tips**" = "**Парады па бяспецы**";
 
-"SSO configuration error" = "SSO configuration error";
+"SSO configuration error" = "Памылка канфігурацыі SSO";
 
-"Failed to obtain SSO response token" = "Failed to obtain SSO response token";
+"Failed to obtain SSO response token" = "Не ўдалося атрымаць токен адказу SSO";
