@@ -32,7 +32,6 @@ public enum CoreFeatureFlagType: String, CaseIterable, FeatureFlagTypeProtocol {
     case splitStorage = "SplitStorage"
     case telemetrySignUpMetrics = "IOSTelemetrySignUpMetrics"
     case passwordPolicyDisabled = "PasswordPolicyDisabled"
-    case paymentsV2 = "IOSPaymentsV2"
     case paymentsV6Status = "PaymentsV6StatusRequest"
     case paymentsOmnichannelEnabled = "OmnichannelClient"
 }
