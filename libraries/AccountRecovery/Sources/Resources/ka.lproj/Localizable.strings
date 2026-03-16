@@ -1,26 +1,26 @@
 "Settings_Item" = "პაროლის ჩამოყრა";
 
-"Insecure_View_Title" = "Password reset";
+"Insecure_View_Title" = "პაროლის ჩამოყრა";
 
-"Cancelled_View_Title" = "Password reset";
+"Cancelled_View_Title" = "პაროლის ჩამოყრა";
 
-"Grace_View_Title" = "Password reset";
+"Grace_View_Title" = "პაროლის ჩამოყრა";
 
-"We received a password reset request for **%@**." = "We received a password reset request for **%@**";
+"We received a password reset request for **%@**." = "ჩვენ მივიღეთ პაროლის ჩამოყრის მოთხოვნა **%@**-ისთვის";
 
-"We received a password reset request for %@." = "We received a password reset request for %@";
+"We received a password reset request for %@." = "ჩვენ მივიღეთ პაროლის ჩამოყრის მოთხოვნა %@-ისთვის";
 
-"If you didn't ask to reset your password, **cancel this request now**." = "If you didn't ask to reset your password, **cancel this request now**.";
+"If you didn't ask to reset your password, **cancel this request now**." = "თუ პაროლის ჩამოყრა არ მოგითხოვიათ, **გააუქმეთ ეს მოთხოვნა ახლავე**.";
 
-"If you didn't ask to reset your password, cancel this request now." = "If you didn't ask to reset your password, cancel this request now.";
+"If you didn't ask to reset your password, cancel this request now." = "თუ პაროლის ჩამოყრა არ მოგითხოვიათ, გააუქმეთ ეს მოთხოვნა ახლავე.";
 
-"Password reset requested" = "Password reset requested";
+"Password reset requested" = "პაროლის ჩამოყრა მოთხოვნილია";
 
 "Insecure_View_line1" = "ახლა შეგიძლიათ შეცვალოთ თქვენი პაროლი ანგარიშისთვის ";
 
-"You can change your password in %@." = "You can change your password in %@.";
+"You can change your password in %@." = "პაროლის შეცვლა შეგიძლიათ %@-ში.";
 
-"To make sure it's really you trying to reset your password, we wait 72 hours before approving requests." = "To make sure it's really you trying to reset your password, we wait 72 hours before approving requests.";
+"To make sure it's really you trying to reset your password, we wait 72 hours before approving requests." = "იმისათვის, რომ დავრწმუნდეთ, რომ ნამდვილად თქვენ ცდილობთ პაროლის ჩამოყრას, ჩვენ მოთხოვნების დადასტურებამდე 72 საათს ვიცდით.";
 
 "Insecure_View_line2" = " განმავლობაში ";
 
@@ -30,52 +30,52 @@
 
 "Grace_View_Undefined_Time_Left" = "რამდენიმე საათი";
 
-"Settings_Item_Value_Grace" = "Pending";
+"Settings_Item_Value_Grace" = "რიგში";
 
-"Settings_Item_Value_Expired" = "Expired";
+"Settings_Item_Value_Expired" = "ვადაგასულია";
 
-"Settings_Item_Value_Cancelled" = "Cancelled";
+"Settings_Item_Value_Cancelled" = "გაუქმებულია";
 
-"Settings_Item_Value_Insecure" = "Available";
+"Settings_Item_Value_Insecure" = "Ხელმისაწვდომია";
 
-"Insecure_View_Cancel_Button_CTA" = "Cancel reset";
+"Insecure_View_Cancel_Button_CTA" = "ჩამოყრის გაუქმება";
 
-"If you didn't ask to reset your password, **cancel this request now**." = "If you didn't ask to reset your password, **cancel this request now**.";
+"If you didn't ask to reset your password, **cancel this request now**." = "თუ პაროლის ჩამოყრა არ მოგითხოვიათ, **გააუქმეთ ეს მოთხოვნა ახლავე**.";
 
-"If you didn't ask to reset your password, cancel this request now." = "If you didn't ask to reset your password, cancel this request now.";
+"If you didn't ask to reset your password, cancel this request now." = "თუ პაროლის ჩამოყრა არ მოგითხოვიათ, გააუქმეთ ეს მოთხოვნა ახლავე.";
 
-"We received a password reset request for **%@**." = "We received a password reset request for **%@**.";
+"We received a password reset request for **%@**." = "ჩვენ მივიღეთ პაროლის ჩამოყრის მოთხოვნა **%@**-ისთვის.";
 
-"We received a password reset request for %@." = "We received a password reset request for %@.";
+"We received a password reset request for %@." = "ჩვენ მივიღეთ პაროლის ჩამოყრის მოთხოვნა %@-ისთვის.";
 
-"Password reset cancelled" = "Password reset cancelled";
+"Password reset cancelled" = "პაროლის ჩამოყრა გაუქმდა";
 
-"Cancelled by the user" = "Cancelled by the user";
+"Cancelled by the user" = "გაუქმებულია მომხმარებლის მიერ";
 
-"Authenticated in another session" = "Authenticated in another session";
+"Authenticated in another session" = "ავთენტიკაცია გავლილია სხვა სესიაში";
 
-"none" = "none";
+"none" = "არცერთი";
 
-"The account recovery process expired due to inaction" = "The account recovery process expired due to inaction";
+"The account recovery process expired due to inaction" = "ანგარიშის აღდგენის პროცესს უმოქმედობის გამო ვადა გაუვიდა";
 
-"If you never made a password reset request, someone else could have access to your account. **Change your password now**" = "If you never made a password reset request, someone else could have access to your account. **Change your password now**";
+"If you never made a password reset request, someone else could have access to your account. **Change your password now**" = "თუ პაროლის ჩამოყრის მოთხოვნა არასდროს გამოგიგზავნიათ, ეს ვიღაც სხვამ ქნა. **შეცვალეთ თქვენი პაროლი ახლავე**";
 
-"If you never made a password reset request, someone else could have access to your account. Change your password now" = "If you never made a password reset request, someone else could have access to your account. Change your password now";
+"If you never made a password reset request, someone else could have access to your account. Change your password now" = "თუ პაროლის ჩამოყრის მოთხოვნა არასდროს გამოგიგზავნიათ, ეს ვიღაც სხვამ ქნა. შეცვალეთ თქვენი პაროლი ახლავე";
 
-"The account recovery process expired due to inaction" = "The account recovery process expired due to inaction";
+"The account recovery process expired due to inaction" = "ანგარიშის აღდგენის პროცესს უმოქმედობის გამო ვადა გაუვიდა";
 
-"Recovery process not started" = "Recovery process not started";
+"Recovery process not started" = "აღდგენის პროცესი არ დაწყებულა";
 
-"Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "Currently there is no account recovery in process. Please go to a session on the web application to recover your password.";
+"Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "ამჟამად ანგარიშის აღდგენა არ მიმდინარეობს. პაროლის აღსადგენად გადადით ვებაპლიკაციის სესიაზე.";
 
-"You can now reset your password" = "You can now reset your password";
+"You can now reset your password" = "ახლა შეგიძლიათ თქვენი პაროლის ჩამოყრა";
 
-"Reset available until %@." = "Reset available until %@.";
+"Reset available until %@." = "ჩამოყრა ხელმისაწვდომია %@-მდე.";
 
-"Change device to continue" = "Change device to continue";
+"Change device to continue" = "გასაგრძელებლად შეცვალეთ მოწყობილობა";
 
-"To reset your password, go back to your active session on **the originating device**." = "To reset your password, go back to your active session on **the originating device**.";
+"To reset your password, go back to your active session on **the originating device**." = "პაროლის ჩამოსაყრელად დაბრუნდით უკან **წყარო მოწყობილობის** აქტიურ სესიაზე.";
 
-"To reset your password, go back to your active session on the originating device." = "To reset your password, go back to your active session on the originating device.";
+"To reset your password, go back to your active session on the originating device." = "პაროლის ჩამოსაყრელად დაბრუნდით უკან წყარო მოწყობილობის აქტიურ სესიაზე.";
 
-"You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now." = "You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now.";
+"You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now." = "გაქვთ %@, რომ ჩამოყაროთ თქვენი პაროლი.\nსაჭიროა, ეს გააკეთოთ მოწყობილობაზე, ან ბრაუზერში, რომლიდანაც პაროლის ჩამოყრის მოთხოვნა გააგზავნეთ.\nთუ პაროლის ჩამოყრა თქვენ არ მოგითხოვიათ, გააუქმეთ ეს მოთხოვნა ახლავე.";

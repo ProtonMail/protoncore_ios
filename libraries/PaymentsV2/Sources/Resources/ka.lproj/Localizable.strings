@@ -1,33 +1,33 @@
-"APIs_malformed_url_request" = "Something went wrong, and we couldn't fulfil your request. If the issue persists, please contact customer support.";
+"APIs_malformed_url_request" = "რაღაც არასწორად წავიდა და ამის გამო თქვენი მოთხოვნის შესრულება შეუძლებელია. თუ პრობლემა არ გაქრება, დაუკავშირდით მხარდაჭერის გუნდს.";
 
-"Plans_Manager_impossible_to_get_user_uuid" = "It was impossible to get the user’s UUID for the transaction";
+"Plans_Manager_impossible_to_get_user_uuid" = "ტრანზაქციისთვის მომხმარებლის UUID-ის მიღება შეუძლებელია";
 
-"Plans_Manager_impossible_to_match_plan" = "It was impossible to match the Proton Plan to an Apple Store plan";
+"Plans_Manager_impossible_to_match_plan" = "Proton-ის პაკეტის Apple Store-ის სატარიფო გეგმასთან შეთავსება შეუძლებელი იყო";
 
-"Plans_Manager_impossible_to_restore_transactions" = "It was impossible to restore transactions, please contact customer support";
+"Plans_Manager_impossible_to_restore_transactions" = "ტრანზაქციების აღდგენა შეუძლებელია. დაუკავშირდით მხარდაჭერის გუნდს";
 
-"Plans_Manager_Transaction_cancelled_by_user" = "The transaction has been cancelled by the user";
+"Plans_Manager_Transaction_cancelled_by_user" = "ტრანზაქცია გაუქმდა მომხმარებლის მიერ";
 
-"Plans_Manager_Transaction_unknown_error" = "An unexpected error occured, if this persists, please contact customer support";
+"Plans_Manager_Transaction_unknown_error" = "აღმოჩენილია გაუთვალისწინებელი შეცდომა. თუ პრობლემა არ გაქრება, დაუკავშირდით მხარდაჭერის გუნდს.";
 
-"Plans_Manager_peding_transaction_received" = "Unexpected pending transaction received";
+"Plans_Manager_peding_transaction_received" = "მიღებულია მოულოდნელი ტრანზაქცია";
 
-"PlansComposer_unable_to_fetch_currentSub" = "Unable to fetch the current subscription";
+"PlansComposer_unable_to_fetch_currentSub" = "მიმდინარე გამოწერის გამოთხოვა შეუძლებელია";
 
-"Remote_manager_error" = "Something went wrong and we couldn't fulfill your request. If the issue persists, please contact customer support.";
+"Remote_manager_error" = "რაღაც არასწორად წავიდა და ამის გამო თქვენი მოთხოვნის შესრულება შეუძლებელია. თუ პრობლემა არ გაქრება, დაუკავშირდით მხარდაჭერის გუნდს.";
 
-"SK_Receipt_impossible_to_get_receipt" = "Impossible to get transaction receipt data from Apple";
+"SK_Receipt_impossible_to_get_receipt" = "Apple-დან გადარიცხვის ჩეკის მიღება შეუძლებელია";
 
-"SK_Receipt_task_not_found" = "Unable to process transaction due to an unexpected error, please try again.";
+"SK_Receipt_task_not_found" = "ტრანზაქციის დამუშავება შეუძლებელია გაუთვალისწინებელი შეცდომის გამო. კიდევ სცადეთ.";
 
-"Transaction_Handler_plan_not_found" = "It was impossible to find the name of the plan you’re trying to purchase. If the issue persists please contact customer support";
+"Transaction_Handler_plan_not_found" = "სატარიფო გეგმის, რომლის შეძებასაც ცდილობთ, სახელის მოძებნა შეუძლებელია. თუ პრობლემა არ გაქრება, დაუკავშირდით ჩვენი მხარდაჭერის გუნდს";
 
-"Transaction_Handler_repeated_purchase" = "It's not possible to renew the selected plan multiple times. If you think this is an error or if the issue persists please contact our customer support";
+"Transaction_Handler_repeated_purchase" = "მონიშნული სატარიფო გეგმის მრავალჯერადი განახლება შეუძლებელია. თუ ფიქრობთ, რომ ეს შეცდომაა, ან შეცდომა არ გაქრება, დაუკავშირდით ჩვენი მხარდაჭერის გუნდს.";
 
-"Transaction_Handler_receipt_update_failed" = "An error occured while requesting the transaction receipt from Apple. If the issue persists please contact customer support";
+"Transaction_Handler_receipt_update_failed" = "Apple-დან ტრანზაქციის ქვითრის მოთხოვნისას აღმოჩენილია შეცდომა. თუ პრობლემა არ გაქრება, დაუკავშირდით მხარდაჭერის გუნდს.";
 
-"PayUpFront_offer_description" = "Allows new subscribers to pay a one-time introductory price for a specific duration, after which they pay the regular subscription price.";
+"PayUpFront_offer_description" = "საშუალებას აძლევს ახალ გამომწერებს, გადაუხადონ ერთჯერადი, პირველადი ფასი მითითებული ხანგრძლივობისთვის, რომლის შედეგაც ისინი ჩვეულებრივ ფასს გადაიხდიან.";
 
-"PayAsYouGo_offer_description" = "Allows new subscribers to pay an introductory price for a specific number of billing periods before transitioning to the regular subscription price.";
+"PayAsYouGo_offer_description" = "საშუალებას აზლევს ახალ გამომწერებს, გადაიხადონ პირველადი ფასი მითითებული რაოდენობი გადახდის პერიოდისთვის ჩვეულებრივი გადახდის ფასებზე გადართვამდე.";
 
-"FreeTrial_offer_description" = "Allows new subscribers to have access to the subscription for a given number of billing cycles. One that expires, the user pays full price.";
+"FreeTrial_offer_description" = "საშუალებას აძლევს ახალ აბონენტებს, იქონიონ წვდომა გამოწერასთან მითითებული რაოდენობის გადახდის ციკლის განმავლობაში. როცა ვადა ამოიწურება, მომხმარებელი სრულ თანხას გადაიხდის.";
