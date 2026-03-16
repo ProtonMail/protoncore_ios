@@ -372,13 +372,13 @@
 
 "Proton will never ask you to scan a QR code that does not come from the domain **proton.me**." = "Proton will never ask you to scan a QR code that does not come from the domain **proton.me**.";
 
-"Scan QR code" = "Scan QR code";
+"Scan QR code" = "QR კოდის სკანირება";
 
-"Authenticate to access the QR code scanner" = "Authenticate to access the QR code scanner";
+"Authenticate to access the QR code scanner" = "გაიარეთ ავთენტიკაცია QR კოდის სკანერთან წვდომისთვის";
 
 "Place QR code within the square" = "Place QR code within the square";
 
-"Verifying..." = "Verifying...";
+"Verifying..." = "გადამოწმება...";
 
 "You’re signed in to %@ on the other device." = "You’re signed in to %@ on the other device.";
 
@@ -386,9 +386,9 @@
 
 "Got it" = "Got it";
 
-"Code not recognized. Try again." = "Code not recognized. Try again.";
+"Code not recognized. Try again." = "კოდი ამოცნობილი არაა. კიდევ სცადეთ.";
 
-"Tip: Never scan a QR code from a website or a person you don’t trust. Proton will never ask you to scan a QR code that doesn’t come from the domain account.proton.me." = "Tip: Never scan a QR code from a website or a person you don’t trust. Proton will never ask you to scan a QR code that doesn’t come from the domain account.proton.me.";
+"Tip: Never scan a QR code from a website or a person you don’t trust. Proton will never ask you to scan a QR code that doesn’t come from the domain account.proton.me." = "რჩევა: არასდროს დაასკანიროთ QR კოდი საიტიდან, ან პიროვნებისგან, რომელსაც არ ენდობით. Proton არასდროს გთხოვთ, დაასკანიროთ QR კოდი, რომელიც არ მოდის დომენიდან account.proton.me.";
 
 "Camera Access Denied." = "Camera Access Denied.";
 
@@ -410,11 +410,11 @@
 
 "To scan a QR code and sign in to another device, grant Proton %@ access to your camera." = "To scan a QR code and sign in to another device, grant Proton %@ access to your camera.";
 
-"You're always in control: You can change this anytime in your device settings." = "You're always in control: You can change this anytime in your device settings.";
+"You're always in control: You can change this anytime in your device settings." = "ყოველთვის თქვენ აკონტროლებთ: ამის შეცვლა შეგიძლიათ ნებისმიერ დროს თქვენი მოწყობილობის მორგების დიალოგში.";
 
-"Settings" = "Settings";
+"Settings" = "მორგება";
 
-"We couldn't load the QR code" = "We couldn't load the QR code";
+"We couldn't load the QR code" = "QR კოდის ჩატვირთვა ვერ მოხერხდა";
 
 "Retry" = "თავიდან";
 
@@ -426,7 +426,7 @@
 
 "Continue as guest" = "Continue as guest";
 
-"By using this app you accept our [Terms and Conditions](%1$@) and acknowledge our [Privacy Policy](%2$@)." = "By using this app you accept our [Terms and Conditions](%1$@) and acknowledge our [Privacy Policy](%2$@).";
+"By using this app you accept our [Terms and Conditions](%1$@) and acknowledge our [Privacy Policy](%2$@)." = "ამ აპლიკაციის გამოყენებით თქვენ ეთანხმებით ჩვენს [წესებსა და პირობებს](%1$@) და ადასტურებთ ჩვენს [კონფიდენციალობის პოლიტიკას](%2$@).";
 
 "Tap **Scan QR code**" = "Tap **Scan QR code**";
 
@@ -434,60 +434,60 @@
 
 "Password must contain:" = "Password must contain:";
 
-"Access shared" = "Access shared";
+"Access shared" = "წვდომა გაზიარებულია";
 
-"Back to settings" = "Back to settings";
+"Back to settings" = "მორგებაზე დაბრუნება";
 
-"How to sign in using another device" = "How to sign in using another device";
+"How to sign in using another device" = "როგორ შევიდეთ სხვა მოწყობილობის გამოყენებით";
 
-"Get another device that’s signed in to your Proton Account" = "Get another device that’s signed in to your Proton Account";
+"Get another device that’s signed in to your Proton Account" = "აიღეთ სხვა მოწყობილობა, რომელზეც შესული ხართ თქვენი Proton-ის ანგარიშზე";
 
-"Using that device, open any Proton app and select **Settings**" = "Using that device, open any Proton app and select **Settings**";
+"Using that device, open any Proton app and select **Settings**" = "იმ მოწყობილობაზე გახსენით Proton-ის ნებისმიერი აპი და აირჩიეთ **მორგება**";
 
-"Select **Sign in on another device → Scan QR code**" = "Select **Sign in on another device → Scan QR code**";
+"Select **Sign in on another device → Scan QR code**" = "აირჩიეთ **შესვლა სხვა მოწყობილობაზე → QR კოდის სკანირება**";
 
-"Scan the code to sign in" = "Scan the code to sign in";
+"Scan the code to sign in" = "დაასკანირეთ კოდი შესასვლელად";
 
-"We couldn't sign you in" = "We couldn't sign you in";
+"We couldn't sign you in" = "სისტემაში თქვენი შეყვანა შეუძლებელია";
 
-"Try generating a new QR code." = "Try generating a new QR code.";
+"Try generating a new QR code." = "სცადეთ ახალი QR კოდის გენერაცია.";
 
-"Generate QR code" = "Generate QR code";
+"Generate QR code" = "QR კოდის გენერაცია";
 
-"Please try another sign in method." = "Please try another sign in method.";
+"Please try another sign in method." = "სცადეთ შესვლის სხვა მეთოდი.";
 
-"Sign in on another device" = "Sign in on another device";
+"Sign in on another device" = "შესვლა სხვა მოწყობილობაზე";
 
-"How to sign in with QR code" = "How to sign in with QR code";
+"How to sign in with QR code" = "როგორ შევიდეთ QR კოდით";
 
-"Allow camera access" = "Allow camera access";
+"Allow camera access" = "კამერაზე წვდომის დაშვება";
 
-"To sign in with QR code, you'll need to let Proton %@ access your camera. You can do this in your device settings." = "To sign in with QR code, you'll need to let Proton %@ access your camera. You can do this in your device settings.";
+"To sign in with QR code, you'll need to let Proton %@ access your camera. You can do this in your device settings." = "QR კოდით შესასვლელად, საჭიროა Proton %@-ს კამერაზე წვდომა მისცეთ. ამის გაკეთება თქვენი მოწყობილობის მორგების დიალოგში შეგიძლიათ.";
 
-"Position QR code inside the square" = "Position QR code inside the square";
+"Position QR code inside the square" = "მოათავსეთ QR კოდი კვადრატში";
 
-"Sign in with QR code" = "Sign in with QR code";
+"Sign in with QR code" = "QR კოდით შესვლა";
 
-"Open any Proton app on the device you want to sign in to" = "Open any Proton app on the device you want to sign in to";
+"Open any Proton app on the device you want to sign in to" = "გახსენით ნებისმიერი Proton-ის აპი იმ მოწყობილობაზე, რომელშიც გსურთ, შეხვიდეთ";
 
-"On the sign-in screen, select **Forgot password** or **Trouble signing in?** (on mobile apps, select **Help**)" = "On the sign-in screen, select **Forgot password** or **Trouble signing in?** (on mobile apps, select **Help**)";
+"On the sign-in screen, select **Forgot password** or **Trouble signing in?** (on mobile apps, select **Help**)" = "შესვლის ეკრანზე აირჩიეთ **პაროლი დამავიწყდა**, ან **შესვლის პრობლემები გაქვთ?** (მობილურ აპლიკაციებზე აირჩიეთ **დახმარება**)";
 
-"Select **Sign in with QR code**. A QR code will appear." = "Select **Sign in with QR code**. A QR code will appear.";
+"Select **Sign in with QR code**. A QR code will appear." = "აირჩიეთ **შესვლა QR კოდით**. გამოჩნდება QR კოდი.";
 
-"On this device, press **Scan QR code** and scan the code." = "On this device, press **Scan QR code** and scan the code.";
+"On this device, press **Scan QR code** and scan the code." = "ამ მოწყობილობაზე დააჭირეთ **QR კოდის სკანირება** და დაასკანირეთ კოდი.";
 
-"Security tips" = "Security tips";
+"Security tips" = "უსაფრთხოების რჩევები";
 
-"Be cautious of messages with QR codes. Only scan a code if you trust the source." = "Be cautious of messages with QR codes. Only scan a code if you trust the source.";
+"Be cautious of messages with QR codes. Only scan a code if you trust the source." = "უფრთხილდით QR კოდების შემცველ შეტყობინებებს. სკანირება გააკეთეთ, მხოლოდ, იმ შემთხვევაში, თუ წყაროს ენდობით.";
 
-"Proton will never contact you unexpectedly asking you to sign in with a QR code." = "Proton will never contact you unexpectedly asking you to sign in with a QR code.";
+"Proton will never contact you unexpectedly asking you to sign in with a QR code." = "Proton არასდროს დაგიკავშირდებათ მოულოდნელად და არ მოგთხოვთ QR კოდით შესვლას.";
 
-"Proton will never ask you to scan a QR code that’s not from **https://proton.me** or an official Proton app." = "Proton will never ask you to scan a QR code that’s not from **https://proton.me** or an official Proton app.";
+"Proton will never ask you to scan a QR code that’s not from **https://proton.me** or an official Proton app." = "Proton არასდროს გთხოვთ, დაასკანიროთ QR კოდი, რომელიც არ მოდის **https://proton.me**-დან, ან ოფიციალური Proton-ის აპიდან.";
 
 "Learn more" = "მეტის ნახვა";
 
-"**Security tips**" = "**Security tips**";
+"**Security tips**" = "**უსაფრთხოების რჩევები**";
 
-"SSO configuration error" = "SSO configuration error";
+"SSO configuration error" = "SSO-ის კონფიგურაციის შეცდომა";
 
-"Failed to obtain SSO response token" = "Failed to obtain SSO response token";
+"Failed to obtain SSO response token" = "SSO-ის პასუხის ტოკენის მიღება ჩავარდა";

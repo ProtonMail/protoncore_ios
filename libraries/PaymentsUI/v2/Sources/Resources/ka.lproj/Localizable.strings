@@ -1,59 +1,59 @@
-"All_cycle" = "All billing cycles";
+"All_cycle" = "ყველა გადახდის ციკლი";
 
-"Available_plans_section_title" = "Upgrade your plan";
+"Available_plans_section_title" = "გააუმჯობესეთ თქვენი ტარიფი";
 
-"Available_subscriptions_view_subtitle" = "Our plans for your privacy";
+"Available_subscriptions_view_subtitle" = "ჩვენი სატარიფო გეგმები თქვენი კონფიდენციალობისთვის";
 
-"Available_subscriptions_view_title" = "Select a plan";
+"Available_subscriptions_view_title" = "აირჩიეთ სატარიფო გეგმა";
 
-"Current_free_plan_name" = "Free";
+"Current_free_plan_name" = "უფასო";
 
-"Current_plan_exipiration" = "Your subscription expires on";
+"Current_plan_exipiration" = "თქვენი გამოწერა იწურება";
 
-"Current_plan_renewal" = "Your subscription automatically renews on";
+"Current_plan_renewal" = "თქვენი გამოწერის ავტომატურად განახლდების დროა";
 
-"Error_view_button_title" = "Retry";
+"Error_view_button_title" = "თავიდან";
 
-"Error_view_message" = "We couldn't load this page. Please refresh the page or check your internet connection.";
+"Error_view_message" = "ეს გვერდი ვერ ჩაიტვირთა. განაახლეთ გვერდი, ან შეამოწმეთ თქვენი ინტერნეტკავშირი.";
 
-"Error_view_title" = "Something went wrong";
+"Error_view_title" = "რაღაც არასწორად წავიდა";
 
-"Loading_plans_message" = "Fetching your plans...";
+"Loading_plans_message" = "თქვენი გეგმების გამოთხოვა...";
 
-"Monthly_cycle" = "1 month";
+"Monthly_cycle" = "1 თვე";
 
-"No_available_plan_message" = "Your subscription can't be managed inside the mobile app.";
+"No_available_plan_message" = "გამოწერის მართვა მობილური აპიდან შეუძლებელია.";
 
-"No_available_plan_title" = "No available plans found";
+"No_available_plan_title" = "ხელმისაწვდომი სატარიფო გეგმა აღმოჩენილი არაა";
 
-"No_filtered_plan_message" = "Please select a different billing cycle";
+"No_filtered_plan_message" = "აირჩიეთ სხვა გადახდის ციკლი";
 
-"No_filtered_plan_title" = "No plans found";
+"No_filtered_plan_title" = "სატარიფო გეგმები აღმოჩენილი არაა";
 
-"Plans_footer_disclaimer" = "You cannot manage subscriptions inside the mobile app";
+"Plans_footer_disclaimer" = "მობილური აპლიკაციიდან გამოწერებს ვერ მართავთ";
 
-"Purchase_button_title" = "Get %@";
+"Purchase_button_title" = "%@-ის მიღება";
 
-"Select_plan_nav_title" = "Select a plan";
+"Select_plan_nav_title" = "აირჩიეთ სატარიფო გეგმა";
 
-"Subscriptions_nav_title" = "Subscriptions";
+"Subscriptions_nav_title" = "გამოწერები";
 
-"Transaction_cancelled_by_user" = "Transaction cancelled by the user";
+"Transaction_cancelled_by_user" = "ტრანზაქცია გაუქმდა მომხმარებლის მიერ";
 
-"Transaction_process_error" = "Something went wrong, please retry. If the issue persists please contact our support team.";
+"Transaction_process_error" = "რაღაც არასწორად წავიდა. კიდევ სცადეთ. თუ პრობლემა არ გაქრა, დაუკავშირდით ჩვენი მხარდაჭერის გუნდს.";
 
-"Transaction_state_payment_account_update_complete" = "Account updated";
+"Transaction_state_payment_account_update_complete" = "ანგარიში განახლდა";
 
-"Transaction_state_payment_account_update_progress" = "Updating your account";
+"Transaction_state_payment_account_update_progress" = "თქვენი ანგარიშის განახლება";
 
-"Transaction_state_payment_confirmation_complete" = "Payment confirmed";
+"Transaction_state_payment_confirmation_complete" = "გადახდა დადასტურებულია";
 
-"Transaction_state_payment_confirmation_progress" = "Confirming your payment";
+"Transaction_state_payment_confirmation_progress" = "მიმდინარეობს თქვენი გადახდის დადასტურება";
 
-"Transaction_state_view_subtitle" = "This should take no more than a minute.";
+"Transaction_state_view_subtitle" = "ამას წუთზე მეტი არ უნდა დასჭირდეს.";
 
-"Transaction_state_view_title" = "Your payment is being verified...";
+"Transaction_state_view_title" = "მიმდინარეობს თქვენი გადახდის გადამოწმება...";
 
-"Yearly_cycle" = "12 months";
+"Yearly_cycle" = "12 თვე";
 
-"Transaction_pending" = "Purchase pending. It will resume once the required actions are fulfilled";
+"Transaction_pending" = "გადახდა დაწყებულია. ის გაგრძელდება მოთხოვნილი ქმედებების შესრულების შემდეგ.";
