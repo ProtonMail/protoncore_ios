@@ -36,12 +36,6 @@ include:
     rules:
       - if: $CI_PIPELINE_SOURCE == "schedule"
 
-  - component: gitlab.protontech.ch/tpe/ai-components/ai-mr-summarizer@master
-    inputs:
-      gitlab-token: $GITLAB_AI_TOKEN
-      stage: summarise
-      runner-tag: shared-small
-
 .add_private_ssh_key: &add_private_ssh_key
   - echo "$CI_SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
 
