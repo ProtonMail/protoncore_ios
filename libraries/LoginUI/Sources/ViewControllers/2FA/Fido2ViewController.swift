@@ -23,8 +23,23 @@
 
 import UIKit
 import SwiftUI
+import ProtonCoreUIFoundations
 
 @available(iOS 15.0, *)
-public typealias Fido2ViewController = UIHostingController<Fido2View>
+public final class Fido2ViewController: UIHostingController<Fido2View> {
+     required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    override public init(rootView: Fido2View) {
+        super.init(rootView: rootView)
+    }
+
+    override public func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = ColorProvider.BackgroundNorm
+        navigationController?.navigationBar.tintColor = ColorProvider.TextNorm
+    }
+}
 
 #endif
