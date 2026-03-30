@@ -1,33 +1,33 @@
 "APIs_malformed_url_request" = "Prišlo je do napake in vaše zahteve nismo mogli izpolniti. Če se težava ponavlja, se obrnite na podporo strankam.";
 
-"Plans_Manager_impossible_to_get_user_uuid" = "It was impossible to get the user’s UUID for the transaction";
+"Plans_Manager_impossible_to_get_user_uuid" = "Za transakcijo ni bilo mogoče pridobiti uporabnikovega UUID-ja.";
 
-"Plans_Manager_impossible_to_match_plan" = "It was impossible to match the Proton Plan to an Apple Store plan";
+"Plans_Manager_impossible_to_match_plan" = "Paketa Proton ni bilo mogoče uskladiti s paketom trgovine Apple Store.";
 
-"Plans_Manager_impossible_to_restore_transactions" = "It was impossible to restore transactions, please contact customer support";
+"Plans_Manager_impossible_to_restore_transactions" = "Transakcij ni bilo mogoče obnoviti, obrnite se na podporo strankam.";
 
 "Plans_Manager_Transaction_cancelled_by_user" = "Transakcijo je preklical uporabnik.";
 
-"Plans_Manager_Transaction_unknown_error" = "An unexpected error occured, if this persists, please contact customer support";
+"Plans_Manager_Transaction_unknown_error" = "Prišlo je do nepričakovane napake. Če se ta ponovi, se obrnite na podporo strankam.";
 
-"Plans_Manager_peding_transaction_received" = "Unexpected pending transaction received";
+"Plans_Manager_peding_transaction_received" = "Prejeta je bila nepričakovana transakcija v čakanju";
 
 "PlansComposer_unable_to_fetch_currentSub" = "Ni mogoče pridobiti trenutne naročnine";
 
 "Remote_manager_error" = "Prišlo je do napake in vaše zahteve nismo mogli izpolniti. Če se težava ponavlja, se obrnite na podporo strankam.";
 
-"SK_Receipt_impossible_to_get_receipt" = "Impossible to get transaction receipt data from Apple";
+"SK_Receipt_impossible_to_get_receipt" = "Od Appla ni mogoče pridobiti podatkov o potrdilu o transakciji.";
 
-"SK_Receipt_task_not_found" = "Unable to process transaction due to an unexpected error, please try again.";
+"SK_Receipt_task_not_found" = "Transakcije ni mogoče obdelati zaradi nepričakovane napake, poskusite znova.";
 
-"Transaction_Handler_plan_not_found" = "It was impossible to find the name of the plan you’re trying to purchase. If the issue persists please contact customer support";
+"Transaction_Handler_plan_not_found" = "Imena paketa, ki ga poskušate kupiti, ni bilo mogoče najti. Če težava ne izgine, se obrnite na podporo strankam.";
 
-"Transaction_Handler_repeated_purchase" = "It's not possible to renew the selected plan multiple times. If you think this is an error or if the issue persists please contact our customer support";
+"Transaction_Handler_repeated_purchase" = "Izbranega paketa ni mogoče večkrat obnoviti. Če menite, da je to napaka ali če se težava še vedno pojavlja, se obrnite na našo podporo strankam";
 
-"Transaction_Handler_receipt_update_failed" = "An error occured while requesting the transaction receipt from Apple. If the issue persists please contact customer support";
+"Transaction_Handler_receipt_update_failed" = "Pri zahtevi potrdila o transakciji od podjetja Apple je prišlo do napake. Če težava ne izgine, se obrnite na podporo strankam.";
 
-"PayUpFront_offer_description" = "Allows new subscribers to pay a one-time introductory price for a specific duration, after which they pay the regular subscription price.";
+"PayUpFront_offer_description" = "Novim naročnikom omogoča plačilo enkratne uvodne cene za določeno obdobje, po katerem plačajo redno ceno naročnine.";
 
-"PayAsYouGo_offer_description" = "Allows new subscribers to pay an introductory price for a specific number of billing periods before transitioning to the regular subscription price.";
+"PayAsYouGo_offer_description" = "Omogoča novim naročnikom, da plačajo uvodno ceno za določeno število obračunskih obdobij, preden preidejo na redno ceno naročnine.";
 
-"FreeTrial_offer_description" = "Allows new subscribers to have access to the subscription for a given number of billing cycles. One that expires, the user pays full price.";
+"FreeTrial_offer_description" = "Omogoča novim naročnikom dostop do naročnine za določeno število obračunskih ciklov. V primeru, da naročnina poteče, uporabnik plača polno ceno.";

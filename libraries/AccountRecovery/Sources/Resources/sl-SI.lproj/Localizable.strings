@@ -10,9 +10,9 @@
 
 "We received a password reset request for %@." = "Prejeli smo zahtevo za ponastavitev gesla za %@";
 
-"If you didn't ask to reset your password, **cancel this request now**." = "If you didn't ask to reset your password, **cancel this request now**.";
+"If you didn't ask to reset your password, **cancel this request now**." = "Če niste zahtevali ponastavitve gesla, **to zahtevo zdaj prekličite**.";
 
-"If you didn't ask to reset your password, cancel this request now." = "If you didn't ask to reset your password, cancel this request now.";
+"If you didn't ask to reset your password, cancel this request now." = "Če niste zahtevali ponastavitve gesla, to zahtevo zdaj prekličite.";
 
 "Password reset requested" = "Zahteva za ponastavitev gesla je bila poslana";
 
@@ -20,7 +20,7 @@
 
 "You can change your password in %@." = "Geslo lahko spremenite v %@.";
 
-"To make sure it's really you trying to reset your password, we wait 72 hours before approving requests." = "To make sure it's really you trying to reset your password, we wait 72 hours before approving requests.";
+"To make sure it's really you trying to reset your password, we wait 72 hours before approving requests." = "Da se prepričamo, da res poskušate ponastaviti geslo, počakamo 72 ur, preden odobrimo zahteve.";
 
 "Insecure_View_line2" = " kadarkoli v naslednjih ";
 
@@ -40,11 +40,11 @@
 
 "Insecure_View_Cancel_Button_CTA" = "Prekliči ponastavitev";
 
-"If you didn't ask to reset your password, **cancel this request now**." = "If you didn't ask to reset your password, **cancel this request now**.";
+"If you didn't ask to reset your password, **cancel this request now**." = "Če niste zahtevali ponastavitve gesla, **to zahtevo zdaj prekličite**.";
 
-"If you didn't ask to reset your password, cancel this request now." = "If you didn't ask to reset your password, cancel this request now.";
+"If you didn't ask to reset your password, cancel this request now." = "Če niste zahtevali ponastavitve gesla, to zahtevo zdaj prekličite.";
 
-"We received a password reset request for **%@**." = "We received a password reset request for **%@**.";
+"We received a password reset request for **%@**." = "Prejeli smo zahtevo za ponastavitev gesla za **%@**.";
 
 "We received a password reset request for %@." = "Prejeli smo zahtevo za ponastavitev gesla za %@.";
 
@@ -52,21 +52,21 @@
 
 "Cancelled by the user" = "Preklical uporabnik";
 
-"Authenticated in another session" = "Authenticated in another session";
+"Authenticated in another session" = "Preverjeno v drugi seji";
 
-"none" = "none";
+"none" = "brez";
 
-"The account recovery process expired due to inaction" = "The account recovery process expired due to inaction";
+"The account recovery process expired due to inaction" = "Postopek obnovitve računa je potekel zaradi nedejavnosti";
 
-"If you never made a password reset request, someone else could have access to your account. **Change your password now**" = "If you never made a password reset request, someone else could have access to your account. **Change your password now**";
+"If you never made a password reset request, someone else could have access to your account. **Change your password now**" = "Če niste nikoli zahtevali ponastavitve gesla, bi lahko kdo drug dostopal do vašega računa. **Spremenite geslo zdaj**";
 
-"If you never made a password reset request, someone else could have access to your account. Change your password now" = "If you never made a password reset request, someone else could have access to your account. Change your password now";
+"If you never made a password reset request, someone else could have access to your account. Change your password now" = "Če niste nikoli zahtevali ponastavitve gesla, bi lahko kdo drug dostopal do vašega računa. Spremenite geslo zdaj";
 
-"The account recovery process expired due to inaction" = "The account recovery process expired due to inaction";
+"The account recovery process expired due to inaction" = "Postopek obnovitve računa je potekel zaradi nedejavnosti";
 
 "Recovery process not started" = "Postopek obnovitve ni bil zagnan";
 
-"Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "Currently there is no account recovery in process. Please go to a session on the web application to recover your password.";
+"Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "Trenutno ni postopka za obnovitev računa. Za obnovitev gesla pojdite na sejo v spletni aplikaciji.";
 
 "You can now reset your password" = "Zdaj lahko ponastavite svoje geslo";
 
@@ -74,8 +74,8 @@
 
 "Change device to continue" = "Spremenite napravo, da nadaljujete";
 
-"To reset your password, go back to your active session on **the originating device**." = "To reset your password, go back to your active session on **the originating device**.";
+"To reset your password, go back to your active session on **the originating device**." = "Če želite ponastaviti geslo, se vrnite v aktivno sejo na **izvorni napravi**.";
 
-"To reset your password, go back to your active session on the originating device." = "To reset your password, go back to your active session on the originating device.";
+"To reset your password, go back to your active session on the originating device." = "Če želite ponastaviti geslo, se vrnite v aktivno sejo na izvorni napravi.";
 
 "You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now." = "Na voljo imate %@ za ponastavitev gesla.\nTo morate storiti v napravi in brskalniku, iz katerega ste poslali zahtevo za ponastavitev gesla.\nČe niste zaprosili za ponastavitev gesla, zdaj prekliči zahtevo.";

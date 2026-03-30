@@ -1,0 +1,49 @@
+"support form" = "form ng suporta";
+
+"email" = "email";
+
+"Twitter" = "Twitter";
+
+"Troubleshooting" = "Pag-troubleshoot";
+
+"Allow alternative routing" = "Payagan ang alternatibong pag-route";
+
+"No internet connection" = "Walang koneksyon sa internet";
+
+"Internet Service Provider (ISP) problem" = "Problema sa Internet Service Provider (ISP)";
+
+"Government block" = "Pag-block ng gobyerno";
+
+"Antivirus interference" = "Pag-interfere ng antivirus";
+
+"Proxy/Firewall interference" = "Pag-interfere ng proxy/firewall";
+
+"Proton is down" = "Down ang Proton";
+
+"Still can't find a solution" = "Hindi pa rin makahanap ng solusyon";
+
+"In case Proton sites are blocked, this setting allows the app to try alternative network routing to reach Proton, which can be useful for bypassing firewalls or network issues. We recommend keeping this setting on for greater reliability. %1$@" = "Kung sakaling naka-block ang mga site ng Proton, pinapayagan ng setting na ito ang app na subukan ang alternatibong pag-route ng network para maabot ang Proton, na maaaring maging kapaki-pakinabang sa pag-bypass ng mga firewall o isyu sa network. Inirerekomenda naming panatilihing naka-on ang setting na ito para sa mas mainam na reliability. %1$@";
+
+"Learn more" = "Matuto pa";
+
+"Please make sure that your internet connection is working." = "Pakitiyak na gumagana ang iyong koneksyon sa internet.";
+
+"Try connecting to Proton from a different network (or use %1$@ or %2$@)." = "Subukang kumonekta sa Proton mula sa ibang network (o gamitin ang %1$@ o %2$@).";
+
+"Your country may be blocking access to Proton. Try using %1$@ (or any other VPN) or %2$@ to access Proton." = "Maaaring bina-block ng bansa mo ang access sa Proton. Subukang gamitin ang %1$@ (o anumang iba pang VPN) o %2$@ para ma-access ang Proton.";
+
+"Temporarily disable or remove your antivirus software." = "Pansamantalang i-disable o alisin ang antivirus software mo.";
+
+"Disable any proxies or firewalls, or contact your network administrator." = "I-disable ang anumang proxy o firewall o makipag-ugnayan sa iyong administrator ng network.";
+
+"Check Proton Status for our system status." = "Tingnan ang Proton Status para sa status ng system namin.";
+
+"Proton Status" = "Proton Status";
+
+"Contact us directly through our support form, email (support@protonmail.zendesk.com), or Twitter." = "Direktang makipag-ugnayan sa amin sa pamamagitan ng aming form ng suporta, email (support@protonmail.zendesk.com) o Twitter.";
+
+"Subject..." = "Paksa...";
+
+"Please share your problem." = "Paki-share ang problema mo.";
+
+"Back" = "Bumalik";

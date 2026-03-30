@@ -12,6 +12,6 @@
 
 "Device secret not found" = "Skrivnost naprave ni najdena";
 
-"Passphrase not found" = "Passphrase not found";
+"Passphrase not found" = "Geselne fraze ne najdem";
 
 "Password update failed" = "Posodobitev gesla ni uspela";
