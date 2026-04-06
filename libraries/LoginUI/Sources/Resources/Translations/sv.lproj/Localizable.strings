@@ -490,4 +490,4 @@
 
 "SSO configuration error" = "SSO-konfigurationsfel";
 
-"Failed to obtain SSO response token" = "Failed to obtain SSO response token";
+"Failed to obtain SSO response token" = "Misslyckades att hämta SSO-svarstoken";

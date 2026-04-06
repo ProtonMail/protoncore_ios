@@ -18,7 +18,7 @@
 
 "SK_Receipt_impossible_to_get_receipt" = "Appleからトランザクション受信データを取得することができません";
 
-"SK_Receipt_task_not_found" = "Unable to process transaction due to an unexpected error, please try again.";
+"SK_Receipt_task_not_found" = "予期しないエラーにより取引を処理できませんでした、もう一度お試しください。";
 
 "Transaction_Handler_plan_not_found" = "購入しようとしているプラン名が見つかりませんでした。問題が解決しない場合は、カスタマーサポートまでご連絡ください。";
 
