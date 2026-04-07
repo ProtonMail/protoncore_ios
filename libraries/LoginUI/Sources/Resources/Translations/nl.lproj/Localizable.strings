@@ -488,6 +488,6 @@
 
 "**Security tips**" = "**Beveiligingstips**";
 
-"SSO configuration error" = "SSO configuratiefout";
+"SSO configuration error" = "SSO-configuratiefout";
 
-"Failed to obtain SSO response token" = "Failed to obtain SSO response token";
+"Failed to obtain SSO response token" = "Kan SSO-responstoken niet ophalen";
