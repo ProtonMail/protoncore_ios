@@ -213,7 +213,7 @@ public extension ColorPaletteiOS {
     // MARK: Background
     var BackgroundNorm: ProtonColor {
         switch Brand.currentBrand {
-        case .proton, .vpn, .wallet:
+        case .proton, .vpn, .wallet, .meet:
             return ProtonColor(name: "MobileBackgroundNorm", vpnFallbackRgb: backgroundNormVpn)
         case .pass:
             return ProtonColor(name: "MobileBackgroundNormPassTheme", vpnFallbackRgb: backgroundNormVpn)

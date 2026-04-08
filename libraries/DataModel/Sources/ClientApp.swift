@@ -28,9 +28,10 @@ public enum ClientApp: Codable, Equatable {
     case calendar
     case pass
     case wallet
+    case meet
     case other(named: String)
 
-    public static var allDefinedCases: [ClientApp] = [.mail, .vpn, .drive, .calendar, .pass, .wallet]
+    public static var allDefinedCases: [ClientApp] = [.mail, .vpn, .drive, .calendar, .pass, .wallet, .meet]
 
     public var name: String {
         // this name is used in requests to our BE and should not be changed
@@ -42,6 +43,7 @@ public enum ClientApp: Codable, Equatable {
         case .calendar: return "calendar"
         case .pass: return "pass"
         case .wallet: return "wallet"
+        case .meet: return "meet"
         case .other(let named): return named
         }
     }

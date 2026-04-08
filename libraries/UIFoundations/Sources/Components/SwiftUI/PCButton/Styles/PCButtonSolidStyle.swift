@@ -55,7 +55,7 @@ struct PCButtonSolidStyle: ButtonStyle {
         switch brand {
         case .proton, .vpn:
             return 8.0
-        case .pass, .wallet:
+        case .pass, .wallet, .meet:
             return 24.0
         }
     }

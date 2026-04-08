@@ -58,7 +58,7 @@ extension PCButtonStyle {
         }
 
         public static let `default`: SolidStyleConfiguration = {
-            let brands = [Brand.proton, Brand.vpn, Brand.wallet]
+            let brands = [Brand.proton, Brand.vpn, Brand.wallet, Brand.meet]
             return .init(
                 backgroundColorDisabled: ColorProvider.InteractionNormDisabled,
                 backgroundColorNorm: brands.contains(Brand.currentBrand) ? ColorProvider.InteractionNorm : ColorProvider.InteractionNormMajor1PassTheme,

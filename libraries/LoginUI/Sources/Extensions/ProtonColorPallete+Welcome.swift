@@ -29,7 +29,7 @@ extension ProtonColorPaletteiOS {
     enum Welcome {
         static var Background: UIColor {
             switch Brand.currentBrand {
-            case .proton, .pass, .wallet:
+            case .proton, .pass, .wallet, .meet:
                 // Port Gore
                 return UIColor(rgb: 0x1C223D)
             case .vpn:

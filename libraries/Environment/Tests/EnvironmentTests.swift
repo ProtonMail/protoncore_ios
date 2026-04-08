@@ -27,7 +27,7 @@ import ProtonCoreDoh
 class EnvironmentTests: XCTestCase {
 
     func testPrebuildCount() {
-       XCTAssertTrue(Environment.prebuild.count == 8)
+       XCTAssertTrue(Environment.prebuild.count == 9)
     }
 
     func testEqualable() {
