@@ -140,7 +140,7 @@ public struct BugReportView: View {
         switch Brand.currentBrand {
         case .proton, .vpn:
             return 8.0
-        case .pass, .wallet:
+        case .pass, .wallet, .meet:
             return 16.0
         }
     }

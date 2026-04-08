@@ -773,7 +773,7 @@ final class DynamicPlanSnapshotTests: XCTestCase {
             return ObfuscatedConstants.calendarShownPlanNames
         case .pass:
             return ObfuscatedConstants.passShownPlanNames
-        case .wallet:
+        case .wallet, .meet:
             return Set()
         case .other("arbitraryOffer"):
             return ObfuscatedConstants.mailShownPlanNames

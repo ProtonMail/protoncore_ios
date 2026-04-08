@@ -715,7 +715,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
             shownPlanNames = ObfuscatedConstants.passShownPlanNames
             iapIdentifiers = ObfuscatedConstants.passIAPIdentifiers
             paidPlans = MockData.Plans.passPaidPlans
-        case .wallet:
+        case .wallet, .meet:
             shownPlanNames = Set()
             iapIdentifiers = Set()
             paidPlans = MockData.Plans.walletPaidPlans
@@ -925,7 +925,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
             return ObfuscatedConstants.calendarShownPlanNames
         case .pass:
             return ObfuscatedConstants.passShownPlanNames
-        case .wallet:
+        case .wallet, .meet:
             return Set()
         case .other("arbitraryOffer"):
             return ObfuscatedConstants.mailShownPlanNames

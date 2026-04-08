@@ -28,7 +28,7 @@ public struct SubscriptionsViewHeader: View {
         static let standard: CGFloat = 8
     }
 
-    private let icons = ["proton_mail", "proton_cal", "proton_drive", "proton_vpn", "proton_pass", "proton_wallet"]
+    private let icons = ["proton_mail", "proton_cal", "proton_drive", "proton_vpn", "proton_pass", "proton_wallet", "proton_meet"]
 
     public var body: some View {
         VStack(spacing: Spacing.standard) {

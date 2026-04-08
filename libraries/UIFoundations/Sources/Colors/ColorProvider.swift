@@ -48,7 +48,7 @@ public final class ColorProviderBase {
         switch brand {
         case .proton, .vpn, .pass:
             return ProtonColorPaletteiOS.instance
-        case .wallet:
+        case .wallet, .meet:
             return WalletColorPaletteiOS.instance
         }
     }

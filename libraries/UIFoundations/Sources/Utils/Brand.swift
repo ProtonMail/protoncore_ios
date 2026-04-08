@@ -26,6 +26,7 @@ public enum Brand: @unchecked Sendable {
     case vpn
     case pass
     case wallet
+    case meet
 
     public static let queue: DispatchQueue = .init(label: "me.proton.protoncore.brandupdater")
 

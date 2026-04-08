@@ -208,6 +208,7 @@ final class WelcomeView: UIView {
         case .vpn, .vpnV2: ColorProvider.brand = .vpn
         case .pass: ColorProvider.brand = .pass
         case .wallet: ColorProvider.brand = .wallet
+        case .meet: ColorProvider.brand = .meet
         case .custom(let data): ColorProvider.brand = data.brand
         }
 
@@ -222,7 +223,7 @@ final class WelcomeView: UIView {
         case .vpn: return IconProvider.vpnTopImage
         case .vpnV2: return IconProvider.vpnWelcomeImageV2
         case .pass: return IconProvider.passTopImage
-        case .wallet: return IconProvider.walletTopImage
+        case .wallet, .meet: return IconProvider.walletTopImage
         case .custom: return IconProvider.mailTopImage
         }
     }
@@ -235,7 +236,7 @@ final class WelcomeView: UIView {
         case .drive: wordmark = IconProvider.driveWordmarkNoBackground
         case .vpn, .vpnV2: wordmark = IconProvider.vpnWordmarkNoBackground
         case .pass: wordmark = IconProvider.passWordmarkNoBackground
-        case .wallet: wordmark = IconProvider.walletWordmarkNoBackground
+        case .wallet, .meet: wordmark = IconProvider.walletWordmarkNoBackground
         case .custom(let data): wordmark = data.wordmarkWithLogo
         }
         return UIImageView(image: wordmark)
@@ -247,7 +248,7 @@ final class WelcomeView: UIView {
         switch variant {
         case .mail(let texts), .calendar(let texts),
              .drive(let texts), .vpn(let texts),
-             .pass(let texts), .wallet(let texts),
+             .pass(let texts), .wallet(let texts), .meet(let texts),
              .vpnV2(let texts):
             text = texts.body
         case .custom(let data):

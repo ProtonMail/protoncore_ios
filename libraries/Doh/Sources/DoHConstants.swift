@@ -43,6 +43,7 @@ public enum ProductionHosts: String, CaseIterable {
     case vpnAPI = "vpn-api.proton.me"
     case passAPI = "pass-api.proton.me"
     case walletAPI = "wallet-api.proton.me"
+    case meetAPI = "meet-api.proton.me"
     case accountApp = "account.proton.me"
     case accountAPI = "account-api.proton.me"
 
@@ -66,6 +67,9 @@ public enum ProductionHosts: String, CaseIterable {
         case .walletAPI:
             result = ""
             PMLog.info("DoH for Wallet is not configured")
+        case .meetAPI:
+            result = ""
+            PMLog.info("DoH for Meet is not configured")
         case .accountApp: result = "MFRWG33VNZ2C44DSN52G63RONVSQ"
         case .accountAPI: result = "MFRWG33VNZ2C2YLQNEXHA4TPORXW4LTNMU"
         case .verifyApp: result = "OZSXE2LGPEXHA4TPORXW4LTNMU"

@@ -65,7 +65,7 @@ class PasswordViewModel {
 
     func termsAttributedString(textView: UITextView) -> NSAttributedString {
         switch clientApp {
-        case .wallet:
+        case .wallet, .meet:
             let text = NSMutableAttributedString(string: LUITranslation.password_t_c_wallet_desc.l10n)
             text.addHyperLink(subString: LUITranslation.password_t_c_link.l10n, link: "", font: textView.font)
             text.addHyperLink(subString: LUITranslation.password_p_p_link.l10n, link: "", font: textView.font)

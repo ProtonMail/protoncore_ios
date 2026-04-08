@@ -114,7 +114,7 @@ public struct SecurityKeysView: View {
                 Text("Close")
                     .foregroundColor(ColorProvider.InteractionNorm)
             })
-        case .pass, .wallet:
+        case .pass, .wallet, .meet:
             ZStack {
                 ColorProvider.PurpleBase.opacity(0.2)
                     .clipShape(Circle())

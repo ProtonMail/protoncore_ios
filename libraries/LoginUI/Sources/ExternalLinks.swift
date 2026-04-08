@@ -62,6 +62,8 @@ public final class ExternalLinks {
         switch clientApp {
         case .vpn:
             return URL(string: "https://protonvpn.com/privacy-policy?ref=ios")!
+        case .meet:
+            return URL(string: "https://proton.me/meet/privacy-policy?ref=ios")!
         default:
             return URL(string: "https://proton.me/wallet/privacy-policy")!
         }

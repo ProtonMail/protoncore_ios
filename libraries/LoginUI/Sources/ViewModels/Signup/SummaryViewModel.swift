@@ -76,7 +76,7 @@ class SummaryViewModel {
             switch screenVariant {
             case .mail(let text), .vpn(let text),
                  .drive(let text), .calendar(let text),
-                 .pass(let text), .wallet(let text):
+                 .pass(let text), .wallet(let text), .meet(let text):
                 return text
             case .custom(let data):
                 return data.startButtonText

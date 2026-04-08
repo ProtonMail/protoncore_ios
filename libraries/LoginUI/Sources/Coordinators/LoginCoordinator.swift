@@ -109,7 +109,7 @@ final class LoginCoordinator {
                 login: container.login,
                 delegate: self
             ))
-        case .calendar, .mail, .drive, .wallet, .custom, .pass, .vpn:
+        case .calendar, .mail, .drive, .wallet, .meet, .custom, .pass, .vpn:
             welcome = WelcomeViewController(
                 variant: variant,
                 delegate: self,
