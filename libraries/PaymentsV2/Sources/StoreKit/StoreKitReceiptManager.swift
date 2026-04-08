@@ -140,14 +140,18 @@ final class ReceiptRefreshRequest: SKReceiptRefreshRequest, SKRequestDelegate, I
 
     func requestDidFinish(_ request: SKRequest) {
         PMLog.info("Receipt refresh request finished successfully: \(id)")
-        StoreKitReceiptManager.queue.async { self.done = true }
-        completionHandler?(.success(()))
+        StoreKitReceiptManager.queue.sync { self.done = true }
+        StoreKitReceiptManager.queue.sync {
+            completionHandler?(.success(()))
+        }
     }
 
     func request(_ request: SKRequest, didFailWithError error: any Error) {
         PMLog.info("Receipt refresh request encountered an error: \(id) (\(String(describing: error)))")
-        StoreKitReceiptManager.queue.async { self.done = true }
-        completionHandler?(.failure(error))
+        StoreKitReceiptManager.queue.sync { self.done = true }
+        StoreKitReceiptManager.queue.sync {
+            completionHandler?(.failure(error))
+        }
     }
 
     override init() {
@@ -159,7 +163,7 @@ final class ReceiptRefreshRequest: SKReceiptRefreshRequest, SKRequestDelegate, I
         task = Task {
             try await withTaskCancellationHandler {
                 try await withCheckedThrowingContinuation { continuation in
-                    completionHandler = { result in
+                    let handler: ((Result<(), Error>) -> Void)? = { result in
                         switch result {
                         case .success:
                             continuation.resume(returning: ())
@@ -167,10 +171,14 @@ final class ReceiptRefreshRequest: SKReceiptRefreshRequest, SKRequestDelegate, I
                             continuation.resume(throwing: error)
                         }
                     }
+
+                    completionHandler = handler
                 }
-            } onCancel: { [completionHandler, id] in
+            } onCancel: { [id] in
                 PMLog.info("Receipt refresh request was cancelled: \(id)")
-                completionHandler?(.failure(CancellationError()))
+                StoreKitReceiptManager.queue.sync {
+                    self.completionHandler?(.failure(CancellationError()))
+                }
             }
         }
 
@@ -180,14 +188,22 @@ final class ReceiptRefreshRequest: SKReceiptRefreshRequest, SKRequestDelegate, I
 
     override func cancel() {
         PMLog.info("Cancelling receipt refresh request: \(id)")
-        super.cancel()
 
-        // Narrow race window - it's possible for a request to be cancelled just as it was fetching the value.
-        // Include this check to make sure that we don't accidentally invoke the continuation twice.
-        if StoreKitReceiptManager.queue.sync(execute: { self.done }) {
+        // if cancellation happens, we mark done = true and return
+        let alreadyDone = StoreKitReceiptManager.queue.sync {
+            if done {
+                return true
+            }
+            done = true
+            return false
+        }
+
+        // If there is no request pending then nothing to do
+        if alreadyDone {
             return
         }
 
+        super.cancel()
         task?.cancel()
     }
 }
