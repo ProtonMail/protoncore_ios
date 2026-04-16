@@ -54,7 +54,7 @@ public final class TransactionHandler: NSObject, TransactionHandlerProviding, @u
     public func processTransaction(_ transaction: ProtonTransaction, plan: ComposedPlan) async throws -> ComposedPlan {
         debugPrint("Transaction in progress...")
 
-        await TransactionsObserver.shared.logHelper?.logEvent(["phase": "start_resolving_transaction"])
+        TransactionsObserver.shared.logHelper.logEvent(["phase": "start_resolving_transaction"])
         try await resolveTransaction(transaction, plan: plan)
 
         return plan
@@ -91,10 +91,10 @@ public final class TransactionHandler: NSObject, TransactionHandlerProviding, @u
 
         guard var bundleIdentifier = Bundle.main.bundleIdentifier else {
             let error = TransactionHandlerError.unableToGetBundleIdentifier
+
             PMLog.error("TransactionHandler: " + (error.failureReason ?? "Bundle identifier not found"), sendToExternal: true)
-            TransactionsObserver.shared.logHelper?.logEventSync(["phase": "fetch_bundle_identifier",
-                                                                 "status": "failed"],
-                                                                type: .close)
+            TransactionsObserver.shared.logHelper.logEvent(["phase": "fetch_bundle_identifier", "status": "failed"])
+
             throw error
         }
 
@@ -126,8 +126,10 @@ public final class TransactionHandler: NSObject, TransactionHandlerProviding, @u
         )
 
         PMLog.info("Validation token generated ✅", sendToExternal: true)
-        TransactionsObserver.shared.logHelper?.logEventSync(["phase": "validation_token_creation",
-                                                             "token": newToken.toDictionary()])
+        TransactionsObserver.shared.logHelper.logEvent([
+            "phase": "validation_token_creation",
+            "token": newToken.toDictionary(),
+        ])
 
         debugPrint("Creating payment token..")
         updateTransactionState(state: .creatingTransactionToken)
@@ -135,8 +137,10 @@ public final class TransactionHandler: NSObject, TransactionHandlerProviding, @u
         do {
             let newToken: NewToken = try await remoteManager.post(newToken)
             ObservabilityEnv.report(.paymentCreatePaymentTokenTotal(status: .http2xx, isDynamic: true))
-            await TransactionsObserver.shared.logHelper?.logEvent(["phase": "post_validation_token_request",
-                                                                   "token": newToken.toDictionary()])
+            TransactionsObserver.shared.logHelper.logEvent([
+                "phase": "post_validation_token_request",
+                "token": newToken.toDictionary(),
+            ])
             PMLog.info("TransactionHandler: Post validation token successful", sendToExternal: true)
             updateTransactionState(state: .transactionTokenizationCompleted)
             return newToken
@@ -151,8 +155,10 @@ public final class TransactionHandler: NSObject, TransactionHandlerProviding, @u
             }
 
             updateTransactionState(state: .transactionProcessError)
-            await TransactionsObserver.shared.logHelper?.logEvent(["phase": "post_validation_token_request",
-                                                                   "status": "failed"])
+            TransactionsObserver.shared.logHelper.logEvent([
+                "phase": "post_validation_token_request",
+                "status": "failed",
+            ])
             PMLog.error("TransactionHandler: Post validation token failed", sendToExternal: true)
 
             throw error
@@ -169,10 +175,12 @@ private extension TransactionHandler {
             let error = TransactionHandlerError.unableToFindPlanName(productID: transaction.productID)
             PMLog.error("TransactionHandler: Create new subscription - Plan name not found", sendToExternal: true)
             updateTransactionState(state: .transactionProcessError)
-            await TransactionsObserver.shared.logHelper?.logEvent(["phase": "create_new_subscription",
-                                                                   "status": "failed",
-                                                                   "reason": "plan name and compose plan mismatch"],
-                                                                  type: .close)
+            TransactionsObserver.shared.logHelper.logEvent([
+                "phase": "create_new_subscription",
+                "status": "failed",
+                "reason": "plan name and compose plan mismatch",
+            ])
+
             throw error
         }
         PMLog.info("Creating new subscription..", sendToExternal: true)
@@ -200,20 +208,21 @@ private extension TransactionHandler {
         do {
             _ = try await remoteManager.create(newSubscription: newSub)
             PMLog.info("TransactionHandler: Create new subscription - New subscription successfully created ✅", sendToExternal: true)
-            await TransactionsObserver.shared.logHelper?.logEvent(["phase": "create_new_subscription",
-                                                                   "status": "success"],
-                                                                  type: .close)
+            TransactionsObserver.shared.logHelper.logEvent(["phase": "create_new_subscription", "status": "success"])
             ObservabilityEnv.report(.paymentSubscribeTotal(status: .successful, isDynamic: true))
             updateTransactionState(state: .transactionCompleted(planName: planName, cycle: composedPlan.instance.cycle))
+
             return true
         } catch {
             ObservabilityEnv.report(.paymentSubscribeTotal(status: .failed, isDynamic: true))
             updateTransactionState(state: .transactionProcessError)
             PMLog.error("TransactionHandler: Create new subscription - New subscription creation failed", sendToExternal: true)
-            await TransactionsObserver.shared.logHelper?.logEvent(["phase": "create_new_subscription",
-                                                                   "status": "failed",
-                                                                   "reason": error.localizedDescription],
-                                                                  type: .close)
+            TransactionsObserver.shared.logHelper.logEvent([
+                "phase": "create_new_subscription",
+                "status": "failed",
+                "reason": error.localizedDescription,
+            ])
+
             throw error
         }
     }
@@ -238,10 +247,14 @@ private extension TransactionHandler {
                 } else {
                     self.updateTransactionState(state: .transactionProcessError)
                     PMLog.error("TransactionHandler: transaction tokenization failed", sendToExternal: true)
-                    await TransactionsObserver.shared.logHelper?.logEvent(["get_token_polling": ["time": Date.now.description,
-                                                                                                 "status": "failed",
-                                                                                                 "reason": (error as? LocalizedError)?.failureReason]],
-                                                                          type: .close)
+                    TransactionsObserver.shared.logHelper.logEvent([
+                        "get_token_polling": [
+                            "time": Date.now.description,
+                            "status": "failed",
+                            "reason": (error as? LocalizedError)?.failureReason,
+                        ],
+                    ])
+
                     throw error
                 }
             }

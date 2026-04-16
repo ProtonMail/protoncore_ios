@@ -49,7 +49,7 @@ public final class OCTransactionHandler: NSObject, TransactionHandlerProviding, 
                                    plan: ComposedPlan) async throws -> ComposedPlan {
         debugPrint("Transaction in progress...")
 
-        await TransactionsObserver.shared.logHelper?.logEvent(["phase": "start_resolving_transaction"])
+        TransactionsObserver.shared.logHelper.logEvent(["phase": "start_resolving_transaction"])
         try await resolveTransaction(transaction, plan: plan, jwsRepresentation: jwsRepresentation)
 
         return plan
@@ -90,9 +90,12 @@ private extension OCTransactionHandler {
         let newToken = OCToken(payment: OCPaymentReceipt(details: OCReceiptDetails(jws: jwsRepresentation)))
 
         debugPrint("Validation token generated ✅")
-        TransactionsObserver.shared.logHelper?.logEventSync(["phase": "validation_token_creation",
-                                                             "token": newToken.toDictionary()])
+        TransactionsObserver.shared.logHelper.logEvent([
+            "phase": "validation_token_creation",
+            "token": newToken.toDictionary(),
+        ])
         PMLog.info("OCTransactionHandler: Validation token generated", sendToExternal: true)
+
         return newToken
     }
 
@@ -101,10 +104,14 @@ private extension OCTransactionHandler {
         debugPrint("Creating payment token..")
         do {
             let newToken: NewToken = try await remoteManager.post(transactionToken)
+
             ObservabilityEnv.report(.paymentCreatePaymentTokenTotal(status: .http2xx, isDynamic: true))
-            await TransactionsObserver.shared.logHelper?.logEvent(["phase": "post_validation_token_request",
-                                                                   "token": newToken.toDictionary()])
+            TransactionsObserver.shared.logHelper.logEvent([
+                "phase": "post_validation_token_request",
+                "token": newToken.toDictionary(),
+            ])
             PMLog.info("OCTransactionHandler: Post validation token successful", sendToExternal: true)
+
             return newToken
         } catch {
             if let error = error as? APICodeError, error == APICodeError.invalidRequirements {
@@ -117,9 +124,13 @@ private extension OCTransactionHandler {
             }
 
             updateTransactionState(state: .transactionProcessError)
-            await TransactionsObserver.shared.logHelper?.logEvent(["phase": "post_validation_token_request",
-                                                                   "status": "failed"])
+            
+            TransactionsObserver.shared.logHelper.logEvent([
+                "phase": "post_validation_token_request",
+                "status": "failed",
+            ])
             PMLog.error("OCTransactionHandler: Post validation token failed", sendToExternal: true)
+
             throw error
         }
     }
@@ -135,8 +146,10 @@ private extension OCTransactionHandler {
                 if status.status == 1 {
                     debugPrint("Transaction validated ✅")
                     PMLog.info("OCTransactionHandler: Polling token status success", sendToExternal: true)
-                    await TransactionsObserver.shared.logHelper?.logEvent(["get_token_polling": ["time": Date.now.description,
-                                                                                                 "status": "success"]])
+                    TransactionsObserver.shared.logHelper.logEvent([
+                        "get_token_polling": ["time": Date.now.description, "status": "success"],
+                    ])
+
                     expectedStatus = 1
                 } else {
                     debugPrint("Pending validation results..")
@@ -144,10 +157,13 @@ private extension OCTransactionHandler {
             } catch {
                 self.updateTransactionState(state: .transactionProcessError)
                 PMLog.error("OCTransactionHandler: Polling token status failed", sendToExternal: true)
-                await TransactionsObserver.shared.logHelper?.logEvent(["get_token_polling": ["time": Date.now.description,
-                                                                                             "status": "failed",
-                                                                                             "reason": (error as? LocalizedError)?.failureReason]],
-                                                                      type: .close)
+                TransactionsObserver.shared.logHelper.logEvent([
+                    "get_token_polling": [
+                        "time": Date.now.description,
+                        "status": "failed",
+                        "reason": (error as? LocalizedError)?.failureReason,
+                    ],
+                ])
                 throw error
             }
         } while expectedStatus != 1
@@ -159,10 +175,12 @@ private extension OCTransactionHandler {
             let error = TransactionHandlerError.unableToFindPlanName(productID: transaction.productID)
             updateTransactionState(state: .transactionProcessError)
             PMLog.error("OCTransactionHandler: Create new subscription - Plan name not found", sendToExternal: true)
-            await TransactionsObserver.shared.logHelper?.logEvent(["phase": "create_new_subscription",
-                                                                   "status": "failed",
-                                                                   "reason": "Plan name not found"],
-                                                                  type: .close)
+            TransactionsObserver.shared.logHelper.logEvent([
+                "phase": "create_new_subscription",
+                "status": "failed",
+                "reason": "Plan name not found",
+            ])
+
             throw error
         }
         debugPrint("Creating new subscription..")
@@ -177,20 +195,24 @@ private extension OCTransactionHandler {
             _ = try await remoteManager.create(newOCSubscription: newSub)
             debugPrint("New subscription successfully created ✅")
             PMLog.info("OCTransactionHandler: Create new subscription - New subscription successfully created ✅", sendToExternal: true)
-            await TransactionsObserver.shared.logHelper?.logEvent(["phase": "create_new_subscription",
-                                                                   "status": "success"],
-                                                                  type: .close)
+            TransactionsObserver.shared.logHelper.logEvent([
+                "phase": "create_new_subscription",
+                "status": "success",
+            ])
             ObservabilityEnv.report(.paymentSubscribeTotal(status: .successful, isDynamic: true))
             updateTransactionState(state: .transactionCompleted(planName: planName, cycle: composedPlan.instance.cycle))
+
             return true
         } catch {
             ObservabilityEnv.report(.paymentSubscribeTotal(status: .failed, isDynamic: true))
             updateTransactionState(state: .transactionProcessError)
             PMLog.error("OCTransactionHandler: Create new subscription - New subscription creation failed", sendToExternal: true)
-            await TransactionsObserver.shared.logHelper?.logEvent(["phase": "create_new_subscription",
-                                                                   "status": "failed",
-                                                                   "reason": error.localizedDescription],
-                                                                  type: .close)
+            TransactionsObserver.shared.logHelper.logEvent([
+                "phase": "create_new_subscription",
+                "status": "failed",
+                "reason": error.localizedDescription,
+            ])
+
             throw error
         }
     }
