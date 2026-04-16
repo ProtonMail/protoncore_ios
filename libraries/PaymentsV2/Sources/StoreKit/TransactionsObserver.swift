@@ -97,21 +97,21 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
                     guard (await transaction.subscriptionStatus) != nil else {
                         PMLog.info("Transaction received is not a subscription")
                         transactionStatus = .failed
-                        return
+                        continue
                     }
 
                     guard transaction.purchaseDate == transaction.originalPurchaseDate else {
                         PMLog.info("Transaction received is a renewal, no need to process it.")
                         transactionStatus = .successful
                         await transaction.finish()
-                        return
+                        continue
                     }
 
                     PMLog.info("TransactionsObserver: Resolving unfinished transaction", sendToExternal: true)
                     _ = await processTransactionImmediately(transaction, jwsRepresentation: unfinished.jwsRepresentation)
                 case .unverified(let transaction, let transactionError):
                     debugPrint("Unverified unfinished transaction:\n \(transaction)\n \(transactionError)")
-                    return
+                    continue
                 }
             }
 
@@ -123,14 +123,14 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
                     guard (await transaction.subscriptionStatus) != nil else {
                         PMLog.info("Transaction received is not a subscription")
                         transactionStatus = .failed
-                        return
+                        continue
                     }
 
                     guard transaction.purchaseDate == transaction.originalPurchaseDate else {
                         PMLog.info("Transaction received is a renewal, no need to process it.")
                         transactionStatus = .successful
                         await transaction.finish()
-                        return
+                        continue
                     }
 
                     PMLog.info("TransactionsObserver: Resolving transaction", sendToExternal: true)
@@ -138,7 +138,7 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
                 case .unverified(let transaction, let transactionError):
                     PMLog.info("Unverified update transaction:\n \(transaction)\n \(transactionError)", sendToExternal: true)
                     debugPrint("Unverified update transaction:\n \(transaction)\n \(transactionError)")
-                    return
+                    continue
                 }
             }
 
