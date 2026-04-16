@@ -75,7 +75,11 @@ public enum TransactionHandlerError: LocalizedError {
         case .fetchReceiptDidFail:
             return PaymentsV2Localizer.Transaction_Handler_receipt_update_failed.l10n
         // Take care when adding an error case to this list, it will show up as "Plan not found"
-        case .unableToFindPlanName, .unableToGetBundleIdentifier, .wrongMethodCalled, .invalidTokenRequirements:
+        case .unableToFindPlanName,
+             .unableToGetBundleIdentifier,
+             .wrongMethodCalled,
+             .invalidTokenRequirements,
+             .tokenStatusPollingTimedOut:
             return PaymentsV2Localizer.Transaction_Handler_plan_not_found.l10n
         }
     }
