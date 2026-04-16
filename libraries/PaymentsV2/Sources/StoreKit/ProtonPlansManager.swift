@@ -133,14 +133,17 @@ public final class ProtonPlansManager: NSObject, PublicProtonPlansManagerProvidi
         do {
             let iapStatusResponse: IAPStatus = try await remoteManager.checkIAPStatus()
             PMLog.info("ProtonPlansManager - IAP Status check successful", sendToExternal: true)
-            await TransactionsObserver.shared.logHelper?.logEvent(["phase": "iap status check",
-                                                                   "status": "available"])
+            TransactionsObserver.shared.logHelper.logEvent(["phase": "iap status check", "status": "available"])
+
             return iapStatusResponse
         } catch {
             debugPrint(error)
             PMLog.error("ProtonPlansManager - IAP Status check failed: \(error)", sendToExternal: true)
-            await TransactionsObserver.shared.logHelper?.logEvent(["phase": "iap status check",
-                                                                   "status": error.localizedDescription])
+            TransactionsObserver.shared.logHelper.logEvent([
+                "phase": "iap status check",
+                "status": error.localizedDescription,
+            ])
+
             throw ProtonPlansManagerError.iapNotAvailable(reason: error.localizedDescription)
         }
     }
@@ -207,8 +210,8 @@ public final class ProtonPlansManager: NSObject, PublicProtonPlansManagerProvidi
         }
 
         PMLog.info("ProtonPlansManager - IAP Purchase product: \(product.id)", sendToExternal: true)
-        await TransactionsObserver.shared.logHelper?.logEvent(["phase": "iap purchase",
-                                                               "productId": product.id])
+        TransactionsObserver.shared.logHelper.logEvent(["phase": "iap purchase", "productId": product.id])
+
         let purchaseOptions = try await buildPurchaseOptions(options)
         TransactionsObserver.shared.transactionHandler.updateTransactionState(state: .iapPurchase)
         let result = try await product.purchase(options: purchaseOptions)
@@ -217,22 +220,26 @@ public final class ProtonPlansManager: NSObject, PublicProtonPlansManagerProvidi
         case .success(let verificationResult):
             PMLog.info("ProtonPlansManager - IAP purchase successful", sendToExternal: true)
             let transaction = try verificationResult.payloadValue
-            await TransactionsObserver.shared.logHelper?.logEvent(["phase": "apple_transaction",
-                                                                   "status": "success"])
+            TransactionsObserver.shared.logHelper.logEvent(["phase": "apple_transaction", "status": "success"])
 
             guard let matchingPlan = await findMatchingPlan(productID: transaction.productID) else {
                 let error = ProtonPlansManagerError.unableToMatchProtonPlanToStoreProduct(productId: transaction.productID)
-                await TransactionsObserver.shared.logHelper?.logEvent(["phase": "proton_plan_match",
-                                                                       "success": false,
-                                                                       "error": error.failureReason ?? error.localizedDescription],
-                                                                      type: .close)
+
+                TransactionsObserver.shared.logHelper.logEvent([
+                    "phase": "proton_plan_match",
+                    "success": false,
+                    "error": error.failureReason ?? error.localizedDescription,
+                ])
                 PMLog.error("ProtonPlansManager - unable to match Proton and AppleStore plans", sendToExternal: true)
+
                 throw error
             }
 
-            await TransactionsObserver.shared.logHelper?.logEvent(["phase": "proton_plan_match",
-                                                                   "time": Date.now.description,
-                                                                   "success": true])
+            TransactionsObserver.shared.logHelper.logEvent([
+                "phase": "proton_plan_match",
+                "time": Date.now.description,
+                "success": true,
+            ])
 
             // Try to process the transaction immediately to avoid delays.
             // If it's already being processed (e.g., by TransactionsObserver), that's fine -

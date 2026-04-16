@@ -27,126 +27,98 @@ import XCTest
 
 final class LogHelperTests: XCTestCase {
 
-    private var sut: LogHelper!
+    private var logHelper: LogHelper!
+
+    // MARK: Overrides
 
     override func setUp() async throws {
+        logHelper = LogHelper()
         try await super.setUp()
-        sut = await LogHelper.create()
     }
 
     override func tearDown() async throws {
-        await sut.deleteLogs()
-        sut = nil
+        logHelper.deleteLog()
+        logHelper = nil
         try await super.tearDown()
     }
 
-    private func fileURL() -> String? {
-        let url = URL.documentsDirectory.appending(path: "TransactionLog.txt")
+    // MARK: Helper
+
+    private func fileContent() -> String? {
+        let url = URL.applicationSupportDirectory.appending(path: "payment_log.txt")
         return try? String(contentsOf: url)
     }
 
-    private func dateFromString(_ string: String) -> Date? {
+    // MARK: Cases
+
+    func test_init_no_file_exists() {
+        XCTAssertNil(fileContent(), "Log file should not exist before logging.")
+    }
+
+    func test_logEvent_creates_file() {
+        logHelper.logEvent(["key": "value"])
+
+        XCTAssertNotNil(fileContent(), "Log file content should exist after initial logEvent.")
+    }
+
+    func test_logEvent_content_contains_logged_event() {
+        logHelper.logEvent(["entry_1_key": "entry_1_value"])
+
+        let content = fileContent()
+        XCTAssertNotNil(content)
+        XCTAssertTrue(content?.contains("entry_1_key") == true)
+        XCTAssertTrue(content?.contains("entry_1_value") == true)
+    }
+
+    func test_logEvent_multiple_events_append_to_file() {
+        logHelper.logEvent(["event_1_key": "event_1_value"])
+        let sizeAfterFirst = fileContent()?.count ?? 0
+
+        logHelper.logEvent(["event_2_key": "event_2_value"])
+        let sizeAfterSecond = fileContent()?.count ?? 0
+
+        XCTAssertGreaterThan(sizeAfterSecond, sizeAfterFirst, "Log file count should grow after each entry.")
+    }
+
+    func test_returnTransactionLog_returns_nil_if_no_file_exists() {
+        XCTAssertNil(logHelper.returnTransactionLog(), "Log file URL should be null when no events are logged")
+    }
+
+    func test_returnTransactionLog_returns_url_after_logEvent() {
+        logHelper.logEvent(["event_1_key": "event_1_value"])
+
+        XCTAssertNotNil(logHelper.returnTransactionLog(), "Log file URL should not be null after an event is logged")
+    }
+
+    func test_deleteLog_removes_log_file() {
+        logHelper.logEvent(["event_1_key": "event_1_value"])
+        XCTAssertNotNil(fileContent())
+
+        logHelper.deleteLog()
+
+        XCTAssertNil(fileContent(), "Log file should not exist are deletLog is called.")
+    }
+
+    func test_log_entries_are_in_ascending_timestamp_order() throws {
+        let dateFormatTemplate = "dd-MM-yyyy HH:mm:ss.SSS"
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd-MM-yyyy HH:mm:ss.SSS"
+        formatter.dateFormat = dateFormatTemplate
 
-        return formatter.date(from: string)
-    }
+        logHelper.logEvent(["event_1_key": "event_1_value"])
+        sleep(1)
+        logHelper.logEvent(["event_2_key": "event_2_value"])
 
-    func test_init_no_logs() async {
-        await sut.load()
-        XCTAssertTrue(sut.transactionLogs.isEmpty)
-        // No file should exist
-        XCTAssertNil(fileURL())
-    }
+        let content = try XCTUnwrap(fileContent())
+        let lines = content.components(separatedBy: .newlines).filter { !$0.isEmpty }
 
-    func test_log_event_without_saving() async {
+        XCTAssertEqual(lines.count, 2)
+        let firstTimestamp = String(lines[0].prefix(dateFormatTemplate.count))
+        let secondTimestamp = String(lines[1].prefix(dateFormatTemplate.count))
+        let firstDate = try XCTUnwrap(formatter.date(from: firstTimestamp), "Could not parse first timestamp.")
+        let secondDate = try XCTUnwrap(formatter.date(from: secondTimestamp), "Could not parse second timestamp.")
 
-        await sut.logEvent(["Log 1": "event1",
-                            "Log 2": 12])
-        await sut.logEvent(["Log 3": "event 3",
-                            "Log 4": 12122])
-
-        XCTAssertTrue(sut.transactionLog.count == 2, "LogHelper should have 2 elements inside transactionLog")
-        XCTAssertTrue(sut.transactionLogs.isEmpty, "Logs haven't been saved to transactionLogs should be empty")
-    }
-
-    func test_log_event_with_saving() async throws {
-
-        await sut.logEvent(["Log 1": "event1",
-                            "Log 2": 12])
-        await sut.logEvent(["Log 3": "event 3",
-                            "Log 4": 12122], type: .close)
-
-        XCTAssertTrue(sut.transactionLog.count == 2)
-        XCTAssertTrue(sut.transactionLogs.count == 1)
-    }
-
-    func test_multiple_log_event_with_saving() async throws {
-
-        await sut.logEvent(["Log 1": "event1",
-                            "Log 2": 12], type: .close)
-        await sut.logEvent(["Log 3": "event 3",
-                            "Log 4": 12122], type: .close)
-        await sut.logEvent(["Log 5": "event 3",
-                            "Log 6": 12122])
-
-        XCTAssertTrue(sut.transactionLog.count == 3)
-        XCTAssertTrue(sut.transactionLogs.count == 2)
-        // File should exist
-        XCTAssertNotNil(fileURL())
-    }
-
-    func test_sync_log_event() {
-        let expectation = XCTestExpectation(description: "logEventSync completes")
-
-        sut.logEventSync(["Log 1": "event1",
-                          "Log 2": 12])
-        sleep(1) // Simulate delay in logging
-        sut.logEventSync(["Log 3": "event 3",
-                          "Log 4": 12122])
-
-        DispatchQueue.global().asyncAfter(deadline: .now() + 0.1) {
-            Task { [weak self] in
-                XCTAssertTrue(self?.sut.transactionLog.count == 2)
-                XCTAssertTrue(self?.sut.transactionLogs != nil)
-                expectation.fulfill()
-            }
-        }
-
-        wait(for: [expectation], timeout: 1.0)
-    }
-
-    func test_log_order() async throws {
-        await sut.logEvent(["Log 1": "event1",
-                            "Log 2": 12])
-        sleep(1) // Simulate delay in logging
-        await sut.logEvent(["Log 3": "event 3",
-                            "Log 4": 12122])
-
-        guard let firstItem = sut.transactionLog.first?.keys, let secondItem = sut.transactionLog.last?.keys, let firstDate = firstItem.first, let secondDate = secondItem.first else {
-            XCTFail("Fail to extract keys from logs")
-            return
-        }
-
-        guard let firstLogDate = dateFromString(firstDate), let secondLogDate = dateFromString(secondDate) else {
-            XCTFail("Fail to generate dates from logs")
-            return
-        }
-
-        XCTAssertTrue(firstLogDate < secondLogDate)
-    }
-
-    func test_file_deleted_after_request() async throws {
-        await sut.logEvent(["Log 1": "event1",
-                            "Log 2": 12])
-        await sut.logEvent(["Log 3": "event 3",
-                            "Log 4": 12122], type: .close)
-
-        let logFileURL = sut.returnTransactionLog()
-        // Afer log is closed, the file should exist
-        XCTAssertNotNil(fileURL())
-        // Requesting the log should return a valid fileURL
-        XCTAssertNotNil(logFileURL)
+        XCTAssertLessThan(firstDate, secondDate, "First log entry should be earlier than the second.")
     }
 }
+
 #endif

@@ -44,8 +44,8 @@ public protocol TransactionsObserverProviding: Sendable {
     func start() async throws
     func stop()
     func setConfiguration(_ configuration: TransactionsObserverConfiguration)
-    func generateTransactionLog() async -> URL?
-    func deleteLogs() async
+    func generateTransactionLog() -> URL?
+    func deleteLogs()
 }
 
 public enum TransactionsObserverError: LocalizedError {
@@ -74,7 +74,7 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
 
     public var transactionProgress = CurrentValueSubject<TransactionHandlerState, Never>(.idle)
     public static let shared = TransactionsObserver()
-    public var logHelper: LogHelperProviding?
+    let logHelper: LogHelperProviding = LogHelper()
     private var configuration: TransactionsObserverConfiguration?
     @Published public private(set) var isON: Bool = false
     @Published public private(set) var transactionStatus: TransactionType = .unknown
@@ -155,8 +155,6 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
             throw error
         }
 
-        logHelper = await LogHelper.create()
-
         self.remoteManager = config.remoteManager
 
         guard let remoteManager = self.remoteManager else {
@@ -217,9 +215,8 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
 #endif
                 await transaction.finish()
                 transactionStatus = .successful
-
-                await TransactionsObserver.shared.logHelper?.logEvent(["phase": "create_sub",
-                                                                       "apple_transction_completed": true])
+                
+                logHelper.logEvent(["phase": "create_sub", "apple_transaction_completed": true])
                 PMLog.info("ProtonPlansManager: Proton subscription creation successful ✅", sendToExternal: true)
             } else {
                 transactionStatus = .transactionUUIDNotFoundOrMismatching
@@ -328,10 +325,10 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
     }
 
     public func generateTransactionLog() -> URL? {
-        return logHelper?.returnTransactionLog()
+        return logHelper.returnTransactionLog()
     }
 
-    public func deleteLogs() async {
-        await logHelper?.deleteLogs()
+    public func deleteLogs() {
+        logHelper.deleteLog()
     }
 }
