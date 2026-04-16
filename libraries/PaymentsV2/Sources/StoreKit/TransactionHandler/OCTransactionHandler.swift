@@ -142,19 +142,32 @@ private extension OCTransactionHandler {
         updateTransactionState(state: .waitingTokenResponse)
 
         for attempt in 1...tokenStatusMaxPollAttempts {
-            let status = try await self.remoteManager.fetch(token: token.token)
-
-            if status.status == 1 {
-                debugPrint("Transaction validated ✅")
-                PMLog.info("OCTransactionHandler: Polling token status success", sendToExternal: true)
+            do {
+                let status = try await self.remoteManager.fetch(token: token.token)
+                
+                if status.status == 1 {
+                    debugPrint("Transaction validated ✅")
+                    PMLog.info("OCTransactionHandler: Polling token status success", sendToExternal: true)
+                    TransactionsObserver.shared.logHelper.logEvent([
+                        "get_token_polling": ["time": Date.now.description, "status": "success"],
+                    ])
+                    
+                    return
+                }
+            } catch {
+                updateTransactionState(state: .transactionProcessError)
+                PMLog.error("OCTransactionHandler: Polling token status failed", sendToExternal: true)
                 TransactionsObserver.shared.logHelper.logEvent([
-                    "get_token_polling": ["time": Date.now.description, "status": "success"],
+                    "get_token_polling": [
+                        "time": Date.now.description,
+                        "status": "failed",
+                        "reason": (error as? LocalizedError)?.failureReason,
+                    ],
                 ])
 
-                return
+                throw error
             }
 
-            debugPrint("Pending validation results..")
             if attempt < tokenStatusMaxPollAttempts {
                 try await Task.sleep(for: tokenStatusPollInterval)
             }
