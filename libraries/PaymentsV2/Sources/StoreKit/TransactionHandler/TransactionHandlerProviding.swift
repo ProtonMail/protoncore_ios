@@ -66,6 +66,7 @@ public enum TransactionHandlerError: LocalizedError {
     case fetchReceiptDidFail(description: String)
     case wrongMethodCalled
     case invalidTokenRequirements
+    case tokenStatusPollingTimedOut
 
     public var errorDescription: String? {
         switch self {
@@ -93,6 +94,8 @@ public enum TransactionHandlerError: LocalizedError {
             return "Wrong function called"
         case .invalidTokenRequirements:
             return "POST /tokens returned invalid requirements"
+        case .tokenStatusPollingTimedOut:
+            return "Polling the status of the payment token timed out"
         }
     }
 }

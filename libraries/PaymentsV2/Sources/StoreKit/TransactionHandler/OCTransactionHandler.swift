@@ -32,6 +32,8 @@ public final class OCTransactionHandler: NSObject, TransactionHandlerProviding, 
     public private(set) var transactionState = CurrentValueSubject<TransactionHandlerState, Never>(.idle)
     private let queue = DispatchQueue(label: "paymentsV2.transactionHandler.syncQueue")
     private var appAccountToken: UUID?
+    private let tokenStatusMaxPollAttempts = 30
+    private let tokenStatusPollInterval: Duration = .seconds(1)
 
     public init(remoteManager: RemoteManagerProviding,
                 appAccountToken: UUID? = nil) {
@@ -136,37 +138,34 @@ private extension OCTransactionHandler {
     }
 
     private func getToken(token: NewToken) async throws {
-
         debugPrint("Transaction validation..")
         updateTransactionState(state: .waitingTokenResponse)
-        var expectedStatus = 0
-        repeat {
-            do {
-                let status = try await self.remoteManager.fetch(token: token.token)
-                if status.status == 1 {
-                    debugPrint("Transaction validated ✅")
-                    PMLog.info("OCTransactionHandler: Polling token status success", sendToExternal: true)
-                    TransactionsObserver.shared.logHelper.logEvent([
-                        "get_token_polling": ["time": Date.now.description, "status": "success"],
-                    ])
 
-                    expectedStatus = 1
-                } else {
-                    debugPrint("Pending validation results..")
-                }
-            } catch {
-                self.updateTransactionState(state: .transactionProcessError)
-                PMLog.error("OCTransactionHandler: Polling token status failed", sendToExternal: true)
+        for attempt in 1...tokenStatusMaxPollAttempts {
+            let status = try await self.remoteManager.fetch(token: token.token)
+
+            if status.status == 1 {
+                debugPrint("Transaction validated ✅")
+                PMLog.info("OCTransactionHandler: Polling token status success", sendToExternal: true)
                 TransactionsObserver.shared.logHelper.logEvent([
-                    "get_token_polling": [
-                        "time": Date.now.description,
-                        "status": "failed",
-                        "reason": (error as? LocalizedError)?.failureReason,
-                    ],
+                    "get_token_polling": ["time": Date.now.description, "status": "success"],
                 ])
-                throw error
+
+                return
             }
-        } while expectedStatus != 1
+
+            debugPrint("Pending validation results..")
+            if attempt < tokenStatusMaxPollAttempts {
+                try await Task.sleep(for: tokenStatusPollInterval)
+            }
+        }
+
+        updateTransactionState(state: .transactionProcessError)
+        PMLog.error("OCTransactionHandler: Polling token status timed out", sendToExternal: true)
+        TransactionsObserver.shared.logHelper.logEvent([
+            "get_token_polling": ["time": Date.now.description, "status": "timed_out"],
+        ])
+        throw TransactionHandlerError.tokenStatusPollingTimedOut
     }
 
     private func createNewSubscription(token: NewToken, composedPlan: ComposedPlan, transaction: ProtonTransactionProviding) async throws -> Bool {
