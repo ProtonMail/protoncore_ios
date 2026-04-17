@@ -66,6 +66,7 @@ public enum TransactionHandlerError: LocalizedError {
     case fetchReceiptDidFail(description: String)
     case wrongMethodCalled
     case invalidTokenRequirements
+    case tokenStatusPollingTimedOut
 
     public var errorDescription: String? {
         switch self {
@@ -74,7 +75,11 @@ public enum TransactionHandlerError: LocalizedError {
         case .fetchReceiptDidFail:
             return PaymentsV2Localizer.Transaction_Handler_receipt_update_failed.l10n
         // Take care when adding an error case to this list, it will show up as "Plan not found"
-        case .unableToFindPlanName, .unableToGetBundleIdentifier, .wrongMethodCalled, .invalidTokenRequirements:
+        case .unableToFindPlanName,
+             .unableToGetBundleIdentifier,
+             .wrongMethodCalled,
+             .invalidTokenRequirements,
+             .tokenStatusPollingTimedOut:
             return PaymentsV2Localizer.Transaction_Handler_plan_not_found.l10n
         }
     }
@@ -93,6 +98,8 @@ public enum TransactionHandlerError: LocalizedError {
             return "Wrong function called"
         case .invalidTokenRequirements:
             return "POST /tokens returned invalid requirements"
+        case .tokenStatusPollingTimedOut:
+            return "Polling the status of the payment token timed out"
         }
     }
 }
