@@ -94,7 +94,7 @@ private extension OCTransactionHandler {
         debugPrint("Validation token generated ✅")
         TransactionsObserver.shared.logHelper.logEvent([
             "phase": "validation_token_creation",
-            "token": newToken.toDictionary(),
+            "token": (try? newToken.dictionary()) ?? ["error": "Encoding failed"],
         ])
         PMLog.info("OCTransactionHandler: Validation token generated", sendToExternal: true)
 
@@ -126,7 +126,7 @@ private extension OCTransactionHandler {
             }
 
             updateTransactionState(state: .transactionProcessError)
-            
+
             TransactionsObserver.shared.logHelper.logEvent([
                 "phase": "post_validation_token_request",
                 "status": "failed",
@@ -144,14 +144,14 @@ private extension OCTransactionHandler {
         for attempt in 1...tokenStatusMaxPollAttempts {
             do {
                 let status = try await self.remoteManager.fetch(token: token.token)
-                
+
                 if status.status == 1 {
                     debugPrint("Transaction validated ✅")
                     PMLog.info("OCTransactionHandler: Polling token status success", sendToExternal: true)
                     TransactionsObserver.shared.logHelper.logEvent([
                         "get_token_polling": ["time": Date.now.description, "status": "success"],
                     ])
-                    
+
                     return
                 }
             } catch {

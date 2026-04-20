@@ -38,7 +38,7 @@ public struct NewSubscriptionValues: Codable, DictionaryConvertible {
 }
 
 // Omnichannel variant of the above model, remove the old one once all the system runs on Omnichannel
-public struct OCNewSubscriptionValues: Encodable, DictionaryConvertible {
+public struct OCNewSubscriptionValues: Encodable {
     private let amount: Int? = nil
     private let paymentMethodID: String? = nil
     private let payments: [String]? = nil
@@ -58,7 +58,7 @@ public struct Subscription: Codable, DictionaryConvertible {
 }
 
 // Omnichannel variant of the above model, remove the old one once all the system runs on Omnichannel
-public struct OCSubscription: Encodable, DictionaryConvertible {
+public struct OCSubscription: Encodable {
     public let cycle: Int
     public let currency: String?
     private let currencyID: Int? = nil
@@ -84,7 +84,7 @@ public struct NewSubscription: Codable, DictionaryConvertible {
 }
 
 // Omnichannel variant of the above model, remove the old one once all the system runs on Omnichannel
-public struct OCNewSubscription: Encodable, DictionaryConvertible {
+public struct OCNewSubscription: Encodable {
 
     public let newSubscription: OCreateSubscription
 
