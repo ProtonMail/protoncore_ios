@@ -244,8 +244,7 @@ public final class ProtonPlansManager: NSObject, PublicProtonPlansManagerProvidi
             // Try to process the transaction immediately to avoid delays.
             // If it's already being processed (e.g., by TransactionsObserver), that's fine -
             // the atomic guard will prevent duplicate processing.
-            await TransactionsObserver.shared.processTransactionImmediately(transaction,
-                                                                            jwsRepresentation: verificationResult.jwsRepresentation)
+            await TransactionsObserver.shared.processTransactionImmediately(transaction, verificationResult.jwsRepresentation)
             return matchingPlan
         case .pending:
             // pending transactions will be returned by the TransactionObserver once the necessary requirements are fulfilled.
@@ -292,8 +291,7 @@ public final class ProtonPlansManager: NSObject, PublicProtonPlansManagerProvidi
             // Try to process the transaction immediately to avoid delays.
             // If it's already being processed (e.g., by TransactionsObserver), that's fine -
             // the atomic guard will prevent duplicate processing.
-            await TransactionsObserver.shared.processTransactionImmediately(pending.transaction,
-                                                                            jwsRepresentation: pending.jwsRepresentation)
+            await TransactionsObserver.shared.processTransactionImmediately(pending.transaction, pending.jwsRepresentation)
         } else {
             PMLog.error("Transaction recovery: no unfinished transactions found", sendToExternal: true)
             throw ProtonPlansManagerError.noUnfinshedTransactionsFound
