@@ -76,8 +76,8 @@ extension PaymentsRequest<NewToken> {
         .init(.tokens, method: .post, parameters: token.toDictionary())
     }
 
-    public static func post(ocToken: OCToken) -> Self {
-        .init(.tokens, method: .post, parameters: ocToken.toDictionary())
+    public static func post(ocToken: OCToken) throws -> Self {
+        .init(.tokens, method: .post, parameters: try ocToken.dictionary())
     }
 }
 
@@ -92,7 +92,7 @@ extension PaymentsRequest<StatusResponse> {
         .init(.subscription, method: .post, parameters: subscription.toDictionary())
     }
 
-    public static func create(ocSubscription: OCreateSubscription) -> Self {
-        .init(.subscription, method: .post, parameters: ocSubscription.toDictionary())
+    public static func create(ocSubscription: OCreateSubscription) throws -> Self {
+        .init(.subscription, method: .post, parameters: try ocSubscription.dictionary())
     }
 }

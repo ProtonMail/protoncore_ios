@@ -30,7 +30,7 @@ public struct Token: Codable, DictionaryConvertible {
 }
 
 // Omnichannel variant of the above model, remove the old one once all the system runs on Omnichannel
-public struct OCToken: Encodable, DictionaryConvertible {
+public struct OCToken: Encodable {
     private let amount: Int = 0 // hardcoded for legacy reasons --> Jens will try to remove them
     private let currency: String = "CHF" // hardcoded for legacy reasons --> Jens will try to remove them
     public let payment: OCPaymentReceipt?
@@ -42,7 +42,7 @@ public struct PaymentReceipt: Codable, Equatable, DictionaryConvertible {
 }
 
 // Omnichannel variant of the above model, remove the old one once all the system runs on Omnichannel
-public struct OCPaymentReceipt: Encodable, Equatable, DictionaryConvertible {
+public struct OCPaymentReceipt: Encodable, Equatable {
     public let details: OCReceiptDetails
     private let type: String = "apple-iap"
 }
@@ -55,6 +55,6 @@ public struct ReceiptDetails: Codable, Equatable, DictionaryConvertible {
 }
 
 // Omnichannel variant of the above model, remove the old one once all the system runs on Omnichannel
-public struct OCReceiptDetails: Codable, Equatable, DictionaryConvertible {
+public struct OCReceiptDetails: Codable, Equatable {
     public let jws: String
 }
