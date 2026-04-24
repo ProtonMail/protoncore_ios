@@ -105,12 +105,7 @@ public struct AvailablePlansView: View {
             }
         })
         .onAppear {
-            Task {
-                viewModel.viewStateDidChange(.displayed)
-                if viewModel.viewState != .dataLoaded {
-                    await viewModel.fetchData(from: "UIView onAppear")
-                }
-            }
+            viewModel.viewStateDidChange(.displayed)
         }
         .bannerDisplayable(bannerState: $viewModel.showAlert, configuration: .default())
         .disabled(viewModel.isPurchasing)
