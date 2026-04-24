@@ -28,7 +28,6 @@ import Combine
 
 public final class PaymentsUIViewControllerV2: UIViewController {
 
-    private var viewWillAppear: Bool = true
     private var cancellables = Set<AnyCancellable>()
     @Published private var viewState: AvailablePlansViewModel.State = .idle
     public private(set) var transactionProgress = CurrentValueSubject<TransactionHandlerState, Never>(.idle)
@@ -38,6 +37,7 @@ public final class PaymentsUIViewControllerV2: UIViewController {
     private let presentationMode: PresentationMode
     private let hideCurrentPlan: Bool
     private var hostingViewController: UIHostingController<AvailablePlansView>!
+    private var viewModel: AvailablePlansViewModel?
 
     public init(apiService: APIService,
                 presentationMode: PresentationMode = .none,
@@ -54,12 +54,15 @@ public final class PaymentsUIViewControllerV2: UIViewController {
     }
 
     private func setupView() {
-        let viewModel = AvailablePlansViewModel(remoteManager: RemoteManager(apiService: apiService),
-                                                hideCurrentPlan: hideCurrentPlan,
-                                                presentationMode: presentationMode)
+        let vm = AvailablePlansViewModel(
+            remoteManager: RemoteManager(apiService: apiService),
+            hideCurrentPlan: hideCurrentPlan,
+            presentationMode: presentationMode,
+        )
+        viewModel = vm
 
         Publishers
-            .CombineLatest(viewModel.transactionProgress, viewModel.viewCycleState)
+            .CombineLatest(vm.transactionProgress, vm.viewCycleState)
             .sink { [weak self] in
                 guard let self = self else {
                     return
@@ -69,7 +72,7 @@ public final class PaymentsUIViewControllerV2: UIViewController {
             }
             .store(in: &cancellables)
 
-        let availablePlansView = AvailablePlansView(viewModel: viewModel)
+        let availablePlansView = AvailablePlansView(viewModel: vm)
 
         hostingViewController = UIHostingController(rootView: availablePlansView)
         addChild(hostingViewController)
@@ -86,14 +89,17 @@ public final class PaymentsUIViewControllerV2: UIViewController {
 
     override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        debugPrint("viewControllerWillAppear called with value: \(viewWillAppear)")
-        viewWillAppear = false
+        guard viewModel == nil else { return }
         setupView()
     }
 
     override public func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         hostingViewController.view.frame = view.bounds
+        guard let viewModel, viewModel.viewState == .idle || viewModel.viewState == .errorData else { return }
+        Task {
+            await viewModel.fetchData(from: "viewDidAppear")
+        }
     }
 
     private func customNavBarButton() -> UIButton {
