@@ -372,7 +372,7 @@
 
 "Proton will never ask you to scan a QR code that does not come from the domain **proton.me**." = "Proton will never ask you to scan a QR code that does not come from the domain **proton.me**.";
 
-"Scan QR code" = "Optično preberi QR kodo";
+"Scan QR code" = "Optično preberi kodo QR";
 
 "Authenticate to access the QR code scanner" = "Preverite pristnost za dostop do čitalnika kode QR";
 
@@ -452,9 +452,9 @@
 
 "Try generating a new QR code." = "Poskusite ustvariti novo kodo QR.";
 
-"Generate QR code" = "Ustvari QR kodo";
+"Generate QR code" = "Ustvari kodo QR";
 
-"Please try another sign in method." = "Prosimo, poskusite drug način vpisa.";
+"Please try another sign in method." = "Poskusite z drugim načinom vpisa.";
 
 "Sign in on another device" = "Prijava v drugi napravi";
 
