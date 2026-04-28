@@ -91,55 +91,58 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
 
     private func newTransactionListenerTask() -> Task<Void, Error> {
         Task(priority: .background) {
-            for await update in Transaction.updates {
-                switch update {
+            for await unfinished in Transaction.unfinished {
+                switch unfinished {
                 case .verified(let transaction):
-                    // Do not process non-subscription items, they are not supported.
                     guard (await transaction.subscriptionStatus) != nil else {
-                        PMLog.info("Transaction received is not a subscription.")
+                        PMLog.info("Transaction received is not a subscription")
                         transactionStatus = .failed
-                        continue
+                        return
                     }
 
-                    // Transaction.reason is only supported from iOS 17+
-                    if #available(iOS 17.0, macOS 14.0, *) {
-                        /*
-                         When transaction.reason is .purchase this is an actual new processable transaction initiated
-                         by a user, and must be processed.
-                         
-                         However, when transaction.reason is .renewal it is a system-initiated auto-renewal. The client
-                         only needs to finish the transaction as the backend will process this renewal via a webhook.
-                         */
-                        guard transaction.reason != .renewal else {
-                            PMLog.info("Transaction received is an auto-renewal, no need to process it")
-                            transactionStatus = .successful
-                            await transaction.finish()
-                            continue
-                        }
-                    } else {
-                        /*
-                         The heuristic approach to detecting transaction types is incorrect and unreliable. It is
-                         limited to iOS 16 clients for now to reduce possible regressions.
-                         */
-                        guard transaction.purchaseDate == transaction.originalPurchaseDate else {
-                            PMLog.info("Transaction received is a renewal, no need to process it.")
-                            transactionStatus = .successful
-                            await transaction.finish()
-                            continue
-                        }
+                    guard transaction.purchaseDate == transaction.originalPurchaseDate else {
+                        PMLog.info("Transaction received is a renewal, no need to process it.")
+                        transactionStatus = .successful
+                        await transaction.finish()
+                        return
                     }
 
-                    // Successful, verified transaction update.
-                    PMLog.info("TransactionsObserver: Resolving transaction.", sendToExternal: true)
-                    await processTransactionImmediately(transaction, update.jwsRepresentation)
+                    PMLog.info("TransactionsObserver: Resolving unfinished transaction", sendToExternal: true)
+                    _ = await processTransactionImmediately(transaction, unfinished.jwsRepresentation)
                 case .unverified(let transaction, let transactionError):
-                    // Unverified transactions should not be processed.
-                    PMLog.info("Unverified transaction:\n \(transaction)\n \(transactionError)", sendToExternal: true)
-                    continue
+                    debugPrint("Unverified unfinished transaction:\n \(transaction)\n \(transactionError)")
+                    return
                 }
             }
 
-            PMLog.info("Exited transaction update observer loop.")
+            try Task.checkCancellation()
+
+            for await update in Transaction.updates {
+                switch update {
+                case .verified(let transaction):
+                    guard (await transaction.subscriptionStatus) != nil else {
+                        PMLog.info("Transaction received is not a subscription")
+                        transactionStatus = .failed
+                        return
+                    }
+
+                    guard transaction.purchaseDate == transaction.originalPurchaseDate else {
+                        PMLog.info("Transaction received is a renewal, no need to process it.")
+                        transactionStatus = .successful
+                        await transaction.finish()
+                        return
+                    }
+
+                    PMLog.info("TransactionsObserver: Resolving transaction", sendToExternal: true)
+                    _ = await processTransactionImmediately(transaction, update.jwsRepresentation)
+                case .unverified(let transaction, let transactionError):
+                    PMLog.info("Unverified update transaction:\n \(transaction)\n \(transactionError)", sendToExternal: true)
+                    debugPrint("Unverified update transaction:\n \(transaction)\n \(transactionError)")
+                    return
+                }
+            }
+
+            PMLog.info("Exited transaction update observer loops")
         }
     }
 
