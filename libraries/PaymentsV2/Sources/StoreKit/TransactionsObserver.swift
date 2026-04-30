@@ -201,12 +201,12 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
                     _ = try await transactionHandler?.processTransaction(
                         transaction.toProtonTransaction(),
                         jwsRepresentation: jwsRepresentation,
-                        plan: plan,
+                        plan: plan
                     )
                 } else {
                     _ = try await transactionHandler?.processTransaction(
                         transaction.toProtonTransaction(),
-                        plan: plan,
+                        plan: plan
                     )
                 }
 
