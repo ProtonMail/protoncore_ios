@@ -34,6 +34,12 @@ public struct OCToken: Encodable {
     private let amount: Int = 0 // hardcoded for legacy reasons --> Jens will try to remove them
     private let currency: String = "CHF" // hardcoded for legacy reasons --> Jens will try to remove them
     public let payment: OCPaymentReceipt?
+
+    enum CodingKeys: String, CodingKey {
+        case amount = "Amount"
+        case currency = "Currency"
+        case payment = "Payment"
+    }
 }
 
 public struct PaymentReceipt: Codable, Equatable, DictionaryConvertible {
@@ -45,6 +51,11 @@ public struct PaymentReceipt: Codable, Equatable, DictionaryConvertible {
 public struct OCPaymentReceipt: Encodable, Equatable {
     public let details: OCReceiptDetails
     private let type: String = "apple-iap"
+
+    enum CodingKeys: String, CodingKey {
+        case details = "Details"
+        case type = "Type"
+    }
 }
 
 public struct ReceiptDetails: Codable, Equatable, DictionaryConvertible {
@@ -57,4 +68,8 @@ public struct ReceiptDetails: Codable, Equatable, DictionaryConvertible {
 // Omnichannel variant of the above model, remove the old one once all the system runs on Omnichannel
 public struct OCReceiptDetails: Codable, Equatable {
     public let jws: String
+
+    enum CodingKeys: String, CodingKey {
+        case jws = "Jws"
+    }
 }

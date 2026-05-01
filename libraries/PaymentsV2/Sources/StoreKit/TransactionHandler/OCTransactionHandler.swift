@@ -138,46 +138,44 @@ private extension OCTransactionHandler {
     }
 
     private func getToken(token: NewToken) async throws {
-        debugPrint("Transaction validation..")
         updateTransactionState(state: .waitingTokenResponse)
+        
+        func processPollingFailed(errorReason: String) {
+            updateTransactionState(state: .transactionProcessError)
+            PMLog.error("OCTransactionHandler: Polling token status failed", sendToExternal: true)
+            TransactionsObserver.shared.logHelper.logEvent([
+                "get_token_polling": [ "time": Date.now.description, "status": "failed", "reason": errorReason],
+            ])
+        }
 
         for attempt in 1...tokenStatusMaxPollAttempts {
+            let status: ResponseStatus
+            
             do {
-                let status = try await self.remoteManager.fetch(token: token.token)
-
-                if status.status == 1 {
-                    debugPrint("Transaction validated ✅")
-                    PMLog.info("OCTransactionHandler: Polling token status success", sendToExternal: true)
-                    TransactionsObserver.shared.logHelper.logEvent([
-                        "get_token_polling": ["time": Date.now.description, "status": "success"],
-                    ])
-
-                    return
-                }
+                status = try await self.remoteManager.fetch(token: token.token)
             } catch {
-                updateTransactionState(state: .transactionProcessError)
-                PMLog.error("OCTransactionHandler: Polling token status failed", sendToExternal: true)
-                TransactionsObserver.shared.logHelper.logEvent([
-                    "get_token_polling": [
-                        "time": Date.now.description,
-                        "status": "failed",
-                        "reason": (error as? LocalizedError)?.failureReason,
-                    ],
-                ])
-
+                processPollingFailed(errorReason: error.localizedDescription)
                 throw error
             }
-
-            if attempt < tokenStatusMaxPollAttempts {
-                try await Task.sleep(for: tokenStatusPollInterval)
+            
+            switch status.status {
+            // Pending
+            case 0:
+                if attempt < tokenStatusMaxPollAttempts {
+                    try await Task.sleep(for: tokenStatusPollInterval)
+                }
+                continue
+            // Chargeable.
+            case 1:
+                PMLog.info("OCTransactionHandler: Token status is successful", sendToExternal: true)
+                return
+            default:
+                processPollingFailed(errorReason: "Token status is non-recoverable")
+                throw TransactionHandlerError.invalidTokenRequirements
             }
         }
 
-        updateTransactionState(state: .transactionProcessError)
-        PMLog.error("OCTransactionHandler: Polling token status timed out", sendToExternal: true)
-        TransactionsObserver.shared.logHelper.logEvent([
-            "get_token_polling": ["time": Date.now.description, "status": "timed_out"],
-        ])
+        processPollingFailed(errorReason: "Polling token status timed out")
         throw TransactionHandlerError.tokenStatusPollingTimedOut
     }
 

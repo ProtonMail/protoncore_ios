@@ -44,6 +44,14 @@ public struct OCNewSubscriptionValues: Encodable {
     private let payments: [String]? = nil
     public let paymentToken: String?
     private let external: Int = 1
+    
+    enum CodingKeys: String, CodingKey  {
+        case amount = "Amount"
+        case paymentMethodID = "PaymentMethodId"
+        case payments = "Payments"
+        case paymentToken = "PaymentToken"
+        case external = "External"
+    }
 }
 
 public struct Subscription: Codable, DictionaryConvertible {
@@ -67,6 +75,17 @@ public struct OCSubscription: Encodable {
     private let codes: [String]? = nil
     private let couponCode: String? = nil
     private let giftCode: String? = nil
+
+    enum CodingKeys: String, CodingKey {
+        case cycle = "Cycle"
+        case currency = "Currency"
+        case currencyID = "CurrencyId"
+        case plans = "Plans"
+        case planIDs = "PlanIds"
+        case codes = "Codes"
+        case couponCode = "CouponCode"
+        case giftCode = "GiftCode"
+    }
 }
 
 public typealias CreateSubscription = Compose<Subscription, NewSubscriptionValues>

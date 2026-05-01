@@ -163,7 +163,6 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
             throw error
         }
 
-#if DEBUG
         if FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.paymentsOmnichannelEnabled) {
             PMLog.info("TransactionsObserver: Omnichannel flow started")
             self.transactionHandler = OCTransactionHandler(remoteManager: remoteManager)
@@ -171,9 +170,7 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
             PMLog.info("TransactionsObserver: Legacy flow started")
             self.transactionHandler = TransactionHandler(remoteManager: remoteManager)
         }
-#else
-        self.transactionHandler = TransactionHandler(remoteManager: remoteManager)
-#endif
+
         self.transactionHandler.transactionState.sink { [weak self] state in
             self?.transactionProgress.send(state)
         }
@@ -200,22 +197,22 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
             }
             if accountMatching {
                 // Omnichannel FF check
-#if DEBUG
                 if FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.paymentsOmnichannelEnabled) {
-                    _ = try await transactionHandler?.processTransaction(transaction.toProtonTransaction(),
-                                                                         jwsRepresentation: jwsRepresentation,
-                                                                         plan: plan)
+                    _ = try await transactionHandler?.processTransaction(
+                        transaction.toProtonTransaction(),
+                        jwsRepresentation: jwsRepresentation,
+                        plan: plan
+                    )
                 } else {
-                    _ = try await transactionHandler?.processTransaction(transaction.toProtonTransaction(),
-                                                                         plan: plan)
+                    _ = try await transactionHandler?.processTransaction(
+                        transaction.toProtonTransaction(),
+                        plan: plan
+                    )
                 }
-#else
-                _ = try await transactionHandler?.processTransaction(transaction.toProtonTransaction(),
-                                                                     plan: plan)
-#endif
+
                 await transaction.finish()
                 transactionStatus = .successful
-                
+
                 logHelper.logEvent(["phase": "create_sub", "apple_transaction_completed": true])
                 PMLog.info("ProtonPlansManager: Proton subscription creation successful ✅", sendToExternal: true)
             } else {
