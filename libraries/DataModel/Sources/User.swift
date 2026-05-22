@@ -572,53 +572,53 @@ public enum RecoveryReason: Int, Codable {
 
 // MARK: Default values
 
-extension UserInfo {
-    struct DefaultValue {
-        static let accountRecovery: AccountRecovery? = nil
-        static let attachPublicKey: Int = 0
-        static let autoSaveContact: Int = 0
-        static let crashReports: Int = 1
-        static let createTime: Int64 = 0
-        static let credit: Int = 0
-        static let currency: String = "USD"
-        static let defaultSignature: String = ""
-        static let delaySendSeconds: Int = 10
-        static let delinquent: Int = 0
-        static let displayName: String = ""
-        static let enableFolderColor: Int = 0
-        static let groupingMode: Int = 0
-        static let hideEmbeddedImages: Int = 1
-        static let hideRemoteImages: Int = 0
-        static let imageProxy: ImageProxy = .imageProxy
-        static let inheritParentFolderColor: Int = 0
-        static let language: String = "en_US"
-        static let linkConfirmation: LinkOpeningMode = .confirmationAlert
-        static let maxSpace: Int64 = 0
-        static let maxBaseSpace: Int64 = 0
-        static let maxDriveSpace: Int64 = 0
-        static let maxUpload: Int64 = 0
-        static let notificationEmail: String = ""
-        static let notify: Int = 0
-        static let passwordMode: Int = 1
-        static let role: Int = 0
-        static let sign: Int = 0
-        static let subscribed: User.Subscribed = .init(rawValue: 0)
-        static let swipeLeft: Int = 3
-        static let swipeRight: Int = 0
-        static let telemetry: Int = 1
-        static let twoFactor: Int = 0
-        static let usedSpace: Int64 = 0
-        static let usedBaseSpace: Int64 = 0
-        static let usedDriveSpace: Int64 = 0
-        static let userAddresses: [Address] = []
-        static let userId: String = ""
-        static let userKeys: [Key] = []
-        static let weekStart: Int = 0
-        static let conversationToolbarActions: ToolbarActions = .init(isCustom: false, actions: [])
-        static let messageToolbarActions: ToolbarActions = .init(isCustom: false, actions: [])
-        static let listToolbarActions: ToolbarActions = .init(isCustom: false, actions: [])
-        static let lockedFlags: LockedFlags? = nil
-        static let edmOptOut: Int = 0
+public extension UserInfo {
+    enum DefaultValue {
+        public static let accountRecovery: AccountRecovery? = nil
+        public static let attachPublicKey: Int = 0
+        public static let autoSaveContact: Int = 0
+        public static let crashReports: Int = 1
+        public static let createTime: Int64 = 0
+        public static let credit: Int = 0
+        public static let currency: String = "USD"
+        public static let defaultSignature: String = ""
+        public static let delaySendSeconds: Int = 10
+        public static let delinquent: Int = 0
+        public static let displayName: String = ""
+        public static let enableFolderColor: Int = 0
+        public static let groupingMode: Int = 0
+        public static let hideEmbeddedImages: Int = 1
+        public static let hideRemoteImages: Int = 0
+        public static let imageProxy: ImageProxy = .imageProxy
+        public static let inheritParentFolderColor: Int = 0
+        public static let language: String = "en_US"
+        public static let linkConfirmation: LinkOpeningMode = .confirmationAlert
+        public static let maxSpace: Int64 = 0
+        public static let maxBaseSpace: Int64 = 0
+        public static let maxDriveSpace: Int64 = 0
+        public static let maxUpload: Int64 = 0
+        public static let notificationEmail: String = ""
+        public static let notify: Int = 0
+        public static let passwordMode: Int = 1
+        public static let role: Int = 0
+        public static let sign: Int = 0
+        public static let subscribed: User.Subscribed = .init(rawValue: 0)
+        public static let swipeLeft: Int = 3
+        public static let swipeRight: Int = 0
+        public static let telemetry: Int = 1
+        public static let twoFactor: Int = 0
+        public static let usedSpace: Int64 = 0
+        public static let usedBaseSpace: Int64 = 0
+        public static let usedDriveSpace: Int64 = 0
+        public static let userAddresses: [Address] = []
+        public static let userId: String = ""
+        public static let userKeys: [Key] = []
+        public static let weekStart: Int = 0
+        public static let conversationToolbarActions: ToolbarActions = .init(isCustom: false, actions: [])
+        public static let messageToolbarActions: ToolbarActions = .init(isCustom: false, actions: [])
+        public static let listToolbarActions: ToolbarActions = .init(isCustom: false, actions: [])
+        public static let lockedFlags: LockedFlags? = nil
+        public static let edmOptOut: Int = 0
     }
 }
 

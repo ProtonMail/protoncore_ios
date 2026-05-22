@@ -1592,6 +1592,7 @@ add(
     targets: [
         coreTarget(name: .services,
                    dependencies: [
+                    .dataModel,
                     .observability,
                     .utilities,
                     .foundations
