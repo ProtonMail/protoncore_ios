@@ -33,11 +33,6 @@ public final class ToolbarActions: NSObject, NSCoding, Codable {
         self.actions = actions
     }
 
-    init(rawValue: [String: Any]?) {
-        self.isCustom = (rawValue?["IsCustom"] as? Bool) ?? false
-        self.actions = (rawValue?["Actions"] as? [String]) ?? []
-    }
-
     override public func isEqual(_ object: Any?) -> Bool {
         guard let object = object as? ToolbarActions else {
             return false
