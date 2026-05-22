@@ -35,11 +35,31 @@ public class SettingsResponse: APIDecodableResponse {
 public struct UserSettings: Codable {
     public let password: Password
     public let _2FA: TwoFA
+    public let email: Email?
+    public let weekStart: Int?
+    public let telemetry: Int?
+    public let crashReports: Int?
+    public let referral: Referral?
+    public let flags: Flags?
 
-    public init(password: Password,
-                _2FA: TwoFA) {
+    public init(
+        password: Password,
+        _2FA: TwoFA,
+        email: Email? = nil,
+        weekStart: Int? = nil,
+        telemetry: Int? = nil,
+        crashReports: Int? = nil,
+        referral: Referral? = nil,
+        flags: Flags? = nil
+    ) {
         self.password = password
         self._2FA = _2FA
+        self.email = email
+        self.weekStart = weekStart
+        self.telemetry = telemetry
+        self.crashReports = crashReports
+        self.referral = referral
+        self.flags = flags
     }
 
     public struct Password: Codable {
@@ -66,6 +86,34 @@ public struct UserSettings: Codable {
         public init(enabled: EnabledMechanism, registeredKeys: [RegisteredKey]) {
             self.enabled = enabled
             self.registeredKeys = registeredKeys
+        }
+    }
+
+    public struct Email: Codable {
+        public let value: String?
+        public let notify: Int?
+
+        public init(value: String? = nil, notify: Int? = nil) {
+            self.value = value
+            self.notify = notify
+        }
+    }
+
+    public struct Referral: Codable {
+        public let link: String
+        public let eligible: Bool
+
+        public init(link: String, eligible: Bool) {
+            self.link = link
+            self.eligible = eligible
+        }
+    }
+
+    public struct Flags: Codable {
+        public let edmOptOut: Int?
+
+        public init(edmOptOut: Int? = nil) {
+            self.edmOptOut = edmOptOut
         }
     }
 }
