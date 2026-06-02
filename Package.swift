@@ -2092,7 +2092,7 @@ let package = Package(
         ),
         .package(
             url: "https://github.com/getsentry/sentry-cocoa.git",
-            .upToNextMajor(from: "9.1.0")
+            .upToNextMajor(from: "9.15.0")
         ),
         .package(
             url: "https://github.com/jpsim/Yams.git",
