@@ -1408,11 +1408,7 @@ add(
                        dependencies: [
                         .paymentsV2
                        ],
-                       path: "libraries/PaymentsV2/Tests/UnitTests",
-                       resources: [
-                        .copy("mockData/StoreKit_mock.storekit"),
-                        .copy("mockData/StoreKitTestCertificate.cer")
-                       ])
+                       path: "libraries/PaymentsV2/Tests/UnitTests")
     ]
 )
 
