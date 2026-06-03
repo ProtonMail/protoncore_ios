@@ -198,7 +198,7 @@ extension String {
     static let jsonSchema: String = "JSONSchema"
     static let jsonSchemaPackage: String = "JSONSchema.swift"
     static let lottie: String = "Lottie"
-    static let lottiePackage: String = "lottie-ios"
+    static let lottiePackage: String = "lottie-spm"
     static let ohhttpStubs: String = "OHHTTPStubsSwift"
     static let ohhttpStubsPackage: String = "OHHTTPStubs"
     static let reachabilitySwift: String = "Reachability"
@@ -2059,8 +2059,8 @@ let package = Package(
             from: "0.6.0"
         ),
         .package(
-            url: "https://github.com/airbnb/lottie-ios",
-            exact: "4.3.3"
+            url: "https://github.com/airbnb/lottie-spm.git",
+            from: "4.6.0"
         ),
         .package(
             url: "https://github.com/AliSoftware/OHHTTPStubs",
