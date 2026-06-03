@@ -35,6 +35,8 @@ public final class AlternativeRoutingRequestInterceptor: NSObject, URLSessionDel
     private let cookiesSynchronization: (URLResponse?, [String: String], @escaping () -> Void) -> Void
     private let cookiesStorage: HTTPCookieStorage?
     private let onAuthenticationChallengeContinuation: (URLAuthenticationChallenge, @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) -> Void
+    private var dataTasksBySchemeTaskIdentifier: [ObjectIdentifier: URLSessionDataTask] = [:]
+    private var stoppedSchemeTaskIdentifiers: Set<ObjectIdentifier> = []
 
     public init(headersGetter: @escaping () -> [String: String],
                 cookiesSynchronization: @escaping (URLResponse?, [String: String], @escaping () -> Void) -> Void = { _, _, completion in completion() },
@@ -50,6 +52,19 @@ public final class AlternativeRoutingRequestInterceptor: NSObject, URLSessionDel
 
 #if canImport(WebKit)
 import WebKit
+
+/// Wraps a non-`Sendable` closure so it can be handed to another thread.
+///
+/// The interceptor hops work to the main thread to satisfy `WKURLSchemeTask`'s
+/// threading contract. The captured values (`WKURLSchemeTask`, `URLResponse`, …)
+/// are not `Sendable`, but the hand-off is single-threaded — the closure is built
+/// on the URLSession completion thread and executed exactly once on the main
+/// thread — so the unchecked conformance is safe.
+private struct UncheckedSendableClosure: @unchecked Sendable {
+    private let body: () -> Void
+    init(_ body: @escaping () -> Void) { self.body = body }
+    func execute() { body() }
+}
 
 extension AlternativeRoutingRequestInterceptor: WKURLSchemeHandler {
 
@@ -109,28 +124,45 @@ extension AlternativeRoutingRequestInterceptor: WKURLSchemeHandler {
         PMLog.debug("request interceptor starts request to \(urlString) with \(DoHConstants.dohHostHeader): \(request.allHTTPHeaderFields?[DoHConstants.dohHostHeader] ?? "")")
         #endif
         let configuration = URLSessionConfiguration.default
-        let session = URLSession(configuration: configuration, delegate: self, delegateQueue: nil)
         configuration.httpCookieStorage = cookiesStorage
         configuration.httpCookieAcceptPolicy = .always
+        let session = URLSession(configuration: configuration, delegate: self, delegateQueue: nil)
         #if DEBUG_CORE_INTERNALS
-        let cookies = configuration.httpCookieStorage?.cookies(for: request.url!) ?? []
+        let cookies = request.url.flatMap { configuration.httpCookieStorage?.cookies(for: $0) } ?? []
         let headers = HTTPCookie.requestHeaderFields(with: cookies)
         PMLog.debug("[COOKIES][REQUEST][INTERCEPTOR] \(headers)")
         #endif
         let task = session.dataTask(with: request) { data, response, error in
             Task { [weak self, data, response, error] in
-                if let response = response {
-                    await self?.transformAndProcessResponse(response, request.allHTTPHeaderFields, apiRange, urlSchemeTask)
-                }
-                if let data = data {
-                    urlSchemeTask.didReceive(data)
-                }
-                if let error = error {
-                    urlSchemeTask.didFailWithError(error)
+                guard let self else { return }
+                let transformedResponse: URLResponse?
+                if let response {
+                    transformedResponse = await self.transformedResponse(response, request.allHTTPHeaderFields, shouldRestoreAPISuffix: apiRange != nil)
                 } else {
-                    urlSchemeTask.didFinish()
+                    transformedResponse = nil
+                }
+                await self.performOnMain {
+                    guard self.shouldSendCallbacks(to: urlSchemeTask) else {
+                        self.clearTaskState(for: urlSchemeTask)
+                        return
+                    }
+                    if let transformedResponse {
+                        urlSchemeTask.didReceive(transformedResponse)
+                    }
+                    if let data {
+                        urlSchemeTask.didReceive(data)
+                    }
+                    if let error {
+                        urlSchemeTask.didFailWithError(error)
+                    } else {
+                        urlSchemeTask.didFinish()
+                    }
+                    self.clearTaskState(for: urlSchemeTask)
                 }
             }
+        }
+        performOnMainSync {
+            register(task, for: urlSchemeTask)
         }
         task.resume()
     }
@@ -155,12 +187,22 @@ extension AlternativeRoutingRequestInterceptor: WKURLSchemeHandler {
     //    NOTE: It's applicable only to human verification but it doesn't influence other usecases so we can leave single implemention.
     // 4. Changing the "http" scheme back to the custom one "coreios" in the response url
     public func transformAndProcessResponse(_ response: URLResponse, _ requestHeaders: [String: String]?, _ apiRange: Range<String.Index>?, _ urlSchemeTask: WKURLSchemeTask) async {
+        let transformedResponse = await transformedResponse(response, requestHeaders, shouldRestoreAPISuffix: apiRange != nil)
+        await performOnMain {
+            guard self.shouldSendCallbacks(to: urlSchemeTask) else {
+                self.clearTaskState(for: urlSchemeTask)
+                return
+            }
+            urlSchemeTask.didReceive(transformedResponse)
+        }
+    }
+
+    private func transformedResponse(_ response: URLResponse, _ requestHeaders: [String: String]?, shouldRestoreAPISuffix: Bool) async -> URLResponse {
         await cookiesSynchronization(response, requestHeaders ?? [:])
         guard let httpResponse = response as? HTTPURLResponse,
               var urlString = httpResponse.url?.absoluteString
         else {
-            urlSchemeTask.didReceive(response)
-            return
+            return response
         }
 
         var headers: [String: String] = httpResponse.allHeaderFields as? [String: String] ?? [:]
@@ -196,8 +238,8 @@ extension AlternativeRoutingRequestInterceptor: WKURLSchemeHandler {
             return value
         }
 
-        if let apiRange = apiRange {
-            urlString.insert(contentsOf: "-api", at: apiRange.lowerBound)
+        if shouldRestoreAPISuffix {
+            urlString = addAPISuffixToHost(in: urlString)
         }
 
         for (custom, original) in AlternativeRoutingRequestInterceptor.schemeMapping where urlString.contains(original) {
@@ -207,27 +249,104 @@ extension AlternativeRoutingRequestInterceptor: WKURLSchemeHandler {
         guard let url = URL(string: urlString),
               let newResponse = HTTPURLResponse(url: url, statusCode: httpResponse.statusCode, httpVersion: nil, headerFields: headers)
         else {
-            urlSchemeTask.didReceive(response)
-            return
+            return response
         }
 
-        urlSchemeTask.didReceive(newResponse)
+        return newResponse
     }
 
     public func webView(_ webView: WKWebView, stop urlSchemeTask: WKURLSchemeTask) {
-        let request = urlSchemeTask.request
-        guard let urlString = request.url?.absoluteString else {
-            urlSchemeTask.didFailWithError(RequestInterceptorError.noUrlInRequest)
-            return
+        let task = performOnMainSync {
+            markTaskAsStopped(urlSchemeTask)
         }
-        // we only log here and not cancel the url data task just for the simplicity of implementation
-        PMLog.debug("request interceptor stops request to \(urlString) with \(DoHConstants.dohHostHeader): \(request.allHTTPHeaderFields?[DoHConstants.dohHostHeader] ?? "")")
+        task?.cancel()
+
+        let request = urlSchemeTask.request
+        if let urlString = request.url?.absoluteString {
+            // we only log here and not report the task termination back to WebKit
+            PMLog.debug("request interceptor stops request to \(urlString) with \(DoHConstants.dohHostHeader): \(request.allHTTPHeaderFields?[DoHConstants.dohHostHeader] ?? "")")
+        }
     }
 
     public func urlSession(_ session: URLSession,
                            didReceive challenge: URLAuthenticationChallenge,
                            completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
         onAuthenticationChallengeContinuation(challenge, completionHandler)
+    }
+
+    private func addAPISuffixToHost(in urlString: String) -> String {
+        guard var components = URLComponents(string: urlString),
+              var host = components.host,
+              host.contains("-api") == false
+        else {
+            return urlString
+        }
+        guard let index = host.firstIndex(of: ".") else { return urlString }
+        host.insert(contentsOf: "-api", at: index)
+        components.host = host
+        return components.string ?? urlString
+    }
+
+    /// Runs `block` synchronously on the main thread.
+    ///
+    /// Only called from WebKit's `start`/`stop` entry points, which WebKit invokes
+    /// on the main thread, so this never blocks a Swift Concurrency cooperative
+    /// thread. The `Thread.isMainThread` check keeps it correct (and the `.sync`
+    /// fallback safe) should that assumption ever change.
+    private func performOnMainSync<T>(_ block: () -> T) -> T {
+        if Thread.isMainThread {
+            return block()
+        } else {
+            return DispatchQueue.main.sync(execute: block)
+        }
+    }
+
+    /// Runs `block` on the main thread without blocking the calling thread.
+    ///
+    /// Used from the URLSession completion handler, which runs on a Swift
+    /// Concurrency cooperative thread. `DispatchQueue.main.sync` there would block a
+    /// cooperative-pool thread, whereas suspending on a continuation does not. The
+    /// `WKURLSchemeTask` callbacks and task bookkeeping run inside `block` so they
+    /// always happen on the main thread.
+    private func performOnMain(_ block: @escaping () -> Void) async {
+        let block = UncheckedSendableClosure(block)
+        await withCheckedContinuation { (continuation: CheckedContinuation<Void, Never>) in
+            DispatchQueue.main.async {
+                block.execute()
+                continuation.resume()
+            }
+        }
+    }
+
+    private func schemeTaskIdentifier(for urlSchemeTask: WKURLSchemeTask) -> ObjectIdentifier {
+        ObjectIdentifier(urlSchemeTask as AnyObject)
+    }
+
+    private func register(_ dataTask: URLSessionDataTask, for urlSchemeTask: WKURLSchemeTask) {
+        let identifier = schemeTaskIdentifier(for: urlSchemeTask)
+        stoppedSchemeTaskIdentifiers.remove(identifier)
+        dataTasksBySchemeTaskIdentifier[identifier] = dataTask
+    }
+
+    private func markTaskAsStopped(_ urlSchemeTask: WKURLSchemeTask) -> URLSessionDataTask? {
+        let identifier = schemeTaskIdentifier(for: urlSchemeTask)
+        // Always record the stop so any callback that arrives afterwards is
+        // suppressed, even when no in-flight data task is registered yet. The marker
+        // is cleared again by `clearTaskState` (when the completion handler runs) and
+        // by `register` (if the identity is later reused), so it does not accumulate.
+        stoppedSchemeTaskIdentifiers.insert(identifier)
+        return dataTasksBySchemeTaskIdentifier.removeValue(forKey: identifier)
+    }
+
+    private func shouldSendCallbacks(to urlSchemeTask: WKURLSchemeTask) -> Bool {
+        let identifier = schemeTaskIdentifier(for: urlSchemeTask)
+        return stoppedSchemeTaskIdentifiers.contains(identifier) == false
+    }
+
+    private func clearTaskState(for urlSchemeTask: WKURLSchemeTask) {
+        let identifier = schemeTaskIdentifier(for: urlSchemeTask)
+        stoppedSchemeTaskIdentifiers.remove(identifier)
+        dataTasksBySchemeTaskIdentifier.removeValue(forKey: identifier)
     }
 }
 
