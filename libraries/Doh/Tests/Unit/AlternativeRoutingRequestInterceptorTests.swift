@@ -91,6 +91,39 @@ class AlternativeRoutingRequestInterceptorTests: XCTestCase {
         }
     }
 
+    func testResponseRewritingRestoresApiSuffixWithoutUsingForeignStringIndex() async {
+        let requestURL = URL(string: "coreioss://very-long-subdomain-api.example.com/lite?action=delete-account")!
+        let responseURL = URL(string: "https://a.io/lite?action=delete-account")!
+        let request = URLRequest(url: requestURL)
+        let task = SchemeTaskStub(request: request)
+        let response = HTTPURLResponse(url: responseURL, statusCode: 200, httpVersion: "1.1", headerFields: responseHeadersWithFontSourceInCSP())!
+
+        let unrelatedURL = "https://very-long-subdomain-api.example.com/lite?action=delete-account"
+        let apiRange = unrelatedURL.range(of: "-api")
+        XCTAssertNotNil(apiRange)
+
+        await sut.transformAndProcessResponse(response, [:], apiRange, task)
+
+        let processedResponse = task.receivedResponse as? HTTPURLResponse
+        XCTAssertEqual(processedResponse?.url?.scheme, "coreioss")
+        XCTAssertEqual(processedResponse?.url?.host, "a-api.io")
+    }
+
+    @MainActor
+    func testStoppedTaskDoesNotReceiveResponseCallbacks() async {
+        let url = URL(string: ObfuscatedConstants.testLiveAccountHost + "/lite?action=delete-account")!
+        let request = URLRequest(url: url)
+        let task = SchemeTaskStub(request: request)
+        let response = HTTPURLResponse(url: url, statusCode: 200, httpVersion: "1.1", headerFields: responseHeadersWithFontSourceInCSP())!
+
+        sut.webView(dummyView, stop: task)
+        await sut.transformAndProcessResponse(response, [:], nil, task)
+
+        XCTAssertNil(task.receivedResponse)
+        XCTAssertNil(task.receivedError)
+        XCTAssertFalse(task.didFinishCalled)
+    }
+
     private static func requestHeaders() -> [String: String] {
         [String: String]()
     }
@@ -120,6 +153,8 @@ class AlternativeRoutingRequestInterceptorTests: XCTestCase {
 private class SchemeTaskStub: NSObject, WKURLSchemeTask {
     var request: URLRequest
     var receivedResponse: URLResponse?
+    var receivedError: Error?
+    var didFinishCalled = false
 
     init(request: URLRequest) {
         self.request = request
@@ -131,7 +166,11 @@ private class SchemeTaskStub: NSObject, WKURLSchemeTask {
 
     func didReceive(_ data: Data) {}
 
-    func didFinish() {}
+    func didFinish() {
+        didFinishCalled = true
+    }
 
-    func didFailWithError(_ error: Error) {}
+    func didFailWithError(_ error: Error) {
+        receivedError = error
+    }
 }
