@@ -96,10 +96,7 @@ public final class PaymentsUIViewControllerV2: UIViewController {
     override public func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         hostingViewController.view.frame = view.bounds
-        guard let viewModel, viewModel.viewState == .idle || viewModel.viewState == .errorData else { return }
-        Task {
-            await viewModel.fetchData(from: "viewDidAppear")
-        }
+        // Data loading is triggered by `AvailablePlansView` itself (in `onAppear`)
     }
 
     private func customNavBarButton() -> UIButton {
