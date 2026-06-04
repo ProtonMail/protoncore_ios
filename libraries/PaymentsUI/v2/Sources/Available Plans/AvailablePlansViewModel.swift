@@ -189,8 +189,15 @@ public class AvailablePlansViewModel: ObservableObject {
         return billingFilter(filter: billingCycle)
     }
 
+    /// Whether a data should be fetched when the view appears.
+    public var shouldFetchOnAppear: Bool {
+        viewState == .idle || viewState == .errorData
+    }
+
     public func fetchData(from: String) async {
         debugPrint("fetchData from: " + from)
+        guard viewState != .fetching else { return }
+        viewState = .fetching
         do {
             if !hideCurrentPlan {
                 async let currentSubscription = fetchCurrentPlan()
