@@ -22,7 +22,7 @@
         {
             "module":{
                 "path":"github.com/ProtonMail/gopenpgp/v2",
-                "version":"v2.9.0-proton.1"
+                "version":"v2.10.0-proton"
             },
             "packages":[
                 "crypto",
@@ -41,8 +41,8 @@
         }
     ],
     "cgo_api":{
-            "path":"github.com/ProtonMail/gopenpgp-v3-c-api",
-            "version":"v1.1.0",
-            "local_path": "../cgo-api"
-     }
+        "path":"github.com/ProtonMail/gopenpgp-v3-c-api",
+        "version":"v1.3.1",
+        "local_path":"../cgo-api"
+    }
 }
