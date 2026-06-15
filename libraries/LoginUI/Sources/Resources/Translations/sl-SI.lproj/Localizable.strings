@@ -480,7 +480,7 @@
 
 "Be cautious of messages with QR codes. Only scan a code if you trust the source." = "Bodite previdni pri sporočilih s kodami QR. Očitajte kodo le, če zaupate viru.";
 
-"Proton will never contact you unexpectedly asking you to sign in with a QR code." = "Proton vas nikoli ne bo nepričakovano kontaktiral s prošnjo za prijavo s kodo QR.";
+"Proton will never contact you unexpectedly asking you to sign in with a QR code." = "Proton se nikoli ne bo nepričakovano obrnil na vas s prošnjo za prijavo s kodo QR.";
 
 "Proton will never ask you to scan a QR code that’s not from **https://proton.me** or an official Proton app." = "Proton vas nikoli ne bo prosil, da odčitate kodo QR, ki ni s spletnega mesta **https://proton.me** ali iz uradne aplikacije Proton.";
 
