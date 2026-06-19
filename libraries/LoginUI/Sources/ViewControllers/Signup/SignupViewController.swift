@@ -272,7 +272,7 @@ class SignupViewController: UIViewController, AccessibleView, Focusable, Product
     @objc func onCloseButtonTap(_ sender: UIButton) {
         if let closeSignupFlowAlertConfirmation {
             // present close confirmation Alert
-            showCloseAlert(closeSignupFlowAlertConfirmation: closeSignupFlowAlertConfirmation)
+            showCloseAlert(closeSignupFlowAlertConfirmation: closeSignupFlowAlertConfirmation, from: sender)
         } else {
             proceedWithClose()
         }
@@ -286,7 +286,7 @@ class SignupViewController: UIViewController, AccessibleView, Focusable, Product
         measureOnViewClosed()
     }
 
-    private func showCloseAlert(closeSignupFlowAlertConfirmation: CloseSignupFlowAlertConfirmation) {
+    private func showCloseAlert(closeSignupFlowAlertConfirmation: CloseSignupFlowAlertConfirmation, from sender: UIView) {
         let alert = UIAlertController(
             title: closeSignupFlowAlertConfirmation.title,
             message: nil,
@@ -301,6 +301,12 @@ class SignupViewController: UIViewController, AccessibleView, Focusable, Product
         alert.addAction(cancelAction)
         let continueAction = UIAlertAction(title: closeSignupFlowAlertConfirmation.continueButtonTitle, style: .cancel)
         alert.addAction(continueAction)
+        // On iPad an action sheet is presented as a popover, which requires an anchor;
+        // without one `presentationTransitionWillBegin` throws and aborts the app.
+        if let popover = alert.popoverPresentationController {
+            popover.sourceView = sender
+            popover.sourceRect = sender.bounds
+        }
         present(alert, animated: true, completion: nil)
     }
 
