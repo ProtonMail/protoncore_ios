@@ -130,6 +130,7 @@ final class LoginCoordinator {
         loginViewController.delegate = self
         loginViewController.showCloseButton = isCloseButtonAvailable
         loginViewController.initialError = initialError
+        loginViewController.loginScreenBanner = customization.loginScreenBanner
         loginViewController.isSignupAvailable = isSignupAvailable
         loginViewController.onDohTroubleshooting = { [weak self] in
             guard let self = self else { return }

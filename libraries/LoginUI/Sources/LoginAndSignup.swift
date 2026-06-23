@@ -77,6 +77,34 @@ public struct CloseSignupFlowAlertConfirmation {
     }
 }
 
+/// An opt-in banner pinned to the top of the login screen.
+///
+/// Used by clients that need to show a persistent, actionable message above the sign-in form.
+/// When `loginScreenBanner` is `nil`, no banner is shown and behaviour is unchanged.
+public struct LoginScreenBanner {
+    public enum Style {
+        case error
+        case success
+    }
+
+    public let style: Style
+    public let message: String
+    public let actionTitle: String?
+    /// Invoked when the action is tapped. Return a follow-up banner to display in place of this one
+    /// (e.g. a success confirmation), or `nil` to simply dismiss.
+    public let action: (() -> LoginScreenBanner?)?
+
+    public init(style: Style,
+                message: String,
+                actionTitle: String? = nil,
+                action: (() -> LoginScreenBanner?)? = nil) {
+        self.style = style
+        self.message = message
+        self.actionTitle = actionTitle
+        self.action = action
+    }
+}
+
 public struct LoginCustomizationOptions {
 
     public static let empty: LoginCustomizationOptions = .init()
@@ -88,6 +116,7 @@ public struct LoginCustomizationOptions {
     let helpDecorator: ([[HelpItem]]) -> [[HelpItem]]
     let inAppTheme: () -> InAppTheme
     let closeSignupFlowAlertConfirmation: CloseSignupFlowAlertConfirmation?
+    let loginScreenBanner: LoginScreenBanner?
 
     public init(username: String? = nil,
                 performBeforeFlow: WorkBeforeFlow? = nil,
@@ -95,7 +124,8 @@ public struct LoginCustomizationOptions {
                 initialError: String? = nil,
                 helpDecorator: @escaping ([[HelpItem]]) -> [[HelpItem]] = { $0 },
                 inAppTheme: @escaping () -> InAppTheme = { .default },
-                closeSignupFlowAlertConfirmation: CloseSignupFlowAlertConfirmation? = nil) {
+                closeSignupFlowAlertConfirmation: CloseSignupFlowAlertConfirmation? = nil,
+                loginScreenBanner: LoginScreenBanner? = nil) {
         self.username = username
         self.performBeforeFlow = performBeforeFlow
         self.customErrorPresenter = customErrorPresenter
@@ -103,6 +133,7 @@ public struct LoginCustomizationOptions {
         self.helpDecorator = helpDecorator
         self.inAppTheme = inAppTheme
         self.closeSignupFlowAlertConfirmation = closeSignupFlowAlertConfirmation
+        self.loginScreenBanner = loginScreenBanner
     }
 }
 
