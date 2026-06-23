@@ -31,6 +31,15 @@ extension WelcomeVPNGuestView {
     struct Dependencies {
         let login: Login
         let delegate: WelcomeLoginControllerDelegate?
+        /// Provider for the optional top banner (e.g. kill-switch blocking).
+        /// When the banner has a `blockingAlert`, "Continue as guest" is intercepted with it.
+        let loginScreenBannerProvider: (() -> LoginScreenBanner?)?
+
+        init(login: Login, delegate: WelcomeLoginControllerDelegate?, loginScreenBannerProvider: (() -> LoginScreenBanner?)? = nil) {
+            self.login = login
+            self.delegate = delegate
+            self.loginScreenBannerProvider = loginScreenBannerProvider
+        }
     }
 }
 
@@ -52,6 +61,12 @@ extension WelcomeVPNGuestView {
         }
         @Published var viewState = ViewState.idle
         @Published var bannerState = BannerState.none
+        /// Persistent top banner mirroring the login screen (e.g. kill-switch blocking).
+        @Published var killSwitchBannerState = BannerState.none
+        /// Set to show the blocking confirmation when the user tries to proceed while blocked.
+        @Published var blockingAlert: LoginScreenBanner.BlockingAlert?
+        /// The current opt-in banner; replaced by its follow-up once the action runs (e.g. KS turned off).
+        private var loginScreenBanner: LoginScreenBanner?
 
         enum ViewMode {
             case guest
@@ -62,9 +77,40 @@ extension WelcomeVPNGuestView {
         init(dependencies: Dependencies) {
             self.login = dependencies.login
             self.delegate = dependencies.delegate
+            self.loginScreenBanner = dependencies.loginScreenBannerProvider?()
+            updateKillSwitchBanner()
+        }
+
+        /// If the banner is currently blocking, surfaces its confirmation and returns `true` (so the caller
+        /// aborts). Confirming the alert runs the banner's action (e.g. turning off the kill switch).
+        private func presentBlockingAlertIfNeeded() -> Bool {
+            guard let blockingAlert = loginScreenBanner?.blockingAlert else { return false }
+            self.blockingAlert = blockingAlert
+            return true
+        }
+
+        func turnOffKillSwitchConfirmed() {
+            let nextBanner = loginScreenBanner?.action?() ?? nil
+            loginScreenBanner = nextBanner
+            blockingAlert = nil
+            updateKillSwitchBanner()
+        }
+
+        private func updateKillSwitchBanner() {
+            guard let banner = loginScreenBanner else {
+                killSwitchBannerState = .none
+                return
+            }
+            let content = PCBannerContent(
+                message: banner.message,
+                buttonTitle: banner.actionTitle,
+                buttonAction: banner.actionTitle == nil ? nil : { [weak self] in self?.turnOffKillSwitchConfirmed() }
+            )
+            killSwitchBannerState = banner.style == .error ? .error(content: content) : .success(content: content)
         }
 
         func continueAsGuestTapped() {
+            guard !presentBlockingAlertIfNeeded() else { return }
             measureOnViewClicked(item: "sign_in_guest")
             Task {
                 do {
@@ -94,6 +140,8 @@ extension WelcomeVPNGuestView {
         }
 
         func signInTapped() {
+            // Sign in / create account just navigate to the login screen, which shows its own banner and
+            // blocks the actual sign-in there. Only "Continue as guest" is blocked on the welcome screen.
             measureOnViewClicked(item: "sign_in")
             delegate?.userWantsToLogIn(username: nil)
         }

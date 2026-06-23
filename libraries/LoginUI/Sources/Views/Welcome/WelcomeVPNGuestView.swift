@@ -110,6 +110,23 @@ public struct WelcomeVPNGuestView: View {
             bannerState: $viewModel.bannerState,
             configuration: .init(position: .bottom)
         )
+        .bannerDisplayable(
+            bannerState: $viewModel.killSwitchBannerState,
+            configuration: .init(position: .top, dismissDuration: nil)
+        )
+        .alert(
+            viewModel.blockingAlert?.title ?? "",
+            isPresented: Binding(
+                get: { viewModel.blockingAlert != nil },
+                set: { isPresented in if !isPresented { viewModel.blockingAlert = nil } }
+            ),
+            presenting: viewModel.blockingAlert
+        ) { blockingAlert in
+            Button(blockingAlert.confirmTitle) { viewModel.turnOffKillSwitchConfirmed() }
+            Button(blockingAlert.cancelTitle, role: .cancel) { }
+        } message: { blockingAlert in
+            Text(blockingAlert.message)
+        }
         .onAppear {
             viewModel.measureOnViewDisplayed()
         }
