@@ -107,7 +107,8 @@ final class LoginCoordinator {
         case .vpnV2:
             welcome = WelcomeVPNGuestViewController(dependencies: .init(
                 login: container.login,
-                delegate: self
+                delegate: self,
+                loginScreenBannerProvider: customization.loginScreenBannerProvider
             ))
         case .calendar, .mail, .drive, .wallet, .meet, .custom, .pass, .vpn:
             welcome = WelcomeViewController(
@@ -130,7 +131,7 @@ final class LoginCoordinator {
         loginViewController.delegate = self
         loginViewController.showCloseButton = isCloseButtonAvailable
         loginViewController.initialError = initialError
-        loginViewController.loginScreenBanner = customization.loginScreenBanner
+        loginViewController.loginScreenBannerProvider = customization.loginScreenBannerProvider
         loginViewController.isSignupAvailable = isSignupAvailable
         loginViewController.onDohTroubleshooting = { [weak self] in
             guard let self = self else { return }

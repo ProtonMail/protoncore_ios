@@ -92,7 +92,10 @@ final class LoginViewController: UIViewController, AccessibleView, Focusable, Pr
 
     weak var delegate: LoginViewControllerDelegate?
     var initialError: LoginError?
-    var loginScreenBanner: LoginScreenBanner?
+    /// Evaluated when the screen appears so the banner reflects the current state
+    var loginScreenBannerProvider: (() -> LoginScreenBanner?)?
+    /// The banner currently displayed, used to drive the blocking-alert interception.
+    private var loginScreenBanner: LoginScreenBanner?
     var showCloseButton = true
     var isSignupAvailable = true
 
@@ -124,8 +127,8 @@ final class LoginViewController: UIViewController, AccessibleView, Focusable, Pr
             if self.customErrorPresenter?.willPresentError(error: error, from: self) == true { } else { showError(error: error) }
         }
 
-        if let loginScreenBanner {
-            renderLoginScreenBanner(loginScreenBanner)
+        if let banner = loginScreenBannerProvider?() {
+            renderLoginScreenBanner(banner)
         }
 
         focusOnce(view: loginTextField, delay: .milliseconds(750))
@@ -138,15 +141,32 @@ final class LoginViewController: UIViewController, AccessibleView, Focusable, Pr
     /// Renders an opt-in ``LoginScreenBanner`` pinned to the top of the login screen. Tapping the action
     /// (if any) runs the client's handler and shows the follow-up banner it returns, if any.
     private func renderLoginScreenBanner(_ banner: LoginScreenBanner) {
+        loginScreenBanner = banner
         let style: PMBannerNewStyle = banner.style == .error ? .error : .success
         if let actionTitle = banner.actionTitle, let action = banner.action {
             showBanner(message: banner.message, style: style, button: actionTitle, action: { [weak self] in
-                guard let nextBanner = action() else { return }
-                self?.renderLoginScreenBanner(nextBanner)
+                let nextBanner = action()
+                self?.loginScreenBanner = nextBanner
+                if let nextBanner { self?.renderLoginScreenBanner(nextBanner) }
             }, position: .top)
         } else {
             showBannerWithoutButton(message: banner.message, style: style, position: .top)
         }
+    }
+
+    /// If the login-screen banner is currently blocking, presents its confirmation (e.g. "turn off kill
+    /// switch") instead of letting a primary action proceed. Returns `true` when it intercepted the action.
+    private func presentLoginScreenBlockingAlertIfNeeded() -> Bool {
+        guard let banner = loginScreenBanner, let blockingAlert = banner.blockingAlert else { return false }
+        let alert = UIAlertController(title: blockingAlert.title, message: blockingAlert.message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: blockingAlert.cancelTitle, style: .cancel))
+        alert.addAction(UIAlertAction(title: blockingAlert.confirmTitle, style: .default) { [weak self] _ in
+            let nextBanner = banner.action?() ?? nil
+            self?.loginScreenBanner = nextBanner
+            if let nextBanner { self?.renderLoginScreenBanner(nextBanner) }
+        })
+        present(alert, animated: true)
+        return true
     }
 
     override func viewDidLayoutSubviews() {
@@ -334,6 +354,7 @@ final class LoginViewController: UIViewController, AccessibleView, Focusable, Pr
     // MARK: - Actions
 
     @objc private func signInWithSSO() {
+        guard !presentLoginScreenBlockingAlertIfNeeded() else { return }
         viewModel.isSsoUIEnabled = true
         passwordTextField.isHidden = viewModel.isSsoUIEnabled
         loginTextField.title = viewModel.loginTextFieldTitle
@@ -344,6 +365,7 @@ final class LoginViewController: UIViewController, AccessibleView, Focusable, Pr
     }
 
     @objc private func signInWithEmail() {
+        guard !presentLoginScreenBlockingAlertIfNeeded() else { return }
         viewModel.isSsoUIEnabled = false
         passwordTextField.isHidden = viewModel.isSsoUIEnabled
         loginTextField.title = viewModel.loginTextFieldTitle
@@ -354,6 +376,7 @@ final class LoginViewController: UIViewController, AccessibleView, Focusable, Pr
     }
 
     @objc private func signInPressed(_ sender: Any) {
+        guard !presentLoginScreenBlockingAlertIfNeeded() else { return }
         cancelFocus()
         dismissKeyboard()
 
@@ -373,6 +396,7 @@ final class LoginViewController: UIViewController, AccessibleView, Focusable, Pr
     }
 
     @objc private func signUpPressed(_ sender: ProtonButton) {
+        guard !presentLoginScreenBlockingAlertIfNeeded() else { return }
         cancelFocus()
         clearAccount()
         delegate?.userDidRequestSignup()

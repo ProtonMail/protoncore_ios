@@ -87,21 +87,42 @@ public struct LoginScreenBanner {
         case success
     }
 
+    /// A confirmation shown when the user tries to proceed (sign in / create account / SSO / continue as
+    /// guest) while the banner is blocking. Confirming runs the banner's `action` (e.g. turning the kill
+    /// switch off); cancelling does nothing.
+    public struct BlockingAlert {
+        public let title: String
+        public let message: String
+        public let confirmTitle: String
+        public let cancelTitle: String
+
+        public init(title: String, message: String, confirmTitle: String, cancelTitle: String) {
+            self.title = title
+            self.message = message
+            self.confirmTitle = confirmTitle
+            self.cancelTitle = cancelTitle
+        }
+    }
+
     public let style: Style
     public let message: String
     public let actionTitle: String?
-    /// Invoked when the action is tapped. Return a follow-up banner to display in place of this one
-    /// (e.g. a success confirmation), or `nil` to simply dismiss.
+    /// Invoked when the action is tapped (banner link or the blocking-alert confirm). Return a follow-up
+    /// banner to display in place of this one (e.g. a success confirmation), or `nil` to simply dismiss.
     public let action: (() -> LoginScreenBanner?)?
+    /// When set, the screen's primary actions are intercepted with this confirmation instead of proceeding.
+    public let blockingAlert: BlockingAlert?
 
     public init(style: Style,
                 message: String,
                 actionTitle: String? = nil,
-                action: (() -> LoginScreenBanner?)? = nil) {
+                action: (() -> LoginScreenBanner?)? = nil,
+                blockingAlert: BlockingAlert? = nil) {
         self.style = style
         self.message = message
         self.actionTitle = actionTitle
         self.action = action
+        self.blockingAlert = blockingAlert
     }
 }
 
@@ -116,7 +137,9 @@ public struct LoginCustomizationOptions {
     let helpDecorator: ([[HelpItem]]) -> [[HelpItem]]
     let inAppTheme: () -> InAppTheme
     let closeSignupFlowAlertConfirmation: CloseSignupFlowAlertConfirmation?
-    let loginScreenBanner: LoginScreenBanner?
+    /// Provider for the opt-in top banner, evaluated each time a screen (welcome / login) is shown so it
+    /// reflects the current state.
+    let loginScreenBannerProvider: (() -> LoginScreenBanner?)?
 
     public init(username: String? = nil,
                 performBeforeFlow: WorkBeforeFlow? = nil,
@@ -125,7 +148,7 @@ public struct LoginCustomizationOptions {
                 helpDecorator: @escaping ([[HelpItem]]) -> [[HelpItem]] = { $0 },
                 inAppTheme: @escaping () -> InAppTheme = { .default },
                 closeSignupFlowAlertConfirmation: CloseSignupFlowAlertConfirmation? = nil,
-                loginScreenBanner: LoginScreenBanner? = nil) {
+                loginScreenBannerProvider: (() -> LoginScreenBanner?)? = nil) {
         self.username = username
         self.performBeforeFlow = performBeforeFlow
         self.customErrorPresenter = customErrorPresenter
@@ -133,7 +156,7 @@ public struct LoginCustomizationOptions {
         self.helpDecorator = helpDecorator
         self.inAppTheme = inAppTheme
         self.closeSignupFlowAlertConfirmation = closeSignupFlowAlertConfirmation
-        self.loginScreenBanner = loginScreenBanner
+        self.loginScreenBannerProvider = loginScreenBannerProvider
     }
 }
 
