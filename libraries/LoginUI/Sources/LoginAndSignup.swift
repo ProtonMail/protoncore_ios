@@ -107,16 +107,18 @@ public struct LoginScreenBanner {
     public let style: Style
     public let message: String
     public let actionTitle: String?
-    /// Invoked when the action is tapped (banner link or the blocking-alert confirm). Return a follow-up
-    /// banner to display in place of this one (e.g. a success confirmation), or `nil` to simply dismiss.
-    public let action: (() -> LoginScreenBanner?)?
+
+    /// Invoked when the action is tapped (banner link or the blocking-alert confirm). Runs asynchronously so the client
+    /// can finish the underlying work before deciding on the outcome. Returns a follow-up banner to display in place of
+    /// this one (e.g. a success confirmation), or `nil` to simply dismiss.
+    public let action: (() async -> LoginScreenBanner?)?
     /// When set, the screen's primary actions are intercepted with this confirmation instead of proceeding.
     public let blockingAlert: BlockingAlert?
 
     public init(style: Style,
                 message: String,
                 actionTitle: String? = nil,
-                action: (() -> LoginScreenBanner?)? = nil,
+                action: (() async -> LoginScreenBanner?)? = nil,
                 blockingAlert: BlockingAlert? = nil) {
         self.style = style
         self.message = message

@@ -264,7 +264,7 @@ extension PaymentErrorCapable {
     }
 
     func showBanner(message: String, button: String? = nil, action: (() -> Void)? = nil) {
-        showBanner(message: message, button: button, action: action, position: bannerPosition)
+        showBanner(message: message, button: button, position: bannerPosition, action: action)
     }
 }
 

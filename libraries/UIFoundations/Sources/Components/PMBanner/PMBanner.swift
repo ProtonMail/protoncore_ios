@@ -54,6 +54,9 @@ public class PMBanner: UIView, AccessibleView {
     private var lastLocation: CGPoint = .zero
     /// auto detect url in ui text view
     private var autoDetectLinks: Bool = false
+    /// When `false`, the user cannot swipe the banner away. Used for actions that require user consent in order to
+    /// proceed with login, such as disabling the Kill Switch feature.
+    public let isDismissableByUser: Bool
 
     public let userInfo: [AnyHashable: Any]?
 
@@ -67,18 +70,25 @@ public class PMBanner: UIView, AccessibleView {
     ///   - style: Banner style
     ///   - icon: Banner icon that show on top-left
     ///   - dismissDuration: Banner will dismiss after `dismissDuration` seconds, `Double.infinity` means never dismiss automatically
-    public convenience init(message: String,
-                            style: PMBannerStyleProtocol,
-                            icon: UIImage? = nil,
-                            dismissDuration: TimeInterval = 4,
-                            userInfo: [AnyHashable: Any]? = nil,
-                            bannerHandler: ((PMBanner) -> Void)? = nil) {
-        self.init(style: style,
-                  message: message,
-                  dismissDuration: dismissDuration,
-                  icon: icon,
-                  userInfo: userInfo,
-                  bannerHandler: bannerHandler)
+    ///   - isDismissableByUser: When `false`, the user cannot swipe the banner away
+    public convenience init(
+        message: String,
+        style: PMBannerStyleProtocol,
+        icon: UIImage? = nil,
+        dismissDuration: TimeInterval = 4,
+        isDismissableByUser: Bool = true,
+        userInfo: [AnyHashable: Any]? = nil,
+        bannerHandler: ((PMBanner) -> Void)? = nil
+    ) {
+        self.init(
+            style: style,
+            message: message,
+            dismissDuration: dismissDuration,
+            isDismissableByUser: isDismissableByUser,
+            icon: icon,
+            userInfo: userInfo,
+            bannerHandler: bannerHandler
+        )
     }
 
     /// Initialize `PMBanner`
@@ -87,30 +97,41 @@ public class PMBanner: UIView, AccessibleView {
     ///   - style: Banner style
     ///   - icon: Banner icon that show on top-left
     ///   - dismissDuration: Banner will dismiss after `dismissDuration` seconds, `Double.infinity` means never dismiss automatically
-    public convenience init(message: NSAttributedString,
-                            style: PMBannerStyleProtocol,
-                            icon: UIImage? = nil,
-                            dismissDuration: TimeInterval = 4,
-                            userInfo: [AnyHashable: Any]? = nil,
-                            bannerHandler: ((PMBanner) -> Void)? = nil) {
-        self.init(style: style,
-                  message: nil,
-                  dismissDuration: dismissDuration,
-                  attributedString: message,
-                  icon: icon,
-                  userInfo: userInfo,
-                  bannerHandler: bannerHandler)
+    ///   - isDismissableByUser: When `false`, the user cannot swipe the banner away
+    public convenience init(
+        message: NSAttributedString,
+        style: PMBannerStyleProtocol,
+        icon: UIImage? = nil,
+        dismissDuration: TimeInterval = 4,
+        isDismissableByUser: Bool = true,
+        userInfo: [AnyHashable: Any]? = nil,
+        bannerHandler: ((PMBanner) -> Void)? = nil
+    ) {
+        self.init(
+            style: style,
+            message: nil,
+            dismissDuration: dismissDuration,
+            isDismissableByUser: isDismissableByUser,
+            attributedString: message,
+            icon: icon,
+            userInfo: userInfo,
+            bannerHandler: bannerHandler
+        )
     }
 
-    private init(style: PMBannerStyleProtocol,
-                 message: String?,
-                 dismissDuration: TimeInterval = 4,
-                 attributedString: NSAttributedString? = nil,
-                 icon: UIImage? = nil,
-                 userInfo: [AnyHashable: Any]?,
-                 bannerHandler: ((PMBanner) -> Void)?) {
+    private init(
+        style: PMBannerStyleProtocol,
+        message: String?,
+        dismissDuration: TimeInterval = 4,
+        isDismissableByUser: Bool = true,
+        attributedString: NSAttributedString? = nil,
+        icon: UIImage? = nil,
+        userInfo: [AnyHashable: Any]?,
+        bannerHandler: ((PMBanner) -> Void)?
+    ) {
         self.style = style
         self.dismissDuration = dismissDuration
+        self.isDismissableByUser = isDismissableByUser
         self.message = message
         self.attributedString = attributedString
         self.icon = icon
@@ -599,6 +620,7 @@ extension PMBanner {
     }
 
     @objc private func bannerPan(ges: UIPanGestureRecognizer) {
+        guard isDismissableByUser else { return }
         if style.lockSwipeWhenButton, buttonText != nil || buttonIcon != nil { return }
         switch ges.state {
         case .began:

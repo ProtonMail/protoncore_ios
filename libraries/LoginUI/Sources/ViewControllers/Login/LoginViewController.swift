@@ -144,11 +144,14 @@ final class LoginViewController: UIViewController, AccessibleView, Focusable, Pr
         loginScreenBanner = banner
         let style: PMBannerNewStyle = banner.style == .error ? .error : .success
         if let actionTitle = banner.actionTitle, let action = banner.action {
-            showBanner(message: banner.message, style: style, button: actionTitle, action: { [weak self] in
-                let nextBanner = action()
-                self?.loginScreenBanner = nextBanner
-                if let nextBanner { self?.renderLoginScreenBanner(nextBanner) }
-            }, position: .top)
+            // Banners should not be dismissable if interacting with them is essential to getting back online.
+            showBanner(message: banner.message, style: style, button: actionTitle, position: .top, dismissable: banner.blockingAlert == nil) { [weak self] in
+                Task { @MainActor in
+                    let nextBanner = await action()
+                    self?.loginScreenBanner = nextBanner
+                    if let nextBanner { self?.renderLoginScreenBanner(nextBanner) }
+                }
+            }
         } else {
             showBannerWithoutButton(message: banner.message, style: style, position: .top)
         }
@@ -161,9 +164,11 @@ final class LoginViewController: UIViewController, AccessibleView, Focusable, Pr
         let alert = UIAlertController(title: blockingAlert.title, message: blockingAlert.message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: blockingAlert.cancelTitle, style: .cancel))
         alert.addAction(UIAlertAction(title: blockingAlert.confirmTitle, style: .default) { [weak self] _ in
-            let nextBanner = banner.action?() ?? nil
-            self?.loginScreenBanner = nextBanner
-            if let nextBanner { self?.renderLoginScreenBanner(nextBanner) }
+            Task { @MainActor in
+                let nextBanner = await banner.action?() ?? nil
+                self?.loginScreenBanner = nextBanner
+                if let nextBanner { self?.renderLoginScreenBanner(nextBanner) }
+            }
         })
         present(alert, animated: true)
         return true
