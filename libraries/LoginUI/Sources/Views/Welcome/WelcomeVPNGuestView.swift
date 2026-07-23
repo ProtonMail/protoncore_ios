@@ -112,7 +112,9 @@ public struct WelcomeVPNGuestView: View {
         )
         .bannerDisplayable(
             bannerState: $viewModel.killSwitchBannerState,
-            configuration: .init(position: .top, dismissDuration: nil)
+            configuration: viewModel.loginScreenBanner?.blockingAlert != nil
+                ? .init(position: .top, dismissDuration: nil, isDismissableByUser: false)
+                : .init(position: .top)
         )
         .alert(
             viewModel.blockingAlert?.title ?? "",

@@ -65,8 +65,10 @@ extension WelcomeVPNGuestView {
         @Published var killSwitchBannerState = BannerState.none
         /// Set to show the blocking confirmation when the user tries to proceed while blocked.
         @Published var blockingAlert: LoginScreenBanner.BlockingAlert?
-        /// The current opt-in banner; replaced by its follow-up once the action runs (e.g. KS turned off).
-        private var loginScreenBanner: LoginScreenBanner?
+
+        /// The current banner, replaced by any successors once the banner's action runs (e.g. KS turned off). The view
+        /// reads it to make sure that banners blocking login are pinned.
+        private(set) var loginScreenBanner: LoginScreenBanner?
 
         enum ViewMode {
             case guest
@@ -90,10 +92,13 @@ extension WelcomeVPNGuestView {
         }
 
         func turnOffKillSwitchConfirmed() {
-            let nextBanner = loginScreenBanner?.action?() ?? nil
-            loginScreenBanner = nextBanner
             blockingAlert = nil
-            updateKillSwitchBanner()
+            Task { [weak self] in
+                guard let self else { return }
+                let nextBanner = await self.loginScreenBanner?.action?() ?? nil
+                self.loginScreenBanner = nextBanner
+                self.updateKillSwitchBanner()
+            }
         }
 
         private func updateKillSwitchBanner() {

@@ -560,7 +560,7 @@ class SignupViewController: UIViewController, AccessibleView, Focusable, Product
     }
 
     private func showError(message: String, button: String? = nil, action: (() -> Void)? = nil) {
-        showBanner(message: message, button: button, action: action, position: PMBannerPosition.top)
+        showBanner(message: message, button: button, position: PMBannerPosition.top, action: action)
     }
 
     // MARK: - Keyboard

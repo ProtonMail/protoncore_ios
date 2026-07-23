@@ -57,15 +57,18 @@ public struct PCBannerConfiguration {
     public var position: Position
     public var animationDuration: CGFloat
     public var dismissDuration: TimeInterval?
+    public var isDismissableByUser: Bool
 
     public init(
         position: Position = .top,
         animationDuration: CGFloat = 0.25,
-        dismissDuration: TimeInterval? = 4
+        dismissDuration: TimeInterval? = 4,
+        isDismissableByUser: Bool = true
     ) {
         self.position = position
         self.animationDuration = animationDuration
         self.dismissDuration = dismissDuration
+        self.isDismissableByUser = isDismissableByUser
     }
 
     public static func `default`() -> PCBannerConfiguration {
@@ -112,9 +115,11 @@ public struct PCBannerDisplay: ViewModifier {
             .gesture(
                 DragGesture()
                     .onChanged { gesture in
+                        guard configuration.isDismissableByUser else { return }
                         withAnimation { dragYOffset = gesture.translation.height }
                     }
                     .onEnded { value in
+                        guard configuration.isDismissableByUser else { return }
                         let velocity = CGSize(
                             width: value.predictedEndLocation.x - value.location.x,
                             height: value.predictedEndLocation.y - value.location.y

@@ -29,12 +29,23 @@ import ProtonCoreUtilities
 import SwiftUI
 
 extension UIViewController {
-    func showBanner(message: String, style: PMBannerNewStyle = .error, button: String? = nil, action: (() -> Void)? = nil, position: PMBannerPosition) {
+    /// A banner with `dismissable: false` can't be swiped away, and tapping its button will still keep the banner
+    /// up until a follow-up banner replaces it or it is dismissed in code.
+    func showBanner(
+        message: String,
+        style: PMBannerNewStyle = .error,
+        button: String? = nil,
+        position: PMBannerPosition,
+        dismissable: Bool = true,
+        action: (() -> Void)? = nil
+    ) {
         unlockUI()
-        let banner = PMBanner(message: message, style: style, dismissDuration: Double.infinity)
+        let banner = PMBanner(message: message, style: style, dismissDuration: Double.infinity, isDismissableByUser: dismissable)
         banner.addButton(text: button ?? LUITranslation._core_ok_button.l10n) { _ in
             action?()
-            banner.dismiss()
+            if dismissable {
+                banner.dismiss()
+            }
         }
         banner.addLinkHandler { _, url in
             if UIApplication.shared.canOpenURL(url) {
@@ -136,7 +147,7 @@ extension LoginErrorCapable {
     }
 
     func showBanner(message: String, style: PMBannerNewStyle = .error, button: String? = nil, action: (() -> Void)? = nil) {
-            showBanner(message: message, style: style, button: button, action: action, position: bannerPosition)
+            showBanner(message: message, style: style, button: button, position: bannerPosition, action: action)
     }
 
     func onUserAccountSetupNeeded() {
@@ -227,7 +238,7 @@ extension SignUpErrorCapable {
     }
 
     func showBanner(message: String, button: String? = nil, action: (() -> Void)? = nil) {
-        showBanner(message: message, button: button, action: action, position: bannerPosition)
+        showBanner(message: message, button: button, position: bannerPosition, action: action)
     }
 
     func emailAddressAlreadyUsed() {
