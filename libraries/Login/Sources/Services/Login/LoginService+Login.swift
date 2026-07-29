@@ -92,8 +92,51 @@ extension LoginService: Login {
             return (nil, "Invalid SSO URL")
         }
         var request = URLRequest(url: url)
-        request.setValue(sessionUID, forHTTPHeaderField: "x-pm-uid")
-        request.setValue(accessToken.token, forHTTPHeaderField: "Authorization")
+
+        // Mirrors the headers `PMAPIService.createRequest` puts on every request. This one is built by
+        // hand so its 303 can be read rather than followed, which means none of them come for free and
+        // the API rejects the request without them. `Accept` is deliberately left out: this endpoint
+        // answers a browser, and asking for Proton's JSON content type makes it return a body instead of
+        // the redirect the caller needs.
+        for (header, value) in apiService.dohInterface.getCurrentlyUsedUrlHeaders() {
+            request.setValue(value, forHTTPHeaderField: header)
+        }
+
+        if let additionalHeaders = apiService.serviceDelegate?.additionalHeaders {
+            for (header, value) in additionalHeaders {
+                request.setValue(value, forHTTPHeaderField: header)
+            }
+        }
+
+        if let proxyToken = apiService.dohInterface.getProxyToken() {
+            request.setValue(proxyToken, forHTTPHeaderField: "x-atlas-secret")
+        }
+
+        if !sessionUID.isEmpty {
+            request.setValue(sessionUID, forHTTPHeaderField: "x-pm-uid")
+        }
+
+        if let token = accessToken.token, !token.isEmpty {
+            request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        }
+
+        var appVersion = "iOS_\(Bundle.main.majorVersion)"
+        if let delegateAppVersion = apiService.serviceDelegate?.appVersion, !delegateAppVersion.isEmpty {
+            appVersion = delegateAppVersion
+        }
+        request.setValue(appVersion, forHTTPHeaderField: "x-pm-appversion")
+
+        var locale = "en_US"
+        if let delegateLocale = apiService.serviceDelegate?.locale, !delegateLocale.isEmpty {
+            locale = delegateLocale
+        }
+        request.setValue(locale, forHTTPHeaderField: "x-pm-locale")
+
+        var userAgent = UserAgent.default.ua ?? "Unknown"
+        if let delegateUserAgent = apiService.serviceDelegate?.userAgent, !delegateUserAgent.isEmpty {
+            userAgent = delegateUserAgent
+        }
+        request.setValue(userAgent, forHTTPHeaderField: "User-Agent")
 
         return (request, nil)
     }

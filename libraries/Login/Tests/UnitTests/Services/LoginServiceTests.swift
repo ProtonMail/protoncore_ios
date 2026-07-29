@@ -70,6 +70,7 @@ class LoginServiceTests: XCTestCase {
         featureFlagsRepositoryMock = FeatureFlagsRepositoryMock()
         api = APIServiceMock()
         api.authDelegateStub.fixture = AuthDelegateMock()
+        api.serviceDelegateStub.fixture = Self.makeServiceDelegateMock()
         let dohInterface = DohInterfaceMock()
         dohInterface.getCurrentlyUsedHostUrlStub.bodyIs { _ in
             "http://proton.black/api"
@@ -77,12 +78,21 @@ class LoginServiceTests: XCTestCase {
         dohInterface.getAccountHostStub.bodyIs { _ in
             "http://account.proton.black"
         }
+        dohInterface.getCurrentlyUsedUrlHeadersStub.bodyIs { _ in [:] }
         api.sessionUIDStub.fixture = "sessionUID"
         api.dohInterfaceStub.fixture = dohInterface
         sut = LoginService(api: api,
                            clientApp: .vpn,
                            minimumAccountType: .external,
                            featureFlagsRepository: featureFlagsRepositoryMock)
+    }
+
+    static func makeServiceDelegateMock() -> APIServiceDelegateMock {
+        let serviceDelegate = APIServiceDelegateMock()
+        serviceDelegate.appVersionStub.fixture = "ios-vpn@1.2.3"
+        serviceDelegate.userAgentStub.fixture = "TestUserAgent"
+        serviceDelegate.localeStub.fixture = "en_US"
+        return serviceDelegate
     }
 
     // MARK: - handleValidCredentials
@@ -244,7 +254,14 @@ class LoginServiceTests: XCTestCase {
         // Then
         XCTAssertNil(ssoResult.error)
         XCTAssertEqual(ssoResult.request?.url, URL(string: "http://proton.black/api/auth/sso/ssoChallengeToken"))
-        XCTAssertEqual(ssoResult.request?.headers.dictionary, ["x-pm-uid": "sessionUID", "Authorization": "accessToken"])
+        let headers = ssoResult.request?.allHTTPHeaderFields
+        XCTAssertEqual(headers?["Authorization"], "Bearer accessToken")
+        XCTAssertEqual(headers?["x-pm-uid"], "sessionUID")
+        XCTAssertEqual(headers?["x-pm-appversion"], "ios-vpn@1.2.3")
+        XCTAssertEqual(headers?["User-Agent"], "TestUserAgent")
+        XCTAssertEqual(headers?["x-pm-locale"], "en_US")
+        // The endpoint has to answer with a redirect, which it would not do for a JSON content type.
+        XCTAssertNil(headers?["Accept"])
     }
 
     // MARK: - Login
@@ -349,9 +366,11 @@ class LoginServiceTests: XCTestCase {
         featureFlagsRepositoryMock = FeatureFlagsRepositoryMock()
         api = APIServiceMock()
         api.authDelegateStub.fixture = AuthDelegateMock()
+        api.serviceDelegateStub.fixture = Self.makeServiceDelegateMock()
         let dohInterface = DohInterfaceMock()
         dohInterface.getCurrentlyUsedHostUrlStub.bodyIs { _ in "http://proton.black/api" }
         dohInterface.getAccountHostStub.bodyIs { _ in "http://account.proton.black" }
+        dohInterface.getCurrentlyUsedUrlHeadersStub.bodyIs { _ in [:] }
         api.sessionUIDStub.fixture = "sessionUID"
         api.dohInterfaceStub.fixture = dohInterface
         api.fetchAuthCredentialsStub.bodyIs { _, completion in
@@ -370,7 +389,41 @@ class LoginServiceTests: XCTestCase {
         // Then
         XCTAssertNil(ssoResult.error)
         XCTAssertEqual(ssoResult.request?.url, URL(string: "http://proton.black/api/auth/sso/ssoChallengeToken?FinalRedirectBaseUrl=protonvpn://account.proton.black"))
-        XCTAssertEqual(ssoResult.request?.headers.dictionary, ["x-pm-uid": "sessionUID", "Authorization": "accessToken"])
+        let headers = ssoResult.request?.allHTTPHeaderFields
+        XCTAssertEqual(headers?["Authorization"], "Bearer accessToken")
+        XCTAssertEqual(headers?["x-pm-uid"], "sessionUID")
+        XCTAssertEqual(headers?["x-pm-appversion"], "ios-vpn@1.2.3")
+    }
+
+    func test_getSSORequest_forwardsDoHAndAdditionalHeaders() async {
+        // Given
+        featureFlagsRepositoryMock = FeatureFlagsRepositoryMock()
+        api = APIServiceMock()
+        api.authDelegateStub.fixture = AuthDelegateMock()
+        let serviceDelegate = Self.makeServiceDelegateMock()
+        serviceDelegate.additionalHeadersStub.fixture = ["x-pm-custom": "custom"]
+        api.serviceDelegateStub.fixture = serviceDelegate
+        let dohInterface = DohInterfaceMock()
+        dohInterface.getCurrentlyUsedHostUrlStub.bodyIs { _ in "http://proton.black/api" }
+        dohInterface.getAccountHostStub.bodyIs { _ in "http://account.proton.black" }
+        dohInterface.getCurrentlyUsedUrlHeadersStub.bodyIs { _ in ["X-PM-DoH-Host": "proton.black"] }
+        api.sessionUIDStub.fixture = "sessionUID"
+        api.dohInterfaceStub.fixture = dohInterface
+        api.fetchAuthCredentialsStub.bodyIs { _, completion in
+            completion(.found(credentials: .init(Credential(UID: "", accessToken: "accessToken", refreshToken: "", userName: "", userID: "", scopes: .empty))))
+        }
+        sut = LoginService(api: api,
+                           clientApp: .vpn,
+                           minimumAccountType: .external,
+                           featureFlagsRepository: featureFlagsRepositoryMock)
+
+        // When
+        let ssoResult = await sut.getSSORequest(challenge: .init(ssoChallengeToken: "ssoChallengeToken"))
+
+        // Then
+        let headers = ssoResult.request?.allHTTPHeaderFields
+        XCTAssertEqual(headers?["X-PM-DoH-Host"], "proton.black")
+        XCTAssertEqual(headers?["x-pm-custom"], "custom")
     }
 
     func test_getSSOURL_withCallbackScheme_includesAuthParamsAsQueryItems() async {

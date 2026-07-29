@@ -323,17 +323,16 @@ final class LoginViewController: UIViewController, AccessibleView, Focusable, Pr
             case .ssoChallenge(let ssoChallengeResponse):
                 Task { @MainActor [weak self] in
                     guard let self else { return }
-                    let ssoURLResult = await self.viewModel.getSSOURL(challenge: ssoChallengeResponse)
-                    if let error = ssoURLResult.error {
+                    let redirectResult = await self.viewModel.getSSORedirect(challenge: ssoChallengeResponse)
+                    if let error = redirectResult.error {
                         self.showBanner(message: error)
                         return
                     }
-                    guard let ssoURL = ssoURLResult.url,
-                          let callbackScheme = self.viewModel.ssoCallbackScheme else {
+                    guard let redirect = redirectResult.redirect else {
                         self.showBanner(message: LUITranslation.sso_configuration_error.l10n)
                         return
                     }
-                    self.startSSOAuthSession(url: ssoURL, callbackScheme: callbackScheme)
+                    self.startSSOAuthSession(url: redirect.url, callbackScheme: redirect.callbackScheme)
                 }
                 self?.measureLoginSuccess()
             case .switchToSSOLogin(let info):

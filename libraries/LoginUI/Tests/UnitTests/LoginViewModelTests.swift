@@ -60,6 +60,12 @@ final class LoginViewModelTests: XCTestCase {
         ObservabilityEnv.current.observabilityService = observabilityServiceMock
         apiService = APIServiceMock()
         dohMock = DohInterfaceMock()
+        dohMock.getCurrentlyUsedUrlHeadersStub.bodyIs { _ in [:] }
+        let serviceDelegate = APIServiceDelegateMock()
+        serviceDelegate.appVersionStub.fixture = "ios-core@1.2.3"
+        serviceDelegate.userAgentStub.fixture = "TestUserAgent"
+        serviceDelegate.localeStub.fixture = "en_US"
+        apiService.serviceDelegateStub.fixture = serviceDelegate
         login = LoginMock()
     }
 
@@ -175,17 +181,19 @@ final class LoginViewModelTests: XCTestCase {
         dohMock.getCurrentlyUsedHostUrlStub.bodyIs { _ in
             "http://account.proton.test/api"
         }
-        var expectedRequest = URLRequest(url: URL(string: "http://account.proton.test/api/auth/sso/\(token)")!)
-        expectedRequest.setValue("accessToken", forHTTPHeaderField: "Authorization")
-        expectedRequest.setValue("testSessionUID", forHTTPHeaderField: "x-pm-uid")
 
         // When
         let ssoRequestResult = await sut.getSSORequest(challenge: challenge)
 
         // Then
         XCTAssertNil(ssoRequestResult.error)
-        XCTAssertEqual(ssoRequestResult.request?.url, expectedRequest.url)
-        XCTAssertEqual(ssoRequestResult.request?.allHTTPHeaderFields, expectedRequest.allHTTPHeaderFields)
+        XCTAssertEqual(ssoRequestResult.request?.url, URL(string: "http://account.proton.test/api/auth/sso/\(token)"))
+        let headers = ssoRequestResult.request?.allHTTPHeaderFields
+        XCTAssertEqual(headers?["Authorization"], "Bearer accessToken")
+        XCTAssertEqual(headers?["x-pm-uid"], "testSessionUID")
+        XCTAssertEqual(headers?["x-pm-appversion"], "ios-core@1.2.3")
+        XCTAssertEqual(headers?["User-Agent"], "TestUserAgent")
+        XCTAssertEqual(headers?["x-pm-locale"], "en_US")
     }
 
     func test_getSSORequest_withoutCredentials_fails() async {
@@ -218,6 +226,183 @@ final class LoginViewModelTests: XCTestCase {
         // Then
         XCTAssertNil(ssoRequestResult.request)
         XCTAssertEqual(ssoRequestResult.error, "AuthDelegate is required")
+    }
+
+    // MARK: - getSSORedirect
+
+    private var accountHost: String { "https://account.proton.test" }
+    private var challengeURL: URL { URL(string: "\(accountHost)/api/auth/sso/\(token)")! }
+
+    private func makeSUTResolvingSSORequests(ssoCallbackScheme: String? = "protonvpn") -> LoginViewModel {
+        let credentials = AuthCredential(
+            sessionID: "sessionID",
+            accessToken: "accessToken",
+            refreshToken: "refreshToken",
+            userName: "userName",
+            userID: "userID",
+            privateKey: nil,
+            passwordKeySalt: nil
+        )
+        apiService.fetchAuthCredentialsStub.bodyIs { _, completion in
+            completion(.found(credentials: credentials))
+        }
+        apiService.dohInterfaceStub.fixture = dohMock
+        apiService.sessionUIDStub.fixture = "testSessionUID"
+        dohMock.getAccountHostStub.bodyIs { _ in self.accountHost }
+        dohMock.getCurrentlyUsedHostUrlStub.bodyIs { _ in "\(self.accountHost)/api" }
+
+        let login = LoginService(api: apiService,
+                                 clientApp: .vpn,
+                                 minimumAccountType: .external,
+                                 ssoCallbackScheme: ssoCallbackScheme)
+        return LoginViewModel(api: apiService, login: login, challenge: PMChallenge(), clientApp: .other(named: "core"))
+    }
+
+    private func challengeResponse(statusCode: Int, headerFields: [String: String] = [:]) -> HTTPURLResponse {
+        HTTPURLResponse(url: challengeURL, statusCode: statusCode, httpVersion: "HTTP/1.1", headerFields: headerFields)!
+    }
+
+    func test_getSSORedirect_withRedirectResponse_returnsLocationAndCallbackScheme() async {
+        // Given
+        let sut = makeSUTResolvingSSORequests()
+        let identityProviderURL = "https://idp.proton.test/authorize?state=abc"
+        let response = challengeResponse(statusCode: 303, headerFields: ["Location": identityProviderURL])
+        sut.performSSORequest = { _ in (Data(), response) }
+
+        // When
+        let result = await sut.getSSORedirect(challenge: challenge)
+
+        // Then
+        XCTAssertNil(result.error)
+        XCTAssertEqual(result.redirect?.url, URL(string: identityProviderURL))
+        XCTAssertEqual(result.redirect?.callbackScheme, "protonvpn")
+    }
+
+    func test_getSSORedirect_sendsTheRequestBuiltByGetSSORequest() async {
+        // Given
+        let sut = makeSUTResolvingSSORequests()
+        let response = challengeResponse(statusCode: 303, headerFields: ["Location": "https://idp.proton.test"])
+        var sentRequest: URLRequest?
+        sut.performSSORequest = { request in
+            sentRequest = request
+            return (Data(), response)
+        }
+
+        // When
+        _ = await sut.getSSORedirect(challenge: challenge)
+
+        // Then
+        let request = sentRequest
+        XCTAssertEqual(request?.url?.path, "/api/auth/sso/\(token)")
+        XCTAssertEqual(request?.value(forHTTPHeaderField: "Authorization"), "Bearer accessToken")
+        XCTAssertEqual(request?.value(forHTTPHeaderField: "x-pm-uid"), "testSessionUID")
+        XCTAssertEqual(request?.value(forHTTPHeaderField: "x-pm-appversion"), "ios-core@1.2.3")
+    }
+
+    func test_getSSORedirect_withRelativeLocation_resolvesAgainstRequestURL() async {
+        // Given
+        let sut = makeSUTResolvingSSORequests()
+        let response = challengeResponse(statusCode: 302, headerFields: ["Location": "/sso/redirect?state=abc"])
+        sut.performSSORequest = { _ in (Data(), response) }
+
+        // When
+        let result = await sut.getSSORedirect(challenge: challenge)
+
+        // Then
+        XCTAssertNil(result.error)
+        XCTAssertEqual(result.redirect?.url, URL(string: "\(accountHost)/sso/redirect?state=abc"))
+    }
+
+    func test_getSSORedirect_withoutRedirectStatusCode_fails() async {
+        // Given
+        let sut = makeSUTResolvingSSORequests()
+        let response = challengeResponse(statusCode: 200, headerFields: ["Location": "https://idp.proton.test"])
+        sut.performSSORequest = { _ in (Data(), response) }
+
+        // When
+        let result = await sut.getSSORedirect(challenge: challenge)
+
+        // Then
+        XCTAssertNil(result.redirect)
+        XCTAssertEqual(result.error, LUITranslation.sso_configuration_error.l10n)
+    }
+
+    func test_getSSORedirect_withoutLocationHeader_fails() async {
+        // Given
+        let sut = makeSUTResolvingSSORequests()
+        let response = challengeResponse(statusCode: 303)
+        sut.performSSORequest = { _ in (Data(), response) }
+
+        // When
+        let result = await sut.getSSORedirect(challenge: challenge)
+
+        // Then
+        XCTAssertNil(result.redirect)
+        XCTAssertEqual(result.error, LUITranslation.sso_configuration_error.l10n)
+    }
+
+    func test_getSSORedirect_withoutCallbackScheme_failsWithoutSendingTheRequest() async {
+        // Given — no ssoCallbackScheme means no FinalRedirectBaseUrl to read the scheme back from
+        let sut = makeSUTResolvingSSORequests(ssoCallbackScheme: nil)
+        let response = challengeResponse(statusCode: 303, headerFields: ["Location": "https://idp.proton.test"])
+        var requestWasSent = false
+        sut.performSSORequest = { _ in
+            requestWasSent = true
+            return (Data(), response)
+        }
+
+        // When
+        let result = await sut.getSSORedirect(challenge: challenge)
+
+        // Then
+        XCTAssertNil(result.redirect)
+        XCTAssertEqual(result.error, LUITranslation.sso_configuration_error.l10n)
+        XCTAssertFalse(requestWasSent)
+    }
+
+    func test_getSSORedirect_whenRequestFails_surfacesTheError() async {
+        // Given
+        let sut = makeSUTResolvingSSORequests()
+        sut.performSSORequest = { _ in
+            throw NSError(domain: "test", code: 1, userInfo: [NSLocalizedDescriptionKey: "The network connection was lost"])
+        }
+
+        // When
+        let result = await sut.getSSORedirect(challenge: challenge)
+
+        // Then
+        XCTAssertNil(result.redirect)
+        XCTAssertEqual(result.error, "The network connection was lost")
+    }
+
+    func test_getSSORedirect_withoutCredentials_propagatesTheRequestError() async {
+        // Given
+        apiService.fetchAuthCredentialsStub.bodyIs { _, completion in
+            completion(.notFound)
+        }
+        let login = LoginService(api: apiService, clientApp: .vpn, minimumAccountType: .external)
+        sut = LoginViewModel(api: apiService, login: login, challenge: PMChallenge(), clientApp: .other(named: "core"))
+
+        // When
+        let result = await sut.getSSORedirect(challenge: challenge)
+
+        // Then
+        XCTAssertNil(result.redirect)
+        XCTAssertEqual(result.error, "Empty token")
+    }
+
+    func test_getSSORedirect_whenItFails_tracksFailure() async {
+        // Given
+        let expectedEvent: ObservabilityEvent = .ssoIdentityProviderLoginResult(status: .failed)
+        let sut = makeSUTResolvingSSORequests()
+        let response = challengeResponse(statusCode: 200)
+        sut.performSSORequest = { _ in (Data(), response) }
+
+        // When
+        _ = await sut.getSSORedirect(challenge: challenge)
+
+        // Then
+        XCTAssertTrue(observabilityServiceMock.reportStub.lastArguments!.value.isSameAs(event: expectedEvent))
     }
 
     // MARK: - processResponseToken

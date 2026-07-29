@@ -181,6 +181,125 @@ final class LoginViewModel {
         await login.getSSOURL(challenge: ssoChallengeResponse)
     }
 
+    struct SSORedirect {
+        let url: URL
+        let callbackScheme: String
+    }
+
+    /// Set in tests to resolve the challenge without networking.
+    var performSSORequest: ((URLRequest) async throws -> (Data, URLResponse))?
+
+    private let ssoRedirectBlocker = SSORedirectBlocker()
+
+    private func makeSSOURLSession() -> URLSession {
+        let configuration = URLSessionConfiguration.ephemeral
+        // The API service's jar carries the cookies DoH copies onto the proxy domains, which the
+        // challenge request needs when alternative routing is active.
+        if let cookieStorage = api.dohInterface.currentlyUsedCookiesStorage {
+            configuration.httpCookieStorage = cookieStorage
+        }
+        return URLSession(configuration: configuration)
+    }
+
+    /// Sends the authenticated `GET /auth/sso/{token}` request and returns the identity provider URL from
+    /// the redirect response, along with the callback scheme the auth session has to watch for.
+    func getSSORedirect(challenge ssoChallengeResponse: SSOChallengeResponse) async -> (redirect: SSORedirect?, error: String?) {
+        isLoading.value = true
+        defer { isLoading.value = false }
+
+        let requestResult = await login.getSSORequest(challenge: ssoChallengeResponse)
+
+        if let error = requestResult.error {
+            ObservabilityEnv.report(.ssoIdentityProviderLoginResult(status: .failed))
+            return (nil, error)
+        }
+
+        guard let request = requestResult.request,
+              let callbackScheme = Self.callbackScheme(from: request) else {
+            PMLog.error("SSO request has no \(Self.finalRedirectBaseURLKey) to derive the callback scheme from", sendToExternal: true)
+            ObservabilityEnv.report(.ssoIdentityProviderLoginResult(status: .failed))
+            return (nil, LUITranslation.sso_configuration_error.l10n)
+        }
+
+        do {
+            // Sending through a session backed by the API service's jar puts any Set-Cookie there; synchronizing
+            // copies them onto the proxy domains too, so a later alt-routed request carries them, the same
+            // way PMAPIService does after every request. None of it reaches the auth session, hence the log.
+            let (_, response) = try await performSSORedirectRequest(request)
+            await api.dohInterface.synchronizeCookies(with: response, requestHeaders: request.allHTTPHeaderFields ?? [:])
+            logSSOResponseCookies(from: response)
+
+            guard let httpResponse = response as? HTTPURLResponse else {
+                PMLog.error("SSO challenge response is not an HTTP response", sendToExternal: true)
+                ObservabilityEnv.report(.ssoIdentityProviderLoginResult(status: .failed))
+                return (nil, LUITranslation.sso_configuration_error.l10n)
+            }
+
+            guard (300...399).contains(httpResponse.statusCode),
+                  let location = httpResponse.value(forHTTPHeaderField: "Location"),
+                  let redirectURL = URL(string: location, relativeTo: request.url)?.absoluteURL else {
+                PMLog.error("SSO challenge did not redirect, status code \(httpResponse.statusCode)", sendToExternal: true)
+                ObservabilityEnv.report(.ssoIdentityProviderLoginResult(status: .failed))
+                return (nil, LUITranslation.sso_configuration_error.l10n)
+            }
+
+            return (SSORedirect(url: redirectURL, callbackScheme: callbackScheme), nil)
+        } catch {
+            PMLog.error(error, sendToExternal: true)
+            ObservabilityEnv.report(.ssoIdentityProviderLoginResult(status: .failed))
+            return (nil, error.localizedDescription)
+        }
+    }
+
+    private static let finalRedirectBaseURLKey = "FinalRedirectBaseUrl"
+
+    /// `getSSORequest` builds `FinalRedirectBaseUrl` out of the account host with its scheme replaced by
+    /// the client's callback scheme, so the scheme can be read back off the request it produced.
+    private static func callbackScheme(from request: URLRequest) -> String? {
+        guard let url = request.url,
+              let components = URLComponents(url: url, resolvingAgainstBaseURL: false),
+              let finalRedirectBaseURL = components.queryItems?
+            .first(where: { $0.name == finalRedirectBaseURLKey })?.value else {
+            return nil
+        }
+
+        return URL(string: finalRedirectBaseURL)?.scheme
+    }
+
+    private func performSSORedirectRequest(_ request: URLRequest) async throws -> (Data, URLResponse) {
+        if let performSSORequest {
+            return try await performSSORequest(request)
+        }
+        // A session holds on to itself until invalidated, so it is built per request and torn down here.
+        let session = makeSSOURLSession()
+        defer { session.finishTasksAndInvalidate() }
+        return try await session.data(for: request, delegate: ssoRedirectBlocker)
+    }
+
+    /// These cookies land in the API service's jar, which `ASWebAuthenticationSession` cannot read, so a
+    /// handoff that depends on them fails only once the redirect opens. Names only, never values.
+    private func logSSOResponseCookies(from response: URLResponse) {
+        #if DEBUG_CORE_INTERNALS
+        guard let httpResponse = response as? HTTPURLResponse,
+              let url = httpResponse.url,
+              let headerFields = httpResponse.allHeaderFields as? [String: String] else {
+            return
+        }
+
+        let cookies = HTTPCookie.cookies(withResponseHeaderFields: headerFields, for: url)
+
+        guard !cookies.isEmpty else {
+            PMLog.debug("[COOKIES][SSO] challenge response set no cookies")
+            return
+        }
+
+        let details = cookies.map {
+            "\($0.name) (domain: \($0.domain), path: \($0.path), expires: \($0.expiresDate?.description ?? "session"), secure: \($0.isSecure))"
+        }
+        PMLog.debug("[COOKIES][SSO] challenge response set \(cookies.count) cookie(s), not visible to the auth session: \(details.joined(separator: ", "))")
+        #endif
+    }
+
     @available(*, deprecated, renamed: "processResponseTokenV2", message: "Remove as part of GSSO")
     func processResponseToken(idpEmail: String, responseToken: SSOResponseToken) {
         isLoading.value = true
@@ -230,6 +349,20 @@ final class LoginViewModel {
 
     func isProtonPage(url: URL?) -> Bool {
         login.isProtonPage(url: url)
+    }
+}
+
+// MARK: - SSO redirect blocking
+
+/// `URLSession` follows the challenge redirect on its own, which would fetch the identity provider page
+/// instead of handing its URL back to us. Refusing the redirect completes the task with the 3xx response.
+private final class SSORedirectBlocker: NSObject, URLSessionTaskDelegate {
+    func urlSession(_ session: URLSession,
+                    task: URLSessionTask,
+                    willPerformHTTPRedirection response: HTTPURLResponse,
+                    newRequest request: URLRequest,
+                    completionHandler: @escaping (URLRequest?) -> Void) {
+        completionHandler(nil)
     }
 }
 
