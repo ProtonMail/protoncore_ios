@@ -56,17 +56,22 @@ extension Fido2View {
 
             let controller = makeAuthController(relyingPartyIdentifier: authenticationOptions.relyingPartyIdentifier,
                                                 challenge: authenticationOptions.challenge,
-                                                allowedCredentials: authenticationOptions.allowedCredentialIds
+                                                allowedCredentials: authenticationOptions.allowedCredentialIds,
+                                                userVerification: authenticationOptions.publicKey.userVerification
             )
             controller.performRequests()
         }
 
         private func makeAuthController(relyingPartyIdentifier: String,
                                         challenge: Data,
-                                        allowedCredentials: [Data]) -> ASAuthorizationController {
+                                        allowedCredentials: [Data],
+                                        userVerification: String) -> ASAuthorizationController {
+            let userVerificationPreference = ASAuthorizationPublicKeyCredentialUserVerificationPreference
+                .fromFidoUserVerification(userVerification)
             let fido2Provider = ASAuthorizationSecurityKeyPublicKeyCredentialProvider(relyingPartyIdentifier: relyingPartyIdentifier)
 
             let fido2Request = fido2Provider.createCredentialAssertionRequest(challenge: challenge)
+            fido2Request.userVerificationPreference = userVerificationPreference
             fido2Request.allowedCredentials = allowedCredentials.map {
                 ASAuthorizationSecurityKeyPublicKeyCredentialDescriptor(
                     credentialID: $0,
@@ -77,6 +82,7 @@ extension Fido2View {
             let passkeyProvider = ASAuthorizationPlatformPublicKeyCredentialProvider(relyingPartyIdentifier: relyingPartyIdentifier)
 
             let passkeyRequest = passkeyProvider.createCredentialAssertionRequest(challenge: challenge)
+            passkeyRequest.userVerificationPreference = userVerificationPreference
             passkeyRequest.allowedCredentials = allowedCredentials.map {
                 ASAuthorizationPlatformPublicKeyCredentialDescriptor(credentialID: $0)
             }
