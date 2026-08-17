@@ -88,8 +88,7 @@ final class StoreKitManagerTests: XCTestCase {
                                   canExtendSubscription: false,
                                   paymentsAlertManager: paymentsAlertMock,
                                   reportBugAlertHandler: nil,
-                                  refreshHandler: { _ in XCTFail("Shouldn't be calling refresh handler") },
-                                  reachability: nil)
+                                  refreshHandler: { _ in XCTFail("Shouldn't be calling refresh handler") })
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
 
         // when: purchase (1)
@@ -117,8 +116,7 @@ final class StoreKitManagerTests: XCTestCase {
                                   canExtendSubscription: false,
                                   paymentsAlertManager: paymentsAlertMock,
                                   reportBugAlertHandler: nil,
-                                  refreshHandler: { _ in XCTFail("Shouldn't be calling refresh handler") },
-                                  reachability: nil)
+                                  refreshHandler: { _ in XCTFail("Shouldn't be calling refresh handler") })
         out.availableProducts = [SKProduct(identifier: "ios_test_12_usd_non_renewing", price: "0.0", priceLocale: Locale(identifier: "en_US"))]
         planServiceMock.updateServicePlansSuccessFailureStub.bodyIs { _, _, successCallback, _ in successCallback() }
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
@@ -148,8 +146,7 @@ final class StoreKitManagerTests: XCTestCase {
                                   canExtendSubscription: false,
                                   paymentsAlertManager: paymentsAlertMock,
                                   reportBugAlertHandler: nil,
-                                  refreshHandler: { _ in XCTFail("Shouldn't be calling refresh handler") },
-                                  reachability: nil)
+                                  refreshHandler: { _ in XCTFail("Shouldn't be calling refresh handler") })
         out.availableProducts = [SKProduct(identifier: "ios_test_12_usd_non_renewing", price: "0.0", priceLocale: Locale(identifier: "en_US"))]
         planServiceMock.updateServicePlansSuccessFailureStub.bodyIs { _, _, successCallback, _ in successCallback() }
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
@@ -179,8 +176,7 @@ final class StoreKitManagerTests: XCTestCase {
                                      canExtendSubscription: false,
                                      paymentsAlertManager: paymentsAlertMock,
                                      reportBugAlertHandler: nil,
-                                     refreshHandler: { _ in XCTFail("Shouldn't be calling refresh handler") },
-                                     reachability: nil)
+                                     refreshHandler: { _ in XCTFail("Shouldn't be calling refresh handler") })
            out.availableProducts = [SKProduct(identifier: "ios_test_12_usd_non_renewing", price: "0.0", priceLocale: Locale(identifier: "en_US"))]
            planServiceMock.updateServicePlansSuccessFailureStub.bodyIs { _, _, successCallback, _ in successCallback() }
            let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
@@ -210,8 +206,7 @@ final class StoreKitManagerTests: XCTestCase {
                                   canExtendSubscription: false,
                                   paymentsAlertManager: paymentsAlertMock,
                                   reportBugAlertHandler: nil,
-                                  refreshHandler: { _ in XCTFail("Shouldn't be calling refresh handler") },
-                                  reachability: nil)
+                                  refreshHandler: { _ in XCTFail("Shouldn't be calling refresh handler") })
         out.delegate = storeKitManagerDelegate
         out.paymentQueue = paymentsQueue
         out.availableProducts = [SKProduct(identifier: "ios_test_12_usd_non_renewing", price: "0.0", priceLocale: Locale(identifier: "en_US"))]
@@ -249,8 +244,7 @@ final class StoreKitManagerTests: XCTestCase {
                                   canExtendSubscription: false,
                                   paymentsAlertManager: paymentsAlertMock,
                                   reportBugAlertHandler: nil,
-                                  refreshHandler: { _ in XCTFail("Shouldn't be calling refresh handler") },
-                                  reachability: nil)
+                                  refreshHandler: { _ in XCTFail("Shouldn't be calling refresh handler") })
         out.delegate = storeKitManagerDelegate
         out.paymentQueue = paymentsQueue
         out.availableProducts = [SKProduct(identifier: "ios_test_12_usd_non_renewing", price: "0.0", priceLocale: Locale(identifier: "en_US"))]
@@ -634,8 +628,7 @@ final class StoreKitManagerTests: XCTestCase {
                                   canExtendSubscription: false,
                                   paymentsAlertManager: paymentsAlertMock,
                                   reportBugAlertHandler: nil,
-                                  refreshHandler: { _ in XCTFail("Shouldn't be calling a refresh handler") },
-                                  reachability: nil)
+                                  refreshHandler: { _ in XCTFail("Shouldn't be calling a refresh handler") })
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_auto_renewing")!
 
         // when: purchase (1)
@@ -669,8 +662,7 @@ final class StoreKitManagerTests: XCTestCase {
                                   canExtendSubscription: false,
                                   paymentsAlertManager: paymentsAlertMock,
                                   reportBugAlertHandler: nil,
-                                  refreshHandler: { _ in XCTFail("Shouldn't be calling a refresh handler") },
-                                  reachability: nil)
+                                  refreshHandler: { _ in XCTFail("Shouldn't be calling a refresh handler") })
         out.availableProducts = [SKProduct(identifier: "ios_test_12_usd_auto_renewing", price: "0.0", priceLocale: Locale(identifier: "en_US"))]
         plansDataSourceMock.fetchAvailablePlansStub.bodyIs { _ in }
         plansDataSourceMock.isIAPAvailableStub(true)
@@ -709,8 +701,7 @@ final class StoreKitManagerTests: XCTestCase {
                                   canExtendSubscription: false,
                                   paymentsAlertManager: paymentsAlertMock,
                                   reportBugAlertHandler: nil,
-                                  refreshHandler: { _ in XCTFail("Shouldn't be calling the refresh handler") },
-                                  reachability: nil)
+                                  refreshHandler: { _ in XCTFail("Shouldn't be calling the refresh handler") })
         out.availableProducts = [SKProduct(identifier: "ios_test_12_usd_auto_renewing", price: "0.0", priceLocale: Locale(identifier: "en_US"))]
         plansDataSourceMock.fetchAvailablePlansStub.bodyIs { _ in }
         plansDataSourceMock.isIAPAvailableStub(true)
@@ -749,8 +740,7 @@ final class StoreKitManagerTests: XCTestCase {
                                   canExtendSubscription: false,
                                   paymentsAlertManager: paymentsAlertMock,
                                   reportBugAlertHandler: nil,
-                                  refreshHandler: { _ in XCTFail("Shouldn't be calling the refresh handler") },
-                                  reachability: nil)
+                                  refreshHandler: { _ in XCTFail("Shouldn't be calling the refresh handler") })
         out.availableProducts = [SKProduct(identifier: "ios_test_12_usd_auto_renewing", price: "0.0", priceLocale: Locale(identifier: "en_US"))]
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
 
@@ -792,8 +782,7 @@ final class StoreKitManagerTests: XCTestCase {
                                   canExtendSubscription: false,
                                   paymentsAlertManager: paymentsAlertMock,
                                   reportBugAlertHandler: nil,
-                                  refreshHandler: { _ in XCTFail("Shouldn't be calling the refresh handler") },
-                                  reachability: nil)
+                                  refreshHandler: { _ in XCTFail("Shouldn't be calling the refresh handler") })
         out.delegate = storeKitManagerDelegate
         out.availableProducts = [SKProduct(identifier: productId, price: "0.0", priceLocale: Locale(identifier: "en_US"))]
         storeKitManagerDelegate.userIdStub.fixture = "test user"
@@ -836,8 +825,7 @@ final class StoreKitManagerTests: XCTestCase {
                                   canExtendSubscription: false,
                                   paymentsAlertManager: paymentsAlertMock,
                                   reportBugAlertHandler: nil,
-                                  refreshHandler: { _ in XCTFail("Shouldn't be calling the refresh handler") },
-                                  reachability: nil)
+                                  refreshHandler: { _ in XCTFail("Shouldn't be calling the refresh handler") })
         out.delegate = storeKitManagerDelegate
         out.paymentQueue = paymentsQueue
         out.availableProducts = [SKProduct(identifier: "ios_test_12_usd_auto_renewing", price: "0.0", priceLocale: Locale(identifier: "en_US"))]
@@ -883,8 +871,7 @@ final class StoreKitManagerTests: XCTestCase {
                                   canExtendSubscription: false,
                                   paymentsAlertManager: paymentsAlertMock,
                                   reportBugAlertHandler: nil,
-                                  refreshHandler: { _ in XCTFail("Shouldn't be calling the refresh handler") },
-                                  reachability: nil)
+                                  refreshHandler: { _ in XCTFail("Shouldn't be calling the refresh handler") })
         out.delegate = storeKitManagerDelegate
         out.paymentQueue = paymentsQueue
         out.availableProducts = [SKProduct(identifier: productId, price: "0.0", priceLocale: Locale(identifier: "en_US"))]
@@ -1323,8 +1310,7 @@ final class StoreKitManagerTests: XCTestCase {
                                   canExtendSubscription: false,
                                   paymentsAlertManager: paymentsAlertMock,
                                   reportBugAlertHandler: nil,
-                                  refreshHandler: refreshHandler,
-                                  reachability: nil)
+                                  refreshHandler: refreshHandler
         out.paymentQueue = paymentsQueue
         out.delegate = storeKitManagerDelegate
         out.availableProducts = [SKProduct(identifier: "ios_test_12_usd_non_renewing", price: "0.0", priceLocale: Locale(identifier: "en_US"))]
@@ -1354,8 +1340,7 @@ final class StoreKitManagerTests: XCTestCase {
                                   canExtendSubscription: false,
                                   paymentsAlertManager: paymentsAlertMock,
                                   reportBugAlertHandler: nil,
-                                  refreshHandler: refreshHandler,
-                                  reachability: nil)
+                                  refreshHandler: refreshHandler)
         out.paymentQueue = paymentsQueue
         out.delegate = storeKitManagerDelegate
         out.availableProducts = [SKProduct(identifier: "ios_test_12_usd_auto_renewing", price: "0.0", priceLocale: Locale(identifier: "en_US"))]
