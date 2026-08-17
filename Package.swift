@@ -201,8 +201,6 @@ extension String {
     static let lottiePackage: String = "lottie-spm"
     static let ohhttpStubs: String = "OHHTTPStubsSwift"
     static let ohhttpStubsPackage: String = "OHHTTPStubs"
-    static let reachabilitySwift: String = "Reachability"
-    static let reachabilitySwiftPackage: String = "Reachability.swift"
     static let sentry: String = "Sentry"
     static let sentryPackage: String = "sentry-cocoa"
     static let sdWebImage: String = "SDWebImage"
@@ -328,7 +326,6 @@ extension Target.Dependency {
     static var jsonSchema: Target.Dependency { .product(name: .jsonSchema, package: .jsonSchemaPackage) }
     static var lottie: Target.Dependency { .product(name: .lottie, package: .lottiePackage) }
     static var ohhttpStubs: Target.Dependency { .product(name: .ohhttpStubs, package: .ohhttpStubsPackage) }
-    static var reachabilitySwift: Target.Dependency { .product(name: .reachabilitySwift, package: .reachabilitySwiftPackage) }
     static var sentry: Target.Dependency { .product(name: .sentry, package: .sentryPackage) }
     static var snapshotTesting: Target.Dependency { .product(name: .snapshotTesting, package: .snapshotTestingPackage) }
     static var swiftOTP: Target.Dependency { .product(name: .swiftOTP, package: .swiftOTP) }
@@ -1422,7 +1419,6 @@ add(
                     .hash,
                     .log,
                     .networking,
-                    .reachabilitySwift,
                     .services,
                     .featureFlags
                    ],
@@ -2061,10 +2057,6 @@ let package = Package(
         .package(
             url: "https://github.com/AliSoftware/OHHTTPStubs",
             from: "9.1.0"
-        ),
-        .package(
-            url: "https://github.com/ashleymills/Reachability.swift",
-            from: "5.1.0"
         ),
         .package(
             url: "https://github.com/lachlanbell/SwiftOTP",

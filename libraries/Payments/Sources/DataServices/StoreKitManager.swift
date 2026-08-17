@@ -26,7 +26,6 @@ import ProtonCoreLog
 import ProtonCoreObservability
 import ProtonCoreServices
 import ProtonCoreUtilities
-import Reachability
 import StoreKit
 
 /// Class responsible for initiating purchases on App Store and forwarding
@@ -90,7 +89,6 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
     private lazy var validationManager = ValidationManager(dependencies: self)
     private lazy var commonTokenStorage = TokenStorage(tokenStorage: storeKitDelegate?.tokenStorage)
 
-    private let reachability: Reachability?
     private var transactionsQueue: OperationQueue = {
         let queue = OperationQueue()
         queue.qualityOfService = QualityOfService.userInteractive
@@ -261,7 +259,6 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
     ///   append at the end of the current one
     ///   - reportBugAlertHandler: Handler that allows to report a problem to support
     ///   - refreshHandler: Handler to update data after a purchase
-    ///   - reachability: A `Reachability` instance to trigger payment queue processing after recovering connectivity
     ///   - featureFlagsRepository: a DI injection point to obtain feature flags
     init(inAppPurchaseIdentifiersGet: @escaping ListOfIAPIdentifiersGet,
          inAppPurchaseIdentifiersSet: @escaping ListOfIAPIdentifiersSet,
@@ -273,7 +270,6 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
          paymentsAlertManager: PaymentsAlertManager,
          reportBugAlertHandler: BugAlertHandler,
          refreshHandler: @escaping (ProcessCompletionResult) -> Void,
-         reachability: Reachability? = try? Reachability(),
          featureFlagsRepository: FeatureFlagsRepositoryProtocol = FeatureFlagsRepository.shared)
     {
         self.inAppPurchaseIdentifiersGet = inAppPurchaseIdentifiersGet
@@ -286,15 +282,12 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
         self.paymentsAlertManager = paymentsAlertManager
         self.reportBugAlertHandler = reportBugAlertHandler
         self.refreshHandler = refreshHandler
-        self.reachability = reachability
         self.featureFlagsRepository = featureFlagsRepository
         super.init()
-        try? reachability?.startNotifier()
     }
 
     deinit {
         unsubscribeFromPaymentQueue()
-        reachability?.stopNotifier()
     }
 
     public func subscribeToPaymentQueue() {
