@@ -426,13 +426,13 @@
 
 "Continue as guest" = "以訪客身分繼續";
 
-"By using this app you accept our [Terms and Conditions](%1$@) and acknowledge our [Privacy Policy](%2$@)." = "By using this app you accept our [Terms and Conditions](%1$@) and acknowledge our [Privacy Policy](%2$@).";
+"By using this app you accept our [Terms and Conditions](%1$@) and acknowledge our [Privacy Policy](%2$@)." = "使用此應用程式即表示您接受我們的 [條款及細則](%1$@) 並知悉我們的 [隱私權政策](%2$@)。";
 
-"Tap **Scan QR code**" = "Tap **Scan QR code**";
+"Tap **Scan QR code**" = "輕點 **掃描 QR Code**";
 
-"Tap into **Settings**, then tap **Sign in to another device**" = "Tap into **Settings**, then tap **Sign in to another device**";
+"Tap into **Settings**, then tap **Sign in to another device**" = "輕點 **設定**，然後輕點 **登入其他裝置**";
 
-"Password must contain:" = "Password must contain:";
+"Password must contain:" = "密碼必須包含：";
 
 "Access shared" = "存取已共享";
 
@@ -488,6 +488,6 @@
 
 "**Security tips**" = "**安全性提示**";
 
-"SSO configuration error" = "SSO configuration error";
+"SSO configuration error" = "SSO 組態錯誤";
 
-"Failed to obtain SSO response token" = "Failed to obtain SSO response token";
+"Failed to obtain SSO response token" = "無法取得 SSO 回應權杖";

@@ -428,11 +428,11 @@
 
 "By using this app you accept our [Terms and Conditions](%1$@) and acknowledge our [Privacy Policy](%2$@)." = "Ao usar este aplicativo você aceita nossos [Termos e Condições](%1$@) e reconhece nossa [Política de privacidade](%2$@).";
 
-"Tap **Scan QR code**" = "Tap **Scan QR code**";
+"Tap **Scan QR code**" = "Toque em **Escanear código QR**";
 
-"Tap into **Settings**, then tap **Sign in to another device**" = "Tap into **Settings**, then tap **Sign in to another device**";
+"Tap into **Settings**, then tap **Sign in to another device**" = "Toque em **Configurações**, depois toque em **Iniciar sessão em outro dispositivo**";
 
-"Password must contain:" = "Password must contain:";
+"Password must contain:" = "A senha deve conter:";
 
 "Access shared" = "Acesso compartilhado";
 

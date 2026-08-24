@@ -426,68 +426,68 @@
 
 "Continue as guest" = "Продолжить как гость";
 
-"By using this app you accept our [Terms and Conditions](%1$@) and acknowledge our [Privacy Policy](%2$@)." = "By using this app you accept our [Terms and Conditions](%1$@) and acknowledge our [Privacy Policy](%2$@).";
+"By using this app you accept our [Terms and Conditions](%1$@) and acknowledge our [Privacy Policy](%2$@)." = "Используя это приложение, вы принимаете наши [Условия](%1$@) и подтверждаете, что ознакомились с [Политикой конфиденциальности](%2$@).";
 
 "Tap **Scan QR code**" = "Нажмите **Сканировать QR-код**";
 
-"Tap into **Settings**, then tap **Sign in to another device**" = "Tap into **Settings**, then tap **Sign in to another device**";
+"Tap into **Settings**, then tap **Sign in to another device**" = "Нажмите на **Настройки**, а затем на **Войти на другом устройстве**";
 
-"Password must contain:" = "Password must contain:";
+"Password must contain:" = "Пароль должен содержать:";
 
-"Access shared" = "Access shared";
+"Access shared" = "Доступ предоставлен";
 
-"Back to settings" = "Back to settings";
+"Back to settings" = "Назад в настройки";
 
-"How to sign in using another device" = "How to sign in using another device";
+"How to sign in using another device" = "Как войти с другого устройства";
 
-"Get another device that’s signed in to your Proton Account" = "Get another device that’s signed in to your Proton Account";
+"Get another device that’s signed in to your Proton Account" = "Возьмите другое устройство, на котором выполнен вход в ваш аккаунт Proton";
 
-"Using that device, open any Proton app and select **Settings**" = "Using that device, open any Proton app and select **Settings**";
+"Using that device, open any Proton app and select **Settings**" = "Используя это устройство, откройте любое приложение Proton и выберите **Настройки**";
 
-"Select **Sign in on another device → Scan QR code**" = "Select **Sign in on another device → Scan QR code**";
+"Select **Sign in on another device → Scan QR code**" = "Выберите **Войти на другом устройстве → Отсканировать QR-код**";
 
-"Scan the code to sign in" = "Scan the code to sign in";
+"Scan the code to sign in" = "Отсканируйте код, чтобы войти";
 
-"We couldn't sign you in" = "We couldn't sign you in";
+"We couldn't sign you in" = "Не удалось выполнить вход";
 
-"Try generating a new QR code." = "Try generating a new QR code.";
+"Try generating a new QR code." = "Попробуйте создать новый QR-код.";
 
-"Generate QR code" = "Generate QR code";
+"Generate QR code" = "Создать QR-код";
 
-"Please try another sign in method." = "Please try another sign in method.";
+"Please try another sign in method." = "Пожалуйста, попробуйте другой способ входа.";
 
-"Sign in on another device" = "Sign in on another device";
+"Sign in on another device" = "Войти на другом устройстве";
 
-"How to sign in with QR code" = "How to sign in with QR code";
+"How to sign in with QR code" = "Как войти с помощью QR-кода";
 
-"Allow camera access" = "Allow camera access";
+"Allow camera access" = "Разрешить доступ к камере";
 
-"To sign in with QR code, you'll need to let Proton %@ access your camera. You can do this in your device settings." = "To sign in with QR code, you'll need to let Proton %@ access your camera. You can do this in your device settings.";
+"To sign in with QR code, you'll need to let Proton %@ access your camera. You can do this in your device settings." = "Чтобы войти с помощью QR-кода, вам нужно разрешить Proton %@ доступ к камере. Вы можете сделать это в настройках устройства.";
 
-"Position QR code inside the square" = "Position QR code inside the square";
+"Position QR code inside the square" = "Поместите QR-код в квадрат";
 
-"Sign in with QR code" = "Sign in with QR code";
+"Sign in with QR code" = "Войти с помощью QR-кода";
 
-"Open any Proton app on the device you want to sign in to" = "Open any Proton app on the device you want to sign in to";
+"Open any Proton app on the device you want to sign in to" = "Откройте любое приложение Proton на устройстве, на котором вы хотите войти";
 
-"On the sign-in screen, select **Forgot password** or **Trouble signing in?** (on mobile apps, select **Help**)" = "On the sign-in screen, select **Forgot password** or **Trouble signing in?** (on mobile apps, select **Help**)";
+"On the sign-in screen, select **Forgot password** or **Trouble signing in?** (on mobile apps, select **Help**)" = "На экране входа выберите **Забыли пароль** или **Проблемы со входом?** (в мобильных приложениях выберите **Помощь**)";
 
-"Select **Sign in with QR code**. A QR code will appear." = "Select **Sign in with QR code**. A QR code will appear.";
+"Select **Sign in with QR code**. A QR code will appear." = "Выберите **Войти с помощью QR-кода**. Появится QR-код.";
 
-"On this device, press **Scan QR code** and scan the code." = "On this device, press **Scan QR code** and scan the code.";
+"On this device, press **Scan QR code** and scan the code." = "На этом устройстве нажмите **Сканировать QR-код** и отсканируйте код.";
 
-"Security tips" = "Security tips";
+"Security tips" = "Советы по безопасности";
 
-"Be cautious of messages with QR codes. Only scan a code if you trust the source." = "Be cautious of messages with QR codes. Only scan a code if you trust the source.";
+"Be cautious of messages with QR codes. Only scan a code if you trust the source." = "Будьте осторожны с сообщениями, содержащими QR-коды. Сканируйте код только в том случае, если доверяете источнику.";
 
-"Proton will never contact you unexpectedly asking you to sign in with a QR code." = "Proton will never contact you unexpectedly asking you to sign in with a QR code.";
+"Proton will never contact you unexpectedly asking you to sign in with a QR code." = "Proton никогда не свяжется с вами неожиданно с просьбой войти с помощью QR-кода.";
 
-"Proton will never ask you to scan a QR code that’s not from **https://proton.me** or an official Proton app." = "Proton will never ask you to scan a QR code that’s not from **https://proton.me** or an official Proton app.";
+"Proton will never ask you to scan a QR code that’s not from **https://proton.me** or an official Proton app." = "Proton никогда не попросит вас отсканировать QR-код, полученный не с сайта **https://proton.me** или не из официального приложения Proton.";
 
 "Learn more" = "Узнать больше";
 
-"**Security tips**" = "**Security tips**";
+"**Security tips**" = "**Советы по безопасности**";
 
-"SSO configuration error" = "SSO configuration error";
+"SSO configuration error" = "Ошибка конфигурации SSO";
 
-"Failed to obtain SSO response token" = "Failed to obtain SSO response token";
+"Failed to obtain SSO response token" = "Не удалось получить токен ответа SSO";

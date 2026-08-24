@@ -26,8 +26,8 @@
 
 "Transaction_Handler_receipt_update_failed" = "Ett fel uppstod när transaktionskvittot begärdes från Apple. Om problemet kvarstår, kontakta kundsupport.";
 
-"PayUpFront_offer_description" = "Allows new subscribers to pay a one-time introductory price for a specific duration, after which they pay the regular subscription price.";
+"PayUpFront_offer_description" = "Gör det möjligt för nya prenumeranter att betala ett introduktionspris som en engångsavgift under en specifik tidsperiod, varefter de betalar det ordinarie prenumerationspriset.";
 
-"PayAsYouGo_offer_description" = "Allows new subscribers to pay an introductory price for a specific number of billing periods before transitioning to the regular subscription price.";
+"PayAsYouGo_offer_description" = "Gör det möjligt för nya prenumeranter att betala ett introduktionspris under ett specifikt antal faktureringsperioder innan de övergår till det ordinarie prenumerationspriset.";
 
-"FreeTrial_offer_description" = "Allows new subscribers to have access to the subscription for a given number of billing cycles. One that expires, the user pays full price.";
+"FreeTrial_offer_description" = "Gör det möjligt för nya prenumeranter att få åtkomst till prenumerationen under ett givet antal faktureringscykler. När den har löpt ut betalar användaren fullt pris.";

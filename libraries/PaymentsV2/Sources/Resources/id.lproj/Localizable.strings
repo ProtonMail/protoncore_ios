@@ -18,7 +18,7 @@
 
 "SK_Receipt_impossible_to_get_receipt" = "Data resi transaksi dari Apple tidak dapat diambil";
 
-"SK_Receipt_task_not_found" = "Unable to process transaction due to an unexpected error, please try again.";
+"SK_Receipt_task_not_found" = "Tidak dapat memproses transaksi karena kesalahan yang tidak terduga, silakan coba lagi.";
 
 "Transaction_Handler_plan_not_found" = "Nama paket yang coba Anda beli tidak dapat ditemukan. Jika isu ini terus berlanjut, silakan hubungi bagian dukungan pelanggan.";
 

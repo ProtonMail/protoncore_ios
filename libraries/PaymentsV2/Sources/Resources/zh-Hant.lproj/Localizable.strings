@@ -18,7 +18,7 @@
 
 "SK_Receipt_impossible_to_get_receipt" = "無法從 Apple 取得交易收據資料";
 
-"SK_Receipt_task_not_found" = "Unable to process transaction due to an unexpected error, please try again.";
+"SK_Receipt_task_not_found" = "由於發生未預期的錯誤，無法處理交易，請重試。";
 
 "Transaction_Handler_plan_not_found" = "無法找到您嘗試購買的方案名稱。如果問題仍然存在，請聯絡客戶支援";
 
@@ -26,8 +26,8 @@
 
 "Transaction_Handler_receipt_update_failed" = "在向 Apple 要求交易收據時發生錯誤。如果問題持續發生，請聯絡客戶支援。";
 
-"PayUpFront_offer_description" = "Allows new subscribers to pay a one-time introductory price for a specific duration, after which they pay the regular subscription price.";
+"PayUpFront_offer_description" = "允許新訂閱者在特定期間內支付一次性體驗價，在此之後他們將支付常規訂閱價格。";
 
-"PayAsYouGo_offer_description" = "Allows new subscribers to pay an introductory price for a specific number of billing periods before transitioning to the regular subscription price.";
+"PayAsYouGo_offer_description" = "允許新訂閱者在特定次數的帳單週期內支付體驗價，隨後轉為支付常規訂閱價格。";
 
-"FreeTrial_offer_description" = "Allows new subscribers to have access to the subscription for a given number of billing cycles. One that expires, the user pays full price.";
+"FreeTrial_offer_description" = "允許新訂閱者在指定數量的帳單週期內存取訂閱。一旦過期，使用者需支付全額。";
