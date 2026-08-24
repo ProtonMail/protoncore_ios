@@ -18,7 +18,7 @@
 
 "SK_Receipt_impossible_to_get_receipt" = "Nie można uzyskać potwierdzenia transakcji od Apple";
 
-"SK_Receipt_task_not_found" = "Unable to process transaction due to an unexpected error, please try again.";
+"SK_Receipt_task_not_found" = "Nie można przetworzyć transakcji z powodu nieoczekiwanego błędu, spróbuj ponownie.";
 
 "Transaction_Handler_plan_not_found" = "Nie można znaleźć nazwy planu do zakupu. Jeśli problem będzie się powtarzał, skontaktuj się ze wsparciem klienta.";
 
@@ -26,8 +26,8 @@
 
 "Transaction_Handler_receipt_update_failed" = "Wystąpił błąd podczas żądania potwierdzenia transakcji od Apple. Jeśli problem będzie się powtarzał, skontaktuj się ze wsparciem klienta";
 
-"PayUpFront_offer_description" = "Allows new subscribers to pay a one-time introductory price for a specific duration, after which they pay the regular subscription price.";
+"PayUpFront_offer_description" = "Umożliwia nowym subskrybentom zapłacenie jednorazowej ceny wstępnej za określony czas, po upływie którego płacą regularną cenę subskrypcji.";
 
-"PayAsYouGo_offer_description" = "Allows new subscribers to pay an introductory price for a specific number of billing periods before transitioning to the regular subscription price.";
+"PayAsYouGo_offer_description" = "Umożliwia nowym subskrybentom płacenie ceny wstępnej przez określoną liczbę okresów rozliczeniowych przed przejściem na regularną cenę subskrypcji.";
 
-"FreeTrial_offer_description" = "Allows new subscribers to have access to the subscription for a given number of billing cycles. One that expires, the user pays full price.";
+"FreeTrial_offer_description" = "Umożliwia nowym subskrybentom dostęp do subskrypcji przez określoną liczbę cykli rozliczeniowych. Po jej wygaśnięciu użytkownik płaci pełną cenę.";

@@ -430,9 +430,9 @@
 
 "Tap **Scan QR code**" = "**QRコードをスキャン**をタップ";
 
-"Tap into **Settings**, then tap **Sign in to another device**" = "Tap into **Settings**, then tap **Sign in to another device**";
+"Tap into **Settings**, then tap **Sign in to another device**" = "**設定**をタップし、次に**別のデバイスでサインイン**をタップします";
 
-"Password must contain:" = "Password must contain:";
+"Password must contain:" = "パスワードには以下を含める必要があります：";
 
 "Access shared" = "アクセスが共有されました";
 

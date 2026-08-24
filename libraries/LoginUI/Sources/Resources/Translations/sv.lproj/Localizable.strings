@@ -426,13 +426,13 @@
 
 "Continue as guest" = "Fortsätt som gäst";
 
-"By using this app you accept our [Terms and Conditions](%1$@) and acknowledge our [Privacy Policy](%2$@)." = "By using this app you accept our [Terms and Conditions](%1$@) and acknowledge our [Privacy Policy](%2$@).";
+"By using this app you accept our [Terms and Conditions](%1$@) and acknowledge our [Privacy Policy](%2$@)." = "Genom att använda denna app godkänner du våra [användarvillkor](%1$@) och bekräftar vår [Integritetspolicy](%2$@).";
 
 "Tap **Scan QR code**" = "Tryck **Skanna QR-kod**";
 
-"Tap into **Settings**, then tap **Sign in to another device**" = "Tap into **Settings**, then tap **Sign in to another device**";
+"Tap into **Settings**, then tap **Sign in to another device**" = "Tryck på **Inställningar** och tryck sedan på **Logga in på en annan enhet**";
 
-"Password must contain:" = "Password must contain:";
+"Password must contain:" = "Lösenordet måste innehålla:";
 
 "Access shared" = "Åtkomst delad";
 

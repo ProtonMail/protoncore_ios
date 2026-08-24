@@ -426,13 +426,13 @@
 
 "Continue as guest" = "Kontynuuj jako gość";
 
-"By using this app you accept our [Terms and Conditions](%1$@) and acknowledge our [Privacy Policy](%2$@)." = "By using this app you accept our [Terms and Conditions](%1$@) and acknowledge our [Privacy Policy](%2$@).";
+"By using this app you accept our [Terms and Conditions](%1$@) and acknowledge our [Privacy Policy](%2$@)." = "Korzystając z tej aplikacji, akceptujesz nasz [Regulamin](%1$@) i przyjmujesz do wiadomości naszą [Politykę prywatności](%2$@).";
 
 "Tap **Scan QR code**" = "Kliknij **Zeskanuj kod QR**";
 
-"Tap into **Settings**, then tap **Sign in to another device**" = "Tap into **Settings**, then tap **Sign in to another device**";
+"Tap into **Settings**, then tap **Sign in to another device**" = "Kliknij **Ustawienia**, a następnie kliknij **Zaloguj się na innym urządzeniu**";
 
-"Password must contain:" = "Password must contain:";
+"Password must contain:" = "Hasło musi zawierać:";
 
 "Access shared" = "Dostęp został udostępniony";
 
@@ -488,6 +488,6 @@
 
 "**Security tips**" = "**Wskazówki bezpieczeństwa**";
 
-"SSO configuration error" = "SSO configuration error";
+"SSO configuration error" = "Błąd konfiguracji SSO";
 
-"Failed to obtain SSO response token" = "Failed to obtain SSO response token";
+"Failed to obtain SSO response token" = "Nie udało się uzyskać tokenu odpowiedzi SSO";

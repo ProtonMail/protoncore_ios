@@ -10,7 +10,7 @@
 
 "Plans_Manager_Transaction_unknown_error" = "Возникла непредвиденная ошибка, если она сохранится, обратитесь в службу поддержки клиентов";
 
-"Plans_Manager_peding_transaction_received" = "Unexpected pending transaction received";
+"Plans_Manager_peding_transaction_received" = "Получена неожиданная ожидающая транзакция";
 
 "PlansComposer_unable_to_fetch_currentSub" = "Не удалось загрузить текущую подписку";
 
@@ -18,16 +18,16 @@
 
 "SK_Receipt_impossible_to_get_receipt" = "Невозможно получить данные о получении транзакций от Apple";
 
-"SK_Receipt_task_not_found" = "Unable to process transaction due to an unexpected error, please try again.";
+"SK_Receipt_task_not_found" = "Не удалось обработать транзакцию из-за непредвиденной ошибки, пожалуйста, попробуйте еще раз.";
 
 "Transaction_Handler_plan_not_found" = "Не удалось найти название тарифа, который вы пытаетесь приобрести. Если проблема сохранится, обратитесь в службу поддержки клиентов";
 
-"Transaction_Handler_repeated_purchase" = "It's not possible to renew the selected plan multiple times. If you think this is an error or if the issue persists please contact our customer support";
+"Transaction_Handler_repeated_purchase" = "Невозможно продлить выбранный тариф несколько раз. Если вы считаете, что это ошибка, или если проблема сохраняется, пожалуйста, свяжитесь с нашей поддержкой клиентов";
 
-"Transaction_Handler_receipt_update_failed" = "An error occured while requesting the transaction receipt from Apple. If the issue persists please contact customer support";
+"Transaction_Handler_receipt_update_failed" = "Произошла ошибка при запросе получения транзакции от Apple. Если проблема сохраняется, пожалуйста, свяжитесь с поддержкой клиентов";
 
-"PayUpFront_offer_description" = "Allows new subscribers to pay a one-time introductory price for a specific duration, after which they pay the regular subscription price.";
+"PayUpFront_offer_description" = "Позволяет новым подписчикам оплатить единовременную ознакомительную цену на определенный период, после чего они платят обычную стоимость подписки.";
 
-"PayAsYouGo_offer_description" = "Allows new subscribers to pay an introductory price for a specific number of billing periods before transitioning to the regular subscription price.";
+"PayAsYouGo_offer_description" = "Позволяет новым подписчикам оплачивать ознакомительную цену в течение определенного количества расчетных периодов перед переходом на обычную стоимость подписки.";
 
-"FreeTrial_offer_description" = "Allows new subscribers to have access to the subscription for a given number of billing cycles. One that expires, the user pays full price.";
+"FreeTrial_offer_description" = "Позволяет новым подписчикам получить доступ к подписке на определенное количество платежных циклов. После их истечения пользователь платит полную стоимость.";

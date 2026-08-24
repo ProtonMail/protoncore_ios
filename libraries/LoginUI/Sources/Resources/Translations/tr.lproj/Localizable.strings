@@ -428,11 +428,11 @@
 
 "By using this app you accept our [Terms and Conditions](%1$@) and acknowledge our [Privacy Policy](%2$@)." = "Bu uygulamayı kullanarak [Hüküm ve Koşullar](%1$@) ile [Gizlilik İlkesi](%2$@) içeriklerimizi kabul etmiş olursunuz.";
 
-"Tap **Scan QR code**" = "Tap **Scan QR code**";
+"Tap **Scan QR code**" = "**Kare kodu tara** üzerine dokunun";
 
-"Tap into **Settings**, then tap **Sign in to another device**" = "Tap into **Settings**, then tap **Sign in to another device**";
+"Tap into **Settings**, then tap **Sign in to another device**" = "**Ayarlar** ve **Başka bir aygıtta oturum aç** üzerine dokunun";
 
-"Password must contain:" = "Password must contain:";
+"Password must contain:" = "Parolada şunlar bulunmalıdır:";
 
 "Access shared" = "Erişim paylaşıldı";
 

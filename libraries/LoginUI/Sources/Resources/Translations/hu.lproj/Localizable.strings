@@ -426,13 +426,13 @@
 
 "Continue as guest" = "Folytatás vendégként";
 
-"By using this app you accept our [Terms and Conditions](%1$@) and acknowledge our [Privacy Policy](%2$@)." = "By using this app you accept our [Terms and Conditions](%1$@) and acknowledge our [Privacy Policy](%2$@).";
+"By using this app you accept our [Terms and Conditions](%1$@) and acknowledge our [Privacy Policy](%2$@)." = "Az alkalmazás használatával elfogadja a [felhasználási feltételeinket](%1$@), és tudomásul veszi az [Adatvédelmi irányelveinket](%2$@).";
 
 "Tap **Scan QR code**" = "Koppintson a **QR-kód beolvasása** gombra";
 
-"Tap into **Settings**, then tap **Sign in to another device**" = "Tap into **Settings**, then tap **Sign in to another device**";
+"Tap into **Settings**, then tap **Sign in to another device**" = "Koppintson a **Beállítások**, majd a **Bejelentkezés egy másik eszközre** lehetőségre";
 
-"Password must contain:" = "Password must contain:";
+"Password must contain:" = "A jelszónak tartalmaznia kell:";
 
 "Access shared" = "Megosztott elérés";
 
@@ -488,6 +488,6 @@
 
 "**Security tips**" = "**Biztonsági tippek**";
 
-"SSO configuration error" = "SSO configuration error";
+"SSO configuration error" = "SSO-beállítási hiba";
 
-"Failed to obtain SSO response token" = "Failed to obtain SSO response token";
+"Failed to obtain SSO response token" = "Nem sikerült beszerezni az SSO-választokent";

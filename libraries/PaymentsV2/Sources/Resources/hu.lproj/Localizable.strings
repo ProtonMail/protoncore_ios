@@ -18,7 +18,7 @@
 
 "SK_Receipt_impossible_to_get_receipt" = "Nem lehet megszerezni a tranzakciót visszaigazoló adatokat az Apple-től";
 
-"SK_Receipt_task_not_found" = "Unable to process transaction due to an unexpected error, please try again.";
+"SK_Receipt_task_not_found" = "Váratlan hiba miatt nem sikerült feldolgozni a tranzakciót, kérjük, próbálja meg újra.";
 
 "Transaction_Handler_plan_not_found" = "Lehetetlen volt megtalálni a csomag nevét, amit megpróbál megvásárolni. Ha a probléma továbbra is fennáll, kérjük, forduljon az ügyfélszolgálathoz.";
 
@@ -26,8 +26,8 @@
 
 "Transaction_Handler_receipt_update_failed" = "Hiba történt az Apple tranzakciós visszaigazolásának kérése közben. Ha a probléma továbbra is fennáll, kérjük, lépjen kapcsolatba az ügyfélszolgálattal.";
 
-"PayUpFront_offer_description" = "Allows new subscribers to pay a one-time introductory price for a specific duration, after which they pay the regular subscription price.";
+"PayUpFront_offer_description" = "Lehetővé teszi az új előfizetők számára, hogy egyszeri bevezető árat fizessenek egy meghatározott időtartamra, amely után a normál előfizetési díjat fizetik.";
 
-"PayAsYouGo_offer_description" = "Allows new subscribers to pay an introductory price for a specific number of billing periods before transitioning to the regular subscription price.";
+"PayAsYouGo_offer_description" = "Lehetővé teszi az új előfizetők számára, hogy bevezető árat fizessenek meghatározott számú számlázási időszakra, mielőtt áttérnének a normál előfizetési díjra.";
 
-"FreeTrial_offer_description" = "Allows new subscribers to have access to the subscription for a given number of billing cycles. One that expires, the user pays full price.";
+"FreeTrial_offer_description" = "Lehetővé teszi az új előfizetők számára a hozzáférést az előfizetéshez meghatározott számú számlázási ciklusig. Miután ez lejár, a felhasználó a teljes árat fizeti.";

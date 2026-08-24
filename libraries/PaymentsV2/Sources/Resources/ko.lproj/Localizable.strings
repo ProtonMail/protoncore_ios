@@ -18,7 +18,7 @@
 
 "SK_Receipt_impossible_to_get_receipt" = "Apple로부터 거래 영수증 데이터를 수신하는데 실패했습니다";
 
-"SK_Receipt_task_not_found" = "Unable to process transaction due to an unexpected error, please try again.";
+"SK_Receipt_task_not_found" = "예상치 못한 오류로 인해 거래를 처리할 수 없습니다. 다시 시도해 주세요.";
 
 "Transaction_Handler_plan_not_found" = "사용자가 구매를 시도한 플랜의 명칭을 탐색하는데 실패했습니다. 문제 재발시 고객 지원에 문의해 주세요.";
 

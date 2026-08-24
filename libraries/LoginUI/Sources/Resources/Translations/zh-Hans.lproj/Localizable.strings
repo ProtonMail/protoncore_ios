@@ -428,11 +428,11 @@
 
 "By using this app you accept our [Terms and Conditions](%1$@) and acknowledge our [Privacy Policy](%2$@)." = "使用此应用即表示您接受我们的[条款和条件](%1$@)并承认我们的[隐私政策](%2$@)。";
 
-"Tap **Scan QR code**" = "Tap **Scan QR code**";
+"Tap **Scan QR code**" = "点击**扫描二维码**";
 
-"Tap into **Settings**, then tap **Sign in to another device**" = "Tap into **Settings**, then tap **Sign in to another device**";
+"Tap into **Settings**, then tap **Sign in to another device**" = "进入**设置**，然后点击**登录到其他设备**";
 
-"Password must contain:" = "Password must contain:";
+"Password must contain:" = "密码必须包含：";
 
 "Access shared" = "已授权访问";
 
