@@ -22,6 +22,7 @@
 #if canImport(ProtonCoreTestingToolkitUnitTestsCore)
 import ProtonCoreTestingToolkitUnitTestsCore
 #endif
+import Foundation
 import ProtonCoreFeatureFlags
 import ProtonCoreServices
 import ProtonCoreUtilities
@@ -54,6 +55,19 @@ public final class FeatureFlagsRepositoryMock: FeatureFlagsRepositoryProtocol {
 
     public func fetchFlags() async throws {
         self.fetchFlagsWasCalled = true
+        flagsUpdatesContinuation.yield(userId)
+    }
+
+    private let (flagsUpdatesStream, flagsUpdatesContinuation) = AsyncStream<String>.makeStream()
+
+    /// One stream shared by every caller, which is enough for a test with a single observer.
+    public var flagsUpdates: AsyncStream<String> {
+        flagsUpdatesStream
+    }
+
+    /// Reports a flags update without a fetch, for tests that drive the stream directly.
+    public func simulateFlagsUpdate(for userId: String) {
+        flagsUpdatesContinuation.yield(userId)
     }
 
     public func resetFlags() {}

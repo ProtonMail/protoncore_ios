@@ -20,6 +20,7 @@
 //  along with ProtonCore. If not, see https://www.gnu.org/licenses/.
 //
 
+import Foundation
 import ProtonCoreServices
 import ProtonCoreUtilities
 
@@ -28,6 +29,9 @@ public protocol FeatureFlagsRepositoryProtocol: AnyObject, Sendable {
     func setUserId(_ userId: String)
     func setApiService(_ apiService: any APIService, completionExecutor: CompletionBlockExecutor)
     func fetchFlags() async throws
+
+    /// Emits the id of the user whose flags were just stored, each time a fetch completes.
+    var flagsUpdates: AsyncStream<String> { get }
 
     // MARK: - For single-user clients
     func isEnabled(_ flag: any FeatureFlagTypeProtocol, reloadValue: Bool) -> Bool
