@@ -40,6 +40,9 @@ public final class FeatureFlagsRepository: FeatureFlagsRepositoryProtocol, @unch
     /// The local data source for overridden feature flags.
     private let overrideLocalDataSource: Atomic<any OverrideFeatureFlagDataSourceProtocol>
 
+    /// Everyone currently listening to ``flagsUpdates``, keyed so each can remove itself when it stops.
+    private let updateObservers = Atomic<[UUID: AsyncStream<String>.Continuation]>([:])
+
     // If we notice a explosion of threads using concurrent queue we should move to a serial queue
     private let queue = DispatchQueue(label: "ch.proton.featureflagsrepository_queue", attributes: .concurrent)
 
@@ -157,6 +160,33 @@ public extension FeatureFlagsRepository {
 
         let (flags, userID) = try await remoteDataSource.getFlags()
         localDataSource.value.upsertFlags(.init(flags: flags), userId: userID)
+        notifyFlagsUpdated(for: userID)
+    }
+
+    /**
+     Emits the id of the user whose flags were just stored, each time a fetch completes.
+
+     Flags belong to an account, so the values held straight after a sign-in are still the previous account's until a
+     fetch replaces them. A caller that has to read a flag for the account that has just appeared can await this
+     rather than starting a fetch of its own.
+
+     Each call returns its own stream, and every stream receives every update. A stream stops delivering when the
+     caller stops iterating it.
+     */
+    var flagsUpdates: AsyncStream<String> {
+        AsyncStream { continuation in
+            let id = UUID()
+            updateObservers.mutate { $0[id] = continuation }
+            continuation.onTermination = { [weak self] _ in
+                self?.updateObservers.mutate { $0[id] = nil }
+            }
+        }
+    }
+
+    private func notifyFlagsUpdated(for userId: String) {
+        for continuation in updateObservers.value.values {
+            continuation.yield(userId)
+        }
     }
 
     /**

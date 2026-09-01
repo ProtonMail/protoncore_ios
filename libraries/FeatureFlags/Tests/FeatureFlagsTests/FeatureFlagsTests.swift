@@ -423,6 +423,46 @@ final class FeatureFlagsTests: XCTestCase {
 
     // MARK: - fetchFlags
 
+    // MARK: - flagsUpdates
+
+    func test_flagsUpdates_emitsTheUserIdAfterAFetch() async throws {
+        // Given
+        let userId = "userId"
+        let remoteDataSource = DefaultRemoteFeatureFlagsDataSourceMock()
+        remoteDataSource.userID = userId
+        sut.updateRemoteDataSource(with: Atomic<RemoteFeatureFlagsDataSourceProtocol?>(remoteDataSource))
+
+        var updates = sut.flagsUpdates.makeAsyncIterator()
+
+        // When
+        try await sut.fetchFlags()
+
+        // Then
+        let updatedUserId = await updates.next()
+        XCTAssertEqual(updatedUserId, userId)
+    }
+
+    /// Every observer has to see every update: the point of the stream is that whoever needs the flags for the
+    /// account that just signed in can wait rather than starting a fetch of their own.
+    func test_flagsUpdates_emitsToEveryObserver() async throws {
+        // Given
+        let remoteDataSource = DefaultRemoteFeatureFlagsDataSourceMock()
+        remoteDataSource.userID = "userId"
+        sut.updateRemoteDataSource(with: Atomic<RemoteFeatureFlagsDataSourceProtocol?>(remoteDataSource))
+
+        var first = sut.flagsUpdates.makeAsyncIterator()
+        var second = sut.flagsUpdates.makeAsyncIterator()
+
+        // When
+        try await sut.fetchFlags()
+
+        // Then
+        let firstUserId = await first.next()
+        let secondUserId = await second.next()
+        XCTAssertEqual(firstUserId, "userId")
+        XCTAssertEqual(secondUserId, "userId")
+    }
+
     func test_fetchFlags_withoutUserIdSet_returnsFlagForUnauthSession() async throws {
         // Given
         sut.updateRemoteDataSource(with: Atomic<RemoteFeatureFlagsDataSourceProtocol?>(DefaultRemoteFeatureFlagsDataSourceMock()))
