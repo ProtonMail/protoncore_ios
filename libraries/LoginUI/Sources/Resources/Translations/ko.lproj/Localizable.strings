@@ -426,7 +426,7 @@
 
 "Continue as guest" = "게스트로 계속하기";
 
-"By using this app you accept our [Terms and Conditions](%1$@) and acknowledge our [Privacy Policy](%2$@)." = "이 앱을 사용함으로써 귀하는 [이용 약관](%1$@)에 동의하고 [개인정보취급방침](%2$@)을 확인하게 됩니다.";
+"By using this app you accept our [Terms and Conditions](%1$@) and acknowledge our [Privacy Policy](%2$@)." = "이 앱을 사용함으로써 [이용 약관](%1$@)에 동의하고 [개인정보취급방침](%2$@)을 확인하게 됩니다.";
 
 "Tap **Scan QR code**" = "**QR 코드 스캔**을 터치해주세요";
 
