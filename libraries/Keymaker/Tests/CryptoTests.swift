@@ -88,7 +88,7 @@ class CryptoTests: XCTestCase {
 
     func testCryptoSwiftDerive() {
         let secret = "Z1ON0101"
-        let salt = Data(self.makeKey(8)).bytes
+        let salt: [UInt8] = Data(self.makeKey(8)).bytes
 
         self.measure {
             do {

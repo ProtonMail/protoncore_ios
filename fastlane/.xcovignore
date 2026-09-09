@@ -22,6 +22,8 @@
 - libraries/CryptoGoImplementation/Tests-Crypto-patched-Go
 - libraries/CryptoGoImplementation/Tests-Crypto+Search-Go
 - libraries/CryptoGoImplementation/Tests-Crypto+VPN-patched-Go
+- libraries/CryptoGoImplementation/Tests-Crypto-Go-Drive
+- libraries/CryptoGoImplementation/Tests-Crypto-patched-Go-Drive
 - libraries/DataModel/Tests
 - libraries/Doh/Tests
 - libraries/Environment/Tests

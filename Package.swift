@@ -31,6 +31,8 @@ func products(from newProduct: String) -> [Product] {
         .goLibsCryptoSearchGo,
         .goLibsCryptoPatchedGo,
         .goLibsCryptoVPNPatchedGo,
+        .goLibsCryptoDriveGo,
+        .goLibsCryptoDrivePatchedGo,
         .vCard
     ]
 
@@ -85,6 +87,7 @@ func coreTestTarget(name: String,
                     dependencies: [PackageDescription.Target.Dependency]? = nil,
                     path: String,
                     exclude: [String]? = nil,
+                    settings: [SwiftSetting] = [.spm],
                     resources: [Resource]? = nil) -> Target {
     .testTarget(name: name,
                 dependencies: dependencies ?? [],
@@ -93,7 +96,7 @@ func coreTestTarget(name: String,
                 resources: resources,
                 cSettings: nil,
                 cxxSettings: nil,
-                swiftSettings: [.spm],
+                swiftSettings: settings,
                 linkerSettings: nil,
                 plugins: plugins)
 }
@@ -120,6 +123,8 @@ extension String {
     static let cryptoPatchedGoImplementation: String = "ProtonCoreCryptoPatchedGoImplementation"
     static let cryptoVPNPatchedGoImplementation: String = "ProtonCoreCryptoVPNPatchedGoImplementation"
     static let cryptoSearchGoImplementation: String = "ProtonCoreCryptoSearchGoImplementation"
+    static let cryptoDriveGoImplementation: String = "ProtonCoreCryptoDriveGoImplementation"
+    static let cryptoDrivePatchedGoImplementation: String = "ProtonCoreCryptoDrivePatchedGoImplementation"
     static let dataModel: String = "ProtonCoreDataModel"
     static let doh: String = "ProtonCoreDoh"
     static let environment: String = "ProtonCoreEnvironment"
@@ -131,6 +136,8 @@ extension String {
     static let goLibsCryptoPatchedGo: String = "GoLibsCryptoPatchedGo"
     static let goLibsCryptoVPNPatchedGo: String = "GoLibsCryptoVPNPatchedGo"
     static let goLibsCryptoSearchGo: String = "GoLibsCryptoSearchGo"
+    static let goLibsCryptoDriveGo: String = "GoLibsCryptoDriveGo"
+    static let goLibsCryptoDrivePatchedGo: String = "GoLibsCryptoDrivePatchedGo"
     static let hash: String = "ProtonCoreHash"
     static let humanVerification: String = "ProtonCoreHumanVerification"
     static let humanVerificationResourcesiOS: String = "ProtonCoreHumanVerificationResourcesiOS"
@@ -237,6 +244,8 @@ extension Target.Dependency {
     static var cryptoPatchedGoImplementation: Target.Dependency { .target(name: .cryptoPatchedGoImplementation) }
     static var cryptoVPNPatchedGoImplementation: Target.Dependency { .target(name: .cryptoVPNPatchedGoImplementation) }
     static var cryptoSearchGoImplementation: Target.Dependency { .target(name: .cryptoSearchGoImplementation) }
+    static var cryptoDriveGoImplementation: Target.Dependency { .target(name: .cryptoDriveGoImplementation) }
+    static var cryptoDrivePatchedGoImplementation: Target.Dependency { .target(name: .cryptoDrivePatchedGoImplementation) }
     static var dataModel: Target.Dependency { .target(name: .dataModel) }
     static var doh: Target.Dependency { .target(name: .doh) }
     static var environment: Target.Dependency { .target(name: .environment) }
@@ -248,6 +257,8 @@ extension Target.Dependency {
     static var goLibsCryptoPatchedGo: Target.Dependency { .target(name: .goLibsCryptoPatchedGo) }
     static var goLibsCryptoVPNPatchedGo: Target.Dependency { .target(name: .goLibsCryptoVPNPatchedGo) }
     static var goLibsCryptoSearchGo: Target.Dependency { .target(name: .goLibsCryptoSearchGo) }
+    static var goLibsCryptoDriveGo: Target.Dependency { .target(name: .goLibsCryptoDriveGo) }
+    static var goLibsCryptoDrivePatchedGo: Target.Dependency { .target(name: .goLibsCryptoDrivePatchedGo) }
     static var hash: Target.Dependency { .target(name: .hash) }
     static var humanVerification: Target.Dependency { .target(name: .humanVerification) }
     static var humanVerificationResourcesiOS: Target.Dependency { .target(name: .humanVerificationResourcesiOS,
@@ -613,7 +624,9 @@ add(
         .cryptoGoImplementation,
         .cryptoPatchedGoImplementation,
         .cryptoVPNPatchedGoImplementation,
-        .cryptoSearchGoImplementation
+        .cryptoSearchGoImplementation,
+        .cryptoDriveGoImplementation,
+        .cryptoDrivePatchedGoImplementation
     ],
     targets: [
         coreTarget(name: .cryptoGoImplementation,
@@ -644,6 +657,20 @@ add(
                    ],
                    path: "libraries/CryptoGoImplementation/Crypto+Search-Go"),
 
+        coreTarget(name: .cryptoDriveGoImplementation,
+                   dependencies: [
+                    .goLibsCryptoDriveGo,
+                    .cryptoGoInterface
+                   ],
+                   path: "libraries/CryptoGoImplementation/Crypto-Go-Drive"),
+
+        coreTarget(name: .cryptoDrivePatchedGoImplementation,
+                   dependencies: [
+                    .goLibsCryptoDrivePatchedGo,
+                    .cryptoGoInterface
+                   ],
+                   path: "libraries/CryptoGoImplementation/Crypto-patched-Go-Drive"),
+
         coreTestTarget(name: .cryptoGoImplementation + "Tests",
                        dependencies: [
                         .goLibsCryptoGo,
@@ -658,7 +685,8 @@ add(
                         .cryptoPatchedGoImplementation,
                         .cryptoGoInterface
                        ],
-                       path: "libraries/CryptoGoImplementation/Tests-Crypto-patched-Go"),
+                       path: "libraries/CryptoGoImplementation/Tests-Crypto-patched-Go",
+                       settings: [.spm, .define("CRYPTO_GO_IMPL_PATCHED")]),
 
         coreTestTarget(name: .cryptoVPNPatchedGoImplementation + "Tests",
                        dependencies: [
@@ -666,7 +694,8 @@ add(
                         .cryptoVPNPatchedGoImplementation,
                         .cryptoGoInterface
                        ],
-                       path: "libraries/CryptoGoImplementation/Tests-Crypto+VPN-patched-Go"),
+                       path: "libraries/CryptoGoImplementation/Tests-Crypto+VPN-patched-Go",
+                       settings: [.spm, .define("CRYPTO_GO_IMPL_VPN_PATCHED")]),
 
         coreTestTarget(name: .cryptoSearchGoImplementation + "Tests",
                        dependencies: [
@@ -674,7 +703,26 @@ add(
                         .cryptoSearchGoImplementation,
                         .cryptoGoInterface
                        ],
-                       path: "libraries/CryptoGoImplementation/Tests-Crypto+Search-Go")
+                       path: "libraries/CryptoGoImplementation/Tests-Crypto+Search-Go",
+                       settings: [.spm, .define("CRYPTO_GO_IMPL_SEARCH")]),
+
+        coreTestTarget(name: .cryptoDriveGoImplementation + "Tests",
+                       dependencies: [
+                        .goLibsCryptoDriveGo,
+                        .cryptoDriveGoImplementation,
+                        .cryptoGoInterface
+                       ],
+                       path: "libraries/CryptoGoImplementation/Tests-Crypto-Go-Drive",
+                       settings: [.spm, .define("CRYPTO_GO_IMPL_DRIVE")]),
+
+        coreTestTarget(name: .cryptoDrivePatchedGoImplementation + "Tests",
+                       dependencies: [
+                        .goLibsCryptoDrivePatchedGo,
+                        .cryptoDrivePatchedGoImplementation,
+                        .cryptoGoInterface
+                       ],
+                       path: "libraries/CryptoGoImplementation/Tests-Crypto-patched-Go-Drive",
+                       settings: [.spm, .define("CRYPTO_GO_IMPL_DRIVE_PATCHED")])
     ]
 )
 
@@ -866,13 +914,17 @@ add(
         .goLibsCryptoGo,
         .goLibsCryptoPatchedGo,
         .goLibsCryptoVPNPatchedGo,
-        .goLibsCryptoSearchGo
+        .goLibsCryptoSearchGo,
+        .goLibsCryptoDriveGo,
+        .goLibsCryptoDrivePatchedGo
     ],
     targets: [
         .binaryTarget(name: .goLibsCryptoGo, path: "vendor/Crypto-Go/GoLibs.xcframework"),
         .binaryTarget(name: .goLibsCryptoPatchedGo, path: "vendor/Crypto-patched-Go/GoLibs.xcframework"),
         .binaryTarget(name: .goLibsCryptoVPNPatchedGo, path: "vendor/Crypto+VPN-patched-Go/GoLibs.xcframework"),
         .binaryTarget(name: .goLibsCryptoSearchGo, path: "vendor/Crypto+Search-Go/GoLibs.xcframework"),
+        .binaryTarget(name: .goLibsCryptoDriveGo, path: "vendor/Crypto-Go-Drive/GoLibs.xcframework"),
+        .binaryTarget(name: .goLibsCryptoDrivePatchedGo, path: "vendor/Crypto-patched-Go-Drive/GoLibs.xcframework"),
     ]
 )
 
