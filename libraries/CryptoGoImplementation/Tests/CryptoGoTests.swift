@@ -23,7 +23,19 @@
 import XCTest
 import GoLibs
 import ProtonCoreCryptoGoInterface
+#if CRYPTO_GO_IMPL_PATCHED
 @testable import ProtonCoreCryptoPatchedGoImplementation
+#elseif CRYPTO_GO_IMPL_SEARCH
+@testable import ProtonCoreCryptoSearchGoImplementation
+#elseif CRYPTO_GO_IMPL_VPN_PATCHED
+@testable import ProtonCoreCryptoVPNPatchedGoImplementation
+#elseif CRYPTO_GO_IMPL_DRIVE
+@testable import ProtonCoreCryptoDriveGoImplementation
+#elseif CRYPTO_GO_IMPL_DRIVE_PATCHED
+@testable import ProtonCoreCryptoDrivePatchedGoImplementation
+#else
+@testable import ProtonCoreCryptoGoImplementation
+#endif
 
 class CryptoDataExtTest: XCTestCase {
 

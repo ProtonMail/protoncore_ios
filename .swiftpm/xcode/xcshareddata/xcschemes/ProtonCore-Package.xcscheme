@@ -1071,6 +1071,48 @@
                ReferencedContainer = "container:">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "GoLibsCryptoDrivePatchedGo"
+               BuildableName = "GoLibsCryptoDrivePatchedGo"
+               BlueprintName = "GoLibsCryptoDrivePatchedGo"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreCryptoDriveGoImplementation"
+               BuildableName = "ProtonCoreCryptoDriveGoImplementation"
+               BlueprintName = "ProtonCoreCryptoDriveGoImplementation"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreCryptoDrivePatchedGoImplementation"
+               BuildableName = "ProtonCoreCryptoDrivePatchedGoImplementation"
+               BlueprintName = "ProtonCoreCryptoDrivePatchedGoImplementation"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -1697,6 +1739,26 @@
                BlueprintIdentifier = "ProtonCoreUIUnitTests"
                BuildableName = "ProtonCoreUIUnitTests"
                BlueprintName = "ProtonCoreUIUnitTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreCryptoDriveGoImplementationTests"
+               BuildableName = "ProtonCoreCryptoDriveGoImplementationTests"
+               BlueprintName = "ProtonCoreCryptoDriveGoImplementationTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreCryptoDrivePatchedGoImplementationTests"
+               BuildableName = "ProtonCoreCryptoDrivePatchedGoImplementationTests"
+               BlueprintName = "ProtonCoreCryptoDrivePatchedGoImplementationTests"
                ReferencedContainer = "container:">
             </BuildableReference>
          </TestableReference>
