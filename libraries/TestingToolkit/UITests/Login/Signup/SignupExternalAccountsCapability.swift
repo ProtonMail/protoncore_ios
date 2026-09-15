@@ -28,13 +28,15 @@ import fusion
 public class SignupExternalAccountsCapability {
     public init() {}
 
-    public func signUpWithInternalAccount<T: CoreElements>(signupRobot: SignupRobot,
-                                                           username: String,
-                                                           password: String,
-                                                           userEmail: String,
-                                                           verificationCode: String,
-                                                           retRobot: T.Type) -> T {
-        return signupRobot
+    public func signUpWithInternalAccount<T: CoreElements>(
+        signupRobot: SignupRobot,
+        username: String,
+        password: String,
+        userEmail: String,
+        verificationCode: String,
+        retRobot: T.Type
+    ) -> T {
+        signupRobot
             .verify.signupScreenIsShown()
             .insertName(name: username)
             .nextButtonTap(robot: PasswordRobot.self)
@@ -45,19 +47,21 @@ public class SignupExternalAccountsCapability {
             .verify.recoveryScreenIsShown()
             .skipButtonTap()
             .verify.recoveryDialogDisplay()
-            .skipButtonTap(robot: CompleteRobot.self)
-            .verify.completeScreenIsShown(robot: SignupHumanVerificationV3Robot.self)
+            .skipButtonTap(robot: SignupHumanVerificationV3Robot.self)
             .verify.humanVerificationScreenIsShown()
             .switchToEmailHVMethod()
-            .performEmailVerificationV3(email: userEmail, code: verificationCode, to: retRobot)
+            .performEmailVerificationV3(email: userEmail, code: verificationCode, to: CompleteRobot.self)
+            .verify.completeScreenIsShown(robot: T.self)
     }
 
-    public func signUpWithExternalAccount<T: CoreElements>(signupRobot: SignupRobot,
-                                                           userEmail: String,
-                                                           password: String,
-                                                           verificationCode: String,
-                                                           retRobot: T.Type) -> T {
-        return signupRobot
+    public func signUpWithExternalAccount<T: CoreElements>(
+        signupRobot: SignupRobot,
+        userEmail: String,
+        password: String,
+        verificationCode: String,
+        retRobot: T.Type
+    ) -> T {
+        signupRobot
             .verify.signupScreenIsShown()
             .insertExternalEmail(name: userEmail)
             .nextButtonTapToOwnershipHV()
