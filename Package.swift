@@ -2112,7 +2112,7 @@ let package = Package(
         ),
         .package(
             url: "https://github.com/lachlanbell/SwiftOTP",
-            from: "2.0.0"
+            from: "3.0.0"
         ),
         .package(
             url: "https://github.com/pointfreeco/swift-snapshot-testing",

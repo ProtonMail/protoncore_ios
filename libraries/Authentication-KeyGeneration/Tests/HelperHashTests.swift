@@ -90,7 +90,7 @@ class HelperHashTests: XCTestCase {
         let encodedSalt = JKBCrypt.base64DotSlash(source)
 
         let hash = try Bcrypt.hash(password: testpassword, salt: Array(encodedSalt.utf8))
-        let out = String(bytes: hash.bytes, encoding: .utf8)!
+        let out = hash
 
         var index = out.index(out.startIndex, offsetBy: 4)
         let leftPwd = "$2y$" + String(out[index...])

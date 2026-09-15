@@ -30,7 +30,7 @@ public struct ActiveAccountRecoveryView: View {
     public var body: some View {
         VStack(alignment: .leading, spacing: 24) {
             HStack(alignment: .top, spacing: 10) {
-                IconProvider.exclamationCircle
+                exclamationIcon
                 Text(passwordResetReceivedL10nStringKey,
                      bundle: AccountRecoveryModule.resourceBundle,
                      comment: "In Active Account Recovery state screen (the grace period), Request received intro. Variable is an email, interpolated at %@, with ** delimiters for bold type (we have a replica without delimiters for older iOS versions).")
@@ -100,6 +100,8 @@ public struct ActiveAccountRecoveryView: View {
             ObservabilityEnv.report(.accountRecoveryScreenView(screenID: .gracePeriodInfo))
         }
     }
+
+    private var exclamationIcon: Image { IconProvider.exclamationCircle }
 
     var passwordResetReceivedL10nStringKey: LocalizedStringKey {
         var value = "We received a password reset request for **\(viewModel.email)**."
