@@ -51,7 +51,7 @@ public class SignupExternalAccountsCapability {
             .verify.humanVerificationScreenIsShown()
             .switchToEmailHVMethod()
             .performEmailVerificationV3(email: userEmail, code: verificationCode, to: CompleteRobot.self)
-            .verify.completeScreenIsShown(robot: T.self)
+            .verify.completeScreenIsShown(robot: retRobot)
     }
 
     public func signUpWithExternalAccount<T: CoreElements>(
