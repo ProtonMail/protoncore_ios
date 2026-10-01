@@ -60,10 +60,6 @@ public class LoginMock: Login {
         fatalError("not implemented because it's async")
     }
 
-    public func getSSOURL(challenge ssoChallengeResponse: SSOChallengeResponse) async -> (url: URL?, error: String?) {
-        fatalError("not implemented because it's async")
-    }
-
     @FuncStub(Login.isProtonPage, initialReturn: false) public var isProtonPageStub
     public func isProtonPage(url: URL?) -> Bool { isProtonPageStub(url) }
 

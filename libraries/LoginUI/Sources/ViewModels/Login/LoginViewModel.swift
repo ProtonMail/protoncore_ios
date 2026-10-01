@@ -173,14 +173,6 @@ final class LoginViewModel {
         login.ssoCallbackScheme
     }
 
-    func getSSORequest(challenge ssoChallengeResponse: SSOChallengeResponse) async -> (request: URLRequest?, error: String?) {
-        await login.getSSORequest(challenge: ssoChallengeResponse)
-    }
-
-    func getSSOURL(challenge ssoChallengeResponse: SSOChallengeResponse) async -> (url: URL?, error: String?) {
-        await login.getSSOURL(challenge: ssoChallengeResponse)
-    }
-
     struct SSORedirect {
         let url: URL
         let callbackScheme: String
@@ -253,7 +245,7 @@ final class LoginViewModel {
 
     private static let finalRedirectBaseURLKey = "FinalRedirectBaseUrl"
 
-    /// `getSSORequest` builds `FinalRedirectBaseUrl` out of the account host with its scheme replaced by
+    /// `Login.getSSORequest` builds `FinalRedirectBaseUrl` out of the account host with its scheme replaced by
     /// the client's callback scheme, so the scheme can be read back off the request it produced.
     private static func callbackScheme(from request: URLRequest) -> String? {
         guard let url = request.url,
@@ -324,11 +316,11 @@ final class LoginViewModel {
         Task { [weak self] in
             guard let self else { return }
             do {
-                ObservabilityEnv.report(.ssoIdentityProviderLoginResult(status: .successful))
                 let loginStatus = try await self.login.validateAndAuthenticateSSO(idpEmail: idpEmail, responseToken: responseToken)
                 guard case .finished(let userData) = loginStatus else {
                     throw LoginError.invalidState
                 }
+                ObservabilityEnv.report(.ssoIdentityProviderLoginResult(status: .successful))
                 self.finished.publish(.ssoAuthorized(userData))
             } catch {
                 PMLog.error(error, sendToExternal: true)

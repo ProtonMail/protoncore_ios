@@ -154,82 +154,10 @@ final class LoginViewModelTests: XCTestCase {
         XCTAssertEqual(tokenFromHost, .init(token: token, uid: uid))
     }
 
-    // MARK: - GetSSORequest
-    private var token: String { "0r8wj34iufe" }
-    private var challenge: SSOChallengeResponse { .init(ssoChallengeToken: token) }
-
-    func test_getSSORequest_withCredentials_succeed() async {
-        // Given
-        let credentials = AuthCredential(
-            sessionID: "sessionID",
-            accessToken: "accessToken",
-            refreshToken: "refreshToken",
-            userName: "userName",
-            userID: "userID",
-            privateKey: nil,
-            passwordKeySalt: nil
-        )
-        let login = LoginService(api: apiService, clientApp: .vpn, minimumAccountType: .external)
-        sut = LoginViewModel(api: apiService, login: login, challenge: PMChallenge(), clientApp: .other(named: "core"))
-
-        apiService.fetchAuthCredentialsStub.bodyIs { _, completion in
-            completion(.found(credentials: credentials))
-        }
-        apiService.dohInterfaceStub.fixture = dohMock
-        apiService.sessionUIDStub.fixture = "testSessionUID"
-        dohMock.getAccountHostStub.bodyIs { _ in "https://proton.unittests/account" }
-        dohMock.getCurrentlyUsedHostUrlStub.bodyIs { _ in
-            "http://account.proton.test/api"
-        }
-
-        // When
-        let ssoRequestResult = await sut.getSSORequest(challenge: challenge)
-
-        // Then
-        XCTAssertNil(ssoRequestResult.error)
-        XCTAssertEqual(ssoRequestResult.request?.url, URL(string: "http://account.proton.test/api/auth/sso/\(token)"))
-        let headers = ssoRequestResult.request?.allHTTPHeaderFields
-        XCTAssertEqual(headers?["Authorization"], "Bearer accessToken")
-        XCTAssertEqual(headers?["x-pm-uid"], "testSessionUID")
-        XCTAssertEqual(headers?["x-pm-appversion"], "ios-core@1.2.3")
-        XCTAssertEqual(headers?["User-Agent"], "TestUserAgent")
-        XCTAssertEqual(headers?["x-pm-locale"], "en_US")
-    }
-
-    func test_getSSORequest_withoutCredentials_fails() async {
-        // Given
-        apiService.fetchAuthCredentialsStub.bodyIs { _, completion in
-            completion(.notFound)
-        }
-        let login = LoginService(api: apiService, clientApp: .vpn, minimumAccountType: .external)
-        sut = LoginViewModel(api: apiService, login: login, challenge: PMChallenge(), clientApp: .other(named: "core"))
-
-        // When
-        let ssoRequestResult = await sut.getSSORequest(challenge: challenge)
-
-        // Then
-        XCTAssertNil(ssoRequestResult.request)
-        XCTAssertEqual(ssoRequestResult.error, "Empty token")
-    }
-
-    func test_getSSORequest_withWrongConfiguration_fails() async {
-        // Given
-        apiService.fetchAuthCredentialsStub.bodyIs { _, completion in
-            completion(.wrongConfigurationNoDelegate)
-        }
-        let login = LoginService(api: apiService, clientApp: .vpn, minimumAccountType: .external)
-        sut = LoginViewModel(api: apiService, login: login, challenge: PMChallenge(), clientApp: .other(named: "core"))
-
-        // When
-        let ssoRequestResult = await sut.getSSORequest(challenge: challenge)
-
-        // Then
-        XCTAssertNil(ssoRequestResult.request)
-        XCTAssertEqual(ssoRequestResult.error, "AuthDelegate is required")
-    }
-
     // MARK: - getSSORedirect
 
+    private var token: String { "0r8wj34iufe" }
+    private var challenge: SSOChallengeResponse { .init(ssoChallengeToken: token) }
     private var accountHost: String { "https://account.proton.test" }
     private var challengeURL: URL { URL(string: "\(accountHost)/api/auth/sso/\(token)")! }
 
@@ -433,6 +361,66 @@ final class LoginViewModelTests: XCTestCase {
 
         // Then
         XCTAssertTrue(self.observabilityServiceMock.reportStub.lastArguments!.value.isSameAs(event: expectedEvent))
+    }
+
+    // MARK: - processResponseTokenV2
+
+    private func ssoResultReportCount(status: SuccessOrFailureOrCanceledStatus) -> Int {
+        let event: ObservabilityEvent = .ssoIdentityProviderLoginResult(status: status)
+        return observabilityServiceMock.reportStub.capturedArguments.filter { $0.value.isSameAs(event: event) }.count
+    }
+
+    func test_processResponseTokenV2_whenValidationSucceeds_tracksSuccessOnly() async {
+        // Given
+        login.validateAndAuthenticateSSOStub.bodyIs { _, _, _ in
+            .finished(.init(credential: .dummy, user: .dummy, salts: [], passphrases: [:], addresses: [], scopes: []))
+        }
+        let authorized = expectation(description: "SSO login is authorized")
+        sut.finished.bind { result in
+            if case .ssoAuthorized = result {
+                authorized.fulfill()
+            }
+        }
+
+        // When
+        sut.processResponseTokenV2(idpEmail: "", responseToken: .init(token: "", uid: ""))
+
+        // Then
+        await fulfillment(of: [authorized], timeout: 1)
+        XCTAssertEqual(ssoResultReportCount(status: .successful), 1)
+        XCTAssertEqual(ssoResultReportCount(status: .failed), 0)
+    }
+
+    func test_processResponseTokenV2_whenValidationThrows_tracksFailureOnly() async {
+        // Given
+        login.validateAndAuthenticateSSOStub.bodyIs { _, _, _ in
+            throw LoginError.invalidState
+        }
+        let failed = expectation(description: "SSO login fails")
+        sut.error.bind { _ in failed.fulfill() }
+
+        // When
+        sut.processResponseTokenV2(idpEmail: "", responseToken: .init(token: "", uid: ""))
+
+        // Then
+        await fulfillment(of: [failed], timeout: 1)
+        XCTAssertEqual(ssoResultReportCount(status: .failed), 1)
+        XCTAssertEqual(ssoResultReportCount(status: .successful), 0)
+    }
+
+    func test_processResponseTokenV2_whenStatusIsNotFinished_tracksFailureOnly() async {
+        // Given
+        login.validateAndAuthenticateSSOStub.bodyIs { _, _, _ in .askTOTP }
+        let failed = expectation(description: "SSO login fails")
+        sut.error.bind { _ in failed.fulfill() }
+
+        // When
+        sut.processResponseTokenV2(idpEmail: "", responseToken: .init(token: "", uid: ""))
+
+        // Then
+        await fulfillment(of: [failed], timeout: 1)
+        XCTAssertEqual(ssoResultReportCount(status: .failed), 1)
+        XCTAssertEqual(ssoResultReportCount(status: .successful), 0)
     }
 }
 
