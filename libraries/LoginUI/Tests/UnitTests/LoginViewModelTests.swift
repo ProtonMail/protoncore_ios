@@ -250,6 +250,10 @@ final class LoginViewModelTests: XCTestCase {
         apiService.sessionUIDStub.fixture = "testSessionUID"
         dohMock.getAccountHostStub.bodyIs { _ in self.accountHost }
         dohMock.getCurrentlyUsedHostUrlStub.bodyIs { _ in "\(self.accountHost)/api" }
+        dohMock.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.bodyIs { _, _, _, _, _, _, _, completion in
+            completion(false)
+        }
+        dohMock.errorIndicatesDoHSolvableProblemStub.bodyIs { _, _ in false }
 
         let login = LoginService(api: apiService,
                                  clientApp: .vpn,
@@ -405,6 +409,229 @@ final class LoginViewModelTests: XCTestCase {
         XCTAssertTrue(observabilityServiceMock.reportStub.lastArguments!.value.isSameAs(event: expectedEvent))
     }
 
+    // MARK: - getSSORedirect alternative routing
+
+    private var proxyHost: String { "https://proxy.proton.test" }
+
+    func test_getSSORedirect_whenDoHResolvesProxy_retriesOnTheProxyHost() async {
+        // Given
+        let sut = makeSUTResolvingSSORequests()
+        var proxyIsActive = false
+        dohMock.getCurrentlyUsedHostUrlStub.bodyIs { _ in
+            proxyIsActive ? "\(self.proxyHost)/api" : "\(self.accountHost)/api"
+        }
+        dohMock.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.bodyIs { _, _, _, _, _, error, _, completion in
+            guard error != nil else { completion(false); return }
+            proxyIsActive = true
+            completion(true)
+        }
+        let identityProviderURL = "https://idp.proton.test/authorize"
+        var sentRequests: [URLRequest] = []
+        sut.performSSORequest = { request in
+            sentRequests.append(request)
+            guard sentRequests.count > 1 else { throw URLError(.timedOut) }
+            let response = HTTPURLResponse(url: request.url!, statusCode: 303, httpVersion: "HTTP/1.1",
+                                           headerFields: ["Location": identityProviderURL])!
+            return (Data(), response)
+        }
+
+        // When
+        let result = await sut.getSSORedirect(challenge: challenge)
+
+        // Then
+        XCTAssertNil(result.error)
+        XCTAssertEqual(result.redirect?.url, URL(string: identityProviderURL))
+        XCTAssertEqual(sentRequests.count, 2)
+        XCTAssertEqual(sentRequests.first?.url?.host, "account.proton.test")
+        XCTAssertEqual(sentRequests.last?.url?.host, "proxy.proton.test")
+    }
+
+    func test_getSSORedirect_whenDoHDoesNotRetryABlockedHost_reportsServersUnreachable() async {
+        // Given
+        let sut = makeSUTResolvingSSORequests()
+        dohMock.errorIndicatesDoHSolvableProblemStub.bodyIs { _, _ in true }
+        var requestCount = 0
+        sut.performSSORequest = { _ in
+            requestCount += 1
+            throw URLError(.cannotFindHost)
+        }
+
+        // When
+        let result = await sut.getSSORedirect(challenge: challenge)
+
+        // Then
+        XCTAssertNil(result.redirect)
+        XCTAssertEqual(result.error, LUITranslation._core_api_might_be_blocked_message.l10n)
+        XCTAssertEqual(requestCount, 1)
+    }
+
+    func test_getSSORedirect_whenDoHKeepsAskingForRetries_stopsAtTheAttemptCap() async {
+        // Given
+        let sut = makeSUTResolvingSSORequests()
+        dohMock.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.bodyIs { _, _, _, _, _, _, _, completion in
+            completion(true)
+        }
+        var requestCount = 0
+        sut.performSSORequest = { _ in
+            requestCount += 1
+            throw URLError(.timedOut)
+        }
+
+        // When
+        let result = await sut.getSSORedirect(challenge: challenge)
+
+        // Then
+        XCTAssertNil(result.redirect)
+        XCTAssertEqual(requestCount, LoginViewModel.maxSSOAttempts)
+    }
+
+    func test_getSSORedirect_whenPinningRejectsTheServer_passesTheTLSErrorToDoHAndReportsInsecureConnection() async {
+        // Given
+        let sut = makeSUTResolvingSSORequests()
+        var errorPassedToDoH: Error?
+        dohMock.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.bodyIs { _, _, _, _, _, error, _, completion in
+            errorPassedToDoH = error
+            completion(false)
+        }
+        dohMock.errorIndicatesDoHSolvableProblemStub.bodyIs { _, _ in true }
+        sut.performSSORequest = { _ in
+            throw NSError.protonMailError(APIErrorCode.tls, localizedDescription: NWTranslation.insecure_connection_error.l10n)
+        }
+
+        // When
+        let result = await sut.getSSORedirect(challenge: challenge)
+
+        // Then
+        XCTAssertEqual((errorPassedToDoH as? NSError)?.code, APIErrorCode.tls)
+        XCTAssertNil(result.redirect)
+        XCTAssertEqual(result.error, NWTranslation.insecure_connection_error.l10n)
+    }
+
+    func test_getSSORedirect_callsDoHOncePerAttemptWithTheSentRequest() async {
+        // Given
+        let sut = makeSUTResolvingSSORequests()
+        var doHCalls: [(host: String, headers: [String: String], sessionID: String?)] = []
+        dohMock.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.bodyIs { _, host, headers, sessionID, _, _, _, completion in
+            doHCalls.append((host, headers, sessionID))
+            completion(doHCalls.count < 2)
+        }
+        let response = challengeResponse(statusCode: 303, headerFields: ["Location": "https://idp.proton.test"])
+        var sentRequests: [URLRequest] = []
+        sut.performSSORequest = { request in
+            sentRequests.append(request)
+            return (Data(), response)
+        }
+
+        // When
+        _ = await sut.getSSORedirect(challenge: challenge)
+
+        // Then
+        XCTAssertEqual(doHCalls.count, 2)
+        XCTAssertEqual(sentRequests.count, 2)
+        XCTAssertEqual(doHCalls.first?.host, sentRequests.first?.url?.absoluteString)
+        XCTAssertEqual(doHCalls.first?.headers["Authorization"], "Bearer accessToken")
+        XCTAssertEqual(doHCalls.first?.sessionID, "testSessionUID")
+    }
+
+    func test_getSSORedirect_whenSeveralAttemptsFail_tracksFailureOnce() async {
+        // Given
+        let failedEvent: ObservabilityEvent = .ssoIdentityProviderLoginResult(status: .failed)
+        let sut = makeSUTResolvingSSORequests()
+        dohMock.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.bodyIs { _, _, _, _, _, _, _, completion in
+            completion(true)
+        }
+        sut.performSSORequest = { _ in throw URLError(.timedOut) }
+
+        // When
+        _ = await sut.getSSORedirect(challenge: challenge)
+
+        // Then
+        let failureReports = observabilityServiceMock.reportStub.capturedArguments.filter { $0.value.isSameAs(event: failedEvent) }
+        XCTAssertEqual(failureReports.count, 1)
+    }
+
+    // MARK: - SSOChallengeSessionDelegate
+
+    private func makeChallenge() -> URLAuthenticationChallenge {
+        let protectionSpace = URLProtectionSpace(host: "account.proton.test", port: 443, protocol: "https",
+                                                 realm: nil, authenticationMethod: NSURLAuthenticationMethodServerTrust)
+        return URLAuthenticationChallenge(protectionSpace: protectionSpace, proposedCredential: nil, previousFailureCount: 0,
+                                          failureResponse: nil, error: nil, sender: ChallengeSenderStub())
+    }
+
+    private func sendChallenge(to delegate: SSOChallengeSessionDelegate) -> (disposition: URLSession.AuthChallengeDisposition?, credential: URLCredential?) {
+        let task = URLSession.shared.dataTask(with: challengeURL)
+        var result: (disposition: URLSession.AuthChallengeDisposition?, credential: URLCredential?) = (nil, nil)
+        delegate.urlSession(URLSession.shared, task: task, didReceive: makeChallenge()) { disposition, credential in
+            result = (disposition, credential)
+        }
+        return result
+    }
+
+    func test_ssoChallengeSessionDelegate_forwardsTheChallengeAndTheHandlersResult() {
+        // Given
+        let credential = URLCredential(user: "user", password: "password", persistence: .none)
+        let forwardedChallenge = ChallengeBox()
+        let delegate = SSOChallengeSessionDelegate { challenge, completionHandler in
+            forwardedChallenge.challenge = challenge
+            completionHandler(.useCredential, credential)
+        }
+
+        // When
+        let result = sendChallenge(to: delegate)
+
+        // Then
+        XCTAssertEqual(forwardedChallenge.challenge?.protectionSpace.authenticationMethod, NSURLAuthenticationMethodServerTrust)
+        XCTAssertEqual(result.disposition, .useCredential)
+        XCTAssertIdentical(result.credential, credential)
+        XCTAssertFalse(delegate.rejectedServerTrust)
+    }
+
+    func test_ssoChallengeSessionDelegate_whenTheHandlerCancels_recordsTheRejection() {
+        // Given
+        let delegate = SSOChallengeSessionDelegate { _, completionHandler in
+            completionHandler(.cancelAuthenticationChallenge, nil)
+        }
+
+        // When
+        let result = sendChallenge(to: delegate)
+
+        // Then
+        XCTAssertEqual(result.disposition, .cancelAuthenticationChallenge)
+        XCTAssertTrue(delegate.rejectedServerTrust)
+    }
+
+    func test_ssoChallengeSessionDelegate_whenTheHandlerFallsBackToDefaultHandling_doesNotRecordARejection() {
+        // Given
+        let delegate = SSOChallengeSessionDelegate { _, completionHandler in
+            completionHandler(.performDefaultHandling, nil)
+        }
+
+        // When
+        let result = sendChallenge(to: delegate)
+
+        // Then
+        XCTAssertEqual(result.disposition, .performDefaultHandling)
+        XCTAssertFalse(delegate.rejectedServerTrust)
+    }
+
+    func test_ssoChallengeSessionDelegate_refusesRedirects() {
+        // Given
+        let delegate = SSOChallengeSessionDelegate { _, completionHandler in completionHandler(.performDefaultHandling, nil) }
+        let task = URLSession.shared.dataTask(with: challengeURL)
+        let response = challengeResponse(statusCode: 303, headerFields: ["Location": "https://idp.proton.test"])
+        var redirectRequest: URLRequest? = URLRequest(url: challengeURL)
+
+        // When
+        delegate.urlSession(URLSession.shared, task: task, willPerformHTTPRedirection: response,
+                            newRequest: URLRequest(url: URL(string: "https://idp.proton.test")!)) { request in
+            redirectRequest = request
+        }
+
+        // Then
+        XCTAssertNil(redirectRequest)
+    }
+
     // MARK: - processResponseToken
 
     func test_processResponseToken_tracksSuccess() {
@@ -434,6 +661,16 @@ final class LoginViewModelTests: XCTestCase {
         // Then
         XCTAssertTrue(self.observabilityServiceMock.reportStub.lastArguments!.value.isSameAs(event: expectedEvent))
     }
+}
+
+private final class ChallengeBox: @unchecked Sendable {
+    var challenge: URLAuthenticationChallenge?
+}
+
+private final class ChallengeSenderStub: NSObject, URLAuthenticationChallengeSender {
+    func use(_ credential: URLCredential, for challenge: URLAuthenticationChallenge) {}
+    func continueWithoutCredential(for challenge: URLAuthenticationChallenge) {}
+    func cancel(_ challenge: URLAuthenticationChallenge) {}
 }
 
 #endif

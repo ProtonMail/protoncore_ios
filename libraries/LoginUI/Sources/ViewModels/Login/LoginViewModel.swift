@@ -189,7 +189,8 @@ final class LoginViewModel {
     /// Set in tests to resolve the challenge without networking.
     var performSSORequest: ((URLRequest) async throws -> (Data, URLResponse))?
 
-    private let ssoRedirectBlocker = SSORedirectBlocker()
+    /// DoH stops offering proxy domains once it runs out, but a misbehaving status could keep asking for retries.
+    static let maxSSOAttempts = 3
 
     private func makeSSOURLSession() -> URLSession {
         let configuration = URLSessionConfiguration.ephemeral
@@ -203,35 +204,64 @@ final class LoginViewModel {
 
     /// Sends the authenticated `GET /auth/sso/{token}` request and returns the identity provider URL from
     /// the redirect response, along with the callback scheme the auth session has to watch for.
+    ///
+    /// Like `PMAPIService`, a request that fails in a way alternative routing can solve is rebuilt and sent
+    /// again, picking up the proxy domain DoH resolved.
     func getSSORedirect(challenge ssoChallengeResponse: SSOChallengeResponse) async -> (redirect: SSORedirect?, error: String?) {
         isLoading.value = true
         defer { isLoading.value = false }
 
-        let requestResult = await login.getSSORequest(challenge: ssoChallengeResponse)
-
-        if let error = requestResult.error {
+        let result = await resolveSSORedirect(challenge: ssoChallengeResponse)
+        if result.redirect == nil {
             ObservabilityEnv.report(.ssoIdentityProviderLoginResult(status: .failed))
-            return (nil, error)
         }
+        return result
+    }
 
-        guard let request = requestResult.request,
-              let callbackScheme = Self.callbackScheme(from: request) else {
-            PMLog.error("SSO request has no \(Self.finalRedirectBaseURLKey) to derive the callback scheme from", sendToExternal: true)
-            ObservabilityEnv.report(.ssoIdentityProviderLoginResult(status: .failed))
-            return (nil, LUITranslation.sso_configuration_error.l10n)
-        }
+    private func resolveSSORedirect(challenge ssoChallengeResponse: SSOChallengeResponse) async -> (redirect: SSORedirect?, error: String?) {
+        var attempt = 0
+        while true {
+            attempt += 1
 
-        do {
-            // Sending through a session backed by the API service's jar puts any Set-Cookie there; synchronizing
-            // copies them onto the proxy domains too, so a later alt-routed request carries them, the same
-            // way PMAPIService does after every request. None of it reaches the auth session, hence the log.
-            let (_, response) = try await performSSORedirectRequest(request)
-            await api.dohInterface.synchronizeCookies(with: response, requestHeaders: request.allHTTPHeaderFields ?? [:])
-            logSSOResponseCookies(from: response)
+            // Rebuilt on every attempt so the URL and DoH headers follow the host DoH currently routes to.
+            let requestResult = await login.getSSORequest(challenge: ssoChallengeResponse)
+
+            if let error = requestResult.error {
+                return (nil, error)
+            }
+
+            guard let request = requestResult.request,
+                  let callbackScheme = Self.callbackScheme(from: request) else {
+                PMLog.error("SSO request has no \(Self.finalRedirectBaseURLKey) to derive the callback scheme from", sendToExternal: true)
+                return (nil, LUITranslation.sso_configuration_error.l10n)
+            }
+
+            var response: URLResponse?
+            var requestError: Error?
+            do {
+                (_, response) = try await performSSORedirectRequest(request)
+            } catch {
+                requestError = error
+            }
+
+            // Sending through a session backed by the API service's jar puts any Set-Cookie there; DoH copies
+            // them onto the proxy domains too, so a later alt-routed request carries them, the same way
+            // PMAPIService does after every request. None of it reaches the auth session, hence the log.
+            let shouldRetry = await resolveProxyDomainAndSynchronizeCookies(for: request, response: response, error: requestError)
+            if let response {
+                logSSOResponseCookies(from: response)
+            }
+
+            if shouldRetry, attempt < Self.maxSSOAttempts {
+                continue
+            }
+
+            if let requestError {
+                return (nil, failureMessage(for: requestError))
+            }
 
             guard let httpResponse = response as? HTTPURLResponse else {
                 PMLog.error("SSO challenge response is not an HTTP response", sendToExternal: true)
-                ObservabilityEnv.report(.ssoIdentityProviderLoginResult(status: .failed))
                 return (nil, LUITranslation.sso_configuration_error.l10n)
             }
 
@@ -239,16 +269,40 @@ final class LoginViewModel {
                   let location = httpResponse.value(forHTTPHeaderField: "Location"),
                   let redirectURL = URL(string: location, relativeTo: request.url)?.absoluteURL else {
                 PMLog.error("SSO challenge did not redirect, status code \(httpResponse.statusCode)", sendToExternal: true)
-                ObservabilityEnv.report(.ssoIdentityProviderLoginResult(status: .failed))
                 return (nil, LUITranslation.sso_configuration_error.l10n)
             }
 
             return (SSORedirect(url: redirectURL, callbackScheme: callbackScheme), nil)
-        } catch {
-            PMLog.error(error, sendToExternal: true)
-            ObservabilityEnv.report(.ssoIdentityProviderLoginResult(status: .failed))
-            return (nil, error.localizedDescription)
         }
+    }
+
+    private func resolveProxyDomainAndSynchronizeCookies(for request: URLRequest, response: URLResponse?, error: Error?) async -> Bool {
+        let dohInterface = api.dohInterface
+        let sessionID = api.sessionUID
+        return await withCheckedContinuation { continuation in
+            dohInterface.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeeded(
+                host: request.url?.absoluteString ?? "",
+                requestHeaders: request.allHTTPHeaderFields ?? [:],
+                sessionId: sessionID,
+                response: response,
+                error: error,
+                callCompletionBlockUsing: .asyncMainExecutor
+            ) { shouldRetry in
+                continuation.resume(returning: shouldRetry)
+            }
+        }
+    }
+
+    private func failureMessage(for error: Error) -> String {
+        PMLog.error(error, sendToExternal: true)
+        // Checked first: a TLS failure is also DoH-solvable, but once retries are exhausted it is the more precise reason.
+        if (error as NSError).code == APIErrorCode.tls {
+            return error.localizedDescription
+        }
+        if api.dohInterface.errorIndicatesDoHSolvableProblem(error: error) {
+            return LUITranslation._core_api_might_be_blocked_message.l10n
+        }
+        return error.localizedDescription
     }
 
     private static let finalRedirectBaseURLKey = "FinalRedirectBaseUrl"
@@ -273,7 +327,16 @@ final class LoginViewModel {
         // A session holds on to itself until invalidated, so it is built per request and torn down here.
         let session = makeSSOURLSession()
         defer { session.finishTasksAndInvalidate() }
-        return try await session.data(for: request, delegate: ssoRedirectBlocker)
+        let delegate = SSOChallengeSessionDelegate()
+        do {
+            return try await session.data(for: request, delegate: delegate)
+        } catch {
+            guard delegate.rejectedServerTrust else { throw error }
+            // The same error PMAPIService produces for a pinning failure, which DoH treats as worth a proxy retry.
+            throw NSError.protonMailError(APIErrorCode.tls,
+                                          localizedDescription: NWTranslation.insecure_connection_error.l10n,
+                                          underlyingError: error as NSError)
+        }
     }
 
     /// These cookies land in the API service's jar, which `ASWebAuthenticationSession` cannot read, so a
@@ -352,17 +415,70 @@ final class LoginViewModel {
     }
 }
 
-// MARK: - SSO redirect blocking
+// MARK: - SSO challenge session delegate
 
+/// Task delegate for the SSO challenge request, which is sent outside `PMAPIService` and so gets none of its
+/// session handling for free.
+///
 /// `URLSession` follows the challenge redirect on its own, which would fetch the identity provider page
 /// instead of handing its URL back to us. Refusing the redirect completes the task with the 3xx response.
-private final class SSORedirectBlocker: NSObject, URLSessionTaskDelegate {
+///
+/// TrustKit does not swizzle network delegates, so the request is only pinned if its server trust challenge
+/// is handed to TrustKit here. A rejection is recorded so the caller can report it as a TLS failure rather
+/// than a cancellation. One instance is used per request, so a rejection never carries over to a retry.
+final class SSOChallengeSessionDelegate: NSObject, URLSessionTaskDelegate, @unchecked Sendable {
+    typealias ChallengeHandler = @Sendable (
+        URLAuthenticationChallenge,
+        @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void
+    ) -> Void
+
+    static let pinningChallengeHandler: ChallengeHandler = { challenge, completionHandler in
+        handleAuthenticationChallenge(
+            didReceive: challenge,
+            noTrustKit: PMAPIService.noTrustKit,
+            trustKit: PMAPIService.trustKit,
+            challengeCompletionHandler: completionHandler
+        )
+    }
+
+    private let challengeHandler: ChallengeHandler
+    private let lock = NSLock()
+    private var _rejectedServerTrust = false
+
+    var rejectedServerTrust: Bool {
+        lock.lock()
+        defer { lock.unlock() }
+        return _rejectedServerTrust
+    }
+
+    init(challengeHandler: @escaping ChallengeHandler = SSOChallengeSessionDelegate.pinningChallengeHandler) {
+        self.challengeHandler = challengeHandler
+    }
+
     func urlSession(_ session: URLSession,
                     task: URLSessionTask,
                     willPerformHTTPRedirection response: HTTPURLResponse,
                     newRequest request: URLRequest,
                     completionHandler: @escaping (URLRequest?) -> Void) {
         completionHandler(nil)
+    }
+
+    func urlSession(_ session: URLSession,
+                    task: URLSessionTask,
+                    didReceive challenge: URLAuthenticationChallenge,
+                    completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+        challengeHandler(challenge) { disposition, credential in
+            if disposition == .cancelAuthenticationChallenge {
+                self.recordServerTrustRejection()
+            }
+            completionHandler(disposition, credential)
+        }
+    }
+
+    private func recordServerTrustRejection() {
+        lock.lock()
+        defer { lock.unlock() }
+        _rejectedServerTrust = true
     }
 }
 
