@@ -141,55 +141,6 @@ extension LoginService: Login {
         return (request, nil)
     }
 
-    public func getSSOURL(challenge ssoChallengeResponse: SSOChallengeResponse) async -> (url: URL?, error: String?) {
-        let accessToken: (token: String?, error: String?) = await withCheckedContinuation { continuation in
-            apiService.fetchAuthCredentials { result in
-                switch result {
-                case .found(let credentials):
-                    continuation.resume(returning: (credentials.accessToken, nil))
-                case .notFound:
-                    continuation.resume(returning: (nil, AuthCredentialFetchingResult.notFound.toNSError?.localizedDescription))
-                case .wrongConfigurationNoDelegate:
-                    continuation.resume(returning: (nil, AuthCredentialFetchingResult.wrongConfigurationNoDelegate.toNSError?.localizedDescription))
-                }
-            }
-        }
-
-        if let error = accessToken.error, accessToken.token == nil {
-            return (nil, error)
-        }
-
-        let host = apiService.dohInterface.getCurrentlyUsedHostUrl()
-        let accountHost = apiService.dohInterface.getAccountHost()
-        let sessionUID = apiService.sessionUID
-
-        guard var urlComponents = URLComponents(string: "\(host)/auth/sso/\(ssoChallengeResponse.ssoChallengeToken)") else {
-            return (nil, "Failed to construct SSO URL")
-        }
-
-        var queryItems = [URLQueryItem]()
-
-        if let callbackScheme = self.ssoCallbackScheme,
-           let accountHostUrl = URL(string: accountHost),
-           let accountHostScheme = accountHostUrl.scheme {
-
-            let modifiedAccountHost = accountHost.replacingOccurrences(of: accountHostScheme, with: callbackScheme)
-            queryItems.append(URLQueryItem(name: "FinalRedirectBaseUrl", value: modifiedAccountHost))
-        }
-
-        queryItems.append(URLQueryItem(name: "x-pm-uid", value: sessionUID))
-        if let token = accessToken.token {
-            queryItems.append(URLQueryItem(name: "Authorization", value: token))
-        }
-
-        urlComponents.queryItems = queryItems
-
-        guard let url = urlComponents.url else {
-            return (nil, "Invalid SSO URL")
-        }
-        return (url, nil)
-    }
-
     public func isProtonPage(url: URL?) -> Bool {
         guard let url else { return false }
         let hosts = [
