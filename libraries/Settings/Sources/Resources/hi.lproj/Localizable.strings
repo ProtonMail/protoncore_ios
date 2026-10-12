@@ -10,17 +10,17 @@
 
 "pmsettings-settings-system-settings-language-button" = "सिस्टम सेटिंग में भाषा सेट करें।";
 
-"pmsettings-settings-system-settings-notifications-title" = "सूचना";
+"pmsettings-settings-system-settings-notifications-title" = "नोटिफिकेशन";
 
-"pmsettings-settings-system-settings-notifications-description" = "यह कैलेंडर होने वाली घटनाओं या आमंत्रणों के बारे में आपको अपडेट रख सकता है। यदि आप पुश नोटीफिकेशन प्राप्त करना चाहते हैं, तो आपको अपनी सिस्टम सेटिंग्स बदलनी होंगी।";
+"pmsettings-settings-system-settings-notifications-description" = "यह कैलेंडर होने वाली घटनाओं या आमंत्रणों के बारे में आपको अपडेट रख सकता है। अगर पुश नोटिफिकेशन चाहिए, तो अपनी सिस्टम सेटिंग्स बदलनी होंगी।";
 
-"pmsettings-settings-system-settings-notifications-button" = "सिस्टम सेटिंग में अनुमतियां संभाले";
+"pmsettings-settings-system-settings-notifications-button" = "सिस्टम सेटिंग में अनुमतियां मैनेज करें";
 
 "pmsettings-settings-about-section" = "हम";
 
 "pmsettings-settings-about-acknowledgements" = "स्वीकृतियां";
 
-"pmsettings-settings-about-privacy" = "निजता नीति";
+"pmsettings-settings-about-privacy" = "प्राइवेसी नीति";
 
 "pmsettings-settings-about-terms" = "सेवा की शर्तें";
 

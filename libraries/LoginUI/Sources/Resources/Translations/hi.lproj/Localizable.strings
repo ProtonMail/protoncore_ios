@@ -1,4 +1,4 @@
-"Privacy by default" = "निजता है डिफॉल्ट";
+"Privacy by default" = "प्राइवेसी है डिफॉल्ट";
 
 "Proton address required" = "Proton पता चाहिए";
 
@@ -38,7 +38,7 @@
 
 "Sign in with SSO" = "SSO से साइन इन";
 
-"Sign in with a QR code" = "QR कोड के साथ साइनइन करें";
+"Sign in with a QR code" = "QR कोड के साथ साइन-इन करें";
 
 "Sign in to your organization" = "अपने संगठन में साइन इन करें";
 
@@ -46,7 +46,7 @@
 
 "How can we help?" = "हम कैसे मदद कर सकते हैं?";
 
-"Forgot username" = "उपयोगकर्ता नाम भूल गए";
+"Forgot username" = "यूज़रनेम भूल गए";
 
 "Forgot password" = "पासवर्ड भूल गए";
 
@@ -60,13 +60,13 @@
 
 "Complete Setup" = "सेटअप पूरा करें";
 
-"Your account is missing keys, please sign in on web to automatically generate required keys. Once you have signed in on web, please return to the app and sign in." = "आपके खाते से कुछ चाबियां गुम हैं, अपनेआप जरूरी चाबियों को बनाने के लिए वेबसाइट पे साइनइन करें। वेबसाइट पे साइनइन करने के बाद, ऐप पे वापिस जाकर साइनइन करें।";
+"Your account is missing keys, please sign in on web to automatically generate required keys. Once you have signed in on web, please return to the app and sign in." = "आपके खाते से कुछ चाबियां गुम हैं, अपनेआप जरूरी चाबियों को बनाने के लिए वेबसाइट पे साइन-इन करें। वेबसाइट पे साइनइन करने के बाद, ऐप पे वापिस जाकर साइन-इन करें।";
 
 "Account setup required" = "खाता सेटअप आवश्यक है";
 
 "Incorrect mailbox password" = "गलत मेलबॉक्स पासवर्ड";
 
-"Your session has expired. Please log in again." = "आपका सत्र खत्म हो गया हैं। कृपया वापिस लॉगइन करें।";
+"Your session has expired. Please log in again." = "आपका सत्र खत्म हो गया हैं। कृपया वापिस लॉग-इन करें।";
 
 "Proton address required" = "Proton पता चाहिए";
 
@@ -84,7 +84,7 @@
 
 "Forgot password" = "पासवर्ड भूल गए";
 
-"Two-factor authentication" = "दो-फैक्टर सत्यापन";
+"Two-factor authentication" = "टू-फैक्टर सत्यापन";
 
 "Authenticate" = "सत्यापन करें";
 
@@ -108,7 +108,7 @@
 
 "To use the Proton app as a member of an organization, you first need to change your password by signing into Proton through a browser." = "एक संस्था के सदस्य के रूप मे Proton ऐप को इस्तेमाल करने के लिए, आपको सबसे पहले Proton पे एक ब्राउज़र से साइन-इन करके अपना पासवर्ड बदलना होगा।";
 
-"Error occured" = "एरर हुआ";
+"Error occured" = "गड़बड़ी हुई";
 
 "Create your Proton Account" = "अपना Proton खाता बनाएं";
 
@@ -146,17 +146,17 @@
 
 "By clicking Next, you agree with Proton's Terms and Conditions" = "आगे पर क्लिक करके, आप Proton के नियमों और शर्तों से सहमत होते हैं";
 
-"By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "आगे पर क्लिक करके, आप Proton के नियम और शर्तें तथा निजता नीति से सहमत होते हैं";
+"By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "आगे पर क्लिक करके, आप Proton के नियम और शर्तें तथा प्राइवेसी नीति से सहमत होते हैं";
 
 "Terms and Conditions" = "नियम और शर्ते";
 
 "Privacy Policy" = "गोपनीयता नीति";
 
-"Skip" = "छोड़ें";
+"Skip" = "स्किप करें";
 
 "Skip recovery method?" = "रिकवरी तरीका छोड़े?";
 
-"A recovery method will help you access your account in case you forget your password or get locked out of your account." = "अगर आप अपना पासवर्ड भूल जाते हैं या अपने खाते से बाहर हो जाते हैं तो एक रिक्वरी तरीका आपको अपने खाते को एक्सेस करने में मदद करेगा।";
+"A recovery method will help you access your account in case you forget your password or get locked out of your account." = "पासवर्ड भूल जाने या खाते से लॉक आउट होने की स्थिति में, एक रिकवरी तरीका आपके खाते को एक्सेस करने में मदद करेगा।";
 
 "Set recovery method" = "रिकवरी तरीका सेट करें";
 
@@ -188,9 +188,9 @@
 
 "Invalid token request" = "अमान्य टोकन मांग";
 
-"Invalid token error" = "अमान्य टोकन एरर";
+"Invalid token error" = "अमान्य टोकन गड़बड़ी";
 
-"Create user failed" = "उपयोगकर्ता बनाना असफल";
+"Create user failed" = "यूज़र बनाना असफल";
 
 "Invalid hashed password" = "अमान्य हैशड पासवर्ड";
 
@@ -202,7 +202,7 @@
 
 "Please ask your admin to configure your sub-user." = "कृपया अपने एडमिन को आपके उपयूज़र बदलने को बोले।";
 
-"Would you like to receive a new verification code or use an alternate email address?" = "आप एक नया सत्यापन कोड लेना चाहेंगे या दूसरे ईमेल पते का इस्तेमाल करना चाहेंगे?";
+"Would you like to receive a new verification code or use an alternate email address?" = "क्या नया सत्यापन कोड लेना है या दूसरे ईमेल पते का इस्तेमाल करना है?";
 
 "Change email address" = "ईमेल पता बदलें";
 
@@ -224,13 +224,13 @@
 
 "Troubleshoot" = "समस्या सुलझाए";
 
-"Please choose how you want to confirm your identity." = "कृपया चुनें कि आप अपनी पहचान कैसे पुष्टि करना चाहते हैं।";
+"Please choose how you want to confirm your identity." = "कृपया चुनें कि अपनी पहचान कैसे कन्फर्म करनी है।";
 
 "One-time code" = "वन-टाइम कोड";
 
 "Security key" = "सुरक्षा चाबी";
 
-"Two-Factor Authentication" = "दो-फैक्टर सत्यापन";
+"Two-Factor Authentication" = "टू-फैक्टर सत्यापन";
 
 "Present a security key linked to your Proton Account." = "अपने Proton खाते से जुड़ी सुरक्षा चाबी प्रस्तुत करें।";
 
@@ -246,7 +246,7 @@
 
 "You don't yet have any security keys enrolled in your account. Please visit the settings section on our website to add security keys." = "आपके खाते में अभी तक कोई सुरक्षा चाबी पंजीकृत नहीं है। कृपया सुरक्षा चाबियाँ जोड़ने के लिए हमारी वेबसाइट के सेटिंग अनुभाग पर जाएँ।";
 
-"An error occurred fetching your security keys. You can also check them on the Proton %@ website." = "आपकी सुरक्षा चाबियाँ प्राप्त करते समय एरर हुई। आप इन्हें Proton %@ वेबसाइट पर भी देख सकते हैं।";
+"An error occurred fetching your security keys. You can also check them on the Proton %@ website." = "आपकी सुरक्षा चाबियां प्राप्त करते समय गड़बड़ी हुई। इन्हें Proton %@ वेबसाइट पर भी देखा जा सकता है।";
 
 "These are the security keys registered to your account" = "ये आपके खाते में पंजीकृत सुरक्षा चाबियाँ हैं";
 
@@ -254,7 +254,7 @@
 
 "Security Keys" = "सुरक्षा कुंजियां";
 
-"To manage, add, or remove security keys, please use the Proton %@ web application." = "सुरक्षा चाबियाँ संभालने, जोड़ने या हटाने के लिए, कृपया Proton %@ वेब एप्लीकेशन का उपयोग करें।";
+"To manage, add, or remove security keys, please use the Proton %@ web application." = "सुरक्षा चाबियाँ मैनेज करने, जोड़ने या हटाने के लिए, कृपया Proton %@ वेब एप्लीकेशन का उपयोग करें।";
 
 "Unexpected FIDO2 signature." = "अनपेक्षित FIDO2 हस्ताक्षर।";
 
@@ -266,7 +266,7 @@
 
 "Continue" = "जारी रखें";
 
-"Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "जारी रखने के लिए एक बैकअप पासवर्ड सेट करें। यह पासवर्ड आपको साइन इन करने और अपना डाटा रिकवर करने की सुविधा देगा, यदि आप Proton खाते से बाहर हो जाते हैं; इसलिए इसे कहीं सुरक्षित रखें।";
+"Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "जारी रखने के लिए एक बैकअप पासवर्ड सेट करें। अगर Proton खाते से बाहर हो जाएं, तो इस पासवर्ड से साइन इन करके अपना डेटा रिकवर किया जा सकेगा; इसलिए इसे कहीं सुरक्षित रखें।";
 
 "Backup password" = "बैकअप पासवर्ड";
 
@@ -294,9 +294,9 @@
 
 "Approve the sign-in from another device" = "किसी अन्य डिवाइस से साइन-इन का अनुमोदन करें";
 
-"To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@." = "यह सुनिश्चित करने के लिए कि वास्तव में आप ही साइन-इन करने का प्रयास कर रहे हैं, अपने प्रशासक %@ के साथ पुष्टीकरण कोड शेयर करें ताकि वे %@ के लिए अनुरोध को अनुमोदित कर सकें।";
+"To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@." = "यह सुनिश्चित करने के लिए कि साइन-इन करने का प्रयास वास्तव में आपकी ओर से है, अपने प्रशासक %@ के साथ पुष्टीकरण कोड शेयर करें ताकि वे %@ के लिए अनुरोध को अनुमोदित कर सकें।";
 
-"To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "यह सुनिश्चित करने के लिए कि वास्तव में आप ही अपने खाते में साइन इन करने का प्रयास कर रहे हैं, पुष्टीकरण कोड की समीक्षा करें और किसी अन्य डिवाइस से आने वाले अनुरोध को अनुमोदित करें।";
+"To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "यह सुनिश्चित करने के लिए कि आपके खाते में साइन इन करने का प्रयास वास्तव में आपकी ओर से है, पुष्टीकरण कोड की समीक्षा करें और किसी अन्य डिवाइस से आने वाले अनुरोध को अनुमोदित करें।";
 
 "Use backup password instead" = "इसके बजाय बैकअप पासवर्ड का उपयोग करें";
 
@@ -308,7 +308,7 @@
 
 "Enter your backup password" = "अपना बैकअप पासवर्ड दर्ज करें";
 
-"To make sure it’s really you trying to sign-in, please enter your backup password." = "यह सुनिश्चित करने के लिए कि वास्तव में आप ही साइन-इन करने का प्रयास कर रहे हैं, कृपया अपना बैकअप पासवर्ड दर्ज करें।";
+"To make sure it’s really you trying to sign-in, please enter your backup password." = "यह सुनिश्चित करने के लिए कि साइन-इन करने का प्रयास वास्तव में आपकी ओर से है, कृपया अपना बैकअप पासवर्ड दर्ज करें।";
 
 "Access granted" = "पहुंच प्रदान की गई";
 
@@ -324,7 +324,7 @@
 
 "This will sign you out of your other devices and you will have to create a new backup password." = "यह आपको आपके अन्य डिवाइसों से साइनआउट कर देगा और आपको एक नया बैकअप पासवर्ड बनाना होगा।";
 
-"Grant access to user?" = "क्या उपयोगकर्ता को पहुँच प्रदान करें?";
+"Grant access to user?" = "क्या यूज़र को पहुँच प्रदान करें?";
 
 "%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user." = "%@ आपके Proton खाते में सिंगल साइन-ऑन के साथ साइन इन करने में आपकी मदद का अनुरोध कर रहा है.";
 
@@ -338,7 +338,7 @@
 
 "Sign in with single sign-on" = "सिंगल साइन-ऑन के साथ साइन इन करें";
 
-"Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "आपका संगठन SSO का उपयोग करता है। अपने तीसरें-पार्टी SSO प्रदाता के साथ साइन इन जारी रखें।";
+"Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "आपका संगठन SSO का उपयोग करता है। अपने थर्ड-पार्टी SSO प्रदाता के साथ साइन इन जारी रखें।";
 
 "Unknown" = "अज्ञात";
 
@@ -354,140 +354,140 @@
 
 "Open the Proton app on your phone" = "अपने फोन पर Proton ऐप खोलें";
 
-"Tap into Settings, then tap Sign in to another device" = "सेटिंग में टैप करें, फिर दूसरे डिवाइस पर साइनइन करें";
+"Tap into Settings, then tap Sign in to another device" = "सेटिंग में टैप करें, फिर दूसरे डिवाइस पर साइन-इन करें";
 
 "Tap Scan QR code" = "QR कोड स्कैन करने के लिए टैप करें";
 
 "Scan this code with your phone camera to sign in instantly." = "इस कोड को अपने फोन के कैमरा से स्कैन करें ताकि तुरंत साइनइन कर सकें।";
 
-"Sign in to another device" = "Sign in to another device";
+"Sign in to another device" = "किसी अन्य डिवाइस में साइन-इन करें";
 
-"Sign in with your QR code" = "Sign in with your QR code";
+"Sign in with your QR code" = "अपने QR कोड से साइन-इन करें";
 
-"Use this device to scan the QR code displayed on the device you want to sign in to. Both devices will stay active." = "Use this device to scan the QR code displayed on the device you want to sign in to. Both devices will stay active.";
+"Use this device to scan the QR code displayed on the device you want to sign in to. Both devices will stay active." = "जिस डिवाइस में साइन-इन करना है, उस पर दिखने वाला QR कोड स्कैन करने के लिए इस डिवाइस का इस्तेमाल करें। दोनों डिवाइस एक्टिव रहेंगे।";
 
-"To access the QR code, tap the **Sign in with QR code** button on the sign-in screen." = "To access the QR code, tap the **Sign in with QR code** button on the sign-in screen.";
+"To access the QR code, tap the **Sign in with QR code** button on the sign-in screen." = "QR कोड एक्सेस करने के लिए, साइन-इन स्क्रीन पर **QR कोड से साइन-इन करें** बटन टैप करें।";
 
-"Watch out for messages that contain a QR code. Never scan a QR code from a website or a person you don't trust." = "Watch out for messages that contain a QR code. Never scan a QR code from a website or a person you don't trust.";
+"Watch out for messages that contain a QR code. Never scan a QR code from a website or a person you don't trust." = "QR कोड वाले संदेशों से सावधान रहें। किसी वेबसाइट या ऐसे व्यक्ति का QR कोड कभी स्कैन न करें जो भरोसेमंद न हो।";
 
-"Proton will never ask you to scan a QR code that does not come from the domain **proton.me**." = "Proton will never ask you to scan a QR code that does not come from the domain **proton.me**.";
+"Proton will never ask you to scan a QR code that does not come from the domain **proton.me**." = "Proton कभी भी ऐसा QR कोड स्कैन करने के लिए नहीं कहेगा जो **proton.me** डोमेन से न आया हो।";
 
-"Scan QR code" = "Scan QR code";
+"Scan QR code" = "QR कोड स्कैन करें";
 
-"Authenticate to access the QR code scanner" = "Authenticate to access the QR code scanner";
+"Authenticate to access the QR code scanner" = "QR कोड स्कैनर एक्सेस करने के लिए ऑथेंटिकेट करें";
 
-"Place QR code within the square" = "Place QR code within the square";
+"Place QR code within the square" = "QR कोड को स्क्वायर के अंदर रखें";
 
-"Verifying..." = "Verifying...";
+"Verifying..." = "सत्यापित किया जा रहा है...";
 
-"You’re signed in to %@ on the other device." = "You’re signed in to %@ on the other device.";
+"You’re signed in to %@ on the other device." = "दूसरे डिवाइस पर %@ में साइन-इन हो गया है।";
 
-"You're signed in" = "You're signed in";
+"You're signed in" = "साइन-इन हो गया है";
 
-"Got it" = "Got it";
+"Got it" = "समझ गए";
 
-"Code not recognized. Try again." = "Code not recognized. Try again.";
+"Code not recognized. Try again." = "कोड पहचाना नहीं गया। फिर से कोशिश करें।";
 
-"Tip: Never scan a QR code from a website or a person you don’t trust. Proton will never ask you to scan a QR code that doesn’t come from the domain account.proton.me." = "Tip: Never scan a QR code from a website or a person you don’t trust. Proton will never ask you to scan a QR code that doesn’t come from the domain account.proton.me.";
+"Tip: Never scan a QR code from a website or a person you don’t trust. Proton will never ask you to scan a QR code that doesn’t come from the domain account.proton.me." = "टिप: किसी वेबसाइट या ऐसे व्यक्ति का QR कोड कभी स्कैन न करें जो भरोसेमंद न हो। Proton कभी भी ऐसा QR कोड स्कैन करने के लिए नहीं कहेगा जो account.proton.me डोमेन से न आया हो।";
 
-"Camera Access Denied." = "Camera Access Denied.";
+"Camera Access Denied." = "कैमरा एक्सेस अस्वीकार किया गया।";
 
-"The permission to use the Camera is off. Please enable it from the Settings." = "The permission to use the Camera is off. Please enable it from the Settings.";
+"The permission to use the Camera is off. Please enable it from the Settings." = "कैमरा इस्तेमाल करने की अनुमति बंद है। कृपया इसे सेटिंग से सक्षम करें।";
 
-"Go to Settings" = "Go to Settings";
+"Go to Settings" = "सेटिंग में जाएं";
 
-"to Proton %@" = "to Proton %@";
+"to Proton %@" = "Proton %@ में";
 
-"Something went wrong" = "Something went wrong";
+"Something went wrong" = "कुछ गलत हो गया";
 
-"We couldn't sign you in. Please scan a new QR code to try again." = "We couldn't sign you in. Please scan a new QR code to try again.";
+"We couldn't sign you in. Please scan a new QR code to try again." = "साइन-इन नहीं हो सका। फिर से कोशिश करने के लिए नया QR कोड स्कैन करें।";
 
-"We couldn't sign you in. Please sign in with your password." = "We couldn't sign you in. Please sign in with your password.";
+"We couldn't sign you in. Please sign in with your password." = "साइन-इन नहीं हो सका। कृपया पासवर्ड से साइन-इन करें।";
 
-"New QR code" = "New QR code";
+"New QR code" = "नया QR कोड";
 
-"Allow access to camera" = "Allow access to camera";
+"Allow access to camera" = "कैमरा एक्सेस की अनुमति दें";
 
-"To scan a QR code and sign in to another device, grant Proton %@ access to your camera." = "To scan a QR code and sign in to another device, grant Proton %@ access to your camera.";
+"To scan a QR code and sign in to another device, grant Proton %@ access to your camera." = "QR कोड स्कैन करके किसी अन्य डिवाइस में साइन-इन करने के लिए, Proton %@ को अपने कैमरे का एक्सेस दें।";
 
-"You're always in control: You can change this anytime in your device settings." = "You're always in control: You can change this anytime in your device settings.";
+"You're always in control: You can change this anytime in your device settings." = "कंट्रोल हमेशा आपके पास है: इसे कभी भी डिवाइस सेटिंग में बदला जा सकता है।";
 
-"Settings" = "Settings";
+"Settings" = "सेटिंग";
 
-"We couldn't load the QR code" = "We couldn't load the QR code";
+"We couldn't load the QR code" = "QR कोड लोड नहीं हो सका";
 
 "Retry" = "वापस कोशिश करें";
 
-"Welcome to Proton VPN" = "Welcome to Proton VPN";
+"Welcome to Proton VPN" = "Proton VPN में आपका स्वागत है";
 
-"Browse privately, access blocked content, and enjoy digital freedom." = "Browse privately, access blocked content, and enjoy digital freedom.";
+"Browse privately, access blocked content, and enjoy digital freedom." = "निजी रूप से ब्राउज़ करें, अवरुद्ध सामग्री को एक्सेस करें और डिजिटल स्वतंत्रता का आनंद लें।";
 
-"Certified no-logs VPN" = "Certified no-logs VPN";
+"Certified no-logs VPN" = "प्रमाणित नो-लॉग्स VPN";
 
-"Continue as guest" = "Continue as guest";
+"Continue as guest" = "गेस्ट के तौर पर जारी रखें";
 
-"By using this app you accept our [Terms and Conditions](%1$@) and acknowledge our [Privacy Policy](%2$@)." = "By using this app you accept our [Terms and Conditions](%1$@) and acknowledge our [Privacy Policy](%2$@).";
+"By using this app you accept our [Terms and Conditions](%1$@) and acknowledge our [Privacy Policy](%2$@)." = "इस ऐप का इस्तेमाल करने पर हमारी [नियम और शर्तें](%1$@) स्वीकार की जाती हैं और हमारी [प्राइवेसी नीति](%2$@) को मान्यता दी जाती है।";
 
-"Tap **Scan QR code**" = "Tap **Scan QR code**";
+"Tap **Scan QR code**" = "**QR कोड स्कैन करें** टैप करें";
 
-"Tap into **Settings**, then tap **Sign in to another device**" = "Tap into **Settings**, then tap **Sign in to another device**";
+"Tap into **Settings**, then tap **Sign in to another device**" = "**सेटिंग** पर टैप करें, फिर **किसी अन्य डिवाइस में साइन-इन करें** पर टैप करें";
 
-"Password must contain:" = "Password must contain:";
+"Password must contain:" = "पासवर्ड में ये होना चाहिए:";
 
-"Access shared" = "Access shared";
+"Access shared" = "एक्सेस शेयर किया गया";
 
-"Back to settings" = "Back to settings";
+"Back to settings" = "सेटिंग पर वापस जाएं";
 
-"How to sign in using another device" = "How to sign in using another device";
+"How to sign in using another device" = "किसी अन्य डिवाइस से साइन-इन कैसे करें";
 
-"Get another device that’s signed in to your Proton Account" = "Get another device that’s signed in to your Proton Account";
+"Get another device that’s signed in to your Proton Account" = "ऐसा दूसरा डिवाइस लें जो आपके Proton खाते में साइन-इन हो";
 
-"Using that device, open any Proton app and select **Settings**" = "Using that device, open any Proton app and select **Settings**";
+"Using that device, open any Proton app and select **Settings**" = "उस डिवाइस पर कोई भी Proton ऐप खोलें और **सेटिंग** चुनें";
 
-"Select **Sign in on another device → Scan QR code**" = "Select **Sign in on another device → Scan QR code**";
+"Select **Sign in on another device → Scan QR code**" = "**किसी अन्य डिवाइस में साइन-इन करें → QR कोड स्कैन करें** चुनें";
 
-"Scan the code to sign in" = "Scan the code to sign in";
+"Scan the code to sign in" = "साइन-इन करने के लिए कोड स्कैन करें";
 
-"We couldn't sign you in" = "We couldn't sign you in";
+"We couldn't sign you in" = "साइन-इन नहीं हो सका";
 
-"Try generating a new QR code." = "Try generating a new QR code.";
+"Try generating a new QR code." = "नया QR कोड जनरेट करके देखें।";
 
-"Generate QR code" = "Generate QR code";
+"Generate QR code" = "QR कोड जनरेट करें";
 
-"Please try another sign in method." = "Please try another sign in method.";
+"Please try another sign in method." = "कृपया साइन-इन का कोई अन्य तरीका आज़माएं।";
 
-"Sign in on another device" = "Sign in on another device";
+"Sign in on another device" = "किसी अन्य डिवाइस में साइन-इन करें";
 
-"How to sign in with QR code" = "How to sign in with QR code";
+"How to sign in with QR code" = "QR कोड से साइन-इन कैसे करें";
 
-"Allow camera access" = "Allow camera access";
+"Allow camera access" = "कैमरा एक्सेस की अनुमति दें";
 
-"To sign in with QR code, you'll need to let Proton %@ access your camera. You can do this in your device settings." = "To sign in with QR code, you'll need to let Proton %@ access your camera. You can do this in your device settings.";
+"To sign in with QR code, you'll need to let Proton %@ access your camera. You can do this in your device settings." = "QR कोड से साइन-इन करने के लिए, Proton %@ को कैमरे का एक्सेस देना होगा। यह डिवाइस सेटिंग में किया जा सकता है।";
 
-"Position QR code inside the square" = "Position QR code inside the square";
+"Position QR code inside the square" = "QR कोड को स्क्वायर के अंदर रखें";
 
-"Sign in with QR code" = "Sign in with QR code";
+"Sign in with QR code" = "QR कोड से साइन-इन करें";
 
-"Open any Proton app on the device you want to sign in to" = "Open any Proton app on the device you want to sign in to";
+"Open any Proton app on the device you want to sign in to" = "जिस डिवाइस में साइन-इन करना है, उस पर कोई भी Proton ऐप खोलें";
 
-"On the sign-in screen, select **Forgot password** or **Trouble signing in?** (on mobile apps, select **Help**)" = "On the sign-in screen, select **Forgot password** or **Trouble signing in?** (on mobile apps, select **Help**)";
+"On the sign-in screen, select **Forgot password** or **Trouble signing in?** (on mobile apps, select **Help**)" = "साइन-इन स्क्रीन पर, **पासवर्ड भूल गए** या **साइन-इन में दिक्कत?** चुनें (मोबाइल ऐप्स पर, **सहायता** चुनें)";
 
-"Select **Sign in with QR code**. A QR code will appear." = "Select **Sign in with QR code**. A QR code will appear.";
+"Select **Sign in with QR code**. A QR code will appear." = "**QR कोड से साइन-इन करें** चुनें। एक QR कोड दिखेगा।";
 
-"On this device, press **Scan QR code** and scan the code." = "On this device, press **Scan QR code** and scan the code.";
+"On this device, press **Scan QR code** and scan the code." = "इस डिवाइस पर, **QR कोड स्कैन करें** दबाएं और कोड स्कैन करें।";
 
-"Security tips" = "Security tips";
+"Security tips" = "सुरक्षा टिप्स";
 
-"Be cautious of messages with QR codes. Only scan a code if you trust the source." = "Be cautious of messages with QR codes. Only scan a code if you trust the source.";
+"Be cautious of messages with QR codes. Only scan a code if you trust the source." = "QR कोड वाले संदेशों से सावधान रहें। कोड सिर्फ़ तभी स्कैन करें जब स्रोत भरोसेमंद हो।";
 
-"Proton will never contact you unexpectedly asking you to sign in with a QR code." = "Proton will never contact you unexpectedly asking you to sign in with a QR code.";
+"Proton will never contact you unexpectedly asking you to sign in with a QR code." = "Proton कभी भी अचानक संपर्क करके QR कोड से साइन-इन करने को नहीं कहेगा।";
 
-"Proton will never ask you to scan a QR code that’s not from **https://proton.me** or an official Proton app." = "Proton will never ask you to scan a QR code that’s not from **https://proton.me** or an official Proton app.";
+"Proton will never ask you to scan a QR code that’s not from **https://proton.me** or an official Proton app." = "Proton कभी भी ऐसा QR कोड स्कैन करने को नहीं कहेगा, जो **https://proton.me** या किसी आधिकारिक Proton ऐप से न हो।";
 
 "Learn more" = "और जानें";
 
-"**Security tips**" = "**Security tips**";
+"**Security tips**" = "**सुरक्षा टिप्स**";
 
-"SSO configuration error" = "SSO configuration error";
+"SSO configuration error" = "SSO संरचना गड़बड़ी";
 
-"Failed to obtain SSO response token" = "Failed to obtain SSO response token";
+"Failed to obtain SSO response token" = "SSO रिस्पॉन्स टोकन हासिल करने में असफल";

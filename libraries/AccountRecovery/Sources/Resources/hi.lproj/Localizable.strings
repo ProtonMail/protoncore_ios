@@ -1,26 +1,26 @@
 "Settings_Item" = "पासवर्ड रिसेट करें";
 
-"Insecure_View_Title" = "Password reset";
+"Insecure_View_Title" = "पासवर्ड रीसेट";
 
-"Cancelled_View_Title" = "Password reset";
+"Cancelled_View_Title" = "पासवर्ड रीसेट";
 
-"Grace_View_Title" = "Password reset";
+"Grace_View_Title" = "पासवर्ड रीसेट";
 
-"We received a password reset request for **%@**." = "We received a password reset request for **%@**";
+"We received a password reset request for **%@**." = "**%@** के लिए पासवर्ड रीसेट का अनुरोध मिला है";
 
-"We received a password reset request for %@." = "We received a password reset request for %@";
+"We received a password reset request for %@." = "%@ के लिए पासवर्ड रीसेट का अनुरोध मिला है";
 
-"If you didn't ask to reset your password, **cancel this request now**." = "If you didn't ask to reset your password, **cancel this request now**.";
+"If you didn't ask to reset your password, **cancel this request now**." = "अगर पासवर्ड रीसेट का अनुरोध आपने नहीं किया था, तो **ये अनुरोध अभी रद्द करें**।";
 
-"If you didn't ask to reset your password, cancel this request now." = "If you didn't ask to reset your password, cancel this request now.";
+"If you didn't ask to reset your password, cancel this request now." = "अगर पासवर्ड रीसेट का अनुरोध आपने नहीं किया था, तो ये अनुरोध अभी रद्द करें।";
 
-"Password reset requested" = "Password reset requested";
+"Password reset requested" = "पासवर्ड रीसेट का अनुरोध किया गया";
 
 "Insecure_View_line1" = "अब खाते का पासवर्ड बदल सकते हैं ";
 
-"You can change your password in %@." = "You can change your password in %@.";
+"You can change your password in %@." = "%@ में पासवर्ड बदला जा सकता है।";
 
-"To make sure it's really you trying to reset your password, we wait 72 hours before approving requests." = "To make sure it's really you trying to reset your password, we wait 72 hours before approving requests.";
+"To make sure it's really you trying to reset your password, we wait 72 hours before approving requests." = "ये पक्का करने के लिए कि पासवर्ड रीसेट का अनुरोध सच में आपका ही है, हम अनुरोध मंज़ूर करने से पहले 72 घंटे इंतज़ार करते हैं।";
 
 "Insecure_View_line2" = " मुक्त रूप से के दौरान ";
 
@@ -30,52 +30,52 @@
 
 "Grace_View_Undefined_Time_Left" = "कुछ घंटे";
 
-"Settings_Item_Value_Grace" = "Pending";
+"Settings_Item_Value_Grace" = "पेंडिंग";
 
-"Settings_Item_Value_Expired" = "Expired";
+"Settings_Item_Value_Expired" = "एक्सपायर हो गया";
 
-"Settings_Item_Value_Cancelled" = "Cancelled";
+"Settings_Item_Value_Cancelled" = "रद्द किया गया";
 
-"Settings_Item_Value_Insecure" = "Available";
+"Settings_Item_Value_Insecure" = "उपलब्ध";
 
-"Insecure_View_Cancel_Button_CTA" = "Cancel reset";
+"Insecure_View_Cancel_Button_CTA" = "रीसेट रद्द करें";
 
-"If you didn't ask to reset your password, **cancel this request now**." = "If you didn't ask to reset your password, **cancel this request now**.";
+"If you didn't ask to reset your password, **cancel this request now**." = "अगर पासवर्ड रीसेट का अनुरोध आपने नहीं किया था, तो **ये अनुरोध अभी रद्द करें**।";
 
-"If you didn't ask to reset your password, cancel this request now." = "If you didn't ask to reset your password, cancel this request now.";
+"If you didn't ask to reset your password, cancel this request now." = "अगर पासवर्ड रीसेट का अनुरोध आपने नहीं किया था, तो ये अनुरोध अभी रद्द करें।";
 
-"We received a password reset request for **%@**." = "We received a password reset request for **%@**.";
+"We received a password reset request for **%@**." = "**%@** के लिए पासवर्ड रीसेट का अनुरोध मिला है।";
 
-"We received a password reset request for %@." = "We received a password reset request for %@.";
+"We received a password reset request for %@." = "%@ के लिए पासवर्ड रीसेट का अनुरोध मिला है।";
 
-"Password reset cancelled" = "Password reset cancelled";
+"Password reset cancelled" = "पासवर्ड रीसेट रद्द किया गया";
 
-"Cancelled by the user" = "Cancelled by the user";
+"Cancelled by the user" = "यूज़र ने रद्द किया";
 
-"Authenticated in another session" = "Authenticated in another session";
+"Authenticated in another session" = "दूसरे सत्र में ऑथेंटिकेशन हुआ";
 
-"none" = "none";
+"none" = "कोई नहीं";
 
-"The account recovery process expired due to inaction" = "The account recovery process expired due to inaction";
+"The account recovery process expired due to inaction" = "कोई कार्रवाई न होने से खाता रिकवरी की प्रक्रिया एक्सपायर हो गई";
 
-"If you never made a password reset request, someone else could have access to your account. **Change your password now**" = "If you never made a password reset request, someone else could have access to your account. **Change your password now**";
+"If you never made a password reset request, someone else could have access to your account. **Change your password now**" = "अगर पासवर्ड रीसेट का अनुरोध आपने कभी नहीं किया, तो हो सकता है किसी और के पास आपके खाते का एक्सेस हो। **अभी अपना पासवर्ड बदलें**";
 
-"If you never made a password reset request, someone else could have access to your account. Change your password now" = "If you never made a password reset request, someone else could have access to your account. Change your password now";
+"If you never made a password reset request, someone else could have access to your account. Change your password now" = "अगर पासवर्ड रीसेट का अनुरोध आपने कभी नहीं किया, तो हो सकता है किसी और के पास आपके खाते का एक्सेस हो। अभी अपना पासवर्ड बदलें";
 
-"The account recovery process expired due to inaction" = "The account recovery process expired due to inaction";
+"The account recovery process expired due to inaction" = "कोई कार्रवाई न होने से खाता रिकवरी की प्रक्रिया एक्सपायर हो गई";
 
-"Recovery process not started" = "Recovery process not started";
+"Recovery process not started" = "रिकवरी प्रक्रिया शुरू नहीं हुई";
 
-"Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "Currently there is no account recovery in process. Please go to a session on the web application to recover your password.";
+"Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "अभी कोई खाता रिकवरी प्रक्रिया नहीं चल रही है। अपना पासवर्ड रिकवर करने के लिए कृपया वेब एप्लीकेशन के किसी सत्र में जाएं।";
 
-"You can now reset your password" = "You can now reset your password";
+"You can now reset your password" = "अब पासवर्ड रीसेट किया जा सकता है";
 
-"Reset available until %@." = "Reset available until %@.";
+"Reset available until %@." = "रीसेट %@ तक उपलब्ध है।";
 
-"Change device to continue" = "Change device to continue";
+"Change device to continue" = "जारी रखने के लिए डिवाइस बदलें";
 
-"To reset your password, go back to your active session on **the originating device**." = "To reset your password, go back to your active session on **the originating device**.";
+"To reset your password, go back to your active session on **the originating device**." = "पासवर्ड रीसेट करने के लिए, **जिस डिवाइस से अनुरोध किया गया था**, उस पर अपने सक्रिय सत्र में वापस जाएं।";
 
-"To reset your password, go back to your active session on the originating device." = "To reset your password, go back to your active session on the originating device.";
+"To reset your password, go back to your active session on the originating device." = "पासवर्ड रीसेट करने के लिए, जिस डिवाइस से अनुरोध किया गया था, उस पर अपने सक्रिय सत्र में वापस जाएं।";
 
-"You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now." = "You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now.";
+"You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now." = "पासवर्ड रीसेट करने के लिए आपके पास %@ का समय है।\nये उसी डिवाइस और ब्राउज़र पर करना होगा जिससे पासवर्ड रीसेट का अनुरोध किया गया था।\nअगर पासवर्ड रीसेट का अनुरोध आपने नहीं किया था, तो अभी अनुरोध रद्द करें।";

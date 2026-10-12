@@ -10,7 +10,7 @@
 
 "It wasn't possible to match your purchased App Store product to any products on our server. Please fill in the bug report and our customer support team will contact you." = "हमारे सर्वर पर किसी भी उत्पाद के लिए आपके खरीदे गए App Store उत्पाद का मिलान करना संभव नहीं था। कृपया बग रिपोर्ट भरें और हमारी ग्राहक सहायता टीम आपसे संपर्क करेगी।";
 
-"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the purchase." = "आप जिस Proton Mail के जिस खाते के लिए सेवा प्लान अपग्रेड कर रहे है उसमें साइनइन करें ताकि हम खरीद को पूरा कर सके।";
+"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the purchase." = "आप जिस Proton Mail के जिस खाते के लिए सेवा प्लान अपग्रेड कर रहे है उसमें साइन-इन करें ताकि हम खरीद को पूरा कर सके।";
 
 "Apple informed us they could not process the purchase." = "Apple ने हमें सूचित किया कि वे खरीद की प्रक्रिया नहीं कर सकते।";
 
@@ -18,11 +18,11 @@
 
 "Please unlock the app to proceed with your service plan activation" = "सेवा प्लान सक्रिय करने के प्रॉसेस को जारी रखने के लिए कृपया ऐप अनलॉक करें";
 
-"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the service plan activation." = "कृपया Proton Mail खाते में साइनइन करें जिसके लिए आप सेवा प्लान अपग्रेड कर रहे हैं ताकि हम सेवा योजना को सक्रिय कर सकें।";
+"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the service plan activation." = "कृपया उस Proton Mail खाते में साइन-इन करें जिसके लिए सेवा प्लान अपग्रेड किया जा रहा है, ताकि हम सेवा प्लान को सक्रिय कर सकें।";
 
 "Wrong payment token status. Please relaunch the app. If error persists, contact support." = "गलत भुगतान टोकन स्थिति। ऐप को वापस से लॉन्च करें। अगर समस्या बनी रहती है, तो सहायता टीम से संपर्क करें।";
 
-"Do you want to activate the purchase for %@ address?" = "क्या आप %@ खाते के लिए खरीदारी को सक्रिय करना चाहते हैं?";
+"Do you want to activate the purchase for %@ address?" = "क्या %@ खाते के लिए खरीदारी को सक्रिय करना है?";
 
 "Yes, activate it for " = "हां, इसके लिए सक्षम करें: ";
 
@@ -44,4 +44,4 @@
 
 "The Proton servers are unreachable. It might be caused by wrong network configuration, Proton servers not working or Proton servers being blocked" = "Proton सर्वर पे पहुंचा नहीं जा सकता। ये गलत नेटवर्क संरचना, Proton सर्वर का काम नहीं करना या Proton सर्वर के ब्लॉक होने की वजह से हो सकता है।";
 
-"The signed-in Apple account already purchased this item." = "The signed-in Apple account already purchased this item.";
+"The signed-in Apple account already purchased this item." = "जिस Apple खाते से साइन इन किया गया है, उसने यह आइटम पहले ही खरीद लिया है।";
