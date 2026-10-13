@@ -12,15 +12,15 @@
 
 "Remove account" = "खाता हटाएं";
 
-"You will be signed out and all the data associated with this account will be removed from this device." = "आप साइनआउट हो जाएगे और इस खाते से जुड़ा सारा डाटा इस डिवाइस हटा दिया जाएगा।";
+"You will be signed out and all the data associated with this account will be removed from this device." = "आप साइनआउट हो जाएगे और इस खाते से जुड़ा सारा डेटा इस डिवाइस हटा दिया जाएगा।";
 
 "Remove" = "हटाएं";
 
-"Are you sure you want to sign out %@?" = "क्या आप साइन आउट करना चाहते हैं %@?";
+"Are you sure you want to sign out %@?" = "क्या वाकई %@ से साइन आउट करना है?";
 
 "Dismiss account switcher" = "खाता बदले हटाएं";
 
-"Sign in to another account" = "दूसरे खाते पे साइनइन करें";
+"Sign in to another account" = "दूसरे खाते पे साइन-इन करें";
 
 "Cancel" = "रद्द करें";
 

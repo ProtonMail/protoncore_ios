@@ -8,7 +8,7 @@
 
 "Apple informed us you've upgraded the service plan, but we detected you have logged out of the account since then." = "Apple informerte oss om den oppgraderte tjenesteplanen, men vi detekterte at du har logget av kontoen siden da.";
 
-"It wasn't possible to match your purchased App Store product to any products on our server. Please fill in the bug report and our customer support team will contact you." = "Det var ikke mulig å samsvare ditt kjøpte Apple Store produkt til produkter på vår tjener. Fyll ut feilrapporten og vår kudestøtte vil kontakte deg.";
+"It wasn't possible to match your purchased App Store product to any products on our server. Please fill in the bug report and our customer support team will contact you." = "Det var ikke mulig å samsvare ditt kjøpte Apple Store produkt til produkter på vår server. Fyll ut feilrapporten og vår kudestøtte vil kontakte deg.";
 
 "Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the purchase." = "Logg på Proton Mail-kontoen du oppgraderer tjenesteplanen for slik at vi kan fullføre kjøpet.";
 
@@ -42,6 +42,6 @@
 
 "OK" = "OK";
 
-"The Proton servers are unreachable. It might be caused by wrong network configuration, Proton servers not working or Proton servers being blocked" = "Proton-tjenerne er utilgjengelige. Det kan skyldes mangelfull nettverkskonfigurering, Proton-tjenere ikke fungerende eller Proton-tjenere under blokkering.";
+"The Proton servers are unreachable. It might be caused by wrong network configuration, Proton servers not working or Proton servers being blocked" = "Proton-serverne er utilgjengelige. Det kan skyldes mangelfull nettverkskonfigurering, Proton-servere ikke fungerende eller Proton-servere under blokkering.";
 
 "The signed-in Apple account already purchased this item." = "Apple-kontoen som er logget på, har allerede kjøpt dette elementet.";

@@ -2,134 +2,134 @@
 
 "Cancel" = "रद्द करें";
 
-"Warning" = "Warning";
+"Warning" = "चेतावनी";
 
-"Select a plan" = "Select a plan";
+"Select a plan" = "प्लान चुनें";
 
-"Current plan" = "Current plan";
+"Current plan" = "वर्तमान प्लान";
 
-"Subscription" = "Subscription";
+"Subscription" = "सदस्यता";
 
-"Upgrade your plan" = "Upgrade your plan";
+"Upgrade your plan" = "अपना प्लान अपग्रेड करें";
 
-"Only annual subscriptions without auto-renewal are available inside the mobile app." = "Only annual subscriptions without auto-renewal are available inside the mobile app.";
+"Only annual subscriptions without auto-renewal are available inside the mobile app." = "मोबाइल ऐप में सिर्फ अपनेआप-रिन्यू के बिना सालाना सदस्यताएं मौजूद हैं।";
 
-"You cannot manage subscriptions inside the mobile application." = "You cannot manage subscriptions inside the mobile application.";
+"You cannot manage subscriptions inside the mobile application." = "मोबाइल एप्लीकेशन में सदस्यताएं मैनेज नहीं की जा सकतीं।";
 
-"Your plan will automatically renew on %@" = "Your plan will automatically renew on %@";
+"Your plan will automatically renew on %@" = "आपका प्लान %@ को अपनेआप रिन्यू हो जाएगा";
 
-"Current plan will expire on %@" = "Current plan will expire on %@";
+"Current plan will expire on %@" = "वर्तमान प्लान %@ को एक्सपायर हो जाएगा";
 
-"Contact an administrator to make changes to your Proton subscription." = "Contact an administrator to make changes to your Proton subscription.";
+"Contact an administrator to make changes to your Proton subscription." = "अपनी Proton सदस्यता में बदलाव करने के लिए किसी एडमिन से संपर्क करें।";
 
-"%1$@ of %2$@" = "%1$@ of %2$@";
+"%1$@ of %2$@" = "%2$@ में से %1$@";
 
-"%@ storage" = "%@ storage";
+"%@ storage" = "%@ स्टोरेज";
 
-"%@ storage / user" = "%@ storage / user";
+"%@ storage / user" = "%@ स्टोरेज / यूज़र";
 
-"for %@" = "for %@";
+"for %@" = "%@ के लिए";
 
-"Custom email addresses" = "Custom email addresses";
+"Custom email addresses" = "कस्टम ईमेल पते";
 
-"Priority customer support" = "Priority customer support";
+"Priority customer support" = "प्राथमिकता वाली ग्राहक सहायता";
 
-"Adblocker (NetShield)" = "Adblocker (NetShield)";
+"Adblocker (NetShield)" = "एडब्लॉकर (NetShield)";
 
-"Streaming service support" = "Streaming service support";
+"Streaming service support" = "स्ट्रीम सेवा का सपोर्ट";
 
-"High speed" = "High speed";
+"High speed" = "तेज़ स्पीड";
 
-"Highest speed" = "Highest speed";
+"Highest speed" = "सबसे तेज़ स्पीड";
 
-"Multi-user support" = "Multi-user support";
+"Multi-user support" = "कई-यूज़र सहायता";
 
-"The basic for private and secure communications." = "The basic for private and secure communications.";
+"The basic for private and secure communications." = "प्राइवेट और सुरक्षित संचार की बुनियाद।";
 
-"Full-featured mailbox with advanced protection." = "Full-featured mailbox with advanced protection.";
+"Full-featured mailbox with advanced protection." = "बेहतर सुरक्षा के साथ सभी सुविधाओं वाला मेलबॉक्स।";
 
-"Limited time offer" = "Limited time offer";
+"Limited time offer" = "सीमित समय का ऑफर";
 
-"Complete payment?" = "Complete payment?";
+"Complete payment?" = "भुगतान पूरा करें?";
 
-"A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account";
+"A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "Proton बंडल प्लान की खरीद पहले ही शुरू की जा चुकी है। भुगतान की प्रोसेसिंग पूरी करने और अपना खाता बनाने के लिए जारी रखें दबाएं।";
 
-"Complete payment" = "Complete payment";
+"Complete payment" = "भुगतान पूरा करें";
 
-"The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "The account setup process could not be finalized due to an unexpected error.\nPlease try again.";
+"The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "किसी अचानक आई गड़बड़ी के कारण खाता सेटअप की प्रक्रिया पूरी नहीं हो सकी।\nकृपया फिर से कोशिश करें।";
 
-"The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase.";
+"The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "IAP पे खरीदने का प्रॉसेस शुरू हो गया है। खरीद को पूरा या रद्द करने के लिए कृपया Apple के निर्देशों का पालन करें।";
 
-"In app payments are temporarily unavailable." = "In app payments are temporarily unavailable.";
+"In app payments are temporarily unavailable." = "ऐप में भुगतान फिलहाल उपलब्ध नहीं हैं।";
 
-"One plan for all Proton services" = "One plan for all Proton services";
+"One plan for all Proton services" = "सभी Proton सेवाओं के लिए एक प्लान";
 
-"The no-cost starter account designed to empower everyone with privacy by default." = "The no-cost starter account designed to empower everyone with privacy by default.";
+"The no-cost starter account designed to empower everyone with privacy by default." = "बिना किसी खर्च वाला शुरुआती खाता, जो हर किसी को डिफॉल्ट रूप से प्राइवेसी की ताकत देता है।";
 
-"The privacy-first email and calendar solution for your everyday communication needs." = "The privacy-first email and calendar solution for your everyday communication needs.";
+"The privacy-first email and calendar solution for your everyday communication needs." = "रोज़मर्रा की संचार ज़रूरतों के लिए प्राइवेसी को सबसे पहले रखने वाला ईमेल और कैलेंडर सॉल्यूशन।";
 
-"Your privacy and security are our priority." = "Your privacy and security are our priority.";
+"Your privacy and security are our priority." = "आपकी प्राइवेसी और सुरक्षा हमारी प्राथमिकता है।";
 
-"The storage-focused plan with 200 GB of cloud storage to keep your files private." = "The storage-focused plan with 200 GB of cloud storage to keep your files private.";
+"The storage-focused plan with 200 GB of cloud storage to keep your files private." = "आपकी फाइलें प्राइवेट रखने के लिए 200 जीबी क्लाउड स्टोरेज वाला स्टोरेज-केंद्रित प्लान।";
 
-"The ultimate privacy pack with access to all premium Proton services." = "The ultimate privacy pack with access to all premium Proton services.";
+"The ultimate privacy pack with access to all premium Proton services." = "सभी प्रीमियम Proton सेवाओं का एक्सेस देने वाला बेहतरीन प्राइवेसी पैक।";
 
-"Only non-renewing annual subscriptions are available via this app" = "Only non-renewing annual subscriptions are available via this app";
+"Only non-renewing annual subscriptions are available via this app" = "इस ऐप के ज़रिए सिर्फ बिना रिन्यू होने वाली सालाना सदस्यताएं मौजूद हैं";
 
-"Your subscription cannot be managed inside the mobile app." = "Your subscription cannot be managed inside the mobile app.";
+"Your subscription cannot be managed inside the mobile app." = "मोबाइल ऐप में आपकी सदस्यता मैनेज नहीं की जा सकती।";
 
-"Unlimited folders, labels, and filters" = "Unlimited folders, labels, and filters";
+"Unlimited folders, labels, and filters" = "असीमित फोल्डर, लेबल और फिल्टर";
 
-"Up to %@ storage" = "Up to %@ storage";
+"Up to %@ storage" = "%@ तक स्टोरेज";
 
-"Free VPN on a single device" = "Free VPN on a single device";
+"Free VPN on a single device" = "एक ही डिवाइस पर मुफ्त VPN";
 
-"Highest VPN speed" = "Highest VPN speed";
+"Highest VPN speed" = "सबसे तेज़ VPN स्पीड";
 
-"Built-in ad-blocker (NetShield)" = "Built-in ad-blocker (NetShield)";
+"Built-in ad-blocker (NetShield)" = "बिल्ट-इन एड-ब्लॉकर (NetShield)";
 
-"Access to streaming services globally" = "Access to streaming services globally";
+"Access to streaming services globally" = "दुनिया भर की स्ट्रीमिंग सेवाओं का एक्सेस";
 
-"Secure Core servers" = "Secure Core servers";
+"Secure Core servers" = "Secure Core सर्वर";
 
-"TOR over VPN" = "Tor over VPN";
+"TOR over VPN" = "VPN पर Tor";
 
 "P2P/BitTorrent" = "P2P/BitTorrent";
 
-"Get %@" = "Get %@";
+"Get %@" = "%@ पाएं";
 
-"Get Proton for free" = "Get Proton for free";
+"Get Proton for free" = "Proton मुफ्त में ले";
 
-"Extend subscription" = "Extend subscription";
+"Extend subscription" = "सदस्यता बढ़ाएं";
 
-"%@ of %@" = "%@ of %@";
+"%@ of %@" = "%@ में से %@";
 
-"Connection issues" = "Connection issues";
+"Connection issues" = "कनेक्शन की समस्याएं";
 
-"Check your internet connection" = "Check your internet connection";
+"Check your internet connection" = "अपना इंटरनेट कनेक्शन जांचें";
 
-"Strict no-logs policy" = "Strict no-logs policy";
+"Strict no-logs policy" = "सख्त नो-लॉग्स नीति";
 
-"Plan successfully upgraded" = "Plan successfully upgraded";
+"Plan successfully upgraded" = "प्लान सफलतापूर्वक अपग्रेड किया गया";
 
-"Integrated 2FA authenticator" = "Integrated 2FA authenticator";
+"Integrated 2FA authenticator" = "पहले से बना 2FA सत्यापन";
 
-"Priority support" = "Priority support";
+"Priority support" = "प्रायोरिटी सहायता";
 
-"Unlimited devices" = "Unlimited devices";
+"Unlimited devices" = "असीमित डिवाइस";
 
-"Unlimited email aliases" = "Unlimited email aliases";
+"Unlimited email aliases" = "असीमित ईमेल छद्म-नाम";
 
-"Unlimited logins and notes" = "Unlimited logins and notes";
+"Unlimited logins and notes" = "असीमित लॉग-इन और नोट";
 
-"Custom fields" = "Custom fields";
+"Custom fields" = "कस्टम फील्ड";
 
-"For next-level password management and identity protection." = "For next-level password management and identity protection.";
+"For next-level password management and identity protection." = "अगले स्तर के पासवर्ड मैनेजमेंट और पहचान सुरक्षा के लिए।";
 
-"Pay monthly" = "Pay monthly";
+"Pay monthly" = "मासिक भुगतान करें";
 
-"Pay annually" = "Pay annually";
+"Pay annually" = "सालाना भुगतान करें";
 
-"Pay every two years" = "Pay every two years";
+"Pay every two years" = "हर दो साल में भुगतान करें";
 
 "Free" = "Free";

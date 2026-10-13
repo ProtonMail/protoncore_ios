@@ -426,7 +426,7 @@
 
 "Continue as guest" = "ゲストとして続ける";
 
-"By using this app you accept our [Terms and Conditions](%1$@) and acknowledge our [Privacy Policy](%2$@)." = "このアプリを使用することにより、私たちの「利用規約（%1$@）」に同意し、「プライバシーポリシー（%2$@）」を確認したものとみなされます。";
+"By using this app you accept our [Terms and Conditions](%1$@) and acknowledge our [Privacy Policy](%2$@)." = "このアプリを使用することにより、私たちの「[利用規約](%1$@)」に同意し、「[プライバシーポリシー](%2$@)」を確認したものとみなされます。";
 
 "Tap **Scan QR code**" = "**QRコードをスキャン**をタップ";
 
